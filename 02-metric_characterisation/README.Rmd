@@ -215,7 +215,7 @@ Random forest regression has two main hyperparameters. The number of trees to be
 ```{r, results = "asis"}
 add_fig(
   result_file("feautreimp_cor_distributions.rds", experiment = "02-metric_characterisation/02-individual_metrics"),
-  "feautreimp_cor_distributions",
+  "featureimp_cor_distributions",
   glue::glue(""),
   glue::glue(""),
   width = 12, height = 6

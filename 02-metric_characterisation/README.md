@@ -183,10 +183,10 @@ To calculate the cor<sub>features</sub> we used Random forest regression to rank
 Random forest regression has two main hyperparameters. The number of trees to be fitted (`num_trees` parameter) was fixed to `10000` to provide accurate and stable estimates of the feature importance ([**Figure 8**](#fig_featureimp_cor_distributions)). The number of features on which can be split (`mtry` parameter) was set to 1% of all available features (instead of the default square-root of the number of features), as to make sure that predictive but highly correlated feautres (omnipresent in transcriptomics data) are not suppressed in the ranking.
 
 <p>
-<a name = 'fig_feautreimp_cor_distributions'></a> <img src = "02-individual_metrics/feautreimp_cor_distributions.png" />
+<a name = 'fig_featureimp_cor_distributions'></a> <img src = "02-individual_metrics/feautreimp_cor_distributions.png" />
 </p>
 <p>
-<strong>Figure 9: </strong>
+<strong>Figure 8: </strong>
 </p>
 
 ------------------------------------------------------------------------
