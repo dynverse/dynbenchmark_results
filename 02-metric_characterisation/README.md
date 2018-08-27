@@ -15,7 +15,7 @@ Metrics to compare two trajectories
 A trajectory, as defined in our evaluation, is a model with multiple abstractions. The top abstraction is the topology which contains information about the paths each cell can take from their starting point. Deeper abstractions involve the mapping of each cell to a particular branch within this network, and the position (or ordering) of each cells within these branches. Internally, the topology is represented by the milestone network and regions of delayed commitment, the branch assignment and cellular positions are represented by the milestone percentages ([**Figure 1**](#fig_trajectory_model_example)).
 
 <p>
-<a name = 'fig_trajectory_model_example'></a> <img src = "/home/wouters/thesis/projects/dynverse/dynbenchmark//results/manual_figures/trajectory_model_example.svg" />
+<a name = 'fig_trajectory_model_example'></a> <img src = "../manual_figures/trajectory_model_example.svg" />
 </p>
 <p>
 <strong>Figure 1: An example trajectory that will be used throughout this section.</strong> It contains contains four milestones (W to Z) and five cells (a to e).
@@ -65,7 +65,7 @@ The HIM metric (Hamming-Ipsen-Mikhailov distance) \[@jurmanHIMGlocalMetric2015\]
 We compared the three scores for several common topologies ([**Figure 2**](#fig_topology_scores_overview)). While conceptually very different, the edgeflipr and HIMr still produce similar scores ([**Figure 2b**](#fig_topology_scores_overview)). The HIMr tends to punish the detection of cycles, while the edgeflipr is more harsh for differences in the number of bifurcations ([**Figure 2c**](#fig_topology_scores_overview)). The main difference however is that the HIMr takes into account edge lengths when comparing two trajectories, as illustrated in ([**Figure 2d**](#fig_topology_scores_overview)).
 
 <p>
-<a name = 'fig_topology_scores_overview'></a> <img src = "/home/wouters/thesis/projects/dynverse/dynbenchmark/results/02-metric_characterisation/02-individual_metrics/topology_scores_overview.png" />
+<a name = 'fig_topology_scores_overview'></a> <img src = "02-individual_metrics/topology_scores_overview.png" />
 </p>
 <p>
 <strong>Figure 2: Isomorphic, edgeflip and HIM .</strong>
@@ -95,7 +95,7 @@ Based on these requirements, and on the analysis in \[@saelensComprehensiveEvalu
 ![](https://latex.codecogs.com/gif.latex?textrm%7BF1%7D%20=%20%5Cfrac%7B2%7D%7B%5Cfrac%7B1%7D%7B%5Ctextrm%7BRecovery%7D%7D%20+%20%5Cfrac%7B1%7D%7B%5Ctextrm%7BRelevance%7D%7D%7D)
 
 <p>
-<a name = 'fig_clustering_scores_overview'></a> <img src = "/home/wouters/thesis/projects/dynverse/dynbenchmark/results/02-metric_characterisation/02-individual_metrics/clustering_scores_overview.png" />
+<a name = 'fig_clustering_scores_overview'></a> <img src = "02-individual_metrics/clustering_scores_overview.png" />
 </p>
 <p>
 <strong>Figure 3: Mapping cells to their closest milestone or branch for the calculation of the F1<sub>milestones</sub> and F1<sub>branches</sub> .</strong>
@@ -106,7 +106,7 @@ cor<sub>dist</sub>: Correlation between geodesic distances
 When the position of a cell is the same in both the gold standard and the prediction, its distances to all other cells in the trajectory should also be the same. This observation is the basis for the cor<sub>dist</sub> metric.
 
 <p>
-<a name = 'fig_metrics_geodesic'></a> <img src = "/home/wouters/thesis/projects/dynverse/dynbenchmark//results/manual_figures/metrics_geodesic.svg" />
+<a name = 'fig_metrics_geodesic'></a> <img src = "../manual_figures/metrics_geodesic.svg" />
 </p>
 <p>
 <strong>Figure 4: The calculation of geodesic distances on a small example trajectory.</strong> a) A toy example containing four milestones (W to Z) and five cells (a to e). b) The corresponding milestone network, milestone percentages and regions of delayed commitment, when the toy trajectory is converted to the common trajectory model. c) The calculations made for calculating the pairwise geodesic distances. d) A heatmap representation of the pairwise geodesic distances.
@@ -123,7 +123,7 @@ Calculating the pairwise distances between cells scales quadratically with the n
 To select the number of cell waypoints, we need to find a trade-off between the accuracy versus the time to calculate cor<sub>dist</sub>. To select an optimal number of cell waypoints, we used the synthetic dataset with the most complex topology, and determined the cor<sub>dist</sub> at different levels of both cell shuffling and number of cell waypoints ([**Figure 5b**](#fig_waypoints_overview)). We found that using cell waypoints does not induce a systematic bias in the cor<sub>dist</sub>, and that its variability was relatively minimal when compared to the variability between different levels of cell shuffling when using 100 or more cell waypoints.
 
 <p>
-<a name = 'fig_waypoints_overview'></a> <img src = "/home/wouters/thesis/projects/dynverse/dynbenchmark/results/02-metric_characterisation/02-individual_metrics/waypoints_overview.png" />
+<a name = 'fig_waypoints_overview'></a> <img src = "02-individual_metrics/waypoints_overview.png" />
 </p>
 <p>
 <strong>Figure 5: Determination of cell waypoints</strong> a) Illustration of the stratified cell sampling using an example dataset (top). Each milestone, edge between two milestones and region of delayed commitment is seen as a collection of cells (middle), and the number of waypoints (100 in this case) are divided over each of these collection of cells (bottom). b) Accuracy versus time to calculate cor<sub>dist</sub>
@@ -136,7 +136,7 @@ An alternative approach to detect whether the positions of cells are similar bet
 Specifically, we implemented two metrics which predict the milestone percentages from the gold standards by using the predicted milestone percentages as features ([**Figure 6**](#fig_metrics_prediction)). We did this with two regression methods, linear regression (![](https://latex.codecogs.com/gif.latex?%5Ctextit%7Blm%7D), using the R `lm` function) and Random Forest (![](https://latex.codecogs.com/gif.latex?%5Ctextit%7Brf%7D), implemented in the *ranger* package \[@wright\_rangerfastimplementation\_2017\]). In both cases, the accuracy of the prediction was measured using the Mean Squared error (![](https://latex.codecogs.com/gif.latex?%5Cmathit%7BMSE%7D)), in the case of Random forest we used the out-of-bag mean-squared error. Next, we calculated ![](https://latex.codecogs.com/gif.latex?%5Cmathit%7BMSE%7D_%7Bworst%7D) equal to the ![](https://latex.codecogs.com/gif.latex?%5Cmathit%7BMSE%7D) when predicting all milestone percentages as the average. We used this to calculate the normalised mean squared error as ![](https://latex.codecogs.com/gif.latex?%5Cmathit%7BNMSE%7D%20=%201%20-%20%5Cfrac%7B%5Cmathit%7BMSE%7D%7D%7B%5Cmathit%7BMSE%7D_%7Bworst%7D%7D). We created a regression model for every milestone in the gold standard, and averaged the ![](https://latex.codecogs.com/gif.latex?%5Cmathit%7BNMSE%7D) values to finally obtain the NMSE<sub>rf</sub> and NMSE<sub>lm</sub> scores.
 
 <p>
-<a name = 'fig_metrics_prediction'></a> <img src = "/home/wouters/thesis/projects/dynverse/dynbenchmark//results/manual_figures/metrics_prediction.svg" />
+<a name = 'fig_metrics_prediction'></a> <img src = "../manual_figures/metrics_prediction.svg" />
 </p>
 <p>
 <strong>Figure 6: The calculation of NMSE<sub>lm</sub> distances on a small example trajectory.</strong>
@@ -154,7 +154,7 @@ Perhaps the main advantages of studying cellular dynamic processes using single-
 To calculate the cor<sub>features</sub> we used Random forest regression to rank all the features according to their importance in predicting the positions of cells in the trajectory. Specifically, we calculated the geodesic distances for each cell to all milestones in the trajectory. Next, we trained a Random Forest regression model (implemented in the R *ranger* package \[@wright\_rangerfastimplementation\_2017\], <https://github.com/imbs-hl/ranger>) to predict these distances for each milestone, based on the expression of genes within each cell. We then extracted feature importances using the Mean Decrease in Impurity (`importance = 'impurity'` parameter of the `ranger` function), as illustrated in ([**Figure 7**](#fig_featureimp_overview)). The overall importance of a feature (gene) was then equal to the mean importance over all milestones.
 
 <p>
-<a name = 'fig_featureimp_overview'></a> <img src = "/home/wouters/thesis/projects/dynverse/dynbenchmark/results/02-metric_characterisation/02-individual_metrics/featureimp_overview.png" />
+<a name = 'fig_featureimp_overview'></a> <img src = "02-individual_metrics/featureimp_overview.png" />
 </p>
 <p>
 <strong>Figure 7: </strong>
@@ -162,7 +162,7 @@ To calculate the cor<sub>features</sub> we used Random forest regression to rank
 Random forest regression has two main hyperparameters. The number of trees to be fitted (`num_trees` parameter) was fixed to `10000` to provide accurate and stable estimates of the feature importance ([**Figure 8**](#fig_featureimp_cor_distributions)). The number of features on which can be split (`mtry` parameter) was set to 1% of all available features (instead of the default square-root of the number of features), as to make sure that predictive but highly correlated feautres (omnipresent in transcriptomics data) are not suppressed in the ranking.
 
 <p>
-<a name = 'fig_feautreimp_cor_distributions'></a> <img src = "/home/wouters/thesis/projects/dynverse/dynbenchmark/results/02-metric_characterisation/02-individual_metrics/feautreimp_cor_distributions.png" />
+<a name = 'fig_feautreimp_cor_distributions'></a> <img src = "02-individual_metrics/feautreimp_cor_distributions.png" />
 </p>
 <p>
 <strong>Figure 9: </strong>
