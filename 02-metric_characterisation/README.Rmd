@@ -297,6 +297,6 @@ add_table(
 # assessment <- dynutils::extract_row_to_list(assessments, 1)
 
 walkdf(assessments[1, ], function(assessment) {
-  cat(knitr::knit_child("assessment.Rmd", quiet=TRUE, envir = environment()))
+  cat(knitr::knit_child(result_file("assessment.Rmd", experiment = "02-metric_characterisation/01-metric_conformity"), quiet=TRUE, envir = environment()))
 })
 ```
