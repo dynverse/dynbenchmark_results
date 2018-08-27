@@ -20,6 +20,9 @@ A trajectory, as defined in our evaluation, is a model with multiple abstraction
 <p>
 <strong>Figure 1: An example trajectory that will be used throughout this section.</strong> It contains contains four milestones (W to Z) and five cells (a to e).
 </p>
+
+------------------------------------------------------------------------
+
 Given the multilayered complexity of a trajectory model, it is not trivial to compare the similarity of two trajectory models using only one metric. We therefore sought to use different comparison metrics, each serving a different purpose:
 
 -   **Specific metrics** investigate one particular aspect of the trajectory. Such metrics make it possible to find particular weak points for methods, e.g. that a method is very good at ordering but does not frequently find the correct topology. Moreover, this makes it possible to create personalised rankings of methods, for example for users which are primarily interested in using the method correct topology.
@@ -70,6 +73,9 @@ We compared the three scores for several common topologies ([**Figure 2**](#fig_
 <p>
 <strong>Figure 2: Isomorphic, edgeflip and HIM .</strong>
 </p>
+
+------------------------------------------------------------------------
+
 To summarise, the different topology based scores are useful for different scenarios:
 
 -   If the two trajectories should only be compared when the topology is exactly the same, the Isomorphic should be used.
@@ -100,6 +106,9 @@ Based on these requirements, and on the analysis in \[@saelensComprehensiveEvalu
 <p>
 <strong>Figure 3: Mapping cells to their closest milestone or branch for the calculation of the F1<sub>milestones</sub> and F1<sub>branches</sub> .</strong>
 </p>
+
+------------------------------------------------------------------------
+
 cor<sub>dist</sub>: Correlation between geodesic distances
 ----------------------------------------------------------
 
@@ -111,6 +120,9 @@ When the position of a cell is the same in both the gold standard and the predic
 <p>
 <strong>Figure 4: The calculation of geodesic distances on a small example trajectory.</strong> a) A toy example containing four milestones (W to Z) and five cells (a to e). b) The corresponding milestone network, milestone percentages and regions of delayed commitment, when the toy trajectory is converted to the common trajectory model. c) The calculations made for calculating the pairwise geodesic distances. d) A heatmap representation of the pairwise geodesic distances.
 </p>
+
+------------------------------------------------------------------------
+
 The geodesic distance is the distance a cell has to through the trajectory space to get from one position to another ([**Figure 4**](#fig_metrics_geodesic)). The way this distance is calculated depends on how two cells are positioned:
 
 -   **Both cells are on the same edge in the milestone network.** In this case, the distance is defined as the product of the difference in milestone percentages and the length of the transition they both reside on. The geodesic distance is defined as the product of the difference in milestone percentages and the length of their common edge. For cells ![](https://latex.codecogs.com/gif.latex?a) and ![](https://latex.codecogs.com/gif.latex?b) in the example, ![](https://latex.codecogs.com/gif.latex?d(a,%20b)) is equal to ![](https://latex.codecogs.com/gif.latex?1%20%5Ctimes%20(0.9%20-%200.2)%20=%200.7).
@@ -128,6 +140,9 @@ To select the number of cell waypoints, we need to find a trade-off between the 
 <p>
 <strong>Figure 5: Determination of cell waypoints</strong> a) Illustration of the stratified cell sampling using an example dataset (top). Each milestone, edge between two milestones and region of delayed commitment is seen as a collection of cells (middle), and the number of waypoints (100 in this case) are divided over each of these collection of cells (bottom). b) Accuracy versus time to calculate cor<sub>dist</sub>
 </p>
+
+------------------------------------------------------------------------
+
 NMSE<sub>rf</sub> and NMSE<sub>lm</sub>: Using the positions of the cells within one trajectory to predict the cellular positions in the other trajectory
 ---------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -141,6 +156,9 @@ Specifically, we implemented two metrics which predict the milestone percentages
 <p>
 <strong>Figure 6: The calculation of NMSE<sub>lm</sub> distances on a small example trajectory.</strong>
 </p>
+
+------------------------------------------------------------------------
+
 Application metrics
 ===================
 
@@ -159,6 +177,9 @@ To calculate the cor<sub>features</sub> we used Random forest regression to rank
 <p>
 <strong>Figure 7: </strong>
 </p>
+
+------------------------------------------------------------------------
+
 Random forest regression has two main hyperparameters. The number of trees to be fitted (`num_trees` parameter) was fixed to `10000` to provide accurate and stable estimates of the feature importance ([**Figure 8**](#fig_featureimp_cor_distributions)). The number of features on which can be split (`mtry` parameter) was set to 1% of all available features (instead of the default square-root of the number of features), as to make sure that predictive but highly correlated feautres (omnipresent in transcriptomics data) are not suppressed in the ranking.
 
 <p>
@@ -167,6 +188,9 @@ Random forest regression has two main hyperparameters. The number of trees to be
 <p>
 <strong>Figure 9: </strong>
 </p>
+
+------------------------------------------------------------------------
+
 Overall metrics
 ===============
 

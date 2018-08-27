@@ -174,6 +174,22 @@ add_fig(
 )
 ```
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # Application metrics
 
 Although most metrics described above already assess some aspects directly relevant to the user, such as whether the method is good at finding the right topology, these metrics do not assess the quality of downstream analyses and hypotheses which can be generated from these models. 
@@ -295,7 +311,7 @@ add_table(
 
 ```{r results='asis'}
 # assessment <- dynutils::extract_row_to_list(assessments, 1)
-
+# 
 walkdf(assessments[1, ], function(assessment) {
   cat(knitr::knit_child(result_file("assessment.Rmd", experiment = "02-metric_characterisation/01-metric_conformity"), quiet=TRUE, envir = environment()))
 })
