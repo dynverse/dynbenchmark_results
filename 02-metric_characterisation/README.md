@@ -25,11 +25,11 @@ A trajectory, as defined in our evaluation, is a model with multiple abstraction
 
 Given the multilayered complexity of a trajectory model, it is not trivial to compare the similarity of two trajectory models using only one metric. We therefore sought to use different comparison metrics, each serving a different purpose:
 
--   **Specific metrics** investigate one particular aspect of the trajectory. Such metrics make it possible to find particular weak points for methods, e.g. that a method is very good at ordering but does not frequently find the correct topology. Moreover, this makes it possible to create personalised rankings of methods, for example for users which are primarily interested in using the method correct topology.
+-   **Specific metrics** investigate one particular aspect of the trajectory. Such metrics make it possible to find particular weak points for methods, e.g. that a method is very good at ordering but does not frequently find the correct topology. Moreover, having multiple individual metrics make it possible to create personalised rankings of methods, for example for users which are primarily interested in using the method correct topology.
 -   **Application metrics** focus on the quality of a downstream analysis using the trajectory. For example, it measures whether the trajectory can be used to find accurate differentially expressed genes.
 -   **Overall metrics** should capture all the different abstractions, in other words such metrics measure whether the resulting trajectory has a good topology, that the cells belong to similar branches *and* that they are ordered correctly.
 
-Here, we first described and illustrate several specific, application and overall metrics which we defined. Next, we tested these metrics on several test cases, to make sure they were robustly identify different wrong trajectory predictions. Based on this robustness assessment, we chose 4 metrics for the final evaluation.
+Here, we first describe and illustrate several possible specific, application and overall metrics. Next, we test these metrics on several test cases, to make sure they were robustly identify different wrong trajectory predictions.
 
 All metrics described here were implemented within the [*dyneval*](https://github.com/dynverse/dyneval) R package (<https://github.com/dynverse/dyneval>).
 
@@ -65,7 +65,7 @@ The HIM metric (Hamming-Ipsen-Mikhailov distance)<sup>[3](#ref-jurmanHIMGlocalMe
 -   The normalised Hamming distance<sup>[4](#ref-doughertyValidationGeneRegulatory2011)</sup>, which calculates the distance between two graphs by matching individual edges in the adjacency matrix, but disregards overall structural similarity.
 -   The normalised Ipsen-Mikhailov distance<sup>[5](#ref-ipsenEvolutionaryReconstructionNetworks2002)</sup>, which calculates the overall distance of two graphs based on matches between its degree and adjacency matrix, while disregarding local structural similarities. It requires a ![](https://latex.codecogs.com/gif.latex?%5Cgamma) parameter, which is usually estimated based on the number of nodes in the graph, but which we fixed at ![](https://latex.codecogs.com/gif.latex?0.1) so as to make the score comparable across different graph sizes.
 
-We compared the three scores for several common topologies ([**Figure 2**](#fig_topology_scores_overview)). While conceptually very different, the edgeflipr and HIMr still produce similar scores ([**Figure 2b**](#fig_topology_scores_overview)). The HIMr tends to punish the detection of cycles, while the edgeflipr is more harsh for differences in the number of bifurcations ([**Figure 2c**](#fig_topology_scores_overview)). The main difference however is that the HIMr takes into account edge lengths when comparing two trajectories, as illustrated in ([**Figure 2d**](#fig_topology_scores_overview)).
+We compared the three scores for several common topologies ([**Figure 2**](#fig_topology_scores_overview)). While conceptually very different, the edgeflip and HIM still produce similar scores ([**Figure 2b**](#fig_topology_scores_overview)). The HIM tends to punish the detection of cycles, while the edgeflip is more harsh for differences in the number of bifurcations ([**Figure 2c**](#fig_topology_scores_overview)). The main difference however is that the HIM takes into account edge lengths when comparing two trajectories, as illustrated in ([**Figure 2d**](#fig_topology_scores_overview)). Short "extra" edges in the topology are less punished by the HIM than by the edgeflip.
 
 <p>
 <a name = 'fig_topology_scores_overview'></a> <img src = "02-individual_metrics/topology_scores_overview.png" width = "840" height = "840" />
@@ -85,20 +85,20 @@ To summarise, the different topology based scores are useful for different scena
 F1<sub>branches</sub> and F1<sub>milestones</sub>: Comparing how well the cells are clustered in the trajectory
 ---------------------------------------------------------------------------------------------------------------
 
-Perhaps one of the simplest ways to calculate the similarity between the cellular positions of two topologies is by mapping each cell to its closest milestone *or* branch ([**Figure 3**](#fig_clustering_scores_overview)). These clusters of cells can then be compared using one of the many external cluster evaluation measures<sup>[6](#ref-saelensComprehensiveEvaluationModule2018)</sup>. When selecting such a metric, we had two conditions:
+Perhaps one of the simplest ways to calculate the similarity between the cellular positions of two topologies is by mapping each cell to its closest milestone *or* branch ([**Figure 3**](#fig_clustering_scores_overview)). These clusters of cells can then be compared using one of the many external cluster evaluation measures<sup>[6](#ref-saelensComprehensiveEvaluationModule2018)</sup>. When selecting a cluster evaluation metric, we had two main conditions:
 
 -   Because we allow some methods to filter cells in the trajectory, the metric should be able to handle "non-exhaustive assignment", where some cells are not assigned to any cluster.
 -   The metric should give each cluster equal weight, so that rare cell stages are equally important as large stages.
 
-Based on these requirements, and on the analysis in<sup>[6](#ref-saelensComprehensiveEvaluationModule2018)</sup>, we chose the ![](https://latex.codecogs.com/gif.latex?%5Ctextrm%7BF1%7D) score between the ![](https://latex.codecogs.com/gif.latex?%5Ctextrm%7BRecovery%7D) and ![](https://latex.codecogs.com/gif.latex?%5Ctextrm%7BRelevance%7D). If ![](https://latex.codecogs.com/gif.latex?C) and ![](https://latex.codecogs.com/gif.latex?C') are two cell clusters:
+The ![](https://latex.codecogs.com/gif.latex?%5Ctextrm%7BF1%7D) score between the ![](https://latex.codecogs.com/gif.latex?%5Ctextrm%7BRecovery%7D) and ![](https://latex.codecogs.com/gif.latex?%5Ctextrm%7BRelevance%7D) is a metric which conforms to both these conditions. This metric will map two clustersets by using their shared members based on the ![](https://latex.codecogs.com/gif.latex?%5Ctextrm%7BJaccard%7D) similarity. It then calculates the ![](https://latex.codecogs.com/gif.latex?%5Ctextrm%7BRecovery%7D) as the average maximal ![](https://latex.codecogs.com/gif.latex?%5Ctextrm%7BJaccard%7D) for every cluster in the first set of clusters (in our case the gold standard). Conversely, the ![](https://latex.codecogs.com/gif.latex?%5Ctextrm%7BRelevance%7D) is calculated based on the average maximal similarity in the second set of clusters (in our case the prediction). Both the ![](https://latex.codecogs.com/gif.latex?%5Ctextrm%7BRecovery%7D) and ![](https://latex.codecogs.com/gif.latex?%5Ctextrm%7BRelevance%7D) are then given equal weight in a harmonic mean (![](https://latex.codecogs.com/gif.latex?%5Ctextrm%7BF1%7D)). Formally, if ![](https://latex.codecogs.com/gif.latex?C) and ![](https://latex.codecogs.com/gif.latex?C') are two cell clusters:
 
-![](https://latex.codecogs.com/gif.latex?Jaccard(c,%20c')%20=%20%5Cfrac%7B%7Cc%20%5Ccap%20c'%7C%7D%7B%7Cc%20%5Ccup%20c'%7C%7D)
+![](https://latex.codecogs.com/gif.latex?%5Ctextrm%7BJaccard%7D(c,%20c')%20=%20%5Cfrac%7B%7Cc%20%5Ccap%20c'%7C%7D%7B%7Cc%20%5Ccup%20c'%7C%7D)
 
 ![](https://latex.codecogs.com/gif.latex?%5Ctextrm%7BRecovery%7D%20=%20%5Cfrac%7B1%7D%7B%7CC%7C%7D%20%5Csum_%7Bc%20%5Cin%20C%7D%7B%5Cmax_%7Bc'%20%5Cin%20C'%7D%7B%5Ctextrm%7BJaccard(c,%20c')%7D%7D%7D)
 
 ![](https://latex.codecogs.com/gif.latex?%5Ctextrm%7BRelevance%7D%20=%20%5Cfrac%7B1%7D%7B%7CC'%7C%7D%20%5Csum_%7Bc'%20%5Cin%20C'%7D%7B%5Cmax_%7Bc%20%5Cin%20C%7D%7B%5Ctextrm%7BJaccard(c,%20c')%7D%7D%7D)
 
-![](https://latex.codecogs.com/gif.latex?textrm%7BF1%7D%20=%20%5Cfrac%7B2%7D%7B%5Cfrac%7B1%7D%7B%5Ctextrm%7BRecovery%7D%7D%20+%20%5Cfrac%7B1%7D%7B%5Ctextrm%7BRelevance%7D%7D%7D)
+![](https://latex.codecogs.com/gif.latex?%5Ctextrm%7BF1%7D%20=%20%5Cfrac%7B2%7D%7B%5Cfrac%7B1%7D%7B%5Ctextrm%7BRecovery%7D%7D%20+%20%5Cfrac%7B1%7D%7B%5Ctextrm%7BRelevance%7D%7D%7D)
 
 <p>
 <a name = 'fig_clustering_scores_overview'></a> <img src = "02-individual_metrics/clustering_scores_overview.png" width = "840" height = "350" />
@@ -146,7 +146,7 @@ To select the number of cell waypoints, we need to find a trade-off between the 
 NMSE<sub>rf</sub> and NMSE<sub>lm</sub>: Using the positions of the cells within one trajectory to predict the cellular positions in the other trajectory
 ---------------------------------------------------------------------------------------------------------------------------------------------------------
 
-An alternative approach to detect whether the positions of cells are similar between two trajectories, is to use the positions of one trajectory to predict the positions within the other trajectory. If the prediction error for a particular cell is low, the higher the similarity between the cellular positions.
+An alternative approach to detect whether the positions of cells are similar between two trajectories, is to use the positions of one trajectory to predict the positions within the other trajectory. If the cells are at similar positions in the trajectory (relative to its nearby cells), its prediction error should be low.
 
 Specifically, we implemented two metrics which predict the milestone percentages from the gold standards by using the predicted milestone percentages as features ([**Figure 6**](#fig_metrics_prediction)). We did this with two regression methods, linear regression (![](https://latex.codecogs.com/gif.latex?%5Ctextit%7Blm%7D), using the R `lm` function) and Random Forest (![](https://latex.codecogs.com/gif.latex?%5Ctextit%7Brf%7D), implemented in the *ranger* package<sup>[7](#ref-wright_rangerfastimplementation_2017)</sup>). In both cases, the accuracy of the prediction was measured using the Mean Squared error (![](https://latex.codecogs.com/gif.latex?%5Cmathit%7BMSE%7D)), in the case of Random forest we used the out-of-bag mean-squared error. Next, we calculated ![](https://latex.codecogs.com/gif.latex?%5Cmathit%7BMSE%7D_%7Bworst%7D) equal to the ![](https://latex.codecogs.com/gif.latex?%5Cmathit%7BMSE%7D) when predicting all milestone percentages as the average. We used this to calculate the normalised mean squared error as ![](https://latex.codecogs.com/gif.latex?%5Cmathit%7BNMSE%7D%20=%201%20-%20%5Cfrac%7B%5Cmathit%7BMSE%7D%7D%7B%5Cmathit%7BMSE%7D_%7Bworst%7D%7D). We created a regression model for every milestone in the gold standard, and averaged the ![](https://latex.codecogs.com/gif.latex?%5Cmathit%7BNMSE%7D) values to finally obtain the NMSE<sub>rf</sub> and NMSE<sub>lm</sub> scores.
 
@@ -164,12 +164,12 @@ Application metrics
 
 Although most metrics described above already assess some aspects directly relevant to the user, such as whether the method is good at finding the right topology, these metrics do not assess the quality of downstream analyses and hypotheses which can be generated from these models.
 
-cor<sub>features</sub>: The accuracy of dynamical differentially expressed features/genes.
-------------------------------------------------------------------------------------------
+cor<sub>features</sub> and Featureimp wcor: The accuracy of dynamical differentially expressed features/genes.
+--------------------------------------------------------------------------------------------------------------
 
-Perhaps the main advantages of studying cellular dynamic processes using single-cell -omics data is that the dynamics of gene expression can be studied for the whole transcriptome. This can be used to construct other models such as dynamic regulatory networks and gene expression modules. Such analyses rely on a "good-enough" cellular ordering, so that it can be used to identify dynamical differentially expressed genes.
+Perhaps the main advantage of studying cellular dynamic processes using single-cell -omics data is that the dynamics of gene expression can be studied for the whole transcriptome. This can be used to construct other models such as dynamic regulatory networks and gene expression modules. Such analyses rely on a "good-enough" cellular ordering, so that it can be used to identify dynamical differentially expressed genes.
 
-To calculate the cor<sub>features</sub> we used Random forest regression to rank all the features according to their importance in predicting the positions of cells in the trajectory. Specifically, we calculated the geodesic distances for each cell to all milestones in the trajectory. Next, we trained a Random Forest regression model (implemented in the R *ranger* package<sup>[7](#ref-wright_rangerfastimplementation_2017)</sup>, <https://github.com/imbs-hl/ranger>) to predict these distances for each milestone, based on the expression of genes within each cell. We then extracted feature importances using the Mean Decrease in Impurity (`importance = 'impurity'` parameter of the `ranger` function), as illustrated in ([**Figure 7**](#fig_featureimp_overview)). The overall importance of a feature (gene) was then equal to the mean importance over all milestones.
+To calculate the cor<sub>features</sub> we used Random forest regression to rank all the features according to their importance in predicting the positions of cells in the trajectory. Specifically, we calculated the geodesic distances for each cell to all milestones in the trajectory. Next, we trained a Random Forest regression model (implemented in the R *ranger* package<sup>[7](#ref-wright_rangerfastimplementation_2017)</sup>, <https://github.com/imbs-hl/ranger>) to predict these distances for each milestone, based on the expression of genes within each cell. We then extracted feature importances using the Mean Decrease in Impurity (`importance = 'impurity'` parameter of the `ranger` function), as illustrated in ([**Figure 7**](#fig_featureimp_overview)). The overall importance of a feature (gene) was then equal to the mean importance over all milestones. Finally, we compared the two rankings by calculating the Pearson correlation, with values lower than between -1 and 0 clipped to 0.
 
 <p>
 <a name = 'fig_featureimp_overview'></a> <img src = "02-individual_metrics/featureimp_overview.png" width = "840" height = "420" />
@@ -191,10 +191,35 @@ Random forest regression has two main hyperparameters. The number of trees to be
 
 ------------------------------------------------------------------------
 
+For most datasets, only a limited number of features will be differentially expressed in the trajectory. For example, in the dataset used in [**Figure 8**](#fig_featureimp_cor_distributions) only the top 10%-20% show a clear pattern of differential expression. The correlation will weight each of these features equally, and will therefore give more weight to the bottom, irrelevant features. To prioritise the top differentially expressed features, we also implemented the Featureimp wcor, which will weight the correlation using the feature importance scores in the gold standard so that the top features have relatively more impact on the score [**Figure 9**](#fig_featureimp_wcor_effect).
+
+<p>
+<a name = 'fig_featureimp_wcor_effect'></a> <img src = "02-individual_metrics/featureimp_wcor_effect.png" width = "420" height = "420" />
+</p>
+<p>
+<strong>Figure 9: </strong>
+</p>
+
+------------------------------------------------------------------------
+
 Overall metrics
 ===============
 
-An overall metric should not only focus on
+Undoubtedly, a single optimal overall metric does not exist for trajectories, as different users may have different priorities:
+
+-   A user may be primarily interested in defining the correct topology, and only use the cellular ordering when the topology is correct
+-   A user may be less interested in how the cells are ordered within a branch, but primarily in which cells are in which branches
+-   A user may already know the topology, and may be primarily interested in finding good features related to a particular branching point
+-   ...
+
+As the main overall metric for the evaluation, we therefore chose a metric which weighs every aspect of the trajectory equally:
+
+-   Its **ordering**, using the cor<sub>dist</sub>
+-   Its **branch assignment**, using the F1<sub>branches</sub>
+-   Its **topology**, using the edgeflip
+-   The accuracy of **differentially expressed features**, using the Featureimp wcor
+
+Even though all metrics range between 0 and 1, their actual values have
 
 Metric conformity
 =================
@@ -273,7 +298,7 @@ Metrics which contain some stochasticity (random forest based metrics in particu
 <a name = 'fig_equal_identity_plot_datasets'></a> <img src = ".figures/equal_identity_plot_datasets.png" width = "280" height = "280" />
 </p>
 <p>
-<strong>Figure 9: Example dataset(s) for this rule</strong>
+<strong>Figure 10: Example dataset(s) for this rule</strong>
 </p>
 
 ------------------------------------------------------------------------
@@ -282,7 +307,888 @@ Metrics which contain some stochasticity (random forest based metrics in particu
 <a name = 'fig_equal_identity_plot_scores'></a> <img src = ".figures/equal_identity_plot_scores.png" width = "420" height = "280" />
 </p>
 <p>
-<strong>Figure 10: Example dataset(s) for this rule</strong>
+<strong>Figure 11: Example dataset(s) for this rule</strong>
+</p>
+
+------------------------------------------------------------------------
+
+    ## Warning in in_dir(input_dir(), evaluate(code, envir = env, new_device
+    ## = FALSE, : You changed the working directory to /home/wouters/thesis/
+    ## projects/dynverse/dynbenchmark/results/02-metric_characterisation
+    ## (probably via setwd()). It will be restored to /home/wouters/thesis/
+    ## projects/dynverse/dynbenchmark/results/02-metric_characterisation/01-
+    ## metric_conformity. See the Note section in ?knitr::knit
+
+    ## Warning in in_dir(input_dir(), evaluate(code, envir = env, new_device
+    ## = FALSE, : You changed the working directory to /home/wouters/thesis/
+    ## projects/dynverse/dynbenchmark/results/02-metric_characterisation
+    ## (probably via setwd()). It will be restored to /home/wouters/thesis/
+    ## projects/dynverse/dynbenchmark/results/02-metric_characterisation/01-
+    ## metric_conformity. See the Note section in ?knitr::knit
+
+Local cell shuffling
+--------------------
+
+Shuffling the positions of cells within each edge should lower the score. This is equivalent to changing the cellular position locally.
+
+A metric conforms to this rule if: ![](https://latex.codecogs.com/gif.latex?%5Cmathit%7Bscore%7D_%7B%5Ctextit%7Bidentity%7D%7D%20%3E%20%5Cmathit%7Bscore%7D_%7B%5Ctextit%7Bprediction%7D%7D)
+
+Metrics which do not look at the cellular positioning, or group the cells within branches or milestones, do not conform to this rule.
+
+<p>
+<a name = 'fig_shuffle_cells_edgewise_plot_datasets'></a> <img src = ".figures/shuffle_cells_edgewise_plot_datasets.png" width = "560" height = "280" />
+</p>
+<p>
+<strong>Figure 12: Example dataset(s) for this rule</strong>
+</p>
+
+------------------------------------------------------------------------
+
+<p>
+<a name = 'fig_shuffle_cells_edgewise_plot_scores'></a> <img src = ".figures/shuffle_cells_edgewise_plot_scores.png" width = "560" height = "280" />
+</p>
+<p>
+<strong>Figure 13: Example dataset(s) for this rule</strong>
+</p>
+
+------------------------------------------------------------------------
+
+    ## Warning in in_dir(input_dir(), evaluate(code, envir = env, new_device
+    ## = FALSE, : You changed the working directory to /home/wouters/thesis/
+    ## projects/dynverse/dynbenchmark/results/02-metric_characterisation
+    ## (probably via setwd()). It will be restored to /home/wouters/thesis/
+    ## projects/dynverse/dynbenchmark/results/02-metric_characterisation/01-
+    ## metric_conformity. See the Note section in ?knitr::knit
+
+    ## Warning in in_dir(input_dir(), evaluate(code, envir = env, new_device
+    ## = FALSE, : You changed the working directory to /home/wouters/thesis/
+    ## projects/dynverse/dynbenchmark/results/02-metric_characterisation
+    ## (probably via setwd()). It will be restored to /home/wouters/thesis/
+    ## projects/dynverse/dynbenchmark/results/02-metric_characterisation/01-
+    ## metric_conformity. See the Note section in ?knitr::knit
+
+Edge shuffling
+--------------
+
+Shuffling the edges in the milestone network should lower the score. This is equivalent to changing the cellular positions only globally.
+
+A metric conforms to this rule if: ![](https://latex.codecogs.com/gif.latex?%5Cmathit%7Bmonotonic%7D%20%5Cleft(%20%5Ctextit%7Bshuffled%20edges%7D,%20%5Coverline%7B%5Cmathit%7Bscore%7D%7D_%7B%5Ctextit%7Bshuffled%20edges%7D%7D%20%5Cright))
+
+Only metrics which only look at the topology do not conform to this rule.
+
+<p>
+<a name = 'fig_shuffle_edges_plot_datasets'></a> <img src = ".figures/shuffle_edges_plot_datasets.png" width = "840" height = "280" />
+</p>
+<p>
+<strong>Figure 14: Example dataset(s) for this rule</strong>
+</p>
+
+------------------------------------------------------------------------
+
+<p>
+<a name = 'fig_shuffle_edges_plot_scores'></a> <img src = ".figures/shuffle_edges_plot_scores.png" width = "840" height = "420" />
+</p>
+<p>
+<strong>Figure 15: Example dataset(s) for this rule</strong>
+</p>
+
+------------------------------------------------------------------------
+
+    ## Warning in in_dir(input_dir(), evaluate(code, envir = env, new_device
+    ## = FALSE, : You changed the working directory to /home/wouters/thesis/
+    ## projects/dynverse/dynbenchmark/results/02-metric_characterisation
+    ## (probably via setwd()). It will be restored to /home/wouters/thesis/
+    ## projects/dynverse/dynbenchmark/results/02-metric_characterisation/01-
+    ## metric_conformity. See the Note section in ?knitr::knit
+
+    ## Warning in in_dir(input_dir(), evaluate(code, envir = env, new_device
+    ## = FALSE, : You changed the working directory to /home/wouters/thesis/
+    ## projects/dynverse/dynbenchmark/results/02-metric_characterisation
+    ## (probably via setwd()). It will be restored to /home/wouters/thesis/
+    ## projects/dynverse/dynbenchmark/results/02-metric_characterisation/01-
+    ## metric_conformity. See the Note section in ?knitr::knit
+
+Local and global cell shuffling
+-------------------------------
+
+Shuffling the positions of cells should lower the score. This is equivalent to changing the cellular position both locally and globally.
+
+A metric conforms to this rule if: ![](https://latex.codecogs.com/gif.latex?%5Cmathit%7Bmonotonic%7D%20%5Cleft(%20%5Ctextit%7Bshuffled%20cells%7D,%20%5Coverline%7B%5Cmathit%7Bscore%7D%7D_%7B%5Ctextit%7Bshuffled%20cells%7D%7D%20%5Cright))
+
+Most metrics that look at the position of each cell conform to this rule.
+
+<p>
+<a name = 'fig_shuffle_cells_plot_datasets'></a> <img src = ".figures/shuffle_cells_plot_datasets.png" width = "840" height = "280" />
+</p>
+<p>
+<strong>Figure 16: Example dataset(s) for this rule</strong>
+</p>
+
+------------------------------------------------------------------------
+
+<p>
+<a name = 'fig_shuffle_cells_plot_scores'></a> <img src = ".figures/shuffle_cells_plot_scores.png" width = "840" height = "420" />
+</p>
+<p>
+<strong>Figure 17: Example dataset(s) for this rule</strong>
+</p>
+
+------------------------------------------------------------------------
+
+    ## Warning in in_dir(input_dir(), evaluate(code, envir = env, new_device
+    ## = FALSE, : You changed the working directory to /home/wouters/thesis/
+    ## projects/dynverse/dynbenchmark/results/02-metric_characterisation
+    ## (probably via setwd()). It will be restored to /home/wouters/thesis/
+    ## projects/dynverse/dynbenchmark/results/02-metric_characterisation/01-
+    ## metric_conformity. See the Note section in ?knitr::knit
+
+    ## Warning in in_dir(input_dir(), evaluate(code, envir = env, new_device
+    ## = FALSE, : You changed the working directory to /home/wouters/thesis/
+    ## projects/dynverse/dynbenchmark/results/02-metric_characterisation
+    ## (probably via setwd()). It will be restored to /home/wouters/thesis/
+    ## projects/dynverse/dynbenchmark/results/02-metric_characterisation/01-
+    ## metric_conformity. See the Note section in ?knitr::knit
+
+Changing positions locally and/or globally
+------------------------------------------
+
+Changing the cellular position locally AND globally should lower the score more than any of the two individually.
+
+A metric conforms to this rule if: ![](https://latex.codecogs.com/gif.latex?%5Cmathit%7Bscore%7D_%7Bidentity%7D%20%3E%20%5Cmathit%7Bscore%7D_a%20%5Cland%20%5Cmathit%7Bscore%7D_%7Bidentity%7D%20%3E%20%5Cmathit%7Bscore%7D_b%20%5Cland%20%5Cmathit%7Bscore%7D_%7Ba%7D%20%3E%20%5Cmathit%7Bscore%7D_%7Ba+b%7D%20%5Cland%20%5Cmathit%7Bscore%7D_%7Bb%7D%20%3E%20%5Cmathit%7Bscore%7D_%7Ba+b%7D)
+
+Most metrics that look at the position of each cell conform to this rule.
+
+<p>
+<a name = 'fig_combined_local_global_position_change_plot_datasets'></a> <img src = ".figures/combined_local_global_position_change_plot_datasets.png" width = "840" height = "210" />
+</p>
+<p>
+<strong>Figure 18: Example dataset(s) for this rule</strong>
+</p>
+
+------------------------------------------------------------------------
+
+<p>
+<a name = 'fig_combined_local_global_position_change_plot_scores'></a> <img src = ".figures/combined_local_global_position_change_plot_scores.png" width = "840" height = "280" />
+</p>
+<p>
+<strong>Figure 19: Example dataset(s) for this rule</strong>
+</p>
+
+------------------------------------------------------------------------
+
+    ## Warning in in_dir(input_dir(), evaluate(code, envir = env, new_device
+    ## = FALSE, : You changed the working directory to /home/wouters/thesis/
+    ## projects/dynverse/dynbenchmark/results/02-metric_characterisation
+    ## (probably via setwd()). It will be restored to /home/wouters/thesis/
+    ## projects/dynverse/dynbenchmark/results/02-metric_characterisation/01-
+    ## metric_conformity. See the Note section in ?knitr::knit
+
+    ## Warning in in_dir(input_dir(), evaluate(code, envir = env, new_device
+    ## = FALSE, : You changed the working directory to /home/wouters/thesis/
+    ## projects/dynverse/dynbenchmark/results/02-metric_characterisation
+    ## (probably via setwd()). It will be restored to /home/wouters/thesis/
+    ## projects/dynverse/dynbenchmark/results/02-metric_characterisation/01-
+    ## metric_conformity. See the Note section in ?knitr::knit
+
+Cell filtering
+--------------
+
+Removing cells from the trajectory should lower the score
+
+A metric conforms to this rule if: ![](https://latex.codecogs.com/gif.latex?%5Cmathit%7Bmonotonic%7D%20%5Cleft(%20%5Ctextit%7BFiltered%20cells%7D,%20%5Coverline%7B%5Cmathit%7Bscore%7D%7D_%7B%5Ctextit%7BFiltered%20cells%7D%7D%20%5Cright))
+
+Only metrics which look only at the topology do not conform to this rule.
+
+<p>
+<a name = 'fig_filter_cells_plot_datasets'></a> <img src = ".figures/filter_cells_plot_datasets.png" width = "840" height = "280" />
+</p>
+<p>
+<strong>Figure 20: Example dataset(s) for this rule</strong>
+</p>
+
+------------------------------------------------------------------------
+
+<p>
+<a name = 'fig_filter_cells_plot_scores'></a> <img src = ".figures/filter_cells_plot_scores.png" width = "840" height = "420" />
+</p>
+<p>
+<strong>Figure 21: Example dataset(s) for this rule</strong>
+</p>
+
+------------------------------------------------------------------------
+
+    ## Warning in in_dir(input_dir(), evaluate(code, envir = env, new_device
+    ## = FALSE, : You changed the working directory to /home/wouters/thesis/
+    ## projects/dynverse/dynbenchmark/results/02-metric_characterisation
+    ## (probably via setwd()). It will be restored to /home/wouters/thesis/
+    ## projects/dynverse/dynbenchmark/results/02-metric_characterisation/01-
+    ## metric_conformity. See the Note section in ?knitr::knit
+
+    ## Warning in in_dir(input_dir(), evaluate(code, envir = env, new_device
+    ## = FALSE, : You changed the working directory to /home/wouters/thesis/
+    ## projects/dynverse/dynbenchmark/results/02-metric_characterisation
+    ## (probably via setwd()). It will be restored to /home/wouters/thesis/
+    ## projects/dynverse/dynbenchmark/results/02-metric_characterisation/01-
+    ## metric_conformity. See the Note section in ?knitr::knit
+
+Removing divergence regions
+---------------------------
+
+Removing divergence regions should lower the score
+
+A metric conforms to this rule if: ![](https://latex.codecogs.com/gif.latex?%5Cmathit%7Bscore%7D_%7B%5Ctextit%7Bidentity%7D%7D%20%3E%20%5Cmathit%7Bscore%7D_%7B%5Ctextit%7Bprediction%7D%7D)
+
+Both
+*F**1*<sub>*branches*</sub>
+ and
+*E**d**g**e**f**l**i**p*
+ fail here because neither the topology nor the branche assignment changes.
+
+<p>
+<a name = 'fig_remove_divergence_regions_plot_datasets'></a> <img src = ".figures/remove_divergence_regions_plot_datasets.png" width = "560" height = "280" />
+</p>
+<p>
+<strong>Figure 22: Example dataset(s) for this rule</strong>
+</p>
+
+------------------------------------------------------------------------
+
+<p>
+<a name = 'fig_remove_divergence_regions_plot_scores'></a> <img src = ".figures/remove_divergence_regions_plot_scores.png" width = "560" height = "280" />
+</p>
+<p>
+<strong>Figure 23: Example dataset(s) for this rule</strong>
+</p>
+
+------------------------------------------------------------------------
+
+    ## Warning in in_dir(input_dir(), evaluate(code, envir = env, new_device
+    ## = FALSE, : You changed the working directory to /home/wouters/thesis/
+    ## projects/dynverse/dynbenchmark/results/02-metric_characterisation
+    ## (probably via setwd()). It will be restored to /home/wouters/thesis/
+    ## projects/dynverse/dynbenchmark/results/02-metric_characterisation/01-
+    ## metric_conformity. See the Note section in ?knitr::knit
+
+    ## Warning in in_dir(input_dir(), evaluate(code, envir = env, new_device
+    ## = FALSE, : You changed the working directory to /home/wouters/thesis/
+    ## projects/dynverse/dynbenchmark/results/02-metric_characterisation
+    ## (probably via setwd()). It will be restored to /home/wouters/thesis/
+    ## projects/dynverse/dynbenchmark/results/02-metric_characterisation/01-
+    ## metric_conformity. See the Note section in ?knitr::knit
+
+Move cells to start milestone
+-----------------------------
+
+Moving the cells closer to their start milestone should lower the score. Cells were moved closer to the start milestone by doing $^{}
+
+A metric conforms to this rule if: ![](https://latex.codecogs.com/gif.latex?%5Cmathit%7Bmonotonic%7D%20%5Cleft(%20%5Ctextit%7BWarp%20magnitude%7D,%20%5Coverline%7B%5Cmathit%7Bscore%7D%7D_%7B%5Ctextit%7BWarp%20magnitude%7D%7D%20%5Cright))
+
+Both
+*F**1*<sub>*branches*</sub>
+ and
+*E**d**g**e**f**l**i**p*
+ fail here because neither the topology nor the branche assignment changes.
+
+<p>
+<a name = 'fig_time_warping_start_plot_datasets'></a> <img src = ".figures/time_warping_start_plot_datasets.png" width = "840" height = "280" />
+</p>
+<p>
+<strong>Figure 24: Example dataset(s) for this rule</strong>
+</p>
+
+------------------------------------------------------------------------
+
+<p>
+<a name = 'fig_time_warping_start_plot_scores'></a> <img src = ".figures/time_warping_start_plot_scores.png" width = "840" height = "420" />
+</p>
+<p>
+<strong>Figure 25: Example dataset(s) for this rule</strong>
+</p>
+
+------------------------------------------------------------------------
+
+    ## Warning in in_dir(input_dir(), evaluate(code, envir = env, new_device
+    ## = FALSE, : You changed the working directory to /home/wouters/thesis/
+    ## projects/dynverse/dynbenchmark/results/02-metric_characterisation
+    ## (probably via setwd()). It will be restored to /home/wouters/thesis/
+    ## projects/dynverse/dynbenchmark/results/02-metric_characterisation/01-
+    ## metric_conformity. See the Note section in ?knitr::knit
+
+    ## Warning in in_dir(input_dir(), evaluate(code, envir = env, new_device
+    ## = FALSE, : You changed the working directory to /home/wouters/thesis/
+    ## projects/dynverse/dynbenchmark/results/02-metric_characterisation
+    ## (probably via setwd()). It will be restored to /home/wouters/thesis/
+    ## projects/dynverse/dynbenchmark/results/02-metric_characterisation/01-
+    ## metric_conformity. See the Note section in ?knitr::knit
+
+Move cells to closest milestone
+-------------------------------
+
+Moving the cells closer to their nearest milestone should lower the score
+
+A metric conforms to this rule if: ![](https://latex.codecogs.com/gif.latex?%5Cmathit%7Bmonotonic%7D%20%5Cleft(%20%5Ctextit%7BWarp%20magnitude%7D,%20%5Coverline%7B%5Cmathit%7Bscore%7D%7D_%7B%5Ctextit%7BWarp%20magnitude%7D%7D%20%5Cright))
+
+Both
+*F**1*<sub>*branches*</sub>
+ and
+*E**d**g**e**f**l**i**p*
+ fail here because neither the topology nor the branche assignment changes.
+
+<p>
+<a name = 'fig_time_warping_parabole_plot_datasets'></a> <img src = ".figures/time_warping_parabole_plot_datasets.png" width = "840" height = "280" />
+</p>
+<p>
+<strong>Figure 26: Example dataset(s) for this rule</strong>
+</p>
+
+------------------------------------------------------------------------
+
+<p>
+<a name = 'fig_time_warping_parabole_plot_scores'></a> <img src = ".figures/time_warping_parabole_plot_scores.png" width = "840" height = "420" />
+</p>
+<p>
+<strong>Figure 27: Example dataset(s) for this rule</strong>
+</p>
+
+------------------------------------------------------------------------
+
+    ## Warning in in_dir(input_dir(), evaluate(code, envir = env, new_device
+    ## = FALSE, : You changed the working directory to /home/wouters/thesis/
+    ## projects/dynverse/dynbenchmark/results/02-metric_characterisation
+    ## (probably via setwd()). It will be restored to /home/wouters/thesis/
+    ## projects/dynverse/dynbenchmark/results/02-metric_characterisation/01-
+    ## metric_conformity. See the Note section in ?knitr::knit
+
+    ## Warning in in_dir(input_dir(), evaluate(code, envir = env, new_device
+    ## = FALSE, : You changed the working directory to /home/wouters/thesis/
+    ## projects/dynverse/dynbenchmark/results/02-metric_characterisation
+    ## (probably via setwd()). It will be restored to /home/wouters/thesis/
+    ## projects/dynverse/dynbenchmark/results/02-metric_characterisation/01-
+    ## metric_conformity. See the Note section in ?knitr::knit
+
+Length shuffling
+----------------
+
+Shuffling the lengths of the edges of the milestone network should lower the score.
+
+A metric conforms to this rule if: ![](https://latex.codecogs.com/gif.latex?%5Cmathit%7Bscore%7D_%7B%5Ctextit%7Bidentity%7D%7D%20%3E%20%5Cmathit%7Bscore%7D_%7B%5Ctextit%7Bprediction%7D%7D)
+
+Only the correlation scores is consequently decreased when the lengths of the edges change.
+
+<p>
+<a name = 'fig_shuffle_lengths_plot_datasets'></a> <img src = ".figures/shuffle_lengths_plot_datasets.png" width = "560" height = "280" />
+</p>
+<p>
+<strong>Figure 28: Example dataset(s) for this rule</strong>
+</p>
+
+------------------------------------------------------------------------
+
+<p>
+<a name = 'fig_shuffle_lengths_plot_scores'></a> <img src = ".figures/shuffle_lengths_plot_scores.png" width = "560" height = "280" />
+</p>
+<p>
+<strong>Figure 29: Example dataset(s) for this rule</strong>
+</p>
+
+------------------------------------------------------------------------
+
+    ## Warning in in_dir(input_dir(), evaluate(code, envir = env, new_device
+    ## = FALSE, : You changed the working directory to /home/wouters/thesis/
+    ## projects/dynverse/dynbenchmark/results/02-metric_characterisation
+    ## (probably via setwd()). It will be restored to /home/wouters/thesis/
+    ## projects/dynverse/dynbenchmark/results/02-metric_characterisation/01-
+    ## metric_conformity. See the Note section in ?knitr::knit
+
+    ## Warning in in_dir(input_dir(), evaluate(code, envir = env, new_device
+    ## = FALSE, : You changed the working directory to /home/wouters/thesis/
+    ## projects/dynverse/dynbenchmark/results/02-metric_characterisation
+    ## (probably via setwd()). It will be restored to /home/wouters/thesis/
+    ## projects/dynverse/dynbenchmark/results/02-metric_characterisation/01-
+    ## metric_conformity. See the Note section in ?knitr::knit
+
+Cells into small subedges
+-------------------------
+
+Moving some cells into short subedges should lower the score
+
+A metric conforms to this rule if: ![](https://latex.codecogs.com/gif.latex?%5Cmathit%7Bmonotonic%7D%20%5Cleft(%20%5Ctextit%7BNumber%20of%20added%20edges%7D,%20%5Coverline%7B%5Cmathit%7Bscore%7D%7D_%7B%5Ctextit%7BNumber%20of%20added%20edges%7D%7D%20%5Cright))
+
+This rule is primarily captured by the scores looking at the topology and clustering quality.
+
+<p>
+<a name = 'fig_move_cells_subedges_plot_datasets'></a> <img src = ".figures/move_cells_subedges_plot_datasets.png" width = "840" height = "280" />
+</p>
+<p>
+<strong>Figure 30: Example dataset(s) for this rule</strong>
+</p>
+
+------------------------------------------------------------------------
+
+<p>
+<a name = 'fig_move_cells_subedges_plot_scores'></a> <img src = ".figures/move_cells_subedges_plot_scores.png" width = "840" height = "420" />
+</p>
+<p>
+<strong>Figure 31: Example dataset(s) for this rule</strong>
+</p>
+
+------------------------------------------------------------------------
+
+    ## Warning in in_dir(input_dir(), evaluate(code, envir = env, new_device
+    ## = FALSE, : You changed the working directory to /home/wouters/thesis/
+    ## projects/dynverse/dynbenchmark/results/02-metric_characterisation
+    ## (probably via setwd()). It will be restored to /home/wouters/thesis/
+    ## projects/dynverse/dynbenchmark/results/02-metric_characterisation/01-
+    ## metric_conformity. See the Note section in ?knitr::knit
+
+    ## Warning in in_dir(input_dir(), evaluate(code, envir = env, new_device
+    ## = FALSE, : You changed the working directory to /home/wouters/thesis/
+    ## projects/dynverse/dynbenchmark/results/02-metric_characterisation
+    ## (probably via setwd()). It will be restored to /home/wouters/thesis/
+    ## projects/dynverse/dynbenchmark/results/02-metric_characterisation/01-
+    ## metric_conformity. See the Note section in ?knitr::knit
+
+New leaf edges
+--------------
+
+Adding new edges only connected to one existing milestone should lower the score
+
+A metric conforms to this rule if: ![](https://latex.codecogs.com/gif.latex?%5Cmathit%7Bmonotonic%7D%20%5Cleft(%20%5Ctextit%7BNumber%20of%20edges%7D,%20%5Coverline%7B%5Cmathit%7Bscore%7D%7D_%7B%5Ctextit%7BNumber%20of%20edges%7D%7D%20%5Cright))
+
+As the positions of the cells are not affected, only metrics which investigate the clustering quality and topology conform to this rule.
+
+<p>
+<a name = 'fig_add_leaf_edges_plot_datasets'></a> <img src = ".figures/add_leaf_edges_plot_datasets.png" width = "840" height = "280" />
+</p>
+<p>
+<strong>Figure 32: Example dataset(s) for this rule</strong>
+</p>
+
+------------------------------------------------------------------------
+
+<p>
+<a name = 'fig_add_leaf_edges_plot_scores'></a> <img src = ".figures/add_leaf_edges_plot_scores.png" width = "840" height = "420" />
+</p>
+<p>
+<strong>Figure 33: Example dataset(s) for this rule</strong>
+</p>
+
+------------------------------------------------------------------------
+
+    ## Warning in in_dir(input_dir(), evaluate(code, envir = env, new_device
+    ## = FALSE, : You changed the working directory to /home/wouters/thesis/
+    ## projects/dynverse/dynbenchmark/results/02-metric_characterisation
+    ## (probably via setwd()). It will be restored to /home/wouters/thesis/
+    ## projects/dynverse/dynbenchmark/results/02-metric_characterisation/01-
+    ## metric_conformity. See the Note section in ?knitr::knit
+
+    ## Warning in in_dir(input_dir(), evaluate(code, envir = env, new_device
+    ## = FALSE, : You changed the working directory to /home/wouters/thesis/
+    ## projects/dynverse/dynbenchmark/results/02-metric_characterisation
+    ## (probably via setwd()). It will be restored to /home/wouters/thesis/
+    ## projects/dynverse/dynbenchmark/results/02-metric_characterisation/01-
+    ## metric_conformity. See the Note section in ?knitr::knit
+
+New connecting edges
+--------------------
+
+Adding new edges between existing milestones should lower the score
+
+A metric conforms to this rule if: ![](https://latex.codecogs.com/gif.latex?%5Cmathit%7Bmonotonic%7D%20%5Cleft(%20%5Ctextit%7BNumber%20of%20edges%7D,%20%5Coverline%7B%5Cmathit%7Bscore%7D%7D_%7B%5Ctextit%7BNumber%20of%20edges%7D%7D%20%5Cright))
+
+Even though the positions of the cells change, the
+*c**o**r*<sub>dist</sub>
+ still conforms to this rule because new edges can create shortcuts which will affect the geodesic distances between cells. Apart from this, metrics which investigate the clustering quality and topology also conform to this rule.
+
+<p>
+<a name = 'fig_add_connecting_edges_plot_datasets'></a> <img src = ".figures/add_connecting_edges_plot_datasets.png" width = "840" height = "280" />
+</p>
+<p>
+<strong>Figure 34: Example dataset(s) for this rule</strong>
+</p>
+
+------------------------------------------------------------------------
+
+<p>
+<a name = 'fig_add_connecting_edges_plot_scores'></a> <img src = ".figures/add_connecting_edges_plot_scores.png" width = "840" height = "420" />
+</p>
+<p>
+<strong>Figure 35: Example dataset(s) for this rule</strong>
+</p>
+
+------------------------------------------------------------------------
+
+    ## Warning in in_dir(input_dir(), evaluate(code, envir = env, new_device
+    ## = FALSE, : You changed the working directory to /home/wouters/thesis/
+    ## projects/dynverse/dynbenchmark/results/02-metric_characterisation
+    ## (probably via setwd()). It will be restored to /home/wouters/thesis/
+    ## projects/dynverse/dynbenchmark/results/02-metric_characterisation/01-
+    ## metric_conformity. See the Note section in ?knitr::knit
+
+    ## Warning in in_dir(input_dir(), evaluate(code, envir = env, new_device
+    ## = FALSE, : You changed the working directory to /home/wouters/thesis/
+    ## projects/dynverse/dynbenchmark/results/02-metric_characterisation
+    ## (probably via setwd()). It will be restored to /home/wouters/thesis/
+    ## projects/dynverse/dynbenchmark/results/02-metric_characterisation/01-
+    ## metric_conformity. See the Note section in ?knitr::knit
+
+Changing topology and cell position
+-----------------------------------
+
+Changing both the topology and the cell positions should lower the score more than any of the two individually
+
+A metric conforms to this rule if: ![](https://latex.codecogs.com/gif.latex?%5Cmathit%7Bscore%7D_%7Bidentity%7D%20%3E%20%5Cmathit%7Bscore%7D_a%20%5Cland%20%5Cmathit%7Bscore%7D_%7Bidentity%7D%20%3E%20%5Cmathit%7Bscore%7D_b%20%5Cland%20%5Cmathit%7Bscore%7D_%7Ba%7D%20%3E%20%5Cmathit%7Bscore%7D_%7Ba+b%7D%20%5Cland%20%5Cmathit%7Bscore%7D_%7Bb%7D%20%3E%20%5Cmathit%7Bscore%7D_%7Ba+b%7D)
+
+Most metrics have problems with this rule as they focus on either the cellular positions or the topology individually. Only the *l**a**b**e**l*<sub>*m*</sub>*e**t**r**i**c*(′*f**e**a**t**u**r**e**i**m**p*<sub>*c*</sub>*o**r*′,′*l**a**t**e**x*′) and the *l**a**b**e**l*<sub>*m*</sub>*e**t**r**i**c*(′*h**a**r**m*<sub>*m*</sub>*e**a**n*′,′*l**a**t**e**x*′) conform to this rule.
+
+<p>
+<a name = 'fig_combined_position_topology_plot_datasets'></a> <img src = ".figures/combined_position_topology_plot_datasets.png" width = "840" height = "210" />
+</p>
+<p>
+<strong>Figure 36: Example dataset(s) for this rule</strong>
+</p>
+
+------------------------------------------------------------------------
+
+<p>
+<a name = 'fig_combined_position_topology_plot_scores'></a> <img src = ".figures/combined_position_topology_plot_scores.png" width = "840" height = "280" />
+</p>
+<p>
+<strong>Figure 37: Example dataset(s) for this rule</strong>
+</p>
+
+------------------------------------------------------------------------
+
+    ## Warning in in_dir(input_dir(), evaluate(code, envir = env, new_device
+    ## = FALSE, : You changed the working directory to /home/wouters/thesis/
+    ## projects/dynverse/dynbenchmark/results/02-metric_characterisation
+    ## (probably via setwd()). It will be restored to /home/wouters/thesis/
+    ## projects/dynverse/dynbenchmark/results/02-metric_characterisation/01-
+    ## metric_conformity. See the Note section in ?knitr::knit
+
+    ## Warning in in_dir(input_dir(), evaluate(code, envir = env, new_device
+    ## = FALSE, : You changed the working directory to /home/wouters/thesis/
+    ## projects/dynverse/dynbenchmark/results/02-metric_characterisation
+    ## (probably via setwd()). It will be restored to /home/wouters/thesis/
+    ## projects/dynverse/dynbenchmark/results/02-metric_characterisation/01-
+    ## metric_conformity. See the Note section in ?knitr::knit
+
+Bifurcation merging
+-------------------
+
+Merging the two branches after a bifurcation point should lower the score
+
+A metric conforms to this rule if: ![](https://latex.codecogs.com/gif.latex?%5Cmathit%7Bscore%7D_%7B%5Ctextit%7Bidentity%7D%7D%20%3E%20%5Cmathit%7Bscore%7D_%7B%5Ctextit%7Bprediction%7D%7D)
+
+This changes both the cellular ordering and the topology so most metrics are affected.
+
+<p>
+<a name = 'fig_merge_bifurcation_plot_datasets'></a> <img src = ".figures/merge_bifurcation_plot_datasets.png" width = "560" height = "280" />
+</p>
+<p>
+<strong>Figure 38: Example dataset(s) for this rule</strong>
+</p>
+
+------------------------------------------------------------------------
+
+<p>
+<a name = 'fig_merge_bifurcation_plot_scores'></a> <img src = ".figures/merge_bifurcation_plot_scores.png" width = "560" height = "280" />
+</p>
+<p>
+<strong>Figure 39: Example dataset(s) for this rule</strong>
+</p>
+
+------------------------------------------------------------------------
+
+    ## Warning in in_dir(input_dir(), evaluate(code, envir = env, new_device
+    ## = FALSE, : You changed the working directory to /home/wouters/thesis/
+    ## projects/dynverse/dynbenchmark/results/02-metric_characterisation
+    ## (probably via setwd()). It will be restored to /home/wouters/thesis/
+    ## projects/dynverse/dynbenchmark/results/02-metric_characterisation/01-
+    ## metric_conformity. See the Note section in ?knitr::knit
+
+    ## Warning in in_dir(input_dir(), evaluate(code, envir = env, new_device
+    ## = FALSE, : You changed the working directory to /home/wouters/thesis/
+    ## projects/dynverse/dynbenchmark/results/02-metric_characterisation
+    ## (probably via setwd()). It will be restored to /home/wouters/thesis/
+    ## projects/dynverse/dynbenchmark/results/02-metric_characterisation/01-
+    ## metric_conformity. See the Note section in ?knitr::knit
+
+Bifurcation merging and changing cell positions
+-----------------------------------------------
+
+Merging the two branches of a bifurcation and changing the cells positions should lower the score more than any of the two individually
+
+A metric conforms to this rule if: ![](https://latex.codecogs.com/gif.latex?%5Cmathit%7Bscore%7D_%7Bidentity%7D%20%3E%20%5Cmathit%7Bscore%7D_a%20%5Cland%20%5Cmathit%7Bscore%7D_%7Bidentity%7D%20%3E%20%5Cmathit%7Bscore%7D_b%20%5Cland%20%5Cmathit%7Bscore%7D_%7Ba%7D%20%3E%20%5Cmathit%7Bscore%7D_%7Ba+b%7D%20%5Cland%20%5Cmathit%7Bscore%7D_%7Bb%7D%20%3E%20%5Cmathit%7Bscore%7D_%7Ba+b%7D)
+
+Only metrics which look uniquely at the topology do not conform to this rule.
+
+<p>
+<a name = 'fig_combined_merge_bifurcation_shuffle_cells_plot_datasets'></a> <img src = ".figures/combined_merge_bifurcation_shuffle_cells_plot_datasets.png" width = "840" height = "210" />
+</p>
+<p>
+<strong>Figure 40: Example dataset(s) for this rule</strong>
+</p>
+
+------------------------------------------------------------------------
+
+<p>
+<a name = 'fig_combined_merge_bifurcation_shuffle_cells_plot_scores'></a> <img src = ".figures/combined_merge_bifurcation_shuffle_cells_plot_scores.png" width = "840" height = "280" />
+</p>
+<p>
+<strong>Figure 41: Example dataset(s) for this rule</strong>
+</p>
+
+------------------------------------------------------------------------
+
+    ## Warning in in_dir(input_dir(), evaluate(code, envir = env, new_device
+    ## = FALSE, : You changed the working directory to /home/wouters/thesis/
+    ## projects/dynverse/dynbenchmark/results/02-metric_characterisation
+    ## (probably via setwd()). It will be restored to /home/wouters/thesis/
+    ## projects/dynverse/dynbenchmark/results/02-metric_characterisation/01-
+    ## metric_conformity. See the Note section in ?knitr::knit
+
+    ## Warning in in_dir(input_dir(), evaluate(code, envir = env, new_device
+    ## = FALSE, : You changed the working directory to /home/wouters/thesis/
+    ## projects/dynverse/dynbenchmark/results/02-metric_characterisation
+    ## (probably via setwd()). It will be restored to /home/wouters/thesis/
+    ## projects/dynverse/dynbenchmark/results/02-metric_characterisation/01-
+    ## metric_conformity. See the Note section in ?knitr::knit
+
+Bifurcation concatentation
+--------------------------
+
+Concatenating one branch of a bifurcation to the other bifurcation branch should lower the score
+
+A metric conforms to this rule if: ![](https://latex.codecogs.com/gif.latex?%5Cmathit%7Bscore%7D_%7B%5Ctextit%7Bidentity%7D%7D%20%3E%20%5Cmathit%7Bscore%7D_%7B%5Ctextit%7Bprediction%7D%7D)
+
+This changes both the cellular ordering and the topology so most metrics conform to this rule.
+
+<p>
+<a name = 'fig_concatenate_bifurcation_plot_datasets'></a> <img src = ".figures/concatenate_bifurcation_plot_datasets.png" width = "560" height = "280" />
+</p>
+<p>
+<strong>Figure 42: Example dataset(s) for this rule</strong>
+</p>
+
+------------------------------------------------------------------------
+
+<p>
+<a name = 'fig_concatenate_bifurcation_plot_scores'></a> <img src = ".figures/concatenate_bifurcation_plot_scores.png" width = "560" height = "280" />
+</p>
+<p>
+<strong>Figure 43: Example dataset(s) for this rule</strong>
+</p>
+
+------------------------------------------------------------------------
+
+    ## Warning in in_dir(input_dir(), evaluate(code, envir = env, new_device
+    ## = FALSE, : You changed the working directory to /home/wouters/thesis/
+    ## projects/dynverse/dynbenchmark/results/02-metric_characterisation
+    ## (probably via setwd()). It will be restored to /home/wouters/thesis/
+    ## projects/dynverse/dynbenchmark/results/02-metric_characterisation/01-
+    ## metric_conformity. See the Note section in ?knitr::knit
+
+    ## Warning in in_dir(input_dir(), evaluate(code, envir = env, new_device
+    ## = FALSE, : You changed the working directory to /home/wouters/thesis/
+    ## projects/dynverse/dynbenchmark/results/02-metric_characterisation
+    ## (probably via setwd()). It will be restored to /home/wouters/thesis/
+    ## projects/dynverse/dynbenchmark/results/02-metric_characterisation/01-
+    ## metric_conformity. See the Note section in ?knitr::knit
+
+Cycle breaking
+--------------
+
+Breaking a cyclic trajectory should lower the score
+
+A metric conforms to this rule if: ![](https://latex.codecogs.com/gif.latex?%5Cmathit%7Bscore%7D_%7B%5Ctextit%7Bidentity%7D%7D%20%3E%20%5Cmathit%7Bscore%7D_%7B%5Ctextit%7Bprediction%7D%7D)
+
+Because the actual positions of the cells nor the branch assignment change, both the MSE metrics and the
+*F**1*<sub>*branches*</sub>
+ do not conform to this rule.
+
+<p>
+<a name = 'fig_break_cycle_plot_datasets'></a> <img src = ".figures/break_cycle_plot_datasets.png" width = "560" height = "280" />
+</p>
+<p>
+<strong>Figure 44: Example dataset(s) for this rule</strong>
+</p>
+
+------------------------------------------------------------------------
+
+<p>
+<a name = 'fig_break_cycle_plot_scores'></a> <img src = ".figures/break_cycle_plot_scores.png" width = "560" height = "280" />
+</p>
+<p>
+<strong>Figure 45: Example dataset(s) for this rule</strong>
+</p>
+
+------------------------------------------------------------------------
+
+    ## Warning in in_dir(input_dir(), evaluate(code, envir = env, new_device
+    ## = FALSE, : You changed the working directory to /home/wouters/thesis/
+    ## projects/dynverse/dynbenchmark/results/02-metric_characterisation
+    ## (probably via setwd()). It will be restored to /home/wouters/thesis/
+    ## projects/dynverse/dynbenchmark/results/02-metric_characterisation/01-
+    ## metric_conformity. See the Note section in ?knitr::knit
+
+    ## Warning in in_dir(input_dir(), evaluate(code, envir = env, new_device
+    ## = FALSE, : You changed the working directory to /home/wouters/thesis/
+    ## projects/dynverse/dynbenchmark/results/02-metric_characterisation
+    ## (probably via setwd()). It will be restored to /home/wouters/thesis/
+    ## projects/dynverse/dynbenchmark/results/02-metric_characterisation/01-
+    ## metric_conformity. See the Note section in ?knitr::knit
+
+Linear joining
+--------------
+
+Joining the two ends of a linear trajectory should lower the score
+
+A metric conforms to this rule if: ![](https://latex.codecogs.com/gif.latex?%5Cmathit%7Bscore%7D_%7B%5Ctextit%7Bidentity%7D%7D%20%3E%20%5Cmathit%7Bscore%7D_%7B%5Ctextit%7Bprediction%7D%7D)
+
+Because the positions of the cells can be perfectly predicted, the MSE metrics do not conform to this rule. Furthermore, because the branch assignment change stays the same, the
+*F**1*<sub>*branches*</sub>
+ also does not conform to this rule.
+
+<p>
+<a name = 'fig_join_linear_plot_datasets'></a> <img src = ".figures/join_linear_plot_datasets.png" width = "560" height = "280" />
+</p>
+<p>
+<strong>Figure 46: Example dataset(s) for this rule</strong>
+</p>
+
+------------------------------------------------------------------------
+
+<p>
+<a name = 'fig_join_linear_plot_scores'></a> <img src = ".figures/join_linear_plot_scores.png" width = "560" height = "280" />
+</p>
+<p>
+<strong>Figure 47: Example dataset(s) for this rule</strong>
+</p>
+
+------------------------------------------------------------------------
+
+    ## Warning in in_dir(input_dir(), evaluate(code, envir = env, new_device
+    ## = FALSE, : You changed the working directory to /home/wouters/thesis/
+    ## projects/dynverse/dynbenchmark/results/02-metric_characterisation
+    ## (probably via setwd()). It will be restored to /home/wouters/thesis/
+    ## projects/dynverse/dynbenchmark/results/02-metric_characterisation/01-
+    ## metric_conformity. See the Note section in ?knitr::knit
+
+    ## Warning in in_dir(input_dir(), evaluate(code, envir = env, new_device
+    ## = FALSE, : You changed the working directory to /home/wouters/thesis/
+    ## projects/dynverse/dynbenchmark/results/02-metric_characterisation
+    ## (probably via setwd()). It will be restored to /home/wouters/thesis/
+    ## projects/dynverse/dynbenchmark/results/02-metric_characterisation/01-
+    ## metric_conformity. See the Note section in ?knitr::knit
+
+Linear splitting
+----------------
+
+Splitting a linear trajectory into a bifurcation should lower the score
+
+A metric conforms to this rule if: ![](https://latex.codecogs.com/gif.latex?%5Cmathit%7Bscore%7D_%7B%5Ctextit%7Bidentity%7D%7D%20%3E%20%5Cmathit%7Bscore%7D_%7B%5Ctextit%7Bprediction%7D%7D)
+
+Only the MSE metrics do not conform to this rule as the positions of the cells can be perfectly predicted in the gold standard given the prediction.
+
+<p>
+<a name = 'fig_split_linear_plot_datasets'></a> <img src = ".figures/split_linear_plot_datasets.png" width = "560" height = "280" />
+</p>
+<p>
+<strong>Figure 48: Example dataset(s) for this rule</strong>
+</p>
+
+------------------------------------------------------------------------
+
+<p>
+<a name = 'fig_split_linear_plot_scores'></a> <img src = ".figures/split_linear_plot_scores.png" width = "560" height = "280" />
+</p>
+<p>
+<strong>Figure 49: Example dataset(s) for this rule</strong>
+</p>
+
+------------------------------------------------------------------------
+
+    ## Warning in in_dir(input_dir(), evaluate(code, envir = env, new_device
+    ## = FALSE, : You changed the working directory to /home/wouters/thesis/
+    ## projects/dynverse/dynbenchmark/results/02-metric_characterisation
+    ## (probably via setwd()). It will be restored to /home/wouters/thesis/
+    ## projects/dynverse/dynbenchmark/results/02-metric_characterisation/01-
+    ## metric_conformity. See the Note section in ?knitr::knit
+
+    ## Warning in in_dir(input_dir(), evaluate(code, envir = env, new_device
+    ## = FALSE, : You changed the working directory to /home/wouters/thesis/
+    ## projects/dynverse/dynbenchmark/results/02-metric_characterisation
+    ## (probably via setwd()). It will be restored to /home/wouters/thesis/
+    ## projects/dynverse/dynbenchmark/results/02-metric_characterisation/01-
+    ## metric_conformity. See the Note section in ?knitr::knit
+
+Change of topology
+------------------
+
+Changing the topology of the trajectory should lower the score
+
+A metric conforms to this rule if: ![](https://latex.codecogs.com/gif.latex?%5Cmathit%7Bscore%7D_%7B%5Ctextit%7Bsame%20topology%7D%7D%20%3E%20%5Cmathit%7Bscore%7D_%7B%5Ctextit%7Bdifferent%20topology%7D%7D)
+
+Because the positions of the cells can be perfectly predicted, the MSE metrics do not conform to this rule. Furthermore, because the branch assignment change stays the same, the
+*F**1*<sub>*branches*</sub>
+ also does not conform to this rule.
+
+<p>
+<a name = 'fig_change_topology_plot_datasets'></a> <img src = ".figures/change_topology_plot_datasets.png" width = "840" height = "420" />
+</p>
+<p>
+<strong>Figure 50: Example dataset(s) for this rule</strong>
+</p>
+
+------------------------------------------------------------------------
+
+<p>
+<a name = 'fig_change_topology_plot_scores'></a> <img src = ".figures/change_topology_plot_scores.png" width = "840" height = "735" />
+</p>
+<p>
+<strong>Figure 51: Example dataset(s) for this rule</strong>
+</p>
+
+------------------------------------------------------------------------
+
+    ## Warning in in_dir(input_dir(), evaluate(code, envir = env, new_device
+    ## = FALSE, : You changed the working directory to /home/wouters/thesis/
+    ## projects/dynverse/dynbenchmark/results/02-metric_characterisation
+    ## (probably via setwd()). It will be restored to /home/wouters/thesis/
+    ## projects/dynverse/dynbenchmark/results/02-metric_characterisation/01-
+    ## metric_conformity. See the Note section in ?knitr::knit
+
+    ## Warning in in_dir(input_dir(), evaluate(code, envir = env, new_device
+    ## = FALSE, : You changed the working directory to /home/wouters/thesis/
+    ## projects/dynverse/dynbenchmark/results/02-metric_characterisation
+    ## (probably via setwd()). It will be restored to /home/wouters/thesis/
+    ## projects/dynverse/dynbenchmark/results/02-metric_characterisation/01-
+    ## metric_conformity. See the Note section in ?knitr::knit
+
+Cells on milestones vs edges
+----------------------------
+
+A score should behave similarly both when cells are located on the milestones (as is the case in real datasets) or on the edges between milestones (as is the case in synthetic datasets).
+
+A metric conforms to this rule if: ![](https://latex.codecogs.com/gif.latex?%5Cmathit%7Bcorr%7D%20%5Cleft(%20%5Cmathit%7Bscore%7D_%7B%5Ctextit%7Bedges%7D%7D%20,%20%5Cmathit%7Bscore%7D_%7B%5Ctextit%7Bmilestones%7D%7D%20%5Cright)%20%3E%200.9)
+
+All scores conform to this rule.
+
+<p>
+<a name = 'fig_cell_gathering_plot_datasets'></a> <img src = ".figures/cell_gathering_plot_datasets.png" width = "840" height = "420" />
+</p>
+<p>
+<strong>Figure 52: Example dataset(s) for this rule</strong>
+</p>
+
+------------------------------------------------------------------------
+
+<p>
+<a name = 'fig_cell_gathering_plot_scores'></a> <img src = ".figures/cell_gathering_plot_scores.png" width = "840" height = "420" />
+</p>
+<p>
+<strong>Figure 53: Example dataset(s) for this rule</strong>
 </p>
 
 ------------------------------------------------------------------------

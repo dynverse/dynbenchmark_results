@@ -46,11 +46,11 @@ add_fig(
 
 Given the multilayered complexity of a trajectory model, it is not trivial to compare the similarity of two trajectory models using only one metric. We therefore sought to use different comparison metrics, each serving a different purpose:
 
-- **Specific metrics** investigate one particular aspect of the trajectory. Such metrics make it possible to find particular weak points for methods, e.g. that a method is very good at ordering but does not frequently find the correct topology. Moreover, this makes it possible to create personalised rankings of methods, for example for users which are primarily interested in using the method correct topology.
+- **Specific metrics** investigate one particular aspect of the trajectory. Such metrics make it possible to find particular weak points for methods, e.g. that a method is very good at ordering but does not frequently find the correct topology. Moreover, having multiple individual metrics make it possible to create personalised rankings of methods, for example for users which are primarily interested in using the method correct topology.
 - **Application metrics** focus on the quality of a downstream analysis using the trajectory. For example, it measures whether the trajectory can be used to find accurate differentially expressed genes.
 - **Overall metrics** should capture all the different abstractions, in other words such metrics measure whether the resulting trajectory has a good topology, that the cells belong to similar branches _and_ that they are ordered correctly.
 
-Here, we first described and illustrate several specific, application and overall metrics which we defined. Next, we tested these metrics on several test cases, to make sure they were robustly identify different wrong trajectory predictions. Based on this robustness assessment, we chose 4 metrics for the final evaluation.
+Here, we first describe and illustrate several possible specific, application and overall metrics. Next, we test these metrics on several test cases, to make sure they were robustly identify different wrong trajectory predictions.
 
 All metrics described here were implemented within the [_dyneval_](https://github.com/dynverse/dyneval) R package ([https://github.com/dynverse/dyneval](https://github.com/dynverse/dyneval)).
 
@@ -84,7 +84,7 @@ The `r label_metric("him")` metric (Hamming-Ipsen-Mikhailov distance) [@jurmanHI
 - The normalised Hamming distance [@doughertyValidationGeneRegulatory2011], which calculates the distance between two graphs by matching individual edges in the adjacency matrix, but disregards overall structural similarity.
 - The normalised Ipsen-Mikhailov distance [@ipsenEvolutionaryReconstructionNetworks2002], which calculates the overall distance of two graphs based on matches between its degree and adjacency matrix, while disregarding local structural similarities. It requires a $\gamma$ parameter, which is usually estimated based on the number of nodes in the graph, but which we fixed at $0.1$ so as to make the score comparable across different graph sizes.
 
-We compared the three scores for several common topologies (`r ref("fig", "topology_scores_overview")`). While conceptually very different, the `r label_metric("edge_flip")`r and `r label_metric("him")`r still produce similar scores (`r ref("fig", "topology_scores_overview", "b")`). The `r label_metric("him")`r tends to punish the detection of cycles, while the `r label_metric("edge_flip")`r is more harsh for differences in the number of bifurcations (`r ref("fig", "topology_scores_overview", "c")`). The main difference however is that the `r label_metric("him")`r takes into account edge lengths when comparing two trajectories, as illustrated in (`r ref("fig", "topology_scores_overview", "d")`).
+We compared the three scores for several common topologies (`r ref("fig", "topology_scores_overview")`). While conceptually very different, the `r label_metric("edge_flip")` and `r label_metric("him")` still produce similar scores (`r ref("fig", "topology_scores_overview", "b")`). The `r label_metric("him")` tends to punish the detection of cycles, while the `r label_metric("edge_flip")` is more harsh for differences in the number of bifurcations (`r ref("fig", "topology_scores_overview", "c")`). The main difference however is that the `r label_metric("him")` takes into account edge lengths when comparing two trajectories, as illustrated in (`r ref("fig", "topology_scores_overview", "d")`). Short "extra" edges in the topology are less punished by the `r label_metric("him")` than by the `r label_metric("edge_flip")`.
 
 ```{r, results = "asis"}
 add_fig(
@@ -105,20 +105,20 @@ To summarise, the different topology based scores are useful for different scena
 
 ## `r label_metric("F1_branches")` and `r label_metric("F1_milestones")`: Comparing how well the cells are clustered in the trajectory
 
-Perhaps one of the simplest ways to calculate the similarity between the cellular positions of two topologies is by mapping each cell to its closest milestone _or_ branch (`r ref("fig", "clustering_scores_overview")`). These clusters of cells can then be compared using one of the many external cluster evaluation measures [@saelensComprehensiveEvaluationModule2018]. When selecting such a metric, we had two conditions:
+Perhaps one of the simplest ways to calculate the similarity between the cellular positions of two topologies is by mapping each cell to its closest milestone _or_ branch (`r ref("fig", "clustering_scores_overview")`). These clusters of cells can then be compared using one of the many external cluster evaluation measures [@saelensComprehensiveEvaluationModule2018]. When selecting a cluster evaluation metric, we had two main conditions:
 
 - Because we allow some methods to filter cells in the trajectory, the metric should be able to handle "non-exhaustive assignment", where some cells are not assigned to any cluster.
 - The metric should give each cluster equal weight, so that rare cell stages are equally important as large stages.
 
-Based on these requirements, and on the analysis in [@saelensComprehensiveEvaluationModule2018], we chose the $\textrm{F1}$ score between the $\textrm{Recovery}$ and $\textrm{Relevance}$. If $C$ and $C'$ are two cell clusters:
+The $\textrm{F1}$ score between the $\textrm{Recovery}$ and $\textrm{Relevance}$ is a metric which conforms to both these conditions. This metric will map two clustersets by using their shared members based on the $\textrm{Jaccard}$ similarity. It then calculates the $\textrm{Recovery}$ as the average maximal $\textrm{Jaccard}$ for every cluster in the first set of clusters (in our case the gold standard). Conversely, the $\textrm{Relevance}$ is calculated based on the average maximal similarity in the second set of clusters (in our case the prediction). Both the $\textrm{Recovery}$ and $\textrm{Relevance}$ are then given equal weight in a harmonic mean ($\textrm{F1}$). Formally, if $C$ and $C'$ are two cell clusters:
 
-$Jaccard(c, c') = \frac{|c \cap c'|}{|c \cup c'|}$
+$\textrm{Jaccard}(c, c') = \frac{|c \cap c'|}{|c \cup c'|}$
 
 $\textrm{Recovery} = \frac{1}{|C|} \sum_{c \in C}{\max_{c' \in C'}{\textrm{Jaccard(c, c')}}}$
 
 $\textrm{Relevance} = \frac{1}{|C'|} \sum_{c' \in C'}{\max_{c \in C}{\textrm{Jaccard(c, c')}}}$
 
-$textrm{F1} = \frac{2}{\frac{1}{\textrm{Recovery}} + \frac{1}{\textrm{Relevance}}}$
+$\textrm{F1} = \frac{2}{\frac{1}{\textrm{Recovery}} + \frac{1}{\textrm{Relevance}}}$
 
 ```{r, results = "asis"}
 add_fig(
@@ -169,7 +169,7 @@ add_fig(
 
 ## `r label_metric("rf_nmse")` and `r label_metric("lm_nmse")`: Using the positions of the cells within one trajectory to predict the cellular positions in the other trajectory
 
-An alternative approach to detect whether the positions of cells are similar between two trajectories, is to use the positions of one trajectory to predict the positions within the other trajectory. If the prediction error for a particular cell is low, the higher the similarity between the cellular positions.
+An alternative approach to detect whether the positions of cells are similar between two trajectories, is to use the positions of one trajectory to predict the positions within the other trajectory. If the cells are at similar positions in the trajectory (relative to its nearby cells), its prediction error should be low.
 
 Specifically, we implemented two metrics which predict the milestone percentages from the gold standards by using the predicted milestone percentages as features  (`r ref("fig", "metrics_prediction")`). We did this with two regression methods, linear regression ($\textit{lm}$, using the R `lm` function) and Random Forest ($\textit{rf}$, implemented in the *ranger* package [@wright_rangerfastimplementation_2017]). In both cases, the accuracy of the prediction was measured using the Mean Squared error ($\mathit{MSE}$), in the case of Random forest we used the out-of-bag mean-squared error. Next, we calculated $\mathit{MSE}_{worst}$ equal to the $\mathit{MSE}$ when predicting all milestone percentages as the average. We used this to calculate the normalised mean squared error as $\mathit{NMSE} = 1 - \frac{\mathit{MSE}}{\mathit{MSE}_{worst}}$. We created a regression model for every milestone in the gold standard, and averaged the $\mathit{NMSE}$ values to finally obtain the `r label_metric("rf_nmse")` and `r label_metric("lm_nmse")` scores.
 
@@ -204,11 +204,11 @@ add_fig(
 
 Although most metrics described above already assess some aspects directly relevant to the user, such as whether the method is good at finding the right topology, these metrics do not assess the quality of downstream analyses and hypotheses which can be generated from these models. 
 
-## `r label_metric("featureimp_cor")`: The accuracy of dynamical differentially expressed features/genes.
+## `r label_metric("featureimp_cor")` and `r label_metric("featureimp_wcor")`: The accuracy of dynamical differentially expressed features/genes.
 
-Perhaps the main advantages of studying cellular dynamic processes using single-cell -omics data is that the dynamics of gene expression can be studied for the whole transcriptome. This can be used to construct other models such as dynamic regulatory networks and gene expression modules. Such analyses rely on a "good-enough" cellular ordering, so that it can be used to identify dynamical differentially expressed genes.
+Perhaps the main advantage of studying cellular dynamic processes using single-cell -omics data is that the dynamics of gene expression can be studied for the whole transcriptome. This can be used to construct other models such as dynamic regulatory networks and gene expression modules. Such analyses rely on a "good-enough" cellular ordering, so that it can be used to identify dynamical differentially expressed genes.
 
-To calculate the `r label_metric("featureimp_cor")` we used Random forest regression to rank all the features according to their importance in predicting the positions of cells in the trajectory. Specifically, we calculated the geodesic distances for each cell to all milestones in the trajectory. Next, we trained a Random Forest regression model (implemented in the R _ranger_ package [@wright_rangerfastimplementation_2017], [https://github.com/imbs-hl/ranger](https://github.com/imbs-hl/ranger)) to predict these distances for each milestone, based on the expression of genes within each cell. We then extracted feature importances using the Mean Decrease in Impurity (`importance = 'impurity'` parameter of the `ranger` function), as illustrated in (`r ref("fig", "featureimp_overview")`). The overall importance of a feature (gene) was then equal to the mean importance over all milestones.
+To calculate the `r label_metric("featureimp_cor")` we used Random forest regression to rank all the features according to their importance in predicting the positions of cells in the trajectory. Specifically, we calculated the geodesic distances for each cell to all milestones in the trajectory. Next, we trained a Random Forest regression model (implemented in the R _ranger_ package [@wright_rangerfastimplementation_2017], [https://github.com/imbs-hl/ranger](https://github.com/imbs-hl/ranger)) to predict these distances for each milestone, based on the expression of genes within each cell. We then extracted feature importances using the Mean Decrease in Impurity (`importance = 'impurity'` parameter of the `ranger` function), as illustrated in (`r ref("fig", "featureimp_overview")`). The overall importance of a feature (gene) was then equal to the mean importance over all milestones. Finally, we compared the two rankings by calculating the Pearson correlation, with values lower than between -1 and 0 clipped to 0.
 
 ```{r, results = "asis"}
 add_fig(
@@ -232,9 +232,36 @@ add_fig(
 )
 ```
 
+For most datasets, only a limited number of features will be differentially expressed in the trajectory. For example, in the dataset used in `r ref("fig", "featureimp_cor_distributions")` only the top 10%-20% show a clear pattern of differential expression. The correlation will weight each of these features equally, and will therefore give more weight to the bottom, irrelevant features. To prioritise the top differentially expressed features, we also implemented the `r label_metric("featureimp_wcor")`, which will weight the correlation using the feature importance scores in the gold standard so that the top features have relatively more impact on the score (`r ref("fig", "featureimp_wcor_effect")`).
+
+```{r, results = "asis"}
+add_fig(
+  result_file("featureimp_wcor_effect.rds", experiment = "02-metric_characterisation/02-individual_metrics"),
+  "featureimp_wcor_effect",
+  glue::glue(""),
+  glue::glue(""),
+  width = 8, height = 5
+)
+```
+
+
 # Overall metrics
 
-An overall metric should not only focus on 
+Undoubtedly, a single optimal overall metric does not exist for trajectories, as different users may have different priorities:
+
+- A user may be primarily interested in defining the correct topology, and only use the cellular ordering when the topology is correct
+- A user may be less interested in how the cells are ordered within a branch, but primarily in which cells are in which branches
+- A user may already know the topology, and may be primarily interested in finding good features related to a particular branching point
+- ...
+
+As the main overall metric for the evaluation, we therefore chose a metric which weighs every aspect of the trajectory equally:
+
+- Its **ordering**, using the `r label_metric("correlation")`
+- Its **branch assignment**, using the `r label_metric("F1_branches")`
+- Its **topology**, using the `r label_metric("edge_flip")`
+- The accuracy of **differentially expressed features**, using the `r label_metric("featureimp_wcor")`
+
+Even though all metrics range between 0 and 1, their actual values have 
 
 # Metric conformity
 
@@ -322,7 +349,9 @@ add_table(
 ```{r, results = "asis"}
 # assessment <- dynutils::extract_row_to_list(assessments, 1)
 # 
-walkdf(assessments[1, ], function(assessment) {
-  cat(knitr::knit_child(result_file("assessment.Rmd", experiment = "02-metric_characterisation/01-metric_conformity"), quiet=TRUE, envir = environment()))
+walkdf(assessments, function(assessment) {
+  cat(
+    knitr::knit_child(result_file("assessment.Rmd", experiment = "02-metric_characterisation/01-metric_conformity"), quiet=TRUE, envir = environment())
+  )
 })
 ```
