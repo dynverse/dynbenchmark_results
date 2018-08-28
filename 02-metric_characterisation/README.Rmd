@@ -10,11 +10,15 @@ header-includes:
   - \newcommand{\hideFromPandoc}[1]{#1}
   - \hideFromPandoc{\newenvironment{myfigure}[1]{\begin{figure}[#1]}{\end{figure}}}
 mainfont: DejaVu Sans
+bibliography: ../../manuscript/references.bib
+csl: ../../manuscript/nature-biotechnology.csl
+link-citations: true
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(
-  echo = FALSE
+  echo = FALSE,
+  fig.path = ".figures/"
 )
 options(knitr.duplicate.label='allow')
 
@@ -34,7 +38,9 @@ add_fig(
   result_file("trajectory_model_example.svg", "manual_figures"),
   "trajectory_model_example",
   "An example trajectory that will be used throughout this section.",
-  "It contains contains four milestones (W to Z) and five cells (a to e)."
+  "It contains contains four milestones (W to Z) and five cells (a to e).",
+  width = 12,
+  height = 6
 )
 ```
 
@@ -127,18 +133,20 @@ add_fig(
 
 ## `r label_metric("correlation")`: Correlation between geodesic distances
 
-When the position of a cell is the same in both the gold standard and the prediction, its distances to all other cells in the trajectory should also be the same. This observation is the basis for the `r label_metric("correlation")` metric.
+When the position of a cell is the same in both the gold standard and the prediction, its _relative_ distances to all other cells in the trajectory should also be the same. This observation is the basis for the `r label_metric("correlation")` metric.
 
 ```{r, results = "asis"}
 add_fig(
   result_file("metrics_geodesic.svg", "manual_figures"),
   "metrics_geodesic",
   "The calculation of geodesic distances on a small example trajectory.",
-  "a) A toy example containing four milestones (W to Z) and five cells (a to e). b) The corresponding milestone network, milestone percentages and regions of delayed commitment, when the toy trajectory is converted to the common trajectory model. c) The calculations made for calculating the pairwise geodesic distances. d) A heatmap representation of the pairwise geodesic distances."
+  "a) A toy example containing four milestones (W to Z) and five cells (a to e). b) The corresponding milestone network, milestone percentages and regions of delayed commitment, when the toy trajectory is converted to the common trajectory model. c) The calculations made for calculating the pairwise geodesic distances. d) A heatmap representation of the pairwise geodesic distances.",
+  width = 12,
+  height = 6
 )
 ```
 
-The geodesic distance is the distance a cell has to through the trajectory space to get from one position to another (`r ref("fig", "metrics_geodesic")`). The way this distance is calculated depends on how two cells are positioned:
+The geodesic distance is the distance a cell has to go through the trajectory space to get from one position to another (`r ref("fig", "metrics_geodesic")`). The way this distance is calculated depends on how two cells are positioned:
 
 - **Both cells are on the same edge in the milestone network.** In this case, the distance is defined as the product of the difference in milestone percentages and the length of the transition they both reside on. The geodesic distance is defined as the product of the difference in milestone percentages and the length of their common edge. For cells $a$ and $b$ in the example, $d(a, b)$ is equal to $1 \times (0.9 - 0.2) = 0.7$.
 - **Cells reside on different edges in the milestone network.** First, the distance of the cell to all its nearby milestones is calculated, based on its percentage within the edge and the length of the edge. These distances in combination with the milestone network are used to calculate the shortest path distance between the two cells. For cells $a$ and $c$ in the example, $d(a, X) = 1 \times 0.9$ and $d(c, X) = 3 \times 0.2$, and therefore $d(a, c) = 1 \times 0.9 + 3 \times 0.2$. 
@@ -170,7 +178,9 @@ add_fig(
   result_file("metrics_prediction.svg", "manual_figures"),
   "metrics_prediction",
   glue::glue("The calculation of {label_metric('lm_nmse')} distances on a small example trajectory."),
-  ""
+  "",
+  width = 12,
+  height = 6
 )
 ```
 
@@ -210,11 +220,11 @@ add_fig(
 )
 ```
 
-Random forest regression has two main hyperparameters. The number of trees to be fitted (`num_trees` parameter) was fixed to `10000` to provide accurate and stable estimates of the feature importance (`r ref("fig", "featureimp_cor_distributions")`). The number of features on which can be split (`mtry` parameter) was set to 1% of all available features (instead of the default square-root of the number of features), as to make sure that predictive but highly correlated feautres (omnipresent in transcriptomics data) are not suppressed in the ranking.
+Random forest regression has two main hyperparameters. The number of trees to be fitted (`num_trees` parameter) was fixed to `10000` to provide accurate and stable estimates of the feature importance (`r ref("fig", "featureimp_cor_distributions")`). The number of features on which can be split (`mtry` parameter) was set to 1% of all available features (instead of the default square-root of the number of features), as to make sure that predictive but highly correlated features (omnipresent in transcriptomics data) are not suppressed in the ranking.
 
 ```{r, results = "asis"}
 add_fig(
-  result_file("feautreimp_cor_distributions.rds", experiment = "02-metric_characterisation/02-individual_metrics"),
+  result_file("featureimp_cor_distributions.rds", experiment = "02-metric_characterisation/02-individual_metrics"),
   "featureimp_cor_distributions",
   glue::glue(""),
   glue::glue(""),
@@ -309,7 +319,7 @@ add_table(
 
 \pagebreak
 
-```{r results='asis'}
+```{r, results = "asis"}
 # assessment <- dynutils::extract_row_to_list(assessments, 1)
 # 
 walkdf(assessments[1, ], function(assessment) {

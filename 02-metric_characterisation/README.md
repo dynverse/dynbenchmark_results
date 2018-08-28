@@ -15,7 +15,7 @@ Metrics to compare two trajectories
 A trajectory, as defined in our evaluation, is a model with multiple abstractions. The top abstraction is the topology which contains information about the paths each cell can take from their starting point. Deeper abstractions involve the mapping of each cell to a particular branch within this network, and the position (or ordering) of each cells within these branches. Internally, the topology is represented by the milestone network and regions of delayed commitment, the branch assignment and cellular positions are represented by the milestone percentages ([**Figure 1**](#fig_trajectory_model_example)).
 
 <p>
-<a name = 'fig_trajectory_model_example'></a> <img src = "../manual_figures/trajectory_model_example.svg" />
+<a name = 'fig_trajectory_model_example'></a> <img src = "../manual_figures/trajectory_model_example.svg" width = "840" height = "420" />
 </p>
 <p>
 <strong>Figure 1: An example trajectory that will be used throughout this section.</strong> It contains contains four milestones (W to Z) and five cells (a to e).
@@ -49,9 +49,9 @@ For all three scores, we first simplified the topology of the trajectory to make
 -   A cyclical topology such as A ⇨ B ⇨ C ⇨ D or A ⇨ B ⇨ A were all simplified to A ⇨ B ⇨ C ⇨ A
 -   Duplicated edges such as A ⇨ B, A ⇨ B were decoupled to A ⇨ B, A ⇨ C ⇨ B
 
-The Isomorphic score returns 1 if two graphs are isomorphic, and 0 if they were not. For this, we used the used the BLISS algorithm \[@junttila\_engineeringefficientcanonical\_2007\], as implemented in the R *igraph* package.
+The Isomorphic score returns 1 if two graphs are isomorphic, and 0 if they were not. For this, we used the used the BLISS algorithm<sup>[1](#ref-junttila_engineeringefficientcanonical_2007)</sup>, as implemented in the R *igraph* package.
 
-The edgeflip score was defined as the minimal number of edges which should be added or removed to convert one network into the other, divided by the total number of edges in both networks. This problem is equivalent to the maximum common edge subgraph problem, a known NP-hard problem without a scalable solution \[@bahiense\_maximumcommonedge\_2012\]. We implemented a branch and bound approach for this problem, using several heuristics to speed up the search:
+The edgeflip score was defined as the minimal number of edges which should be added or removed to convert one network into the other, divided by the total number of edges in both networks. This problem is equivalent to the maximum common edge subgraph problem, a known NP-hard problem without a scalable solution<sup>[2](#ref-bahiense_maximumcommonedge_2012)</sup>. We implemented a branch and bound approach for this problem, using several heuristics to speed up the search:
 
 -   First check all possible edge additions and removals corresponding to the number of different edges between the two graphs. If no solution is found, check all possible solutions with two extra edge additions/removals.
 -   For each possible solution, first check whether:
@@ -60,15 +60,15 @@ The edgeflip score was defined as the minimal number of edges which should be ad
 -   All degrees are the same after sorting
 -   Only then check if the two graphs are isomorphic as described earlier.
 
-The HIM metric (Hamming-Ipsen-Mikhailov distance) \[@jurmanHIMGlocalMetric2015\] which was adopted from the R nettools package <https://github.com/filosi/nettools>. It uses an adjacency matrix which was weighted according to the lengths of each edges within the milestone network. Conceptually, HIM is a linear combination of:
+The HIM metric (Hamming-Ipsen-Mikhailov distance)<sup>[3](#ref-jurmanHIMGlocalMetric2015)</sup> which was adopted from the R nettools package <https://github.com/filosi/nettools>. It uses an adjacency matrix which was weighted according to the lengths of each edges within the milestone network. Conceptually, HIM is a linear combination of:
 
--   The normalised Hamming distance \[@doughertyValidationGeneRegulatory2011\], which calculates the distance between two graphs by matching individual edges in the adjacency matrix, but disregards overall structural similarity.
--   The normalised Ipsen-Mikhailov distance \[@ipsenEvolutionaryReconstructionNetworks2002\], which calculates the overall distance of two graphs based on matches between its degree and adjacency matrix, while disregarding local structural similarities. It requires a ![](https://latex.codecogs.com/gif.latex?%5Cgamma) parameter, which is usually estimated based on the number of nodes in the graph, but which we fixed at ![](https://latex.codecogs.com/gif.latex?0.1) so as to make the score comparable across different graph sizes.
+-   The normalised Hamming distance<sup>[4](#ref-doughertyValidationGeneRegulatory2011)</sup>, which calculates the distance between two graphs by matching individual edges in the adjacency matrix, but disregards overall structural similarity.
+-   The normalised Ipsen-Mikhailov distance<sup>[5](#ref-ipsenEvolutionaryReconstructionNetworks2002)</sup>, which calculates the overall distance of two graphs based on matches between its degree and adjacency matrix, while disregarding local structural similarities. It requires a ![](https://latex.codecogs.com/gif.latex?%5Cgamma) parameter, which is usually estimated based on the number of nodes in the graph, but which we fixed at ![](https://latex.codecogs.com/gif.latex?0.1) so as to make the score comparable across different graph sizes.
 
 We compared the three scores for several common topologies ([**Figure 2**](#fig_topology_scores_overview)). While conceptually very different, the edgeflipr and HIMr still produce similar scores ([**Figure 2b**](#fig_topology_scores_overview)). The HIMr tends to punish the detection of cycles, while the edgeflipr is more harsh for differences in the number of bifurcations ([**Figure 2c**](#fig_topology_scores_overview)). The main difference however is that the HIMr takes into account edge lengths when comparing two trajectories, as illustrated in ([**Figure 2d**](#fig_topology_scores_overview)).
 
 <p>
-<a name = 'fig_topology_scores_overview'></a> <img src = "02-individual_metrics/topology_scores_overview.png" />
+<a name = 'fig_topology_scores_overview'></a> <img src = "02-individual_metrics/topology_scores_overview.png" width = "840" height = "840" />
 </p>
 <p>
 <strong>Figure 2: Isomorphic, edgeflip and HIM .</strong>
@@ -85,12 +85,12 @@ To summarise, the different topology based scores are useful for different scena
 F1<sub>branches</sub> and F1<sub>milestones</sub>: Comparing how well the cells are clustered in the trajectory
 ---------------------------------------------------------------------------------------------------------------
 
-Perhaps one of the simplest ways to calculate the similarity between the cellular positions of two topologies is by mapping each cell to its closest milestone *or* branch ([**Figure 3**](#fig_clustering_scores_overview)). These clusters of cells can then be compared using one of the many external cluster evaluation measures \[@saelensComprehensiveEvaluationModule2018\]. When selecting such a metric, we had two conditions:
+Perhaps one of the simplest ways to calculate the similarity between the cellular positions of two topologies is by mapping each cell to its closest milestone *or* branch ([**Figure 3**](#fig_clustering_scores_overview)). These clusters of cells can then be compared using one of the many external cluster evaluation measures<sup>[6](#ref-saelensComprehensiveEvaluationModule2018)</sup>. When selecting such a metric, we had two conditions:
 
 -   Because we allow some methods to filter cells in the trajectory, the metric should be able to handle "non-exhaustive assignment", where some cells are not assigned to any cluster.
 -   The metric should give each cluster equal weight, so that rare cell stages are equally important as large stages.
 
-Based on these requirements, and on the analysis in \[@saelensComprehensiveEvaluationModule2018\], we chose the ![](https://latex.codecogs.com/gif.latex?%5Ctextrm%7BF1%7D) score between the ![](https://latex.codecogs.com/gif.latex?%5Ctextrm%7BRecovery%7D) and ![](https://latex.codecogs.com/gif.latex?%5Ctextrm%7BRelevance%7D). If ![](https://latex.codecogs.com/gif.latex?C) and ![](https://latex.codecogs.com/gif.latex?C') are two cell clusters:
+Based on these requirements, and on the analysis in<sup>[6](#ref-saelensComprehensiveEvaluationModule2018)</sup>, we chose the ![](https://latex.codecogs.com/gif.latex?%5Ctextrm%7BF1%7D) score between the ![](https://latex.codecogs.com/gif.latex?%5Ctextrm%7BRecovery%7D) and ![](https://latex.codecogs.com/gif.latex?%5Ctextrm%7BRelevance%7D). If ![](https://latex.codecogs.com/gif.latex?C) and ![](https://latex.codecogs.com/gif.latex?C') are two cell clusters:
 
 ![](https://latex.codecogs.com/gif.latex?Jaccard(c,%20c')%20=%20%5Cfrac%7B%7Cc%20%5Ccap%20c'%7C%7D%7B%7Cc%20%5Ccup%20c'%7C%7D)
 
@@ -101,7 +101,7 @@ Based on these requirements, and on the analysis in \[@saelensComprehensiveEvalu
 ![](https://latex.codecogs.com/gif.latex?textrm%7BF1%7D%20=%20%5Cfrac%7B2%7D%7B%5Cfrac%7B1%7D%7B%5Ctextrm%7BRecovery%7D%7D%20+%20%5Cfrac%7B1%7D%7B%5Ctextrm%7BRelevance%7D%7D%7D)
 
 <p>
-<a name = 'fig_clustering_scores_overview'></a> <img src = "02-individual_metrics/clustering_scores_overview.png" />
+<a name = 'fig_clustering_scores_overview'></a> <img src = "02-individual_metrics/clustering_scores_overview.png" width = "840" height = "350" />
 </p>
 <p>
 <strong>Figure 3: Mapping cells to their closest milestone or branch for the calculation of the F1<sub>milestones</sub> and F1<sub>branches</sub> .</strong>
@@ -112,10 +112,10 @@ Based on these requirements, and on the analysis in \[@saelensComprehensiveEvalu
 cor<sub>dist</sub>: Correlation between geodesic distances
 ----------------------------------------------------------
 
-When the position of a cell is the same in both the gold standard and the prediction, its distances to all other cells in the trajectory should also be the same. This observation is the basis for the cor<sub>dist</sub> metric.
+When the position of a cell is the same in both the gold standard and the prediction, its *relative* distances to all other cells in the trajectory should also be the same. This observation is the basis for the cor<sub>dist</sub> metric.
 
 <p>
-<a name = 'fig_metrics_geodesic'></a> <img src = "../manual_figures/metrics_geodesic.svg" />
+<a name = 'fig_metrics_geodesic'></a> <img src = "../manual_figures/metrics_geodesic.svg" width = "840" height = "420" />
 </p>
 <p>
 <strong>Figure 4: The calculation of geodesic distances on a small example trajectory.</strong> a) A toy example containing four milestones (W to Z) and five cells (a to e). b) The corresponding milestone network, milestone percentages and regions of delayed commitment, when the toy trajectory is converted to the common trajectory model. c) The calculations made for calculating the pairwise geodesic distances. d) A heatmap representation of the pairwise geodesic distances.
@@ -123,7 +123,7 @@ When the position of a cell is the same in both the gold standard and the predic
 
 ------------------------------------------------------------------------
 
-The geodesic distance is the distance a cell has to through the trajectory space to get from one position to another ([**Figure 4**](#fig_metrics_geodesic)). The way this distance is calculated depends on how two cells are positioned:
+The geodesic distance is the distance a cell has to go through the trajectory space to get from one position to another ([**Figure 4**](#fig_metrics_geodesic)). The way this distance is calculated depends on how two cells are positioned:
 
 -   **Both cells are on the same edge in the milestone network.** In this case, the distance is defined as the product of the difference in milestone percentages and the length of the transition they both reside on. The geodesic distance is defined as the product of the difference in milestone percentages and the length of their common edge. For cells ![](https://latex.codecogs.com/gif.latex?a) and ![](https://latex.codecogs.com/gif.latex?b) in the example, ![](https://latex.codecogs.com/gif.latex?d(a,%20b)) is equal to ![](https://latex.codecogs.com/gif.latex?1%20%5Ctimes%20(0.9%20-%200.2)%20=%200.7).
 -   **Cells reside on different edges in the milestone network.** First, the distance of the cell to all its nearby milestones is calculated, based on its percentage within the edge and the length of the edge. These distances in combination with the milestone network are used to calculate the shortest path distance between the two cells. For cells ![](https://latex.codecogs.com/gif.latex?a) and ![](https://latex.codecogs.com/gif.latex?c) in the example, ![](https://latex.codecogs.com/gif.latex?d(a,%20X)%20=%201%20%5Ctimes%200.9) and ![](https://latex.codecogs.com/gif.latex?d(c,%20X)%20=%203%20%5Ctimes%200.2), and therefore ![](https://latex.codecogs.com/gif.latex?d(a,%20c)%20=%201%20%5Ctimes%200.9%20+%203%20%5Ctimes%200.2).
@@ -135,7 +135,7 @@ Calculating the pairwise distances between cells scales quadratically with the n
 To select the number of cell waypoints, we need to find a trade-off between the accuracy versus the time to calculate cor<sub>dist</sub>. To select an optimal number of cell waypoints, we used the synthetic dataset with the most complex topology, and determined the cor<sub>dist</sub> at different levels of both cell shuffling and number of cell waypoints ([**Figure 5b**](#fig_waypoints_overview)). We found that using cell waypoints does not induce a systematic bias in the cor<sub>dist</sub>, and that its variability was relatively minimal when compared to the variability between different levels of cell shuffling when using 100 or more cell waypoints.
 
 <p>
-<a name = 'fig_waypoints_overview'></a> <img src = "02-individual_metrics/waypoints_overview.png" />
+<a name = 'fig_waypoints_overview'></a> <img src = "02-individual_metrics/waypoints_overview.png" width = "840" height = "560" />
 </p>
 <p>
 <strong>Figure 5: Determination of cell waypoints</strong> a) Illustration of the stratified cell sampling using an example dataset (top). Each milestone, edge between two milestones and region of delayed commitment is seen as a collection of cells (middle), and the number of waypoints (100 in this case) are divided over each of these collection of cells (bottom). b) Accuracy versus time to calculate cor<sub>dist</sub>
@@ -148,10 +148,10 @@ NMSE<sub>rf</sub> and NMSE<sub>lm</sub>: Using the positions of the cells within
 
 An alternative approach to detect whether the positions of cells are similar between two trajectories, is to use the positions of one trajectory to predict the positions within the other trajectory. If the prediction error for a particular cell is low, the higher the similarity between the cellular positions.
 
-Specifically, we implemented two metrics which predict the milestone percentages from the gold standards by using the predicted milestone percentages as features ([**Figure 6**](#fig_metrics_prediction)). We did this with two regression methods, linear regression (![](https://latex.codecogs.com/gif.latex?%5Ctextit%7Blm%7D), using the R `lm` function) and Random Forest (![](https://latex.codecogs.com/gif.latex?%5Ctextit%7Brf%7D), implemented in the *ranger* package \[@wright\_rangerfastimplementation\_2017\]). In both cases, the accuracy of the prediction was measured using the Mean Squared error (![](https://latex.codecogs.com/gif.latex?%5Cmathit%7BMSE%7D)), in the case of Random forest we used the out-of-bag mean-squared error. Next, we calculated ![](https://latex.codecogs.com/gif.latex?%5Cmathit%7BMSE%7D_%7Bworst%7D) equal to the ![](https://latex.codecogs.com/gif.latex?%5Cmathit%7BMSE%7D) when predicting all milestone percentages as the average. We used this to calculate the normalised mean squared error as ![](https://latex.codecogs.com/gif.latex?%5Cmathit%7BNMSE%7D%20=%201%20-%20%5Cfrac%7B%5Cmathit%7BMSE%7D%7D%7B%5Cmathit%7BMSE%7D_%7Bworst%7D%7D). We created a regression model for every milestone in the gold standard, and averaged the ![](https://latex.codecogs.com/gif.latex?%5Cmathit%7BNMSE%7D) values to finally obtain the NMSE<sub>rf</sub> and NMSE<sub>lm</sub> scores.
+Specifically, we implemented two metrics which predict the milestone percentages from the gold standards by using the predicted milestone percentages as features ([**Figure 6**](#fig_metrics_prediction)). We did this with two regression methods, linear regression (![](https://latex.codecogs.com/gif.latex?%5Ctextit%7Blm%7D), using the R `lm` function) and Random Forest (![](https://latex.codecogs.com/gif.latex?%5Ctextit%7Brf%7D), implemented in the *ranger* package<sup>[7](#ref-wright_rangerfastimplementation_2017)</sup>). In both cases, the accuracy of the prediction was measured using the Mean Squared error (![](https://latex.codecogs.com/gif.latex?%5Cmathit%7BMSE%7D)), in the case of Random forest we used the out-of-bag mean-squared error. Next, we calculated ![](https://latex.codecogs.com/gif.latex?%5Cmathit%7BMSE%7D_%7Bworst%7D) equal to the ![](https://latex.codecogs.com/gif.latex?%5Cmathit%7BMSE%7D) when predicting all milestone percentages as the average. We used this to calculate the normalised mean squared error as ![](https://latex.codecogs.com/gif.latex?%5Cmathit%7BNMSE%7D%20=%201%20-%20%5Cfrac%7B%5Cmathit%7BMSE%7D%7D%7B%5Cmathit%7BMSE%7D_%7Bworst%7D%7D). We created a regression model for every milestone in the gold standard, and averaged the ![](https://latex.codecogs.com/gif.latex?%5Cmathit%7BNMSE%7D) values to finally obtain the NMSE<sub>rf</sub> and NMSE<sub>lm</sub> scores.
 
 <p>
-<a name = 'fig_metrics_prediction'></a> <img src = "../manual_figures/metrics_prediction.svg" />
+<a name = 'fig_metrics_prediction'></a> <img src = "../manual_figures/metrics_prediction.svg" width = "840" height = "420" />
 </p>
 <p>
 <strong>Figure 6: The calculation of NMSE<sub>lm</sub> distances on a small example trajectory.</strong>
@@ -169,10 +169,10 @@ cor<sub>features</sub>: The accuracy of dynamical differentially expressed featu
 
 Perhaps the main advantages of studying cellular dynamic processes using single-cell -omics data is that the dynamics of gene expression can be studied for the whole transcriptome. This can be used to construct other models such as dynamic regulatory networks and gene expression modules. Such analyses rely on a "good-enough" cellular ordering, so that it can be used to identify dynamical differentially expressed genes.
 
-To calculate the cor<sub>features</sub> we used Random forest regression to rank all the features according to their importance in predicting the positions of cells in the trajectory. Specifically, we calculated the geodesic distances for each cell to all milestones in the trajectory. Next, we trained a Random Forest regression model (implemented in the R *ranger* package \[@wright\_rangerfastimplementation\_2017\], <https://github.com/imbs-hl/ranger>) to predict these distances for each milestone, based on the expression of genes within each cell. We then extracted feature importances using the Mean Decrease in Impurity (`importance = 'impurity'` parameter of the `ranger` function), as illustrated in ([**Figure 7**](#fig_featureimp_overview)). The overall importance of a feature (gene) was then equal to the mean importance over all milestones.
+To calculate the cor<sub>features</sub> we used Random forest regression to rank all the features according to their importance in predicting the positions of cells in the trajectory. Specifically, we calculated the geodesic distances for each cell to all milestones in the trajectory. Next, we trained a Random Forest regression model (implemented in the R *ranger* package<sup>[7](#ref-wright_rangerfastimplementation_2017)</sup>, <https://github.com/imbs-hl/ranger>) to predict these distances for each milestone, based on the expression of genes within each cell. We then extracted feature importances using the Mean Decrease in Impurity (`importance = 'impurity'` parameter of the `ranger` function), as illustrated in ([**Figure 7**](#fig_featureimp_overview)). The overall importance of a feature (gene) was then equal to the mean importance over all milestones.
 
 <p>
-<a name = 'fig_featureimp_overview'></a> <img src = "02-individual_metrics/featureimp_overview.png" />
+<a name = 'fig_featureimp_overview'></a> <img src = "02-individual_metrics/featureimp_overview.png" width = "840" height = "420" />
 </p>
 <p>
 <strong>Figure 7: </strong>
@@ -180,10 +180,10 @@ To calculate the cor<sub>features</sub> we used Random forest regression to rank
 
 ------------------------------------------------------------------------
 
-Random forest regression has two main hyperparameters. The number of trees to be fitted (`num_trees` parameter) was fixed to `10000` to provide accurate and stable estimates of the feature importance ([**Figure 8**](#fig_featureimp_cor_distributions)). The number of features on which can be split (`mtry` parameter) was set to 1% of all available features (instead of the default square-root of the number of features), as to make sure that predictive but highly correlated feautres (omnipresent in transcriptomics data) are not suppressed in the ranking.
+Random forest regression has two main hyperparameters. The number of trees to be fitted (`num_trees` parameter) was fixed to `10000` to provide accurate and stable estimates of the feature importance ([**Figure 8**](#fig_featureimp_cor_distributions)). The number of features on which can be split (`mtry` parameter) was set to 1% of all available features (instead of the default square-root of the number of features), as to make sure that predictive but highly correlated features (omnipresent in transcriptomics data) are not suppressed in the ranking.
 
 <p>
-<a name = 'fig_featureimp_cor_distributions'></a> <img src = "02-individual_metrics/feautreimp_cor_distributions.png" />
+<a name = 'fig_featureimp_cor_distributions'></a> <img src = "02-individual_metrics/featureimp_cor_distributions.png" width = "840" height = "420" />
 </p>
 <p>
 <strong>Figure 8: </strong>
@@ -246,15 +246,57 @@ We then perturbed the trajectories in these datasets in certain ways, and tested
 
 **Table 1: Overview of whether a particular metric conforms to a particular rule**
 
+    ## Warning in in_dir(input_dir(), evaluate(code, envir = env, new_device
+    ## = FALSE, : You changed the working directory to /home/wouters/thesis/
+    ## projects/dynverse/dynbenchmark/results/02-metric_characterisation
+    ## (probably via setwd()). It will be restored to /home/wouters/thesis/
+    ## projects/dynverse/dynbenchmark/results/02-metric_characterisation/01-
+    ## metric_conformity. See the Note section in ?knitr::knit
+
+    ## Warning in in_dir(input_dir(), evaluate(code, envir = env, new_device
+    ## = FALSE, : You changed the working directory to /home/wouters/thesis/
+    ## projects/dynverse/dynbenchmark/results/02-metric_characterisation
+    ## (probably via setwd()). It will be restored to /home/wouters/thesis/
+    ## projects/dynverse/dynbenchmark/results/02-metric_characterisation/01-
+    ## metric_conformity. See the Note section in ?knitr::knit
+
 Same score on identity
 ----------------------
 
 The score should be approximately the same when comparing the trajectory to itself
 
-A metric conforms to this rule if: 1 ≤ *s**c**o**r**e* ≤ 0.99
+A metric conforms to this rule if: ![](https://latex.codecogs.com/gif.latex?1%20%5Cleqslant%20%5Cmathit%7Bscore%7D%20%5Cleqslant%200.99)
 
 Metrics which contain some stochasticity (random forest based metrics in particular), usually do not conform to this rule, even though their scores are still consistently high.
 
-<img src="README_files/figure-markdown_github/A-1.png" width="2in" />
+<p>
+<a name = 'fig_equal_identity_plot_datasets'></a> <img src = ".figures/equal_identity_plot_datasets.png" width = "280" height = "280" />
+</p>
+<p>
+<strong>Figure 9: Example dataset(s) for this rule</strong>
+</p>
 
-<img src="README_files/figure-markdown_github/B-1.png" width="3in" />
+------------------------------------------------------------------------
+
+<p>
+<a name = 'fig_equal_identity_plot_scores'></a> <img src = ".figures/equal_identity_plot_scores.png" width = "420" height = "280" />
+</p>
+<p>
+<strong>Figure 10: Example dataset(s) for this rule</strong>
+</p>
+
+------------------------------------------------------------------------
+
+1. Junttila, T. & Kaski, P. Engineering an Efficient Canonical Labeling Tool for Large and Sparse Graphs. in *2007 Proceedings of the Ninth Workshop on Algorithm Engineering and Experiments (ALENEX)* 135–149 (Society for Industrial and Applied Mathematics, 2007). doi:[10.1137/1.9781611972870.13](https://doi.org/10.1137/1.9781611972870.13)
+
+2. Bahiense, L., Manić, G., Piva, B. & de Souza, C. C. The maximum common edge subgraph problem: A polyhedral investigation. *Discrete Applied Mathematics* **160,** 2523–2541 (2012).
+
+3. Jurman, G., Visintainer, R., Filosi, M., Riccadonna, S. & Furlanello, C. The HIM glocal metric and kernel for network comparison and classification. in *2015 IEEE International Conference on Data Science and Advanced Analytics (DSAA)* 1–10 (2015). doi:[10.1109/DSAA.2015.7344816](https://doi.org/10.1109/DSAA.2015.7344816)
+
+4. Dougherty, E. R. Validation of gene regulatory networks: Scientific and inferential. *Briefings in Bioinformatics* **12,** 245–252 (2011).
+
+5. Ipsen, M. & Mikhailov, A. S. Evolutionary reconstruction of networks. *Physical Review. E, Statistical, Nonlinear, and Soft Matter Physics* **66,** 046109 (2002).
+
+6. Saelens, W., Cannoodt, R. & Saeys, Y. A comprehensive evaluation of module detection methods for gene expression data. *Nature Communications* **9,** 1090 (2018).
+
+7. Wright, M. N. & Ziegler, A. Ranger: A Fast Implementation of Random Forests for High Dimensional Data in C++ and R | Wright | Journal of Statistical Software. *Journal of Statistical Software* **77,** (2017).

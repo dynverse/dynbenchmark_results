@@ -21,7 +21,7 @@ knitr::include_graphics(rule$image_location)
 
 `r rule$description`
 
-A metric conforms to this rule if: $`r rule$conforms_if`$
+A metric conforms to this rule if: `r render_equations(paste0("$", rule$conforms_if, "$"))`
 
 ```{r}
 assessment$conformity %>% 
@@ -43,20 +43,29 @@ assessment$conformity %>%
 
 `r rule$observation`
 
-```{r}
+```{r, results = "asis"}
 width <- ifelse(is.null(assessment$plot_datasets$width), 10, assessment$plot_datasets$width)
 height <- ifelse(is.null(assessment$plot_datasets$height), 10, assessment$plot_datasets$height)
-```
-```{r A, fig.width=width, fig.height=height, out.width=paste0(width/2, "in")}
-assessment$plot_datasets
+add_fig(
+  assessment$plot_datasets,
+  paste0(rule$id, "_plot_datasets"),
+  "Example dataset(s) for this rule",
+  width = width,
+  height = height
+)
 ```
 
-```{r}
+
+```{r, results = "asis"}
 width <- ifelse(is.null(assessment$plot_scores$width), 10, assessment$plot_scores$width)
 height <- ifelse(is.null(assessment$plot_scores$height), 10, assessment$plot_scores$height)
-```
-```{r B, fig.width=width, fig.height=height, out.width=paste0(width/2, "in")}
-assessment$plot_scores
+add_fig(
+  assessment$plot_scores,
+  paste0(rule$id, "_plot_scores"),
+  "Example dataset(s) for this rule",
+  width = width,
+  height = height
+)
 ```
 
 
