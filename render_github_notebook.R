@@ -5,7 +5,7 @@ file <- "02-metric_characterisation/README.Rmd"
 tempfile <- fs::path_ext_set(file, "tmp.Rmd")
 file %>% 
   read_lines() %>% 
-  str_replace_all("\\$[^\\$]+\\$", function(x) paste0("![](https://latex.codecogs.com/gif.latex?", URLencode(str_sub(x, 2, -2)), ")")) %>%
+  dynbenchmark::render_equations(format = "markdown") %>%
   write_lines(tempfile)
 render(
   tempfile,
@@ -13,4 +13,6 @@ render(
   output_format = rmarkdown::github_document(toc = TRUE, toc_depth = 1)
 )
 file.remove(tempfile)
+browseURL(fs::path_ext_set(file, "html"))
+Sys.sleep(1)
 file.remove(fs::path_ext_set(file, "html"))
