@@ -88,7 +88,7 @@ We compared the three scores for several common topologies (`r ref("fig", "topol
 
 ```{r, results = "asis"}
 add_fig(
-  result_file("topology_scores_overview.rds", experiment_id = "02-metric_characterisation/02-individual_metrics"),
+  result_file("topology_scores_overview.rds", experiment_id = "02-metric_characterisation/01-individual_metrics"),
   "topology_scores_overview",
   glue::glue("{label_metric('isomorphic')}, {label_metric('edge_flip')} and {label_metric('him')} ."),
   "",
@@ -122,7 +122,7 @@ $\textrm{F1} = \frac{2}{\frac{1}{\textrm{Recovery}} + \frac{1}{\textrm{Relevance
 
 ```{r, results = "asis"}
 add_fig(
-  result_file("clustering_scores_overview.rds", experiment = "02-metric_characterisation/02-individual_metrics"),
+  result_file("clustering_scores_overview.rds", experiment = "02-metric_characterisation/01-individual_metrics"),
   "clustering_scores_overview",
   glue::glue("Mapping cells to their closest milestone or branch for the calculation of the {label_metric('F1_milestones')} and {label_metric('F1_branches')} ."),
   "",
@@ -159,7 +159,7 @@ To select the number of cell waypoints, we need to find a trade-off between the 
 
 ```{r, results = "asis"}
 add_fig(
-  result_file("waypoints_overview.rds", experiment = "02-metric_characterisation/02-individual_metrics"),
+  result_file("waypoints_overview.rds", experiment = "02-metric_characterisation/01-individual_metrics"),
   "waypoints_overview",
   glue::glue("Determination of cell waypoints"),
   glue::glue("a) Illustration of the stratified cell sampling using an example dataset (top). Each milestone, edge between two milestones and region of delayed commitment is seen as a collection of cells (middle), and the number of waypoints (100 in this case) are divided over each of these collection of cells (bottom). b) Accuracy versus time to calculate {label_metric('correlation')}"),
@@ -212,7 +212,7 @@ To calculate the `r label_metric("featureimp_cor")` we used Random forest regres
 
 ```{r, results = "asis"}
 add_fig(
-  result_file("featureimp_overview.rds", experiment = "02-metric_characterisation/02-individual_metrics"),
+  result_file("featureimp_overview.rds", experiment = "02-metric_characterisation/01-individual_metrics"),
   "featureimp_overview",
   glue::glue(""),
   glue::glue(""),
@@ -224,7 +224,7 @@ Random forest regression has two main hyperparameters. The number of trees to be
 
 ```{r, results = "asis"}
 add_fig(
-  result_file("featureimp_cor_distributions.rds", experiment = "02-metric_characterisation/02-individual_metrics"),
+  result_file("featureimp_cor_distributions.rds", experiment = "02-metric_characterisation/01-individual_metrics"),
   "featureimp_cor_distributions",
   glue::glue(""),
   glue::glue(""),
@@ -236,7 +236,7 @@ For most datasets, only a limited number of features will be differentially expr
 
 ```{r, results = "asis"}
 add_fig(
-  result_file("featureimp_wcor_effect.rds", experiment = "02-metric_characterisation/02-individual_metrics"),
+  result_file("featureimp_wcor_effect.rds", experiment = "02-metric_characterisation/01-individual_metrics"),
   "featureimp_wcor_effect",
   glue::glue(""),
   glue::glue(""),
@@ -266,7 +266,7 @@ Even though all metrics range between 0 and 1, their actual values have
 # Metric conformity
 
 ```{r}
-experiment("02-metric_characterisation/01-metric_conformity")
+experiment("02-metric_characterisation/02-metric_conformity")
 
 dataset_design <- read_rds(derived_file("dataset_design.rds"))
 ```
@@ -351,7 +351,7 @@ add_table(
 # 
 walkdf(assessments, function(assessment) {
   cat(
-    knitr::knit_child(result_file("assessment.Rmd", experiment = "02-metric_characterisation/01-metric_conformity"), quiet=TRUE, envir = environment())
+    knitr::knit_child(result_file("assessment.Rmd", experiment = "02-metric_characterisation/02-metric_conformity"), quiet=TRUE, envir = environment())
   )
 })
 ```
