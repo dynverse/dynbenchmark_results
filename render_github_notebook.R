@@ -1,7 +1,7 @@
 library(rmarkdown)
 library(tidyverse)
 
-file <- "02-metric_characterisation/README.Rmd"
+file <- "02-metrics/README.Rmd"
 tempfile <- fs::path_ext_set(file, "tmp.Rmd")
 file %>% 
   read_lines() %>% 
