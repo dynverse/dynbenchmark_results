@@ -19,7 +19,7 @@ knitr::include_graphics(rule$image_location)
 
 \end{center}
 
-`r rule$description`
+`r render_equations(rule$description)`
 
 A metric conforms to this rule if: `r render_equations(paste0("$", rule$conforms_if, "$"))`
 
