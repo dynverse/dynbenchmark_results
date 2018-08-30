@@ -1,4 +1,4 @@
 # comp1
-![Overview](comp1.svg)
+![Overview](comp1.png)
 
 

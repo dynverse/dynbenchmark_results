@@ -1,5 +1,5 @@
 # embeddr
-![Overview](embeddr.svg)
+![Overview](embeddr.png)
 
 ## ERROR STATUS METHOD_ERROR
 

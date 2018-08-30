@@ -1,5 +1,5 @@
 # phenopath
-![Overview](phenopath.svg)
+![Overview](phenopath.png)
 
 ## ERROR STATUS TIME_LIMIT
 

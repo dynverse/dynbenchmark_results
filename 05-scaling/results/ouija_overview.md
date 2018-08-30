@@ -1,5 +1,5 @@
 # ouija
-![Overview](ouija.svg)
+![Overview](ouija.png)
 
 ## ERROR STATUS METHOD_ERROR
 

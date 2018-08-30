@@ -1,5 +1,5 @@
 # paga
-![Overview](paga.svg)
+![Overview](paga.png)
 
 ## ERROR STATUS METHOD_ERROR
 

@@ -1,5 +1,5 @@
 # periodpc
-![Overview](periodpc.svg)
+![Overview](periodpc.png)
 
 ## ERROR STATUS TIME_LIMIT
 

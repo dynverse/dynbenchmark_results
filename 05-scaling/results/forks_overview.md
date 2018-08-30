@@ -1,5 +1,5 @@
 # forks
-![Overview](forks.svg)
+![Overview](forks.png)
 
 ## ERROR STATUS METHOD_ERROR
 

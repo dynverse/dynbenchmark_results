@@ -1,5 +1,5 @@
 # projected_tscan
-![Overview](projected_tscan.svg)
+![Overview](projected_tscan.png)
 
 ## ERROR STATUS EXECUTION_ERROR
 

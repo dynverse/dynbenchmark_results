@@ -1,5 +1,5 @@
 # fateid
-![Overview](fateid.svg)
+![Overview](fateid.png)
 
 ## ERROR STATUS METHOD_ERROR
 

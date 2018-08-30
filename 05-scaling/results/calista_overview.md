@@ -1,5 +1,5 @@
 # calista
-![Overview](calista.svg)
+![Overview](calista.png)
 
 ## ERROR STATUS EXECUTION_ERROR
 

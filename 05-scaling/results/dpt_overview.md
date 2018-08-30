@@ -1,5 +1,5 @@
 # dpt
-![Overview](dpt.svg)
+![Overview](dpt.png)
 
 ## ERROR STATUS METHOD_ERROR
 

@@ -1,5 +1,5 @@
 # scorpius
-![Overview](scorpius.svg)
+![Overview](scorpius.png)
 
 ## ERROR STATUS METHOD_ERROR
 

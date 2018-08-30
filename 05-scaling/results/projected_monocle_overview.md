@@ -1,5 +1,5 @@
 # projected_monocle
-![Overview](projected_monocle.svg)
+![Overview](projected_monocle.png)
 
 ## ERROR STATUS METHOD_ERROR
 

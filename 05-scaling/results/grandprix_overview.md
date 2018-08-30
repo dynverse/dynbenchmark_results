@@ -1,5 +1,5 @@
 # grandprix
-![Overview](grandprix.svg)
+![Overview](grandprix.png)
 
 ## ERROR STATUS METHOD_ERROR
 

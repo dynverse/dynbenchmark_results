@@ -1,5 +1,5 @@
 # celltree_vem
-![Overview](celltree_vem.svg)
+![Overview](celltree_vem.png)
 
 ## ERROR STATUS METHOD_ERROR
 

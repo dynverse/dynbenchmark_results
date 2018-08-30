@@ -1,5 +1,5 @@
 # elpigraph
-![Overview](elpigraph.svg)
+![Overview](elpigraph.png)
 
 ## ERROR STATUS EXECUTION_ERROR
 

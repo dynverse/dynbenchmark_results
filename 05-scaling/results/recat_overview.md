@@ -1,5 +1,5 @@
 # recat
-![Overview](recat.svg)
+![Overview](recat.png)
 
 ## ERROR STATUS METHOD_ERROR
 

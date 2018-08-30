@@ -1,5 +1,5 @@
 # elpilinear
-![Overview](elpilinear.svg)
+![Overview](elpilinear.png)
 
 ## ERROR STATUS EXECUTION_ERROR
 

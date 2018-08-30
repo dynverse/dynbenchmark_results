@@ -1,5 +1,5 @@
 # monocle_ica
-![Overview](monocle_ica.svg)
+![Overview](monocle_ica.png)
 
 ## ERROR STATUS METHOD_ERROR
 

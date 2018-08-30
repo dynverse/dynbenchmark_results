@@ -1,5 +1,5 @@
 # celltrails
-![Overview](celltrails.svg)
+![Overview](celltrails.png)
 
 ## ERROR STATUS METHOD_ERROR
 
