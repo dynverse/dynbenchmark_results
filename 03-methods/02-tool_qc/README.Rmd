@@ -1,0 +1,32 @@
+---
+output: dynbenchmark::github_markdown_nested
+---
+
+```{r setup, include=FALSE}
+library(tidyverse)
+library(dynbenchmark)
+```
+
+# Tool quality control
+
+```{r, results = "asis"}
+add_fig(
+  result_file("tool_ordering.rds", experiment_id = "03-methods/02-tool_qc"),
+  "tool_ordering",
+  glue::glue(),
+  "",
+  width = 12,
+  height = 4
+)
+```
+
+```{r, results = "asis"}
+add_fig(
+  result_file("qc_overview.rds", experiment_id = "03-methods/02-tool_qc"),
+  "qc_overview",
+  glue::glue(),
+  "",
+  width = 16,
+  height = 16
+)
+```
