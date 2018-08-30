@@ -210,7 +210,7 @@ Removing divergence regions should lower the score
 
 A metric conforms to this rule if: ![](https://latex.codecogs.com/gif.latex?%5Cmathit%7Bscore%7D_%7B%5Ctextit%7Bidentity%7D%7D%20%3E%20%5Cmathit%7Bscore%7D_%7B%5Ctextit%7Bprediction%7D%7D)
 
-Both !\[\](*h**t**t**p**s* : //*l**a**t**e**x*.*c**o**d**e**c**o**g**s*.*c**o**m*/*g**i**f*.*l**a**t**e**x*? fail here because neither the topology nor the branche assignment changes.
+Both ![](https://latex.codecogs.com/gif.latex?%5Cmathit%7BF1%7D_%7B%5Ctextit%7Bbranches%7D%7D) and ![](https://latex.codecogs.com/gif.latex?Edgeflip) fail here because neither the topology nor the branche assignment changes.
 
 <p>
 <a name = 'fig_remove_divergence_regions_plot_datasets'></a> <img src = ".figures/remove_divergence_regions_plot_datasets.png" width = "560" height = "280" />
@@ -236,7 +236,7 @@ Moving the cells closer to their start milestone should lower the score. Cells w
 
 A metric conforms to this rule if: ![](https://latex.codecogs.com/gif.latex?%5Cmathit%7Bmonotonic%7D%20%5Cleft(%20%5Ctextit%7BWarp%20magnitude%7D,%20%5Coverline%7B%5Cmathit%7Bscore%7D%7D_%7B%5Ctextit%7BWarp%20magnitude%7D%7D%20%5Cright))
 
-Both !\[\](*h**t**t**p**s* : //*l**a**t**e**x*.*c**o**d**e**c**o**g**s*.*c**o**m*/*g**i**f*.*l**a**t**e**x*? fail here because neither the topology nor the branche assignment changes.
+Both ![](https://latex.codecogs.com/gif.latex?%5Cmathit%7BF1%7D_%7B%5Ctextit%7Bbranches%7D%7D) and ![](https://latex.codecogs.com/gif.latex?Edgeflip) fail here because neither the topology nor the branche assignment changes.
 
 <p>
 <a name = 'fig_time_warping_start_plot_datasets'></a> <img src = ".figures/time_warping_start_plot_datasets.png" width = "840" height = "280" />
@@ -262,7 +262,7 @@ Moving the cells closer to their nearest milestone should lower the score
 
 A metric conforms to this rule if: ![](https://latex.codecogs.com/gif.latex?%5Cmathit%7Bmonotonic%7D%20%5Cleft(%20%5Ctextit%7BWarp%20magnitude%7D,%20%5Coverline%7B%5Cmathit%7Bscore%7D%7D_%7B%5Ctextit%7BWarp%20magnitude%7D%7D%20%5Cright))
 
-Both !\[\](*h**t**t**p**s* : //*l**a**t**e**x*.*c**o**d**e**c**o**g**s*.*c**o**m*/*g**i**f*.*l**a**t**e**x*? fail here because neither the topology nor the branche assignment changes.
+Both ![](https://latex.codecogs.com/gif.latex?%5Cmathit%7BF1%7D_%7B%5Ctextit%7Bbranches%7D%7D) and ![](https://latex.codecogs.com/gif.latex?Edgeflip) fail here because neither the topology nor the branche assignment changes.
 
 <p>
 <a name = 'fig_time_warping_parabole_plot_datasets'></a> <img src = ".figures/time_warping_parabole_plot_datasets.png" width = "840" height = "280" />
@@ -366,7 +366,7 @@ Adding new edges between existing milestones should lower the score
 
 A metric conforms to this rule if: ![](https://latex.codecogs.com/gif.latex?%5Cmathit%7Bmonotonic%7D%20%5Cleft(%20%5Ctextit%7BNumber%20of%20edges%7D,%20%5Coverline%7B%5Cmathit%7Bscore%7D%7D_%7B%5Ctextit%7BNumber%20of%20edges%7D%7D%20%5Cright))
 
-Even though the positions of the cells change, the !\[\](*h**t**t**p**s* : //*l**a**t**e**x*.*c**o**d**e**c**o**g**s*.*c**o**m*/*g**i**f*.*l**a**t**e**x*? still conforms to this rule because new edges can create shortcuts which will affect the geodesic distances between cells. Apart from this, metrics which investigate the clustering quality and topology also conform to this rule.
+Even though the positions of the cells change, the ![](https://latex.codecogs.com/gif.latex?%5Cmathit%7Bcor%7D_%7B%5Ctextrm%7Bdist%7D%7D) still conforms to this rule because new edges can create shortcuts which will affect the geodesic distances between cells. Apart from this, metrics which investigate the clustering quality and topology also conform to this rule.
 
 <p>
 <a name = 'fig_add_connecting_edges_plot_datasets'></a> <img src = ".figures/add_connecting_edges_plot_datasets.png" width = "840" height = "280" />
@@ -392,7 +392,7 @@ Changing both the topology and the cell positions should lower the score more th
 
 A metric conforms to this rule if: ![](https://latex.codecogs.com/gif.latex?%5Cmathit%7Bscore%7D_%7Bidentity%7D%20%3E%20%5Cmathit%7Bscore%7D_a%20%5Cland%20%5Cmathit%7Bscore%7D_%7Bidentity%7D%20%3E%20%5Cmathit%7Bscore%7D_b%20%5Cland%20%5Cmathit%7Bscore%7D_%7Ba%7D%20%3E%20%5Cmathit%7Bscore%7D_%7Ba+b%7D%20%5Cland%20%5Cmathit%7Bscore%7D_%7Bb%7D%20%3E%20%5Cmathit%7Bscore%7D_%7Ba+b%7D)
 
-Most metrics have problems with this rule as they focus on either the cellular positions or the topology individually. Only the ![](https://latex.codecogs.com/gif.latex?%7Blabel_metric('featureimp_cor',%20'latex')%7D) and the ![](https://latex.codecogs.com/gif.latex?%7Blabel_metric('harm_mean',%20'latex')%7D) conform to this rule.
+Most metrics have problems with this rule as they focus on either the cellular positions or the topology individually. Only the {label\_metric('featureimp\_cor', 'latex')} and the {label\_metric('harm\_mean', 'latex')} conform to this rule.
 
 <p>
 <a name = 'fig_combined_position_topology_plot_datasets'></a> <img src = ".figures/combined_position_topology_plot_datasets.png" width = "840" height = "210" />
@@ -496,7 +496,7 @@ Breaking a cyclic trajectory should lower the score
 
 A metric conforms to this rule if: ![](https://latex.codecogs.com/gif.latex?%5Cmathit%7Bscore%7D_%7B%5Ctextit%7Bidentity%7D%7D%20%3E%20%5Cmathit%7Bscore%7D_%7B%5Ctextit%7Bprediction%7D%7D)
 
-Because the actual positions of the cells nor the branch assignment change, both the MSE metrics and the !\[\](*h**t**t**p**s* : //*l**a**t**e**x*.*c**o**d**e**c**o**g**s*.*c**o**m*/*g**i**f*.*l**a**t**e**x*? do not conform to this rule.
+Because the actual positions of the cells nor the branch assignment change, both the MSE metrics and the ![](https://latex.codecogs.com/gif.latex?%5Cmathit%7BF1%7D_%7B%5Ctextit%7Bbranches%7D%7D) do not conform to this rule.
 
 <p>
 <a name = 'fig_break_cycle_plot_datasets'></a> <img src = ".figures/break_cycle_plot_datasets.png" width = "560" height = "280" />
@@ -522,7 +522,7 @@ Joining the two ends of a linear trajectory should lower the score
 
 A metric conforms to this rule if: ![](https://latex.codecogs.com/gif.latex?%5Cmathit%7Bscore%7D_%7B%5Ctextit%7Bidentity%7D%7D%20%3E%20%5Cmathit%7Bscore%7D_%7B%5Ctextit%7Bprediction%7D%7D)
 
-Because the positions of the cells can be perfectly predicted, the MSE metrics do not conform to this rule. Furthermore, because the branch assignment change stays the same, the !\[\](*h**t**t**p**s* : //*l**a**t**e**x*.*c**o**d**e**c**o**g**s*.*c**o**m*/*g**i**f*.*l**a**t**e**x*? also does not conform to this rule.
+Because the positions of the cells can be perfectly predicted, the MSE metrics do not conform to this rule. Furthermore, because the branch assignment change stays the same, the ![](https://latex.codecogs.com/gif.latex?%5Cmathit%7BF1%7D_%7B%5Ctextit%7Bbranches%7D%7D) also does not conform to this rule.
 
 <p>
 <a name = 'fig_join_linear_plot_datasets'></a> <img src = ".figures/join_linear_plot_datasets.png" width = "560" height = "280" />
@@ -574,7 +574,7 @@ Changing the topology of the trajectory should lower the score
 
 A metric conforms to this rule if: ![](https://latex.codecogs.com/gif.latex?%5Cmathit%7Bscore%7D_%7B%5Ctextit%7Bsame%20topology%7D%7D%20%3E%20%5Cmathit%7Bscore%7D_%7B%5Ctextit%7Bdifferent%20topology%7D%7D)
 
-Because the positions of the cells can be perfectly predicted, the MSE metrics do not conform to this rule. Furthermore, because the branch assignment change stays the same, the !\[\](*h**t**t**p**s* : //*l**a**t**e**x*.*c**o**d**e**c**o**g**s*.*c**o**m*/*g**i**f*.*l**a**t**e**x*? also does not conform to this rule.
+Because the positions of the cells can be perfectly predicted, the MSE metrics do not conform to this rule. Furthermore, because the branch assignment change stays the same, the ![](https://latex.codecogs.com/gif.latex?%5Cmathit%7BF1%7D_%7B%5Ctextit%7Bbranches%7D%7D) also does not conform to this rule.
 
 <p>
 <a name = 'fig_change_topology_plot_datasets'></a> <img src = ".figures/change_topology_plot_datasets.png" width = "840" height = "420" />
