@@ -1,5 +1,5 @@
 # cellrouter
-![Overview](cellrouter.svg)
+![Overview](cellrouter.png)
 
 ## ERROR STATUS METHOD_ERROR
 

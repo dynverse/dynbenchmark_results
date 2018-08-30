@@ -1,5 +1,5 @@
 # mfa
-![Overview](mfa.svg)
+![Overview](mfa.png)
 
 ## ERROR STATUS METHOD_ERROR
 

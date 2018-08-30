@@ -1,5 +1,5 @@
 # projected_dpt
-![Overview](projected_dpt.svg)
+![Overview](projected_dpt.png)
 
 ## ERROR STATUS METHOD_ERROR
 

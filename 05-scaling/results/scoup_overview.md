@@ -1,5 +1,5 @@
 # scoup
-![Overview](scoup.svg)
+![Overview](scoup.png)
 
 ## ERROR STATUS METHOD_ERROR
 

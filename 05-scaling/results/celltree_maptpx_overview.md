@@ -1,5 +1,5 @@
 # celltree_maptpx
-![Overview](celltree_maptpx.svg)
+![Overview](celltree_maptpx.png)
 
 ## ERROR STATUS METHOD_ERROR
 

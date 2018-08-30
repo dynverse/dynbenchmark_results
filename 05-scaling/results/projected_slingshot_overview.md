@@ -1,5 +1,5 @@
 # projected_slingshot
-![Overview](projected_slingshot.svg)
+![Overview](projected_slingshot.png)
 
 ## ERROR STATUS METHOD_ERROR
 

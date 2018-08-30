@@ -1,5 +1,5 @@
 # celltree_gibbs
-![Overview](celltree_gibbs.svg)
+![Overview](celltree_gibbs.png)
 
 ## ERROR STATUS METHOD_ERROR
 

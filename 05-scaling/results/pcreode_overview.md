@@ -1,5 +1,5 @@
 # pcreode
-![Overview](pcreode.svg)
+![Overview](pcreode.png)
 
 ## ERROR STATUS EXECUTION_ERROR
 

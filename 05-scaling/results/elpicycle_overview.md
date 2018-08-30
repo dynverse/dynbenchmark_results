@@ -1,5 +1,5 @@
 # elpicycle
-![Overview](elpicycle.svg)
+![Overview](elpicycle.png)
 
 ## ERROR STATUS EXECUTION_ERROR
 

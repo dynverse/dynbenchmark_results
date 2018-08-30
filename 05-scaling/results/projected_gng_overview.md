@@ -1,5 +1,5 @@
 # projected_gng
-![Overview](projected_gng.svg)
+![Overview](projected_gng.png)
 
 ## ERROR STATUS EXECUTION_ERROR
 

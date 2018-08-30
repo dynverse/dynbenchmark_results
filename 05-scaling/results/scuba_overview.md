@@ -1,5 +1,5 @@
 # scuba
-![Overview](scuba.svg)
+![Overview](scuba.png)
 
 ## ERROR STATUS TIME_LIMIT
 

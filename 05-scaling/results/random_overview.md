@@ -1,5 +1,5 @@
 # random
-![Overview](random.svg)
+![Overview](random.png)
 
 ## ERROR STATUS EXECUTION_ERROR
 

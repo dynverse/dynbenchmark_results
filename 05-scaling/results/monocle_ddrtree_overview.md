@@ -1,5 +1,5 @@
 # monocle_ddrtree
-![Overview](monocle_ddrtree.svg)
+![Overview](monocle_ddrtree.png)
 
 ## ERROR STATUS METHOD_ERROR
 

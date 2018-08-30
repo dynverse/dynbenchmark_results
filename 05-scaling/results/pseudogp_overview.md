@@ -1,5 +1,5 @@
 # pseudogp
-![Overview](pseudogp.svg)
+![Overview](pseudogp.png)
 
 ## ERROR STATUS TIME_LIMIT
 

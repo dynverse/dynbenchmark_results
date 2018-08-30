@@ -1,5 +1,5 @@
 # mpath
-![Overview](mpath.svg)
+![Overview](mpath.png)
 
 ## ERROR STATUS EXECUTION_ERROR
 

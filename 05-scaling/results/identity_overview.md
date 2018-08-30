@@ -1,5 +1,5 @@
 # identity
-![Overview](identity.svg)
+![Overview](identity.png)
 
 ## ERROR STATUS MEMORY_LIMIT
 
