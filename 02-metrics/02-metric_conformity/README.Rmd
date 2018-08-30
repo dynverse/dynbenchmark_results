@@ -1,0 +1,98 @@
+---
+output: dynbenchmark::github_markdown_nested
+---
+
+```{r setup, include=FALSE}
+library(tidyverse)
+library(dynbenchmark)
+```
+
+# Metric conformity
+
+```{r}
+experiment("02-metrics/02-metric_conformity")
+
+dataset_design <- read_rds(derived_file("dataset_design.rds"))
+```
+
+Although most metrics described in the previous section make sense intuitively, this does not necessarily mean that these metrics are robust and will generate reasonable results when used for benchmarking. This is because different methods and datasets will all lead to a varied set of trajectory models:
+
+- Real datasets have all cells grouped onto milestones
+- Some methods place all cells in a region of delayed commitment, others never generate a region of delayed commitment
+- Some methods always return a linear trajectory, even if a bifurcation is present in the data
+- Some methods filter cells
+
+A good metric, especially a good overall metric, should work in all these circumstances. To test this, we designed a set of rules to which a good metric should conform, and assessed empirically whether a metric conforms to these rules.
+
+We generated a panel of toy datasets (using our [_dyntoy_](https://github.com/dynverse/dyntoy) package, [https://github.com/dynverse/dyntoy](https://github.com/dynverse/dyntoy)) with all possible combinations of:
+
+- \# cells: `r sort(unique(dataset_design$num_cells)) %>% label_vector()`
+- \# features: 200
+- topologies: linear, bifurcation, multifurcating, tree, cycle, connected graph and disconnected graph
+- Whether cells are placed on the milestones (as in real data) or on the edges/regions of delayed commitment between the milestones (as in synthetic data)
+
+We then perturbed the trajectories in these datasets in certain ways, and tested whether the scores follow an expected pattern. An overview of the conformity of every metric is first given in `r ref("table", "conformity_overview")`. The individual rules and metric behaviour are discussed more into detail after that.
+
+```{r}
+assessments <- read_rds(derived_file("assessments.rds"))
+rules <- read_rds(derived_file("rules.rds"))
+```
+
+```{r, results="asis"}
+table <- map(c("html", "latex", "markdown"), function(format) {
+  table <- assessments %>%
+    left_join(rules %>% select(id, name), by = c("rule_id" = "id")) %>%
+    unnest(conformity) %>% 
+    mutate(
+      metric_id = label_metrics(metric_id) %>% as.character() %>% forcats::fct_inorder()
+    )
+  
+  if (format != "markdown") {
+    table <- table %>% 
+      mutate(
+        conforms = kableExtra::cell_spec(
+          ifelse(conforms, "\U2714", "\U2716"),
+          background = ifelse(conforms, "#2ECC40", "#FF4136"),
+          format = format
+        ),
+        rule_id = forcats::fct_inorder(rule_id)
+      ) 
+  } else {
+    table <- table %>% 
+      mutate(
+        conforms = ifelse(conforms, "\U2714", "\U2716")
+      )
+  }
+
+  
+  table <- table %>%
+    spread(metric_id, conforms) %>%
+    select(-rule_id)
+  
+  if (format != "markdown") {
+    knitr::kable(table, format = format, escape = FALSE, booktabs = TRUE) %>% 
+      kableExtra::kable_styling(full_width = FALSE) %>% 
+      kableExtra::column_spec(1, width="15em") %>% 
+      kableExtra::column_spec(2:ncol(table), width = "3em") %>% 
+      kableExtra::row_spec(0, angle = 30) %>% 
+      gsub("\\\\addlinespace", "", .)
+  } else {
+    knitr::kable(table, format = format)
+  }
+}) %>% set_names(c("html", "latex", "markdown"))
+
+add_table(
+  table,
+  "conformity_overview",
+  "Overview of whether a particular metric conforms to a particular rule"
+)
+```
+
+
+```{r, results = "asis"}
+walkdf(assessments, function(assessment) {
+  cat(
+    knitr::knit_child(text = readr::read_lines(result_file("assessment.Rmd", experiment = "02-metrics/02-metric_conformity")), quiet=TRUE, envir = environment())
+  )
+})
+```

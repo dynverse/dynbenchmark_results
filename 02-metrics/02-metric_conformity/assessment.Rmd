@@ -9,13 +9,12 @@ rule_ix <- which(rules$id == assessment$rule_id)
 rule <- dynutils::extract_row_to_list(rules, rule_ix)
 ```
 
-## `r rule$name`
+### `r rule$name`
 
 \begin{center}
 ```{r, out.width="2in", out.height="10in", dpi = 300}
 knitr::include_graphics(rule$image_location)
 ```
-
 
 \end{center}
 
