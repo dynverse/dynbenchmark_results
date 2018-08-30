@@ -172,14 +172,16 @@ Undoubtedly, a single optimal overall metric does not exist for trajectories, as
 -   A user may already know the topology, and may be primarily interested in finding good features related to a particular branching point
 -   ...
 
-As the main overall metric for the evaluation, we therefore chose a metric which weighs every aspect of the trajectory equally:
+Each of these scenarios would require a combinations of *specific* metrics with different weights. To provide an "overall" ranking of the metrics, which is impartial for the scenarios described above, we therefore chose a metric which weighs every aspect of the trajectory equally:
 
 -   Its **ordering**, using the cor<sub>dist</sub>
 -   Its **branch assignment**, using the F1<sub>branches</sub>
--   Its **topology**, using the edgeflip
+-   Its **topology**, using the HIM
 -   The accuracy of **differentially expressed features**, using the wcor<sub>features</sub>
 
-Even though all metrics range between 0 and 1, their actual values have
+Next, we considered three different ways of averaging different scores: the mean<sub>arithmetic</sub>, mean<sub>geometric</sub> and mean<sub>harmonic</sub>. Each of these 'pythagorean means' have different use cases. The mean<sub>harmonic</sub> is most appropriate when the scores would all have a common denominator (as is the case for the ![](https://latex.codecogs.com/gif.latex?%5Ctextrm%7BRecovery%7D) and ![](https://latex.codecogs.com/gif.latex?%5Ctextrm%7BRelevance%7D) described earlier). The mean<sub>arithmetic</sub> would be most appropriate when all the metrics have the same range. For our use case, the mean<sub>geometric</sub> is the most appropriate, because it gives a meaningful average when the metrics are present in different ranges. Even though the maximal and minimal values of our metrics all lie within ![](https://latex.codecogs.com/gif.latex?%5Clbrack%200,%201%20%5Crbrack), their actual values within our benchmark were very different. Moreover, the geometric mean has as an added benefit that it is relatively low if one of the values is low. This means that if a method is not good at inferring the correct topology, it get a low overall score, even if it is very good at all other scores.
+
+The final overall score for a method on a particular dataset was thus defined as: ![](https://latex.codecogs.com/gif.latex?%5Cmathit%7Bmean%7D_%7B%5Ctextit%7Bgeometric%7D%7D%20=%20%5Csqrt%5B4%5D%7B%5Cmathit%7Bcor%7D_%7B%5Ctextrm%7Bdist%7D%7D%20%5Ctimes%20%5Ctextrm%7BHIM%7D%20%5Ctimes%20%5Cmathit%7Bwcor%7D_%7B%5Ctextrm%7Bfeatures%7D%7D%20%5Ctimes%20%5Cmathit%7BF1%7D_%7B%5Ctextit%7Bbranches%7D%7D%7D)
 
 # References
 

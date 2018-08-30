@@ -12,7 +12,7 @@ A good metric, especially a good overall metric, should work in all these circum
 
 We generated a panel of toy datasets (using our [*dyntoy*](https://github.com/dynverse/dyntoy) package, <https://github.com/dynverse/dyntoy>) with all possible combinations of:
 
--   \# cells: 10, 50, 100, 200 and 500
+-   \# cells: 10, 20, 50, 100, 200 and 500
 -   \# features: 200
 -   topologies: linear, bifurcation, multifurcating, tree, cycle, connected graph and disconnected graph
 -   Whether cells are placed on the milestones (as in real data) or on the edges/regions of delayed commitment between the milestones (as in synthetic data)
@@ -21,30 +21,348 @@ We then perturbed the trajectories in these datasets in certain ways, and tested
 
 <a name = 'table_conformity_overview'></a>
 
-| name                                            | cor<sub>dist</sub> | NMSE<sub>rf</sub> | NMSE<sub>lm</sub> | edgeflip | cor<sub>features</sub> | F1<sub>branches</sub> | F1<sub>milestones</sub> | hmean |
-|:------------------------------------------------|:-------------------|:------------------|:------------------|:---------|:-----------------------|:----------------------|:------------------------|:------|
-| New connecting edges                            | ✔                  | ✖                 | ✖                 | ✔        | ✖                      | ✔                     | ✔                       | ✔     |
-| New leaf edges                                  | ✖                  | ✖                 | ✖                 | ✔        | ✖                      | ✔                     | ✔                       | ✔     |
-| Cycle breaking                                  | ✔                  | ✖                 | ✖                 | ✔        | ✔                      | ✖                     | ✔                       | ✔     |
-| Cells on milestones vs edges                    | ✔                  | ✔                 | ✔                 | ✔        | ✔                      | ✔                     | ✔                       | ✔     |
-| Change of topology                              | ✔                  | ✖                 | ✖                 | ✔        | ✔                      | ✖                     | ✔                       | ✔     |
-| Changing positions locally and/or globally      | ✔                  | ✔                 | ✔                 | ✖        | ✔                      | ✖                     | ✖                       | ✔     |
-| Bifurcation merging and changing cell positions | ✔                  | ✔                 | ✔                 | ✖        | ✔                      | ✔                     | ✔                       | ✔     |
-| Changing topology and cell position             | ✖                  | ✖                 | ✖                 | ✖        | ✔                      | ✖                     | ✖                       | ✔     |
-| Bifurcation concatentation                      | ✔                  | ✖                 | ✔                 | ✔        | ✔                      | ✔                     | ✔                       | ✔     |
-| Same score on identity                          | ✔                  | ✖                 | ✔                 | ✔        | ✖                      | ✔                     | ✔                       | ✔     |
-| Cell filtering                                  | ✔                  | ✔                 | ✔                 | ✖        | ✔                      | ✔                     | ✔                       | ✔     |
-| Linear joining                                  | ✔                  | ✖                 | ✖                 | ✔        | ✖                      | ✖                     | ✔                       | ✔     |
-| Bifurcation merging                             | ✔                  | ✖                 | ✔                 | ✔        | ✔                      | ✔                     | ✔                       | ✔     |
-| Cells into small subedges                       | ✖                  | ✖                 | ✖                 | ✔        | ✔                      | ✔                     | ✔                       | ✔     |
-| Removing divergence regions                     | ✔                  | ✔                 | ✔                 | ✖        | ✔                      | ✖                     | ✔                       | ✔     |
-| Local and global cell shuffling                 | ✔                  | ✖                 | ✖                 | ✖        | ✔                      | ✔                     | ✔                       | ✔     |
-| Local cell shuffling                            | ✔                  | ✔                 | ✔                 | ✖        | ✔                      | ✖                     | ✖                       | ✔     |
-| Edge shuffling                                  | ✔                  | ✔                 | ✔                 | ✖        | ✔                      | ✔                     | ✔                       | ✔     |
-| Length shuffling                                | ✔                  | ✖                 | ✖                 | ✖        | ✖                      | ✖                     | ✖                       | ✔     |
-| Linear splitting                                | ✔                  | ✔                 | ✖                 | ✔        | ✔                      | ✔                     | ✔                       | ✔     |
-| Move cells to closest milestone                 | ✔                  | ✖                 | ✔                 | ✖        | ✔                      | ✖                     | ✔                       | ✔     |
-| Move cells to start milestone                   | ✔                  | ✔                 | ✔                 | ✖        | ✔                      | ✖                     | ✔                       | ✔     |
+<table style="width:100%;">
+<colgroup>
+<col width="19%" />
+<col width="7%" />
+<col width="7%" />
+<col width="7%" />
+<col width="3%" />
+<col width="1%" />
+<col width="4%" />
+<col width="9%" />
+<col width="9%" />
+<col width="8%" />
+<col width="9%" />
+<col width="10%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">name</th>
+<th align="left">cor<sub>dist</sub></th>
+<th align="left">NMSE<sub>rf</sub></th>
+<th align="left">NMSE<sub>lm</sub></th>
+<th align="left">edgeflip</th>
+<th align="left">HIM</th>
+<th align="left">Isomorphic</th>
+<th align="left">cor<sub>features</sub></th>
+<th align="left">wcor<sub>features</sub></th>
+<th align="left">F1<sub>branches</sub></th>
+<th align="left">F1<sub>milestones</sub></th>
+<th align="left">mean<sub>geometric</sub></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">New connecting edges</td>
+<td align="left">✔</td>
+<td align="left">✖</td>
+<td align="left">✖</td>
+<td align="left">✔</td>
+<td align="left">✔</td>
+<td align="left">✔</td>
+<td align="left">✔</td>
+<td align="left">✔</td>
+<td align="left">✔</td>
+<td align="left">✔</td>
+<td align="left">✔</td>
+</tr>
+<tr class="even">
+<td align="left">New leaf edges</td>
+<td align="left">✖</td>
+<td align="left">✖</td>
+<td align="left">✖</td>
+<td align="left">✔</td>
+<td align="left">✔</td>
+<td align="left">✔</td>
+<td align="left">✔</td>
+<td align="left">✖</td>
+<td align="left">✔</td>
+<td align="left">✔</td>
+<td align="left">✔</td>
+</tr>
+<tr class="odd">
+<td align="left">Cycle breaking</td>
+<td align="left">✔</td>
+<td align="left">✖</td>
+<td align="left">✔</td>
+<td align="left">✔</td>
+<td align="left">✔</td>
+<td align="left">✔</td>
+<td align="left">✔</td>
+<td align="left">✔</td>
+<td align="left">✖</td>
+<td align="left">✔</td>
+<td align="left">✔</td>
+</tr>
+<tr class="even">
+<td align="left">Cells on milestones vs edges</td>
+<td align="left">✔</td>
+<td align="left">✔</td>
+<td align="left">✔</td>
+<td align="left">✔</td>
+<td align="left">✔</td>
+<td align="left">✔</td>
+<td align="left">✔</td>
+<td align="left">✔</td>
+<td align="left">✔</td>
+<td align="left">✔</td>
+<td align="left">✔</td>
+</tr>
+<tr class="odd">
+<td align="left">Change of topology</td>
+<td align="left">✔</td>
+<td align="left">✖</td>
+<td align="left">✖</td>
+<td align="left">✔</td>
+<td align="left">✔</td>
+<td align="left">✔</td>
+<td align="left">✔</td>
+<td align="left">✔</td>
+<td align="left">✖</td>
+<td align="left">✔</td>
+<td align="left">✔</td>
+</tr>
+<tr class="even">
+<td align="left">Changing positions locally and/or globally</td>
+<td align="left">✔</td>
+<td align="left">✔</td>
+<td align="left">✔</td>
+<td align="left">✖</td>
+<td align="left">✖</td>
+<td align="left">✖</td>
+<td align="left">✔</td>
+<td align="left">✔</td>
+<td align="left">✖</td>
+<td align="left">✖</td>
+<td align="left">✔</td>
+</tr>
+<tr class="odd">
+<td align="left">Bifurcation merging and changing cell positions</td>
+<td align="left">✔</td>
+<td align="left">✔</td>
+<td align="left">✔</td>
+<td align="left">✖</td>
+<td align="left">✖</td>
+<td align="left">✖</td>
+<td align="left">✔</td>
+<td align="left">✔</td>
+<td align="left">✔</td>
+<td align="left">✔</td>
+<td align="left">✔</td>
+</tr>
+<tr class="even">
+<td align="left">Changing topology and cell position</td>
+<td align="left">✔</td>
+<td align="left">✖</td>
+<td align="left">✖</td>
+<td align="left">✖</td>
+<td align="left">✖</td>
+<td align="left">✖</td>
+<td align="left">✖</td>
+<td align="left">✖</td>
+<td align="left">✖</td>
+<td align="left">✖</td>
+<td align="left">✔</td>
+</tr>
+<tr class="odd">
+<td align="left">Bifurcation concatentation</td>
+<td align="left">✔</td>
+<td align="left">✖</td>
+<td align="left">✔</td>
+<td align="left">✔</td>
+<td align="left">✔</td>
+<td align="left">✔</td>
+<td align="left">✔</td>
+<td align="left">✔</td>
+<td align="left">✔</td>
+<td align="left">✔</td>
+<td align="left">✔</td>
+</tr>
+<tr class="even">
+<td align="left">Same score on identity</td>
+<td align="left">✔</td>
+<td align="left">✖</td>
+<td align="left">✔</td>
+<td align="left">✔</td>
+<td align="left">✔</td>
+<td align="left">✔</td>
+<td align="left">✖</td>
+<td align="left">✖</td>
+<td align="left">✔</td>
+<td align="left">✔</td>
+<td align="left">✔</td>
+</tr>
+<tr class="odd">
+<td align="left">Cell filtering</td>
+<td align="left">✔</td>
+<td align="left">✔</td>
+<td align="left">✔</td>
+<td align="left">✖</td>
+<td align="left">✖</td>
+<td align="left">✖</td>
+<td align="left">✔</td>
+<td align="left">✔</td>
+<td align="left">✔</td>
+<td align="left">✔</td>
+<td align="left">✔</td>
+</tr>
+<tr class="even">
+<td align="left">Linear joining</td>
+<td align="left">✔</td>
+<td align="left">✔</td>
+<td align="left">✖</td>
+<td align="left">✔</td>
+<td align="left">✔</td>
+<td align="left">✔</td>
+<td align="left">✔</td>
+<td align="left">✔</td>
+<td align="left">✖</td>
+<td align="left">✔</td>
+<td align="left">✔</td>
+</tr>
+<tr class="odd">
+<td align="left">Bifurcation merging</td>
+<td align="left">✔</td>
+<td align="left">✖</td>
+<td align="left">✔</td>
+<td align="left">✔</td>
+<td align="left">✔</td>
+<td align="left">✔</td>
+<td align="left">✔</td>
+<td align="left">✔</td>
+<td align="left">✔</td>
+<td align="left">✔</td>
+<td align="left">✔</td>
+</tr>
+<tr class="even">
+<td align="left">Cells into small subedges</td>
+<td align="left">✖</td>
+<td align="left">✔</td>
+<td align="left">✖</td>
+<td align="left">✔</td>
+<td align="left">✔</td>
+<td align="left">✔</td>
+<td align="left">✖</td>
+<td align="left">✖</td>
+<td align="left">✔</td>
+<td align="left">✔</td>
+<td align="left">✔</td>
+</tr>
+<tr class="odd">
+<td align="left">Removing divergence regions</td>
+<td align="left">✔</td>
+<td align="left">✔</td>
+<td align="left">✔</td>
+<td align="left">✖</td>
+<td align="left">✖</td>
+<td align="left">✖</td>
+<td align="left">✔</td>
+<td align="left">✔</td>
+<td align="left">✖</td>
+<td align="left">✔</td>
+<td align="left">✔</td>
+</tr>
+<tr class="even">
+<td align="left">Local and global cell shuffling</td>
+<td align="left">✔</td>
+<td align="left">✖</td>
+<td align="left">✖</td>
+<td align="left">✖</td>
+<td align="left">✖</td>
+<td align="left">✖</td>
+<td align="left">✔</td>
+<td align="left">✔</td>
+<td align="left">✔</td>
+<td align="left">✔</td>
+<td align="left">✔</td>
+</tr>
+<tr class="odd">
+<td align="left">Local cell shuffling</td>
+<td align="left">✔</td>
+<td align="left">✔</td>
+<td align="left">✔</td>
+<td align="left">✖</td>
+<td align="left">✖</td>
+<td align="left">✖</td>
+<td align="left">✔</td>
+<td align="left">✔</td>
+<td align="left">✖</td>
+<td align="left">✖</td>
+<td align="left">✔</td>
+</tr>
+<tr class="even">
+<td align="left">Edge shuffling</td>
+<td align="left">✔</td>
+<td align="left">✔</td>
+<td align="left">✔</td>
+<td align="left">✖</td>
+<td align="left">✖</td>
+<td align="left">✖</td>
+<td align="left">✔</td>
+<td align="left">✔</td>
+<td align="left">✔</td>
+<td align="left">✔</td>
+<td align="left">✔</td>
+</tr>
+<tr class="odd">
+<td align="left">Length shuffling</td>
+<td align="left">✔</td>
+<td align="left">✖</td>
+<td align="left">✖</td>
+<td align="left">✖</td>
+<td align="left">✖</td>
+<td align="left">✖</td>
+<td align="left">✖</td>
+<td align="left">✖</td>
+<td align="left">✖</td>
+<td align="left">✖</td>
+<td align="left">✔</td>
+</tr>
+<tr class="even">
+<td align="left">Linear splitting</td>
+<td align="left">✔</td>
+<td align="left">✔</td>
+<td align="left">✖</td>
+<td align="left">✔</td>
+<td align="left">✔</td>
+<td align="left">✔</td>
+<td align="left">✔</td>
+<td align="left">✔</td>
+<td align="left">✔</td>
+<td align="left">✔</td>
+<td align="left">✔</td>
+</tr>
+<tr class="odd">
+<td align="left">Move cells to closest milestone</td>
+<td align="left">✔</td>
+<td align="left">✖</td>
+<td align="left">✔</td>
+<td align="left">✖</td>
+<td align="left">✖</td>
+<td align="left">✖</td>
+<td align="left">✔</td>
+<td align="left">✔</td>
+<td align="left">✖</td>
+<td align="left">✔</td>
+<td align="left">✔</td>
+</tr>
+<tr class="even">
+<td align="left">Move cells to start milestone</td>
+<td align="left">✔</td>
+<td align="left">✔</td>
+<td align="left">✔</td>
+<td align="left">✖</td>
+<td align="left">✖</td>
+<td align="left">✖</td>
+<td align="left">✔</td>
+<td align="left">✔</td>
+<td align="left">✖</td>
+<td align="left">✔</td>
+<td align="left">✔</td>
+</tr>
+</tbody>
+</table>
 
 **Table 1: Overview of whether a particular metric conforms to a particular rule**
 
@@ -57,7 +375,7 @@ A metric conforms to this rule if: ![](https://latex.codecogs.com/gif.latex?1%20
 Metrics which contain some stochasticity (random forest based metrics in particular), usually do not conform to this rule, even though their scores are still consistently high.
 
 <p>
-<a name = 'fig_equal_identity_plot_datasets'></a> <img src = ".figures/equal_identity_plot_datasets.png" width = "280" height = "280" />
+<a name = 'fig_equal_identity_plot_datasets'></a> <img src = ".figures/equal_identity_plot_datasets.png" width = "280" height = "385" />
 </p>
 <p>
 <strong>Figure 1: Example dataset(s) for this rule</strong>
@@ -92,7 +410,7 @@ Metrics which do not look at the cellular positioning, or group the cells within
 ------------------------------------------------------------------------
 
 <p>
-<a name = 'fig_shuffle_cells_edgewise_plot_scores'></a> <img src = ".figures/shuffle_cells_edgewise_plot_scores.png" width = "560" height = "280" />
+<a name = 'fig_shuffle_cells_edgewise_plot_scores'></a> <img src = ".figures/shuffle_cells_edgewise_plot_scores.png" width = "770" height = "280" />
 </p>
 <p>
 <strong>Figure 4: Example dataset(s) for this rule</strong>
@@ -118,7 +436,7 @@ Only metrics which only look at the topology do not conform to this rule.
 ------------------------------------------------------------------------
 
 <p>
-<a name = 'fig_shuffle_edges_plot_scores'></a> <img src = ".figures/shuffle_edges_plot_scores.png" width = "840" height = "420" />
+<a name = 'fig_shuffle_edges_plot_scores'></a> <img src = ".figures/shuffle_edges_plot_scores.png" width = "840" height = "630" />
 </p>
 <p>
 <strong>Figure 6: Example dataset(s) for this rule</strong>
@@ -144,7 +462,7 @@ Most metrics that look at the position of each cell conform to this rule.
 ------------------------------------------------------------------------
 
 <p>
-<a name = 'fig_shuffle_cells_plot_scores'></a> <img src = ".figures/shuffle_cells_plot_scores.png" width = "840" height = "420" />
+<a name = 'fig_shuffle_cells_plot_scores'></a> <img src = ".figures/shuffle_cells_plot_scores.png" width = "840" height = "630" />
 </p>
 <p>
 <strong>Figure 8: Example dataset(s) for this rule</strong>
@@ -170,7 +488,7 @@ Most metrics that look at the position of each cell conform to this rule.
 ------------------------------------------------------------------------
 
 <p>
-<a name = 'fig_combined_local_global_position_change_plot_scores'></a> <img src = ".figures/combined_local_global_position_change_plot_scores.png" width = "840" height = "280" />
+<a name = 'fig_combined_local_global_position_change_plot_scores'></a> <img src = ".figures/combined_local_global_position_change_plot_scores.png" width = "1155" height = "280" />
 </p>
 <p>
 <strong>Figure 10: Example dataset(s) for this rule</strong>
@@ -196,7 +514,7 @@ Only metrics which look only at the topology do not conform to this rule.
 ------------------------------------------------------------------------
 
 <p>
-<a name = 'fig_filter_cells_plot_scores'></a> <img src = ".figures/filter_cells_plot_scores.png" width = "840" height = "420" />
+<a name = 'fig_filter_cells_plot_scores'></a> <img src = ".figures/filter_cells_plot_scores.png" width = "840" height = "630" />
 </p>
 <p>
 <strong>Figure 12: Example dataset(s) for this rule</strong>
@@ -222,7 +540,7 @@ Both ![](https://latex.codecogs.com/gif.latex?%5Cmathit%7BF1%7D_%7B%5Ctextit%7Bb
 ------------------------------------------------------------------------
 
 <p>
-<a name = 'fig_remove_divergence_regions_plot_scores'></a> <img src = ".figures/remove_divergence_regions_plot_scores.png" width = "560" height = "280" />
+<a name = 'fig_remove_divergence_regions_plot_scores'></a> <img src = ".figures/remove_divergence_regions_plot_scores.png" width = "770" height = "280" />
 </p>
 <p>
 <strong>Figure 14: Example dataset(s) for this rule</strong>
@@ -248,7 +566,7 @@ Both ![](https://latex.codecogs.com/gif.latex?%5Cmathit%7BF1%7D_%7B%5Ctextit%7Bb
 ------------------------------------------------------------------------
 
 <p>
-<a name = 'fig_time_warping_start_plot_scores'></a> <img src = ".figures/time_warping_start_plot_scores.png" width = "840" height = "420" />
+<a name = 'fig_time_warping_start_plot_scores'></a> <img src = ".figures/time_warping_start_plot_scores.png" width = "840" height = "630" />
 </p>
 <p>
 <strong>Figure 16: Example dataset(s) for this rule</strong>
@@ -274,7 +592,7 @@ Both ![](https://latex.codecogs.com/gif.latex?%5Cmathit%7BF1%7D_%7B%5Ctextit%7Bb
 ------------------------------------------------------------------------
 
 <p>
-<a name = 'fig_time_warping_parabole_plot_scores'></a> <img src = ".figures/time_warping_parabole_plot_scores.png" width = "840" height = "420" />
+<a name = 'fig_time_warping_parabole_plot_scores'></a> <img src = ".figures/time_warping_parabole_plot_scores.png" width = "840" height = "630" />
 </p>
 <p>
 <strong>Figure 18: Example dataset(s) for this rule</strong>
@@ -300,7 +618,7 @@ Only the correlation scores is consequently decreased when the lengths of the ed
 ------------------------------------------------------------------------
 
 <p>
-<a name = 'fig_shuffle_lengths_plot_scores'></a> <img src = ".figures/shuffle_lengths_plot_scores.png" width = "560" height = "280" />
+<a name = 'fig_shuffle_lengths_plot_scores'></a> <img src = ".figures/shuffle_lengths_plot_scores.png" width = "770" height = "280" />
 </p>
 <p>
 <strong>Figure 20: Example dataset(s) for this rule</strong>
@@ -326,7 +644,7 @@ This rule is primarily captured by the scores looking at the topology and cluste
 ------------------------------------------------------------------------
 
 <p>
-<a name = 'fig_move_cells_subedges_plot_scores'></a> <img src = ".figures/move_cells_subedges_plot_scores.png" width = "840" height = "420" />
+<a name = 'fig_move_cells_subedges_plot_scores'></a> <img src = ".figures/move_cells_subedges_plot_scores.png" width = "840" height = "630" />
 </p>
 <p>
 <strong>Figure 22: Example dataset(s) for this rule</strong>
@@ -352,7 +670,7 @@ As the positions of the cells are not affected, only metrics which investigate t
 ------------------------------------------------------------------------
 
 <p>
-<a name = 'fig_add_leaf_edges_plot_scores'></a> <img src = ".figures/add_leaf_edges_plot_scores.png" width = "840" height = "420" />
+<a name = 'fig_add_leaf_edges_plot_scores'></a> <img src = ".figures/add_leaf_edges_plot_scores.png" width = "840" height = "630" />
 </p>
 <p>
 <strong>Figure 24: Example dataset(s) for this rule</strong>
@@ -378,7 +696,7 @@ Even though the positions of the cells change, the ![](https://latex.codecogs.co
 ------------------------------------------------------------------------
 
 <p>
-<a name = 'fig_add_connecting_edges_plot_scores'></a> <img src = ".figures/add_connecting_edges_plot_scores.png" width = "840" height = "420" />
+<a name = 'fig_add_connecting_edges_plot_scores'></a> <img src = ".figures/add_connecting_edges_plot_scores.png" width = "840" height = "630" />
 </p>
 <p>
 <strong>Figure 26: Example dataset(s) for this rule</strong>
@@ -404,7 +722,7 @@ Most metrics have problems with this rule as they focus on either the cellular p
 ------------------------------------------------------------------------
 
 <p>
-<a name = 'fig_combined_position_topology_plot_scores'></a> <img src = ".figures/combined_position_topology_plot_scores.png" width = "840" height = "280" />
+<a name = 'fig_combined_position_topology_plot_scores'></a> <img src = ".figures/combined_position_topology_plot_scores.png" width = "1155" height = "280" />
 </p>
 <p>
 <strong>Figure 28: Example dataset(s) for this rule</strong>
@@ -430,7 +748,7 @@ This changes both the cellular ordering and the topology so most metrics are aff
 ------------------------------------------------------------------------
 
 <p>
-<a name = 'fig_merge_bifurcation_plot_scores'></a> <img src = ".figures/merge_bifurcation_plot_scores.png" width = "560" height = "280" />
+<a name = 'fig_merge_bifurcation_plot_scores'></a> <img src = ".figures/merge_bifurcation_plot_scores.png" width = "770" height = "280" />
 </p>
 <p>
 <strong>Figure 30: Example dataset(s) for this rule</strong>
@@ -456,7 +774,7 @@ Only metrics which look uniquely at the topology do not conform to this rule.
 ------------------------------------------------------------------------
 
 <p>
-<a name = 'fig_combined_merge_bifurcation_shuffle_cells_plot_scores'></a> <img src = ".figures/combined_merge_bifurcation_shuffle_cells_plot_scores.png" width = "840" height = "280" />
+<a name = 'fig_combined_merge_bifurcation_shuffle_cells_plot_scores'></a> <img src = ".figures/combined_merge_bifurcation_shuffle_cells_plot_scores.png" width = "1155" height = "280" />
 </p>
 <p>
 <strong>Figure 32: Example dataset(s) for this rule</strong>
@@ -482,7 +800,7 @@ This changes both the cellular ordering and the topology so most metrics conform
 ------------------------------------------------------------------------
 
 <p>
-<a name = 'fig_concatenate_bifurcation_plot_scores'></a> <img src = ".figures/concatenate_bifurcation_plot_scores.png" width = "560" height = "280" />
+<a name = 'fig_concatenate_bifurcation_plot_scores'></a> <img src = ".figures/concatenate_bifurcation_plot_scores.png" width = "770" height = "280" />
 </p>
 <p>
 <strong>Figure 34: Example dataset(s) for this rule</strong>
@@ -508,7 +826,7 @@ Because the actual positions of the cells nor the branch assignment change, both
 ------------------------------------------------------------------------
 
 <p>
-<a name = 'fig_break_cycle_plot_scores'></a> <img src = ".figures/break_cycle_plot_scores.png" width = "560" height = "280" />
+<a name = 'fig_break_cycle_plot_scores'></a> <img src = ".figures/break_cycle_plot_scores.png" width = "770" height = "280" />
 </p>
 <p>
 <strong>Figure 36: Example dataset(s) for this rule</strong>
@@ -534,7 +852,7 @@ Because the positions of the cells can be perfectly predicted, the MSE metrics d
 ------------------------------------------------------------------------
 
 <p>
-<a name = 'fig_join_linear_plot_scores'></a> <img src = ".figures/join_linear_plot_scores.png" width = "560" height = "280" />
+<a name = 'fig_join_linear_plot_scores'></a> <img src = ".figures/join_linear_plot_scores.png" width = "770" height = "280" />
 </p>
 <p>
 <strong>Figure 38: Example dataset(s) for this rule</strong>
@@ -560,7 +878,7 @@ Only the MSE metrics do not conform to this rule as the positions of the cells c
 ------------------------------------------------------------------------
 
 <p>
-<a name = 'fig_split_linear_plot_scores'></a> <img src = ".figures/split_linear_plot_scores.png" width = "560" height = "280" />
+<a name = 'fig_split_linear_plot_scores'></a> <img src = ".figures/split_linear_plot_scores.png" width = "770" height = "280" />
 </p>
 <p>
 <strong>Figure 40: Example dataset(s) for this rule</strong>
@@ -586,7 +904,7 @@ Because the positions of the cells can be perfectly predicted, the MSE metrics d
 ------------------------------------------------------------------------
 
 <p>
-<a name = 'fig_change_topology_plot_scores'></a> <img src = ".figures/change_topology_plot_scores.png" width = "840" height = "735" />
+<a name = 'fig_change_topology_plot_scores'></a> <img src = ".figures/change_topology_plot_scores.png" width = "1155" height = "735" />
 </p>
 <p>
 <strong>Figure 42: Example dataset(s) for this rule</strong>
@@ -612,7 +930,7 @@ All scores conform to this rule.
 ------------------------------------------------------------------------
 
 <p>
-<a name = 'fig_cell_gathering_plot_scores'></a> <img src = ".figures/cell_gathering_plot_scores.png" width = "840" height = "420" />
+<a name = 'fig_cell_gathering_plot_scores'></a> <img src = ".figures/cell_gathering_plot_scores.png" width = "840" height = "630" />
 </p>
 <p>
 <strong>Figure 44: Example dataset(s) for this rule</strong>
