@@ -90,9 +90,7 @@ add_table(
 
 
 ```{r}
-walkdf(assessments, function(assessment) {
-  cat(
-    knitr::knit_child(text = readr::read_lines(result_file("assessment.Rmd", experiment = "02-metrics/02-metric_conformity")), quiet=TRUE, envir = environment())
-  )
-})
+mapdf(assessments, function(assessment) {
+  knitr::knit_child(text = readr::read_lines(result_file("assessment.Rmd", experiment = "02-metrics/02-metric_conformity")), quiet=TRUE, envir = environment())
+}) %>% as.character() %>% paste(collapse = "\n") %>% knitr::asis_output()
 ```
