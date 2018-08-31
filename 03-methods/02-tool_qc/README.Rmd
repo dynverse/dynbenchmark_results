@@ -9,7 +9,19 @@ library(dynbenchmark)
 
 # Tool quality control
 
-```{r, results = "asis"}
+
+
+```{r}
+add_table(
+  result_file("qc_aspects_overview.rds", experiment_id = "03-methods/02-tool_qc"),
+  "hi",
+  "hi",
+  "hi"
+)
+```
+
+
+```{r}
 add_fig(
   result_file("tool_ordering.rds", experiment_id = "03-methods/02-tool_qc"),
   "tool_ordering",
@@ -20,7 +32,7 @@ add_fig(
 )
 ```
 
-```{r, results = "asis"}
+```{r}
 add_fig(
   result_file("qc_overview.rds", experiment_id = "03-methods/02-tool_qc"),
   "qc_overview",

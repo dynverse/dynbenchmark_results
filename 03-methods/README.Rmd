@@ -10,6 +10,6 @@ library(dynbenchmark)
 
 # Trajectory inference methods
 
-```{r, results = "asis"}
+```{r}
 dynbenchmark::knit_nest("02-tool_qc/README.Rmd")
 ```

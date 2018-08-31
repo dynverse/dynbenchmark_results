@@ -42,7 +42,7 @@ assessment$conformity %>%
 
 `r rule$observation`
 
-```{r, results = "asis"}
+```{r}
 width <- ifelse(is.null(assessment$plot_datasets$width), 10, assessment$plot_datasets$width)
 height <- ifelse(is.null(assessment$plot_datasets$height), 10, assessment$plot_datasets$height)
 add_fig(
@@ -55,7 +55,7 @@ add_fig(
 ```
 
 
-```{r, results = "asis"}
+```{r}
 width <- ifelse(is.null(assessment$plot_scores$width), 10, assessment$plot_scores$width)
 height <- ifelse(is.null(assessment$plot_scores$height), 10, assessment$plot_scores$height)
 add_fig(

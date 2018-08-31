@@ -41,7 +41,7 @@ The `r label_metric("him")` metric (Hamming-Ipsen-Mikhailov distance) [@jurmanHI
 
 We compared the three scores for several common topologies (`r ref("fig", "topology_scores_overview")`). While conceptually very different, the `r label_metric("edge_flip")` and `r label_metric("him")` still produce similar scores (`r ref("fig", "topology_scores_overview", "b")`). The `r label_metric("him")` tends to punish the detection of cycles, while the `r label_metric("edge_flip")` is more harsh for differences in the number of bifurcations (`r ref("fig", "topology_scores_overview", "c")`). The main difference however is that the `r label_metric("him")` takes into account edge lengths when comparing two trajectories, as illustrated in (`r ref("fig", "topology_scores_overview", "d")`). Short "extra" edges in the topology are less punished by the `r label_metric("him")` than by the `r label_metric("edge_flip")`.
 
-```{r, results = "asis"}
+```{r}
 add_fig(
   result_file("topology_scores_overview.rds", experiment_id = "02-metrics/01-metric_characterisation"),
   "topology_scores_overview",
@@ -75,7 +75,7 @@ $\textrm{Relevance} = \frac{1}{|C'|} \sum_{c' \in C'}{\max_{c \in C}{\textrm{Jac
 
 $\textrm{F1} = \frac{2}{\frac{1}{\textrm{Recovery}} + \frac{1}{\textrm{Relevance}}}$
 
-```{r, results = "asis"}
+```{r}
 add_fig(
   result_file("clustering_scores_overview.rds", experiment = "02-metrics/01-metric_characterisation"),
   "clustering_scores_overview",
@@ -90,7 +90,7 @@ add_fig(
 
 When the position of a cell is the same in both the gold standard and the prediction, its _relative_ distances to all other cells in the trajectory should also be the same. This observation is the basis for the `r label_metric("correlation")` metric.
 
-```{r, results = "asis"}
+```{r}
 add_fig(
   result_file("metrics_geodesic.svg", "manual_figures"),
   "metrics_geodesic",
@@ -112,7 +112,7 @@ Calculating the pairwise distances between cells scales quadratically with the n
 
 To select the number of cell waypoints, we need to find a trade-off between the accuracy versus the time to calculate `r label_metric("correlation")`. To select an optimal number of cell waypoints, we used the synthetic dataset with the most complex topology, and determined the `r label_metric("correlation")` at different levels of both cell shuffling and number of cell waypoints (`r ref("fig", "waypoints_overview", "b")`). We found that using cell waypoints does not induce a systematic bias in the `r label_metric("correlation")`, and that its variability was relatively minimal when compared to the variability between different levels of cell shuffling when using 100 or more cell waypoints.
 
-```{r, results = "asis"}
+```{r}
 add_fig(
   result_file("waypoints_overview.rds", experiment = "02-metrics/01-metric_characterisation"),
   "waypoints_overview",
@@ -128,7 +128,7 @@ An alternative approach to detect whether the positions of cells are similar bet
 
 Specifically, we implemented two metrics which predict the milestone percentages from the gold standards by using the predicted milestone percentages as features  (`r ref("fig", "metrics_prediction")`). We did this with two regression methods, linear regression ($\textit{lm}$, using the R `lm` function) and Random Forest ($\textit{rf}$, implemented in the *ranger* package [@wright_rangerfastimplementation_2017]). In both cases, the accuracy of the prediction was measured using the Mean Squared error ($\mathit{MSE}$), in the case of Random forest we used the out-of-bag mean-squared error. Next, we calculated $\mathit{MSE}_{worst}$ equal to the $\mathit{MSE}$ when predicting all milestone percentages as the average. We used this to calculate the normalised mean squared error as $\mathit{NMSE} = 1 - \frac{\mathit{MSE}}{\mathit{MSE}_{worst}}$. We created a regression model for every milestone in the gold standard, and averaged the $\mathit{NMSE}$ values to finally obtain the `r label_metric("rf_nmse")` and `r label_metric("lm_nmse")` scores.
 
-```{r, results = "asis"}
+```{r}
 add_fig(
   result_file("metrics_prediction.svg", "manual_figures"),
   "metrics_prediction",
@@ -150,7 +150,7 @@ Perhaps the main advantage of studying cellular dynamic processes using single-c
 
 To calculate the `r label_metric("featureimp_cor")` we used Random forest regression to rank all the features according to their importance in predicting the positions of cells in the trajectory. Specifically, we calculated the geodesic distances for each cell to all milestones in the trajectory. Next, we trained a Random Forest regression model (implemented in the R _ranger_ package [@wright_rangerfastimplementation_2017], [https://github.com/imbs-hl/ranger](https://github.com/imbs-hl/ranger)) to predict these distances for each milestone, based on the expression of genes within each cell. We then extracted feature importances using the Mean Decrease in Impurity (`importance = 'impurity'` parameter of the `ranger` function), as illustrated in (`r ref("fig", "featureimp_overview")`). The overall importance of a feature (gene) was then equal to the mean importance over all milestones. Finally, we compared the two rankings by calculating the Pearson correlation, with values lower than between -1 and 0 clipped to 0.
 
-```{r, results = "asis"}
+```{r}
 add_fig(
   result_file("featureimp_overview.rds", experiment = "02-metrics/01-metric_characterisation"),
   "featureimp_overview",
@@ -162,7 +162,7 @@ add_fig(
 
 Random forest regression has two main hyperparameters. The number of trees to be fitted (`num_trees` parameter) was fixed to `10000` to provide accurate and stable estimates of the feature importance (`r ref("fig", "featureimp_cor_distributions")`). The number of features on which can be split (`mtry` parameter) was set to 1% of all available features (instead of the default square-root of the number of features), as to make sure that predictive but highly correlated features (omnipresent in transcriptomics data) are not suppressed in the ranking.
 
-```{r, results = "asis"}
+```{r}
 add_fig(
   result_file("featureimp_cor_distributions.rds", experiment = "02-metrics/01-metric_characterisation"),
   "featureimp_cor_distributions",
@@ -174,7 +174,7 @@ add_fig(
 
 For most datasets, only a limited number of features will be differentially expressed in the trajectory. For example, in the dataset used in `r ref("fig", "featureimp_cor_distributions")` only the top 10%-20% show a clear pattern of differential expression. The correlation will weight each of these features equally, and will therefore give more weight to the bottom, irrelevant features. To prioritise the top differentially expressed features, we also implemented the `r label_metric("featureimp_wcor")`, which will weight the correlation using the feature importance scores in the gold standard so that the top features have relatively more impact on the score (`r ref("fig", "featureimp_wcor_effect")`).
 
-```{r, results = "asis"}
+```{r}
 add_fig(
   result_file("featureimp_wcor_effect.rds", experiment = "02-metrics/01-metric_characterisation"),
   "featureimp_wcor_effect",

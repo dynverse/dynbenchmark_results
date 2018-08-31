@@ -38,7 +38,7 @@ assessments <- read_rds(derived_file("assessments.rds"))
 rules <- read_rds(derived_file("rules.rds"))
 ```
 
-```{r, results="asis"}
+```{r}
 table <- map(c("html", "latex", "markdown"), function(format) {
   table <- assessments %>%
     left_join(rules %>% select(id, name), by = c("rule_id" = "id")) %>%
@@ -89,7 +89,7 @@ add_table(
 ```
 
 
-```{r, results = "asis"}
+```{r}
 walkdf(assessments, function(assessment) {
   cat(
     knitr::knit_child(text = readr::read_lines(result_file("assessment.Rmd", experiment = "02-metrics/02-metric_conformity")), quiet=TRUE, envir = environment())
