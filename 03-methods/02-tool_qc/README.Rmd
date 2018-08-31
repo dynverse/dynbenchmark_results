@@ -1,0 +1,52 @@
+---
+output: dynbenchmark::github_markdown_nested
+---
+
+```{r setup, include=FALSE}
+library(tidyverse)
+library(dynbenchmark)
+```
+
+# Tool quality control
+
+While not directly related to the accuracy of the inferred trajectory, the quality of the implementation of a method is also an important evaluation metric [@_doesyourcode_2018]. **User friendly** tools can be easily installed, have an intuitive user interface, and contain in depth documentation. SUch tools are thus easy to apply on new datasets by both experienced and novice users. **Developer friendly** tools can be easily adapted by other developers, expanding the scope, scalability or accuracy of the tool and thus stimulating new developments in the field. Finally, **future proof** tools contain several indications that the tool will stand the test of time, by (among other things) including a rigorous assessment of the accuracy and robustness of the method. an important evaluation metric. 
+
+To assess these three major reasons behind the need for good tools, we created a transparent checklist of important scientific and software development practices. Each point of this checklist is grouped inside an "aspect", which is weighted based on how often we found it being cited in a set of articles discussing good practices (`r ref("table", "qc_checks")`). We also labelled each item based on whether it concerned the user friendliness, developer friendliness or potential broad applicability.
+
+```{r}
+add_table(
+  result_file("qc_aspects_overview.rds", experiment_id = "03-methods/02-tool_qc"),
+  "qc_checks",
+  "Scoring checklist for tool quality control.",
+  "Each quality aspect was given a weight based on how often it was mentioned in a set of articles discussing best practices for tool development."
+)
+```
+
+We made an initial assessment of the quality of each tool based on this score sheet. Next, we allowed the authors to respond and rebut through the github issue system at our [dynmethods](https://github.com/dynverse/dynmethods) repository ([https://github.com/dynverse/dynmethods](https://github.com/dynverse/dynmethods)). After several adapations, we created our final qc score for each method (`r ref("fig", "tool_ordering")`).
+
+```{r}
+add_fig(
+  result_file("tool_ordering.rds", experiment_id = "03-methods/02-tool_qc"),
+  "tool_ordering",
+  "Overall quality control score for each method",
+  width = 8,
+  height = 4
+)
+```
+
+```{r}
+tools_evaluated <- read_rds(result_file("tools_evaluated.rds", experiment_id = "03-methods"))
+```
+
+Only `r tools_evaluated %>% filter(qc_score > 0.95) %>% nrow()` tools reached an near-perfect quality control score (`r tools_evaluated %>% filter(qc_score > 0.95) %>% pull(name) %>% label_vector()`), with only minor issues regarding the absence of a graphical user interface or the absence of separate development branches (`r ref("fig", "qc_overview")`). The bulk of tools reach a score between 0.5 and 0.7, with several qc items consequently lacking among most of these tools, as listed in `r ref("fig", "qc_overview", " right")`, with mostly issues regarding the code assurance and the depth by which the tool is evaluated within the paper. Only a limited number of methods reached a score lower than 0.5 (`r tools_evaluated %>% filter(qc_score < 0.5) %>% pull(name) %>% label_vector()`), with issues among all categories.
+
+```{r}
+add_fig(
+  result_file("qc_overview.rds", experiment_id = "03-methods/02-tool_qc"),
+  "qc_overview",
+  "Overview of the quality control scores for every tool",
+  glue::glue("Shown is the score given for each method on every item from our quality control score sheet. Each aspect of the quality control was part of a category, and each category was weighted so that it contributed equally to the final quality score. Within each category, each aspect also received a weight depending on how often it was mentioned in a set of papers discussing good practices in tool development and evaluation. This is represented in the plot as the height on the y-axis. Top: Average QC score for each method. Right: The average score of each quality control item. Shown into more detail are those items which had an average score lower than 0.5."),
+  width = 16,
+  height = 16
+)
+```

@@ -1,0 +1,15 @@
+---
+output: 
+  - dynbenchmark::github_markdown_nested
+---
+
+```{r setup, include=FALSE}
+library(tidyverse)
+library(dynbenchmark)
+```
+
+# Trajectory inference methods
+
+```{r}
+dynbenchmark::knit_nest("02-tool_qc/README.Rmd")
+```
