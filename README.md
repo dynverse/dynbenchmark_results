@@ -2,7 +2,7 @@
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 # Results
 
-The results are sparated into several experiments, each discussing a particular aspect of the evaluation. The actual code for generating the results can be found in the [scripts folder](https://github.com/dynverse/dynbenchmark/tree/master/scripts).
+The results are sparated into several experiments, each discussing a particular aspect of the evaluation. They can be browsed directly on github:
 
 | \#  | script/folder                          | description                         |
 |:----|:---------------------------------------|:------------------------------------|
@@ -15,3 +15,5 @@ The results are sparated into several experiments, each discussing a particular 
 |     | [📁`manual_figures`](manual_figures)    |                                     |
 |     | [📁`old`](old)                          |                                     |
 |     | [📄`results.Rproj`](results.Rproj)      |                                     |
+
+The actual code for generating the results can be found in the [scripts folder](https://github.com/dynverse/dynbenchmark/tree/master/scripts).

@@ -17,9 +17,10 @@ library(dynbenchmark)
 
 # Results
 
-The results are sparated into several experiments, each discussing a particular aspect of the evaluation. The actual code for generating the results can be found in the [scripts folder](https://github.com/dynverse/dynbenchmark/tree/master/scripts).
+The results are sparated into several experiments, each discussing a particular aspect of the evaluation. They can be browsed directly on github:
 
 ```{r}
 dynbenchmark::render_scripts_documentation()
 ```
 
+The actual code for generating the results can be found in the [scripts folder](https://github.com/dynverse/dynbenchmark/tree/master/scripts).
