@@ -13,3 +13,7 @@ library(dynbenchmark)
 ```{r}
 dynbenchmark::knit_nest("02-tool_qc/README.Rmd")
 ```
+
+```{r}
+dynbenchmark::knit_nest("03-method_characterisation/README.Rmd")
+```
