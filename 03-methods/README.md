@@ -588,3 +588,41 @@ Only 2 tools reached an near-perfect quality control score (CellTrails and Sling
 17. Aniba, M. R., Poch, O. & Thompson, J. D. Issues in bioinformatics benchmarking: The case study of multiple sequence alignment. *Nucleic Acids Research* **38,** 7353–7363 (2010).
 
 18. Jelizarow, M., Guillemot, V., Tenenhaus, A., Strimmer, K. & Boulesteix, A.-L. Over-optimism in bioinformatics: An illustration. *Bioinformatics* **26,** 1990–1998 (2010).
+
+## [Characterisation of TI tools and methods](03-method_characterisation)
+
+<p>
+<a name = 'fig_tool_ordering'></a> <img src = "03-method_characterisation/n_tools_over_time.png" width = "840" height = "420" />
+</p>
+<p>
+<strong>Figure 1: Number of trajectory inference tools over time</strong>
+</p>
+
+------------------------------------------------------------------------
+
+<p>
+<a name = 'fig_platforms'></a> <img src = "03-method_characterisation/platforms.png" width = "280" height = "280" />
+</p>
+<p>
+<strong>Figure 2: Computer languages in which these TI tools are written</strong>
+</p>
+
+------------------------------------------------------------------------
+
+<p>
+<a name = 'fig_tool_trajectory_types_over_time'></a> <img src = "03-method_characterisation/tool_trajectory_types_over_time.png" width = "840" height = "420" />
+</p>
+<p>
+<strong>Figure 3: Number of tools able to predict a particular trajectory type over time</strong>
+</p>
+
+------------------------------------------------------------------------
+
+<p>
+<a name = 'fig_topology_inference_timeline'></a> <img src = "03-method_characterisation/topology_inference_timeline.png" width = "840" height = "280" />
+</p>
+<p>
+<strong>Figure 4: Number of tools fixing the topology over time</strong>
+</p>
+
+------------------------------------------------------------------------

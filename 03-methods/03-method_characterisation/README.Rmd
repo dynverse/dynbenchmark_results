@@ -1,0 +1,51 @@
+---
+output: 
+  - dynbenchmark::github_markdown_nested
+---
+
+```{r setup, include=FALSE}
+library(tidyverse)
+library(dynbenchmark)
+```
+
+# Characterisation of TI tools and methods
+
+```{r}
+add_fig(
+  result_file("n_tools_over_time.rds", experiment_id = "03-methods/03-method_characterisation"),
+  "tool_ordering",
+  "Number of trajectory inference tools over time",
+  width = 12,
+  height = 6
+)
+```
+
+```{r}
+add_fig(
+  result_file("platforms.rds", experiment_id = "03-methods/03-method_characterisation"),
+  "platforms",
+  "Computer languages in which these TI tools are written",
+  width = 4,
+  height = 4
+)
+```
+
+```{r}
+add_fig(
+  result_file("tool_trajectory_types_over_time.rds", experiment_id = "03-methods/03-method_characterisation"),
+  "tool_trajectory_types_over_time",
+  "Number of tools able to predict a particular trajectory type over time",
+  width = 12,
+  height = 6
+)
+```
+
+```{r}
+add_fig(
+  result_file("topology_inference_timeline.rds", experiment_id = "03-methods/03-method_characterisation"),
+  "topology_inference_timeline",
+  "Number of tools fixing the topology over time",
+  width = 12,
+  height = 4
+)
+```
