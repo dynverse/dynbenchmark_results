@@ -107,17 +107,28 @@ To select the number of cell waypoints, we need to find a trade-off between the 
 
 ------------------------------------------------------------------------
 
+Although the cor<sub>dist</sub>'s main characteristic is that it looks at the ordering of the cells, other features of the trajectory are also (partly) captured. To illustrate this, we used the geodesic distances themselves as input for dimensionality reduction ([**Figure 5**](#fig_geodesic_distances_dimreds)) with varying topologies. This reduced space captures the original trajectory structure quite well, including the overall topology and branch lengths.
+
+<p>
+<a name = 'fig_geodesic_distances_dimreds'></a> <img src = "geodesic_distances_dimreds.png" width = "840" height = "560" />
+</p>
+<p>
+<strong>Figure 5: The geodesic distances can be used to reconstruct the original trajectory structure</strong> We generated different toy trajectory datasets with varying topologies and calculated the geodesic distances between all cells within the trajectory. We then used these distances as input for classical multidimensional scaling.
+</p>
+
+------------------------------------------------------------------------
+
 ### NMSE<sub>rf</sub> and NMSE<sub>lm</sub>: Using the positions of the cells within one trajectory to predict the cellular positions in the other trajectory
 
 An alternative approach to detect whether the positions of cells are similar between two trajectories, is to use the positions of one trajectory to predict the positions within the other trajectory. If the cells are at similar positions in the trajectory (relative to its nearby cells), its prediction error should be low.
 
-Specifically, we implemented two metrics which predict the milestone percentages from the gold standards by using the predicted milestone percentages as features ([**Figure 5**](#fig_metrics_prediction)). We did this with two regression methods, linear regression (![](https://latex.codecogs.com/gif.latex?%5Ctextit%7Blm%7D), using the R `lm` function) and Random Forest (![](https://latex.codecogs.com/gif.latex?%5Ctextit%7Brf%7D), implemented in the *ranger* package<sup>[7](#ref-wright_rangerfastimplementation_2017)</sup>). In both cases, the accuracy of the prediction was measured using the Mean Squared error (![](https://latex.codecogs.com/gif.latex?%5Cmathit%7BMSE%7D)), in the case of Random forest we used the out-of-bag mean-squared error. Next, we calculated ![](https://latex.codecogs.com/gif.latex?%5Cmathit%7BMSE%7D_%7Bworst%7D) equal to the ![](https://latex.codecogs.com/gif.latex?%5Cmathit%7BMSE%7D) when predicting all milestone percentages as the average. We used this to calculate the normalised mean squared error as ![](https://latex.codecogs.com/gif.latex?%5Cmathit%7BNMSE%7D%20=%201%20-%20%5Cfrac%7B%5Cmathit%7BMSE%7D%7D%7B%5Cmathit%7BMSE%7D_%7Bworst%7D%7D). We created a regression model for every milestone in the gold standard, and averaged the ![](https://latex.codecogs.com/gif.latex?%5Cmathit%7BNMSE%7D) values to finally obtain the NMSE<sub>rf</sub> and NMSE<sub>lm</sub> scores.
+Specifically, we implemented two metrics which predict the milestone percentages from the gold standards by using the predicted milestone percentages as features ([**Figure 6**](#fig_metrics_prediction)). We did this with two regression methods, linear regression (![](https://latex.codecogs.com/gif.latex?%5Ctextit%7Blm%7D), using the R `lm` function) and Random Forest (![](https://latex.codecogs.com/gif.latex?%5Ctextit%7Brf%7D), implemented in the *ranger* package<sup>[7](#ref-wright_rangerfastimplementation_2017)</sup>). In both cases, the accuracy of the prediction was measured using the Mean Squared error (![](https://latex.codecogs.com/gif.latex?%5Cmathit%7BMSE%7D)), in the case of Random forest we used the out-of-bag mean-squared error. Next, we calculated ![](https://latex.codecogs.com/gif.latex?%5Cmathit%7BMSE%7D_%7Bworst%7D) equal to the ![](https://latex.codecogs.com/gif.latex?%5Cmathit%7BMSE%7D) when predicting all milestone percentages as the average. We used this to calculate the normalised mean squared error as ![](https://latex.codecogs.com/gif.latex?%5Cmathit%7BNMSE%7D%20=%201%20-%20%5Cfrac%7B%5Cmathit%7BMSE%7D%7D%7B%5Cmathit%7BMSE%7D_%7Bworst%7D%7D). We created a regression model for every milestone in the gold standard, and averaged the ![](https://latex.codecogs.com/gif.latex?%5Cmathit%7BNMSE%7D) values to finally obtain the NMSE<sub>rf</sub> and NMSE<sub>lm</sub> scores.
 
 <p>
 <a name = 'fig_metrics_prediction'></a> <img src = "../../manual_figures/metrics_prediction.svg" width = "840" height = "420" />
 </p>
 <p>
-<strong>Figure 5: The calculation of NMSE<sub>lm</sub> distances on a small example trajectory.</strong>
+<strong>Figure 6: The calculation of NMSE<sub>lm</sub> distances on a small example trajectory.</strong>
 </p>
 
 ------------------------------------------------------------------------
@@ -130,21 +141,10 @@ Although most metrics described above already assess some aspects directly relev
 
 Perhaps the main advantage of studying cellular dynamic processes using single-cell -omics data is that the dynamics of gene expression can be studied for the whole transcriptome. This can be used to construct other models such as dynamic regulatory networks and gene expression modules. Such analyses rely on a "good-enough" cellular ordering, so that it can be used to identify dynamical differentially expressed genes.
 
-To calculate the cor<sub>features</sub> we used Random forest regression to rank all the features according to their importance in predicting the positions of cells in the trajectory. Specifically, we calculated the geodesic distances for each cell to all milestones in the trajectory. Next, we trained a Random Forest regression model (implemented in the R *ranger* package<sup>[7](#ref-wright_rangerfastimplementation_2017)</sup>, <https://github.com/imbs-hl/ranger>) to predict these distances for each milestone, based on the expression of genes within each cell. We then extracted feature importances using the Mean Decrease in Impurity (`importance = 'impurity'` parameter of the `ranger` function), as illustrated in ([**Figure 6**](#fig_featureimp_overview)). The overall importance of a feature (gene) was then equal to the mean importance over all milestones. Finally, we compared the two rankings by calculating the Pearson correlation, with values lower than between -1 and 0 clipped to 0.
+To calculate the cor<sub>features</sub> we used Random forest regression to rank all the features according to their importance in predicting the positions of cells in the trajectory. Specifically, we calculated the geodesic distances for each cell to all milestones in the trajectory. Next, we trained a Random Forest regression model (implemented in the R *ranger* package<sup>[7](#ref-wright_rangerfastimplementation_2017)</sup>, <https://github.com/imbs-hl/ranger>) to predict these distances for each milestone, based on the expression of genes within each cell. We then extracted feature importances using the Mean Decrease in Impurity (`importance = 'impurity'` parameter of the `ranger` function), as illustrated in ([**Figure 7**](#fig_featureimp_overview)). The overall importance of a feature (gene) was then equal to the mean importance over all milestones. Finally, we compared the two rankings by calculating the Pearson correlation, with values lower than between -1 and 0 clipped to 0.
 
 <p>
 <a name = 'fig_featureimp_overview'></a> <img src = "featureimp_overview.png" width = "840" height = "420" />
-</p>
-<p>
-<strong>Figure 6: </strong>
-</p>
-
-------------------------------------------------------------------------
-
-Random forest regression has two main hyperparameters. The number of trees to be fitted (`num_trees` parameter) was fixed to `10000` to provide accurate and stable estimates of the feature importance ([**Figure 7**](#fig_featureimp_cor_distributions)). The number of features on which can be split (`mtry` parameter) was set to 1% of all available features (instead of the default square-root of the number of features), as to make sure that predictive but highly correlated features (omnipresent in transcriptomics data) are not suppressed in the ranking.
-
-<p>
-<a name = 'fig_featureimp_cor_distributions'></a> <img src = "featureimp_cor_distributions.png" width = "840" height = "420" />
 </p>
 <p>
 <strong>Figure 7: </strong>
@@ -152,13 +152,24 @@ Random forest regression has two main hyperparameters. The number of trees to be
 
 ------------------------------------------------------------------------
 
-For most datasets, only a limited number of features will be differentially expressed in the trajectory. For example, in the dataset used in [**Figure 7**](#fig_featureimp_cor_distributions) only the top 10%-20% show a clear pattern of differential expression. The correlation will weight each of these features equally, and will therefore give more weight to the bottom, irrelevant features. To prioritise the top differentially expressed features, we also implemented the wcor<sub>features</sub>, which will weight the correlation using the feature importance scores in the gold standard so that the top features have relatively more impact on the score ([**Figure 8**](#fig_featureimp_wcor_effect)).
+Random forest regression has two main hyperparameters. The number of trees to be fitted (`num_trees` parameter) was fixed to `10000` to provide accurate and stable estimates of the feature importance ([**Figure 8**](#fig_featureimp_cor_distributions)). The number of features on which can be split (`mtry` parameter) was set to 1% of all available features (instead of the default square-root of the number of features), as to make sure that predictive but highly correlated features (omnipresent in transcriptomics data) are not suppressed in the ranking.
+
+<p>
+<a name = 'fig_featureimp_cor_distributions'></a> <img src = "featureimp_cor_distributions.png" width = "840" height = "420" />
+</p>
+<p>
+<strong>Figure 8: </strong>
+</p>
+
+------------------------------------------------------------------------
+
+For most datasets, only a limited number of features will be differentially expressed in the trajectory. For example, in the dataset used in [**Figure 8**](#fig_featureimp_cor_distributions) only the top 10%-20% show a clear pattern of differential expression. The correlation will weight each of these features equally, and will therefore give more weight to the bottom, irrelevant features. To prioritise the top differentially expressed features, we also implemented the wcor<sub>features</sub>, which will weight the correlation using the feature importance scores in the gold standard so that the top features have relatively more impact on the score ([**Figure 9**](#fig_featureimp_wcor_effect)).
 
 <p>
 <a name = 'fig_featureimp_wcor_effect'></a> <img src = "featureimp_wcor_effect.png" width = "560" height = "350" />
 </p>
 <p>
-<strong>Figure 8: </strong>
+<strong>Figure 9: </strong>
 </p>
 
 ------------------------------------------------------------------------
@@ -181,7 +192,11 @@ Each of these scenarios would require a combinations of *specific* metrics with 
 
 Next, we considered three different ways of averaging different scores: the mean<sub>arithmetic</sub>, mean<sub>geometric</sub> and mean<sub>harmonic</sub>. Each of these 'pythagorean means' have different use cases. The mean<sub>harmonic</sub> is most appropriate when the scores would all have a common denominator (as is the case for the ![](https://latex.codecogs.com/gif.latex?%5Ctextrm%7BRecovery%7D) and ![](https://latex.codecogs.com/gif.latex?%5Ctextrm%7BRelevance%7D) described earlier). The mean<sub>arithmetic</sub> would be most appropriate when all the metrics have the same range. For our use case, the mean<sub>geometric</sub> is the most appropriate, because it gives a meaningful average when the metrics are present in different ranges. Even though the maximal and minimal values of our metrics all lie within ![](https://latex.codecogs.com/gif.latex?%5Clbrack%200,%201%20%5Crbrack), their actual values within our benchmark were very different. Moreover, the geometric mean has as an added benefit that it is relatively low if one of the values is low. This means that if a method is not good at inferring the correct topology, it get a low overall score, even if it is very good at all other scores.
 
-The final overall score for a method on a particular dataset was thus defined as: ![](https://latex.codecogs.com/gif.latex?%5Cmathit%7Bmean%7D_%7B%5Ctextit%7Bgeometric%7D%7D%20=%20%5Csqrt%5B4%5D%7B%5Cmathit%7Bcor%7D_%7B%5Ctextrm%7Bdist%7D%7D%20%5Ctimes%20%5Ctextrm%7BHIM%7D%20%5Ctimes%20%5Cmathit%7Bwcor%7D_%7B%5Ctextrm%7Bfeatures%7D%7D%20%5Ctimes%20%5Cmathit%7BF1%7D_%7B%5Ctextit%7Bbranches%7D%7D%7D)
+The final overall score for a method on a particular dataset was thus defined as:
+
+![](https://latex.codecogs.com/gif.latex?%5Cmathit%7Bmean%7D_%7B%5Ctextit%7Bgeometric%7D%7D%20=%20%5Csqrt%5B4%5D%7B%5Cmathit%7Bcor%7D_%7B%5Ctextrm%7Bdist%7D%7D%20%5Ctimes%20%5Ctextrm%7BHIM%7D%20%5Ctimes%20%5Cmathit%7Bwcor%7D_%7B%5Ctextrm%7Bfeatures%7D%7D%20%5Ctimes%20%5Cmathit%7BF1%7D_%7B%5Ctextit%7Bbranches%7D%7D%7D)
+
+We do however want to stress that different use cases will require a different overall score to order the methods. Such a context-dependent ranking of all methods is provided through the dynguidelines app (<https://github.com/dynverse/dynguidelines>).
 
 # References
 

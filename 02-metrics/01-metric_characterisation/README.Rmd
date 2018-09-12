@@ -122,6 +122,18 @@ add_fig(
 )
 ```
 
+Although the `r label_metric("correlation")`'s main characteristic is that it looks at the ordering of the cells, other features of the trajectory are also (partly) captured. To illustrate this, we used the geodesic distances themselves as input for dimensionality reduction (`r ref("fig", "geodesic_distances_dimreds")`) with varying topologies. This reduced space captures the original trajectory structure quite well, including the overall topology and branch lengths.
+
+```{r}
+add_fig(
+  result_file("geodesic_distances_dimreds.rds", experiment = "02-metrics/01-metric_characterisation"),
+  "geodesic_distances_dimreds",
+  glue::glue("The geodesic distances can be used to reconstruct the original trajectory structure"),
+  glue::glue("We generated different toy trajectory datasets with varying topologies and calculated the geodesic distances between all cells within the trajectory. We then used these distances as input for classical multidimensional scaling."),
+  width = 12, height = 8
+)
+```
+
 ### `r label_metric("rf_nmse")` and `r label_metric("lm_nmse")`: Using the positions of the cells within one trajectory to predict the cellular positions in the other trajectory
 
 An alternative approach to detect whether the positions of cells are similar between two trajectories, is to use the positions of one trajectory to predict the positions within the other trajectory. If the cells are at similar positions in the trajectory (relative to its nearby cells), its prediction error should be low.
