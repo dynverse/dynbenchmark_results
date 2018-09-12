@@ -1,4 +1,0 @@
-# scimitar
-![Overview](scimitar.png)
-
-

@@ -1,4 +1,0 @@
-# ouija
-![Overview](ouija.png)
-
-

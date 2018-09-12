@@ -1,4 +1,0 @@
-# scoup
-![Overview](scoup.png)
-
-
