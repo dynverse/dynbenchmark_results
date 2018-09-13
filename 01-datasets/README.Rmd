@@ -1,0 +1,15 @@
+---
+output: 
+  - dynbenchmark::github_markdown_nested
+---
+
+```{r setup, include=FALSE}
+library(tidyverse)
+library(dynbenchmark)
+```
+
+# Datasets containing trajectories
+
+```{r}
+dynbenchmark::knit_nest("04-dataset_characterisation/README.Rmd")
+```
