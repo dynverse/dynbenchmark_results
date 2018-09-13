@@ -1,0 +1,44 @@
+---
+output: 
+  - dynbenchmark::github_markdown_nested
+---
+
+```{r setup, include=FALSE}
+library(tidyverse)
+library(dynbenchmark)
+```
+
+# Dataset characterisation
+
+## Topologies
+
+```{r, results = "asis"}
+plot_topology_clusters <- read_rds(result_file("topology_clusters.rds", experiment = "01-datasets/04-dataset_characterisation"))
+pwalk(
+  plot_topology_clusters,
+  function(trajectory_type, plot_topology_clusters, n, n_datasets, ...) {
+    plot <- patchwork::wrap_elements(plot_topology_clusters) +
+      ggtitle(dynutils::pritt("{label_long(trajectory_type)} ({n})")) +
+      theme(
+        plot.title = element_text(
+          hjust = 0.5,
+          color = trajectory_types$colour[match(trajectory_type, trajectory_types$id)],
+          face = "bold"
+        )
+      )
+    
+    width <- plot_topology_clusters$assemble$layout$ncol * 2
+    height <- plot_topology_clusters$assemble$layout$nrow * 2
+    add_fig(
+      plot,
+      dynutils::pritt("{trajectory_type}_topologies"),
+      dynutils::pritt("The {n} distinct {label_long(trajectory_type)} topolog{ifelse(n > 1, 'ies', 'y')}, with a total of {n_datasets} datasets."),
+      "",
+      width = width,
+      height = height
+    ) %>% cat()
+  }
+)
+
+```
+
