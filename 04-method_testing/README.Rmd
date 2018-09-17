@@ -1,0 +1,83 @@
+---
+output: dynbenchmark::github_markdown_nested
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+library(tidyverse)
+library(dynbenchmark)
+```
+
+# Testing trajectory inference methods
+
+```{r}
+output <- read_rds(result_file("output.rds", "04-method_testing"))
+
+method_statuses <- tribble(
+  ~method_status, ~color, ~icon, ~symbol,
+  "method_error", "#FF4136", "times-circle", "\U2716",
+  "execution_error", "#85144b", "times", "\U2716",
+  "memory_limit", "#FF851B", "memory", "\U2716",
+  "time_limit", "#FFDC00", "clock", "\U2716",
+  "low_correlation", "#39CCCC", "thumbs-down", "\U2716",
+  "no_error", "#2ECC40", "check-circle", "\U2714"
+) %>% 
+  rowwise() %>% 
+  mutate(fa = fontawesome::fa(icon, fill = "white")) %>% 
+  ungroup()
+
+tab <- 
+  output %>%
+  select(method_id, dataset_id, method_status) %>%
+  mutate(dataset_id = gsub("specific_example/.*", "specific_example", dataset_id)) %>% 
+  left_join(method_statuses, by = "method_status")
+
+
+```
+
+
+```{r}
+table <- map(c("html", "latex", "markdown"), function(format) {
+  table <- tab
+  
+  if (format != "markdown") {
+    table <- table %>% 
+      mutate(
+        method_status = kableExtra::cell_spec(
+          paste0(symbol, " ", method_status),
+          background = color,
+          format = format
+        )
+      ) 
+  } else {
+    table <- table %>% 
+      mutate(
+        method_status = paste0(symbol, " ", method_status)
+      )
+  }
+  
+  table <- table %>%
+    select(method_id, dataset_id, method_status) %>% 
+    spread(dataset_id, method_status)
+  
+  if (format != "markdown") {
+    knitr::kable(table, format = format, escape = FALSE, booktabs = TRUE) %>% 
+      kableExtra::kable_styling(full_width = FALSE) %>% 
+      kableExtra::column_spec(1, width = "15em") %>% 
+      kableExtra::column_spec(2:ncol(table), width = "10em") %>% 
+      kableExtra::row_spec(0, angle = 30) %>% 
+      gsub("\\\\addlinespace", "", .)
+  } else {
+    knitr::kable(table, format = format)
+  }
+}) %>% set_names(c("html", "latex", "markdown"))
+
+add_table(
+  tab,
+  "methodtestingtable",
+  "Status table for the different TI methods.",
+  ""
+)
+
+```
