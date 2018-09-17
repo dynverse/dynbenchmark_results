@@ -7,75 +7,41 @@ editor_options:
 ```{r setup, include=FALSE}
 library(tidyverse)
 library(dynbenchmark)
-```
+dynbenchmark:::install_fontawesome()
+extrafont::loadfonts()
 
-# Testing trajectory inference methods
-
-```{r, include=FALSE}
 output <- read_rds(result_file("output.rds", "04-method_testing"))
-
-method_statuses <- tribble(
-  ~method_status, ~color, ~icon, ~symbol,
-  "method_error", "#FF4136", "times-circle", "\U2716",
-  "execution_error", "#85144b", "times", "\U2716",
-  "memory_limit", "#FF851B", "memory", "\U2716",
-  "time_limit", "#FFDC00", "clock", "\U2716",
-  "low_correlation", "#39CCCC", "thumbs-down", "\U2716",
-  "no_error", "#2ECC40", "check-circle", "\U2714"
-) %>% 
-  rowwise() %>% 
-  mutate(fa = fontawesome::fa(icon, fill = "white")) %>% 
-  ungroup()
 
 tab <- 
   output %>%
   select(method_id, dataset_id, method_status) %>%
   mutate(dataset_id = gsub("specific_example/.*", "specific_example", dataset_id)) %>% 
-  left_join(method_statuses, by = "method_status")
+  left_join(dynbenchmark::method_statuses, by = "method_status")
 ```
 
+# Quick testing of methods using small datasets
+
+As finding one dataset on which all methods are able to execute successfully, 
+each method also has its own _specific example_ dataset. At the very least,
+each method should be able to execute on their own specific example. 
 
 ```{r}
-table <- map(c("html", "latex", "markdown"), function(format) {
-  table <- tab
-  
-  if (format != "markdown") {
-    table <- table %>% 
-      mutate(
-        method_status = kableExtra::cell_spec(
-          paste0(symbol, " ", method_status),
-          background = color,
-          format = format
-        )
-      ) 
-  } else {
-    table <- table %>% 
-      mutate(
-        method_status = paste0(symbol, " ", method_status)
-      )
-  }
-  
-  table <- table %>%
-    select(method_id, dataset_id, method_status) %>% 
-    spread(dataset_id, method_status)
-  
-  if (format != "markdown") {
-    knitr::kable(table, format = format, escape = FALSE, booktabs = TRUE) %>% 
-      kableExtra::kable_styling(full_width = FALSE) %>% 
-      kableExtra::column_spec(1, width = "15em") %>% 
-      kableExtra::column_spec(2:ncol(table), width = "10em") %>% 
-      kableExtra::row_spec(0, angle = 30) %>% 
-      gsub("\\\\addlinespace", "", .)
-  } else {
-    knitr::kable(table, format = format)
-  }
-}) %>% set_names(c("html", "latex", "markdown"))
+g <- ggplot(tab, aes(dataset_id, fct_rev(method_id))) + 
+  geom_tile(aes(fill = method_status)) + 
+  geom_text(aes(label = fa, colour = method_status), family = "Font Awesome 5 Free", size = 3) +
+  scale_fill_manual(values = dynbenchmark::method_statuses %>% select(method_status, colour) %>% deframe) +
+  scale_colour_manual(values = dynbenchmark::method_statuses %>% select(method_status, icon_colour) %>% deframe) +
+  coord_equal(expand = FALSE) +
+  theme_classic() +
+  labs(x = NULL, y = NULL, fill = "Method status", colour = "Method status") +
+  theme(axis.text.x = element_text(angle = -90, hjust = 0))
 
-add_table(
-  table,
-  "methodtestingtable",
-  "Status table for the different TI methods.",
-  ""
+add_fig(
+  g,
+  "method_testing_figure",
+  "Execution status of each of the TI methods on a small set of real and toy datasets.",
+  width = 5,
+  height = 14
 )
 
 ```
