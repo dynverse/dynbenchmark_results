@@ -11,7 +11,7 @@ library(dynbenchmark)
 
 # Testing trajectory inference methods
 
-```{r}
+```{r, include=FALSE}
 output <- read_rds(result_file("output.rds", "04-method_testing"))
 
 method_statuses <- tribble(
@@ -32,8 +32,6 @@ tab <-
   select(method_id, dataset_id, method_status) %>%
   mutate(dataset_id = gsub("specific_example/.*", "specific_example", dataset_id)) %>% 
   left_join(method_statuses, by = "method_status")
-
-
 ```
 
 
@@ -74,7 +72,7 @@ table <- map(c("html", "latex", "markdown"), function(format) {
 }) %>% set_names(c("html", "latex", "markdown"))
 
 add_table(
-  tab,
+  table,
   "methodtestingtable",
   "Status table for the different TI methods.",
   ""
