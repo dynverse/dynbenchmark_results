@@ -92,7 +92,7 @@ When the position of a cell is the same in both the gold standard and the predic
 
 ```{r}
 add_fig(
-  raw_file("metrics_geodesic.svg", "02-metrics"),
+  raw_file("metrics_geodesic.svg", "02-metrics/01-metric_characterisation"),
   "metrics_geodesic",
   "The calculation of geodesic distances on a small example trajectory.",
   "a) A toy example containing four milestones (W to Z) and five cells (a to e). b) The corresponding milestone network, milestone percentages and regions of delayed commitment, when the toy trajectory is converted to the common trajectory model. c) The calculations made for calculating the pairwise geodesic distances. d) A heatmap representation of the pairwise geodesic distances.",
@@ -142,7 +142,7 @@ Specifically, we implemented two metrics which predict the milestone percentages
 
 ```{r}
 add_fig(
-  raw_file("metrics_prediction.svg", "02-metrics"),
+  raw_file("metrics_prediction.svg", "02-metrics/01-metric_characterisation"),
   "metrics_prediction",
   glue::glue("The calculation of {label_metric('lm_nmse')} distances on a small example trajectory."),
   "",
