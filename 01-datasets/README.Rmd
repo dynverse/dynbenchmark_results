@@ -11,5 +11,13 @@ library(dynbenchmark)
 # Datasets containing trajectories
 
 ```{r}
+dynbenchmark::knit_nest("01-real/README.Rmd")
+```
+
+```{r}
+dynbenchmark::knit_nest("02-synthetic/README.Rmd")
+```
+
+```{r}
 dynbenchmark::knit_nest("04-dataset_characterisation/README.Rmd")
 ```
