@@ -16,7 +16,7 @@ A trajectory, as defined in our evaluation, is a model with multiple abstraction
 
 ```{r}
 add_fig(
-  result_file("trajectory_model_example.svg", "manual_figures"),
+  raw_file("trajectory_model_example.svg", "02-metrics"),
   "trajectory_model_example",
   "An example trajectory that will be used throughout this section.",
   "It contains contains four milestones (W to Z) and five cells (a to e).",
