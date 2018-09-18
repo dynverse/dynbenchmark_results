@@ -1,0 +1,35 @@
+---
+output: 
+  - dynbenchmark::github_markdown_nested
+---
+
+```{r setup, include=FALSE}
+library(tidyverse)
+library(dynbenchmark)
+
+experiment("01-datasets/01-real")
+```
+
+# Real datasets
+
+```{r}
+add_fig(
+  result_file("characteristics.rds"),
+  "characteristics",
+  "Main characteristics of the real datasets",
+  "",
+  width = 10,
+  height = 10
+)
+```
+
+```{r}
+add_fig(
+  result_file("sizes.rds"),
+  "sizes",
+  "Dimensions of the real datasets",
+  "",
+  width = 14,
+  height = 10
+)
+```
