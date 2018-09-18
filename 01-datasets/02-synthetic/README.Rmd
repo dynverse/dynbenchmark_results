@@ -1,0 +1,17 @@
+---
+output: 
+  - dynbenchmark::github_markdown_nested
+---
+
+```{r setup, include=FALSE}
+library(tidyverse)
+library(dynbenchmark)
+
+experiment("01-datasets/02-synthetic")
+```
+
+# Synthetic datasets
+
+```{r}
+```
+
