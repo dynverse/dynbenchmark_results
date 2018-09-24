@@ -12,6 +12,25 @@ experiment("01-datasets/02-synthetic")
 
 # Synthetic datasets
 
+Platforms:
+
 ```{r}
+add_fig(
+  result_file("platform_diversity.rds"),
+  "platform_diversity",
+  "",
+  "",
+  4,
+  12
+)
+```
+
+
+```{r}
+datasets <- load_datasets(list_datasets("synthetic")$id)
+```
+
+```{r}
+
 ```
 
