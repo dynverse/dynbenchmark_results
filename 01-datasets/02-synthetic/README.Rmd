@@ -20,8 +20,8 @@ add_fig(
   "platform_diversity",
   "",
   "",
-  4,
-  12
+  8,
+  8
 )
 ```
 
