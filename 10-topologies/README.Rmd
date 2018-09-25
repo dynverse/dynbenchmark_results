@@ -1,0 +1,25 @@
+---
+output: 
+  - dynbenchmark::github_markdown_nested
+---
+
+```{r setup, include=FALSE}
+library(tidyverse)
+library(dynbenchmark)
+
+experiment("10-topologies")
+```
+
+# Topologies
+
+```{r}
+add_fig(
+  result_file("overall_complexity_difference.rds"),
+  "overall_complexity_difference",
+  "",
+  "",
+  width = 6,
+  height = 10
+)
+```
+
