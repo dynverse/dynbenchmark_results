@@ -83,6 +83,19 @@ Traceback (most recent call last):
 IndexError: index 12 is out of bounds for axis 0 with size 12
 ```
 
+## ERROR STATUS TIME_LIMIT
+
+### ERROR CLUSTER TIME_LIMIT -- 1
+![Cluster plot](error_class_plots/pcreode_time_limit_1.png)
+
+ * Number of instances: 50
+ * Dataset ids: scaling_0255, scaling_0329, scaling_0330, scaling_0380, scaling_0389, scaling_0390, scaling_0442, scaling_0454, scaling_0455, scaling_0495, scaling_0505, scaling_0525, scaling_0549, scaling_0555, scaling_0564, scaling_0582, scaling_0591, scaling_0599, scaling_0600, scaling_0616, scaling_0632, scaling_0648, scaling_0663, scaling_0664, scaling_0677, scaling_0678, scaling_0679, scaling_0680, scaling_0696, scaling_0730, scaling_0747, scaling_0762, scaling_0763, scaling_0764, scaling_0799, scaling_0835, scaling_0851, scaling_0852, scaling_0853, scaling_0864, scaling_0875, scaling_0886, scaling_0897, scaling_0908, scaling_0941, scaling_0949, scaling_0961, scaling_0973, scaling_0979, scaling_1047
+
+Last 10 lines of scaling_0255:
+```
+File: /home/rcannood/Workspace/dynverse/dynbenchmark//derived/05-scaling/suite/pcreode/10/r2gridengine/20180924_185038_pcreode_10_qEf4nkRbfz/log/log.255.e.txt
+```
+
 ## ERROR STATUS MEMORY_LIMIT
 
 ### ERROR CLUSTER MEMORY_LIMIT -- 1
@@ -223,19 +236,6 @@ Traceback (most recent call last):
   File "/usr/local/lib/python2.7/site-packages/scipy/sparse/coo.py", line 186, in __init__
     self.data = M[self.row, self.col]
 MemoryError
-```
-
-## ERROR STATUS TIME_LIMIT
-
-### ERROR CLUSTER TIME_LIMIT -- 1
-![Cluster plot](error_class_plots/pcreode_time_limit_1.png)
-
- * Number of instances: 50
- * Dataset ids: scaling_0255, scaling_0329, scaling_0330, scaling_0380, scaling_0389, scaling_0390, scaling_0442, scaling_0454, scaling_0455, scaling_0495, scaling_0505, scaling_0525, scaling_0549, scaling_0555, scaling_0564, scaling_0582, scaling_0591, scaling_0599, scaling_0600, scaling_0616, scaling_0632, scaling_0648, scaling_0663, scaling_0664, scaling_0677, scaling_0678, scaling_0679, scaling_0680, scaling_0696, scaling_0730, scaling_0747, scaling_0762, scaling_0763, scaling_0764, scaling_0799, scaling_0835, scaling_0851, scaling_0852, scaling_0853, scaling_0864, scaling_0875, scaling_0886, scaling_0897, scaling_0908, scaling_0941, scaling_0949, scaling_0961, scaling_0973, scaling_0979, scaling_1047
-
-Last 10 lines of scaling_0255:
-```
-File: /home/rcannood/Workspace/dynverse/dynbenchmark//derived/05-scaling/suite/pcreode/10/r2gridengine/20180924_185038_pcreode_10_qEf4nkRbfz/log/log.255.e.txt
 ```
 
 

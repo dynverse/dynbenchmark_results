@@ -143,6 +143,19 @@ Last 10 lines of scaling_0339:
 ValueError: n_samples=3 should be >= n_clusters=4
 ```
 
+## ERROR STATUS TIME_LIMIT
+
+### ERROR CLUSTER TIME_LIMIT -- 1
+![Cluster plot](error_class_plots/forks_time_limit_1.png)
+
+ * Number of instances: 1
+ * Dataset ids: scaling_0854
+
+Last 10 lines of scaling_0854:
+```
+File: /home/rcannood/Workspace/dynverse/dynbenchmark//derived/05-scaling/suite/forks/10/r2gridengine/20180924_184959_forks_10_MS3RSDH8fo/log/log.854.e.txt
+```
+
 ## ERROR STATUS MEMORY_LIMIT
 
 ### ERROR CLUSTER MEMORY_LIMIT -- 1
@@ -243,19 +256,6 @@ Traceback (most recent call last):
   File "/usr/local/lib/python3.6/site-packages/sklearn/manifold/isomap.py", line 121, in _fit_transform
     G = self.dist_matrix_ ** 2
 MemoryError
-```
-
-## ERROR STATUS TIME_LIMIT
-
-### ERROR CLUSTER TIME_LIMIT -- 1
-![Cluster plot](error_class_plots/forks_time_limit_1.png)
-
- * Number of instances: 1
- * Dataset ids: scaling_0854
-
-Last 10 lines of scaling_0854:
-```
-File: /home/rcannood/Workspace/dynverse/dynbenchmark//derived/05-scaling/suite/forks/10/r2gridengine/20180924_184959_forks_10_MS3RSDH8fo/log/log.854.e.txt
 ```
 
 

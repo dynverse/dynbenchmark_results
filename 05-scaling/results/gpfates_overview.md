@@ -23,6 +23,19 @@ Last 10 lines of scaling_0215:
 numpy.linalg.linalg.LinAlgError: not pd: non-positive diagonal elements
 ```
 
+## ERROR STATUS TIME_LIMIT
+
+### ERROR CLUSTER TIME_LIMIT -- 1
+![Cluster plot](error_class_plots/gpfates_time_limit_1.png)
+
+ * Number of instances: 69
+ * Dataset ids: scaling_0380, scaling_0389, scaling_0454, scaling_0455, scaling_0465, scaling_0503, scaling_0504, scaling_0525, scaling_0554, scaling_0555, scaling_0591, scaling_0598, scaling_0599, scaling_0600, scaling_0614, scaling_0616, scaling_0630, scaling_0631, scaling_0660, scaling_0662, scaling_0678, scaling_0679, scaling_0713, scaling_0730, scaling_0743, scaling_0744, scaling_0761, scaling_0782, scaling_0797, scaling_0799, scaling_0800, scaling_0816, scaling_0818, scaling_0831, scaling_0833, scaling_0834, scaling_0836, scaling_0863, scaling_0864, scaling_0865, scaling_0874, scaling_0875, scaling_0876, scaling_0885, scaling_0886, scaling_0887, scaling_0898, scaling_0906, scaling_0907, scaling_0908, scaling_0909, scaling_0939, scaling_0940, scaling_0941, scaling_0961, scaling_0978, scaling_0990, scaling_0991, scaling_0992, scaling_1004, scaling_1005, scaling_1006, scaling_1031, scaling_1032, scaling_1033, scaling_1034, scaling_1045, scaling_1046, scaling_1048
+
+Last 10 lines of scaling_0380:
+```
+File: /home/rcannood/Workspace/dynverse/dynbenchmark//derived/05-scaling/suite/gpfates/10/r2gridengine/20180924_185040_gpfates_10_ZA2dkNAQPG/log/log.380.e.txt
+```
+
 ## ERROR STATUS MEMORY_LIMIT
 
 ### ERROR CLUSTER MEMORY_LIMIT -- 1
@@ -103,19 +116,6 @@ Last 10 lines of scaling_0866:
   File "/usr/local/lib/python3.6/site-packages/GPy/inference/latent_function_inference/var_dtc.py", line 145, in inference
     dL_dm = -np.dot((_LBi_Lmi_psi1.T.dot(_LBi_Lmi_psi1))
 MemoryError
-```
-
-## ERROR STATUS TIME_LIMIT
-
-### ERROR CLUSTER TIME_LIMIT -- 1
-![Cluster plot](error_class_plots/gpfates_time_limit_1.png)
-
- * Number of instances: 69
- * Dataset ids: scaling_0380, scaling_0389, scaling_0454, scaling_0455, scaling_0465, scaling_0503, scaling_0504, scaling_0525, scaling_0554, scaling_0555, scaling_0591, scaling_0598, scaling_0599, scaling_0600, scaling_0614, scaling_0616, scaling_0630, scaling_0631, scaling_0660, scaling_0662, scaling_0678, scaling_0679, scaling_0713, scaling_0730, scaling_0743, scaling_0744, scaling_0761, scaling_0782, scaling_0797, scaling_0799, scaling_0800, scaling_0816, scaling_0818, scaling_0831, scaling_0833, scaling_0834, scaling_0836, scaling_0863, scaling_0864, scaling_0865, scaling_0874, scaling_0875, scaling_0876, scaling_0885, scaling_0886, scaling_0887, scaling_0898, scaling_0906, scaling_0907, scaling_0908, scaling_0909, scaling_0939, scaling_0940, scaling_0941, scaling_0961, scaling_0978, scaling_0990, scaling_0991, scaling_0992, scaling_1004, scaling_1005, scaling_1006, scaling_1031, scaling_1032, scaling_1033, scaling_1034, scaling_1045, scaling_1046, scaling_1048
-
-Last 10 lines of scaling_0380:
-```
-File: /home/rcannood/Workspace/dynverse/dynbenchmark//derived/05-scaling/suite/gpfates/10/r2gridengine/20180924_185040_gpfates_10_ZA2dkNAQPG/log/log.380.e.txt
 ```
 
 

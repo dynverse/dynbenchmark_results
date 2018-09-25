@@ -83,6 +83,19 @@ Traceback:
 An irrecoverable exception occurred. R is aborting now ...
 ```
 
+## ERROR STATUS TIME_LIMIT
+
+### ERROR CLUSTER TIME_LIMIT -- 1
+![Cluster plot](error_class_plots/fateid_time_limit_1.png)
+
+ * Number of instances: 19
+ * Dataset ids: scaling_0429, scaling_0531, scaling_0582, scaling_0616, scaling_0695, scaling_0696, scaling_0697, scaling_0730, scaling_0731, scaling_0765, scaling_0781, scaling_0782, scaling_0817, scaling_0818, scaling_0865, scaling_0887, scaling_0992, scaling_1020, scaling_1034
+
+Last 10 lines of scaling_0429:
+```
+File: /home/rcannood/Workspace/dynverse/dynbenchmark//derived/05-scaling/suite/fateid/10/r2gridengine/20180924_185009_fateid_10_qJrI5OSa0G/log/log.429.e.txt
+```
+
 ## ERROR STATUS MEMORY_LIMIT
 
 ### ERROR CLUSTER MEMORY_LIMIT -- 1
@@ -183,19 +196,6 @@ test set size iteration 1 : 5 5
 randomforest iteration 1 of 5 cells
 Error: cannot allocate vector of size 958.2 Mb
 Execution halted
-```
-
-## ERROR STATUS TIME_LIMIT
-
-### ERROR CLUSTER TIME_LIMIT -- 1
-![Cluster plot](error_class_plots/fateid_time_limit_1.png)
-
- * Number of instances: 19
- * Dataset ids: scaling_0429, scaling_0531, scaling_0582, scaling_0616, scaling_0695, scaling_0696, scaling_0697, scaling_0730, scaling_0731, scaling_0765, scaling_0781, scaling_0782, scaling_0817, scaling_0818, scaling_0865, scaling_0887, scaling_0992, scaling_1020, scaling_1034
-
-Last 10 lines of scaling_0429:
-```
-File: /home/rcannood/Workspace/dynverse/dynbenchmark//derived/05-scaling/suite/fateid/10/r2gridengine/20180924_185009_fateid_10_qJrI5OSa0G/log/log.429.e.txt
 ```
 
 ## ERROR STATUS MISSING_PRIOR

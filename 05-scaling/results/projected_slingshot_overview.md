@@ -143,6 +143,19 @@ Calls: slingshot ... dist.fun -> .dist_clusters_full -> solve -> solve.default
 Execution halted
 ```
 
+## ERROR STATUS TIME_LIMIT
+
+### ERROR CLUSTER TIME_LIMIT -- 1
+![Cluster plot](error_class_plots/projected_slingshot_time_limit_1.png)
+
+ * Number of instances: 29
+ * Dataset ids: scaling_0783, scaling_0800, scaling_0801, scaling_0819, scaling_0865, scaling_0866, scaling_0876, scaling_0877, scaling_0887, scaling_0888, scaling_0898, scaling_0899, scaling_0910, scaling_0918, scaling_0926, scaling_0934, scaling_0956, scaling_0962, scaling_0968, scaling_0974, scaling_0980, scaling_0992, scaling_0993, scaling_1006, scaling_1007, scaling_1020, scaling_1021, scaling_1034, scaling_1035
+
+Last 10 lines of scaling_0783:
+```
+File: /home/rcannood/Workspace/dynverse/dynbenchmark//derived/05-scaling/suite/projected_slingshot/10/r2gridengine/20180924_184942_projected_slingshot_10_Gdh8WEcVWu/log/log.783.e.txt
+```
+
 ## ERROR STATUS MEMORY_LIMIT
 
 ### ERROR CLUSTER MEMORY_LIMIT -- 1
@@ -163,19 +176,6 @@ Warning messages:
 2: 'rgl_init' failed, running with rgl.useNULL = TRUE 
 Error: cannot allocate vector of size 14.8 Gb
 Execution halted
-```
-
-## ERROR STATUS TIME_LIMIT
-
-### ERROR CLUSTER TIME_LIMIT -- 1
-![Cluster plot](error_class_plots/projected_slingshot_time_limit_1.png)
-
- * Number of instances: 29
- * Dataset ids: scaling_0783, scaling_0800, scaling_0801, scaling_0819, scaling_0865, scaling_0866, scaling_0876, scaling_0877, scaling_0887, scaling_0888, scaling_0898, scaling_0899, scaling_0910, scaling_0918, scaling_0926, scaling_0934, scaling_0956, scaling_0962, scaling_0968, scaling_0974, scaling_0980, scaling_0992, scaling_0993, scaling_1006, scaling_1007, scaling_1020, scaling_1021, scaling_1034, scaling_1035
-
-Last 10 lines of scaling_0783:
-```
-File: /home/rcannood/Workspace/dynverse/dynbenchmark//derived/05-scaling/suite/projected_slingshot/10/r2gridengine/20180924_184942_projected_slingshot_10_Gdh8WEcVWu/log/log.783.e.txt
 ```
 
 

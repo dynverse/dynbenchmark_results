@@ -43,6 +43,19 @@ Calls: rownames<- ... row.names<- -> row.names<-.data.frame -> .rowNamesDF<-
 Execution halted
 ```
 
+## ERROR STATUS TIME_LIMIT
+
+### ERROR CLUSTER TIME_LIMIT -- 1
+![Cluster plot](error_class_plots/scoup_time_limit_1.png)
+
+ * Number of instances: 147
+ * Dataset ids: scaling_0601, scaling_0616, scaling_0617, scaling_0632, scaling_0633, scaling_0648, scaling_0649, scaling_0661, scaling_0664, scaling_0680, scaling_0681, scaling_0682, scaling_0696, scaling_0697, scaling_0698, scaling_0699, scaling_0713, scaling_0714, scaling_0715, scaling_0716, scaling_0730, scaling_0731, scaling_0732, scaling_0733, scaling_0745, scaling_0747, scaling_0748, scaling_0750, scaling_0763, scaling_0764, scaling_0765, scaling_0766, scaling_0767, scaling_0768, scaling_0781, scaling_0782, scaling_0783, scaling_0784, scaling_0785, scaling_0786, scaling_0799, scaling_0800, scaling_0801, scaling_0802, scaling_0803, scaling_0804, scaling_0817, scaling_0818, scaling_0819, scaling_0820, scaling_0821, scaling_0822, scaling_0834, scaling_0835, scaling_0836, scaling_0837, scaling_0839, scaling_0840, scaling_0841, scaling_0852, scaling_0853, scaling_0854, scaling_0855, scaling_0857, scaling_0858, scaling_0864, scaling_0865, scaling_0868, scaling_0869, scaling_0875, scaling_0876, scaling_0879, scaling_0880, scaling_0886, scaling_0887, scaling_0890, scaling_0891, scaling_0897, scaling_0898, scaling_0899, scaling_0901, scaling_0902, scaling_0906, scaling_0907, scaling_0908, scaling_0909, scaling_0910, scaling_0911, scaling_0918, scaling_0919, scaling_0926, scaling_0927, scaling_0934, scaling_0935, scaling_0942, scaling_0943, scaling_0944, scaling_0946, scaling_0949, scaling_0950, scaling_0952, scaling_0955, scaling_0958, scaling_0961, scaling_0964, scaling_0967, scaling_0970, scaling_0973, scaling_0976, scaling_0977, scaling_0978, scaling_0979, scaling_0982, scaling_0983, scaling_0984, scaling_0991, scaling_0992, scaling_0993, scaling_0996, scaling_0997, scaling_1006, scaling_1007, scaling_1010, scaling_1011, scaling_1012, scaling_1019, scaling_1020, scaling_1021, scaling_1024, scaling_1025, scaling_1026, scaling_1032, scaling_1033, scaling_1034, scaling_1035, scaling_1038, scaling_1039, scaling_1040, scaling_1041, scaling_1042, scaling_1043, scaling_1044, scaling_1045, scaling_1046, scaling_1047, scaling_1048, scaling_1049
+
+Last 10 lines of scaling_0601:
+```
+File: /home/rcannood/Workspace/dynverse/dynbenchmark//derived/05-scaling/suite/scoup/10/r2gridengine/20180924_185105_scoup_10_0H7SNJSe4f/log/log.601.e.txt
+```
+
 ## ERROR STATUS MEMORY_LIMIT
 
 ### ERROR CLUSTER MEMORY_LIMIT -- 1
@@ -63,19 +76,6 @@ error at reading initial parameter
 Error in `.rowNamesDF<-`(x, value = value) : invalid 'row.names' length
 Calls: rownames<- ... row.names<- -> row.names<-.data.frame -> .rowNamesDF<-
 Execution halted
-```
-
-## ERROR STATUS TIME_LIMIT
-
-### ERROR CLUSTER TIME_LIMIT -- 1
-![Cluster plot](error_class_plots/scoup_time_limit_1.png)
-
- * Number of instances: 147
- * Dataset ids: scaling_0601, scaling_0616, scaling_0617, scaling_0632, scaling_0633, scaling_0648, scaling_0649, scaling_0661, scaling_0664, scaling_0680, scaling_0681, scaling_0682, scaling_0696, scaling_0697, scaling_0698, scaling_0699, scaling_0713, scaling_0714, scaling_0715, scaling_0716, scaling_0730, scaling_0731, scaling_0732, scaling_0733, scaling_0745, scaling_0747, scaling_0748, scaling_0750, scaling_0763, scaling_0764, scaling_0765, scaling_0766, scaling_0767, scaling_0768, scaling_0781, scaling_0782, scaling_0783, scaling_0784, scaling_0785, scaling_0786, scaling_0799, scaling_0800, scaling_0801, scaling_0802, scaling_0803, scaling_0804, scaling_0817, scaling_0818, scaling_0819, scaling_0820, scaling_0821, scaling_0822, scaling_0834, scaling_0835, scaling_0836, scaling_0837, scaling_0839, scaling_0840, scaling_0841, scaling_0852, scaling_0853, scaling_0854, scaling_0855, scaling_0857, scaling_0858, scaling_0864, scaling_0865, scaling_0868, scaling_0869, scaling_0875, scaling_0876, scaling_0879, scaling_0880, scaling_0886, scaling_0887, scaling_0890, scaling_0891, scaling_0897, scaling_0898, scaling_0899, scaling_0901, scaling_0902, scaling_0906, scaling_0907, scaling_0908, scaling_0909, scaling_0910, scaling_0911, scaling_0918, scaling_0919, scaling_0926, scaling_0927, scaling_0934, scaling_0935, scaling_0942, scaling_0943, scaling_0944, scaling_0946, scaling_0949, scaling_0950, scaling_0952, scaling_0955, scaling_0958, scaling_0961, scaling_0964, scaling_0967, scaling_0970, scaling_0973, scaling_0976, scaling_0977, scaling_0978, scaling_0979, scaling_0982, scaling_0983, scaling_0984, scaling_0991, scaling_0992, scaling_0993, scaling_0996, scaling_0997, scaling_1006, scaling_1007, scaling_1010, scaling_1011, scaling_1012, scaling_1019, scaling_1020, scaling_1021, scaling_1024, scaling_1025, scaling_1026, scaling_1032, scaling_1033, scaling_1034, scaling_1035, scaling_1038, scaling_1039, scaling_1040, scaling_1041, scaling_1042, scaling_1043, scaling_1044, scaling_1045, scaling_1046, scaling_1047, scaling_1048, scaling_1049
-
-Last 10 lines of scaling_0601:
-```
-File: /home/rcannood/Workspace/dynverse/dynbenchmark//derived/05-scaling/suite/scoup/10/r2gridengine/20180924_185105_scoup_10_0H7SNJSe4f/log/log.601.e.txt
 ```
 
 

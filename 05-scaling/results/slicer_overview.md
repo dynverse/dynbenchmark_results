@@ -37,6 +37,19 @@ Calls: <Anonymous> -> adaptive_knn_graph
 Execution halted
 ```
 
+## ERROR STATUS TIME_LIMIT
+
+### ERROR CLUSTER TIME_LIMIT -- 1
+![Cluster plot](error_class_plots/slicer_time_limit_1.png)
+
+ * Number of instances: 25
+ * Dataset ids: scaling_0616, scaling_0632, scaling_0648, scaling_0664, scaling_0680, scaling_0696, scaling_0713, scaling_0730, scaling_0747, scaling_0764, scaling_0781, scaling_0799, scaling_0817, scaling_0835, scaling_0853, scaling_0864, scaling_0875, scaling_0886, scaling_0897, scaling_0908, scaling_0955, scaling_0961, scaling_0967, scaling_0973, scaling_0979
+
+Last 10 lines of scaling_0616:
+```
+File: /home/rcannood/Workspace/dynverse/dynbenchmark//derived/05-scaling/suite/slicer/10/r2gridengine/20180924_184950_slicer_10_Ts6EZwq22C/log/log.616.e.txt
+```
+
 ## ERROR STATUS MEMORY_LIMIT
 
 ### ERROR CLUSTER MEMORY_LIMIT -- 1
@@ -77,19 +90,6 @@ finding neighbours
 finding neighbours
 Error: cannot allocate vector of size 1.9 Gb
 Execution halted
-```
-
-## ERROR STATUS TIME_LIMIT
-
-### ERROR CLUSTER TIME_LIMIT -- 1
-![Cluster plot](error_class_plots/slicer_time_limit_1.png)
-
- * Number of instances: 25
- * Dataset ids: scaling_0616, scaling_0632, scaling_0648, scaling_0664, scaling_0680, scaling_0696, scaling_0713, scaling_0730, scaling_0747, scaling_0764, scaling_0781, scaling_0799, scaling_0817, scaling_0835, scaling_0853, scaling_0864, scaling_0875, scaling_0886, scaling_0897, scaling_0908, scaling_0955, scaling_0961, scaling_0967, scaling_0973, scaling_0979
-
-Last 10 lines of scaling_0616:
-```
-File: /home/rcannood/Workspace/dynverse/dynbenchmark//derived/05-scaling/suite/slicer/10/r2gridengine/20180924_184950_slicer_10_Ts6EZwq22C/log/log.616.e.txt
 ```
 
 
