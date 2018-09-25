@@ -195,29 +195,3 @@ add_fig(
   width = 8, height = 5
 )
 ```
-
-
-## Overall metrics
-
-Undoubtedly, a single optimal overall metric does not exist for trajectories, as different users may have different priorities:
-
-- A user may be primarily interested in defining the correct topology, and only use the cellular ordering when the topology is correct
-- A user may be less interested in how the cells are ordered within a branch, but primarily in which cells are in which branches
-- A user may already know the topology, and may be primarily interested in finding good features related to a particular branching point
-- ...
-
-Each of these scenarios would require a combinations of _specific_ metrics with different weights. To provide an "overall" ranking of the metrics, which is impartial for the scenarios described above, we therefore chose a metric which weighs every aspect of the trajectory equally:
-
-- Its **ordering**, using the `r label_metric("correlation")`
-- Its **branch assignment**, using the `r label_metric("F1_branches")`
-- Its **topology**, using the `r label_metric("him")`
-- The accuracy of **differentially expressed features**, using the `r label_metric("featureimp_wcor")`
-
-Next, we considered three different ways of averaging different scores: the `r label_metric("arith_mean")`, `r label_metric("geom_mean")` and `r label_metric("harm_mean")`. Each of these 'pythagorean means' have different use cases. The `r label_metric("harm_mean")` is most appropriate when the scores would all have a common denominator (as is the case for the $\textrm{Recovery}$ and $\textrm{Relevance}$ described earlier). The `r label_metric("arith_mean")` would be most appropriate when all the metrics have the same range. For our use case, the `r label_metric("geom_mean")` is the most appropriate, because it gives a meaningful average when the metrics are present in different ranges. Even though the maximal and minimal values of our metrics all lie within $\lbrack 0, 1 \rbrack$, their actual values within our benchmark were very different. Moreover, the geometric mean has as an added benefit that it is relatively low if one of the values is low. This means that if a method is not good at inferring the correct topology, it get a low overall score, even if it is very good at all other scores.
-
-The final overall score for a method on a particular dataset was thus defined as: 
-
-$`r stringr::str_sub(dynbenchmark::label_metric("geom_mean", "latex"), 2, -2)` = \sqrt[4]{`r stringr::str_sub(dynbenchmark::label_metric("correlation", "latex"), 2, -2)` \times `r stringr::str_sub(dynbenchmark::label_metric("him", "latex"), 2, -2)` \times `r stringr::str_sub(dynbenchmark::label_metric("featureimp_wcor", "latex"), 2, -2)` \times `r stringr::str_sub(dynbenchmark::label_metric("F1_branches", "latex"), 2, -2)`}$
-
-We do however want to stress that different use cases will require a different overall score to order the methods. Such a context-dependent ranking of all methods is provided through the dynguidelines app ([https://github.com/dynverse/dynguidelines](https://github.com/dynverse/dynguidelines)).
-
