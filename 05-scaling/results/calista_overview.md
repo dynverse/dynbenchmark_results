@@ -1,4 +1,0 @@
-# calista
-![Overview](calista.png)
-
-
