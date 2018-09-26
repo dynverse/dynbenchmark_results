@@ -8,13 +8,14 @@ To rank the methods, we need to aggregate on two levels: across
 
 When combining different datasets, it is important that the biases in
 the datasets does not influence the overall score. In our study, we
-define three such biases, but there are potentially many more:
+define three such biases, although there are potentially many more:
 
-  - **Hard versus easy datasets**: Some datasets are more difficult than
-    others, because they contain a more complex topology, or contain
-    more noise. A small increase in performance on such a dataset should
-    be given equal weight as a large increase in performance on easier
-    datasets.
+  - **Difficulty of the datasets**: Some datasets are more difficult
+    than others. This can have various reasons, such as the complexity
+    of the topology, the amount of biological and technical noise, or
+    the dimensions of the data. WhatA small increase in performance on
+    such a dataset should be given equal weight as a large increase in
+    performance on easier datasets.
   - **Dataset sources**: It is much easier to generate synthetic
     datasets than real datasets, and this bias is reflected in our set
     of datasets. However, given their higher biological relevance, real
@@ -28,8 +29,8 @@ define three such biases, but there are potentially many more:
     datasets in our evaluation study does not necessarily correlate with
     the importance of the trajectory type.
 
-We therefore designed an aggregation scheme which prevents that these
-biases would influence the final ranking.
+We designed an aggregation scheme which tries to prevent these biases
+from influencing the ranking of the methods.
 
 The difficulty of a dataset can easily have an impact on how much weight
 the dataset gets in an overall ranking. We illustrate this with a simple
@@ -44,11 +45,12 @@ To avoid this bias, we normalise the scores of each dataset by first
 scaling and centering to
 ![](https://latex.codecogs.com/gif.latex?%5Cmu%20=%200) and
 ![](https://latex.codecogs.com/gif.latex?%5Csigma%20=%201), and then
-moving the score values back with
+moving the score values back to
 ![](https://latex.codecogs.com/gif.latex?%5B0,%201%5D) by applying the
 unit normal density distribution function. This results in scores which
 are comparable across different datasets ([**Figure
-1**](#fig_normalisation_reasoning)), while still retaining some
+1**](#fig_normalisation_reasoning)). In contrast to other possible
+normalisation techniques, such as ranking still retaining some
 information on the relative difference between the scores, which would
 have been lost when using the ranks for normalisation. An example of
 this normalisation, which will also be used in the subsequent
@@ -108,7 +110,11 @@ using a arithmetic mean [**Figure 3c**](#fig_aggregation_example.rds).
 <p>
 
 <strong>[**Figure 4**](#fig_aggregation_example): An example of the
-aggregation procedure.</strong>
+aggregation procedure.</strong> In consecutive steps we aggregated
+across (a) different datasets with the same source and trajectory type,
+(b) different dataset sources with the same trajectory type (weighted
+for the correlation of the dataset source with the real gold dataset
+source) and (c) all trajectory types.
 
 </p>
 
@@ -159,15 +165,11 @@ one of the values is low. For example, this means that if a method is
 not good at inferring the correct topology, it will get a low overall
 score, even if it performs better at all other scores.
 
-The final overall score for a method was thus defined
+The final overall score ([**Figure 5**](#fig_averaging_example)) for a
+method was thus defined
 as:
 
 ![](https://latex.codecogs.com/gif.latex?%5Cmathit%7Bmean%7D_%7B%5Ctextit%7Bgeometric%7D%7D%20=%20%5Csqrt%5B4%5D%7B%5Cmathit%7Bcor%7D_%7B%5Ctextrm%7Bdist%7D%7D%20%5Ctimes%20%5Ctextrm%7BHIM%7D%20%5Ctimes%20%5Cmathit%7Bwcor%7D_%7B%5Ctextrm%7Bfeatures%7D%7D%20%5Ctimes%20%5Cmathit%7BF1%7D_%7B%5Ctextit%7Bbranches%7D%7D%7D)
-
-We do however want to stress that different use cases will require a
-different overall score to order the methods. Such a context-dependent
-ranking of all methods is provided through the dynguidelines app
-(<https://github.com/dynverse/dynguidelines>).
 
 <p>
 
@@ -179,8 +181,14 @@ ranking of all methods is provided through the dynguidelines app
 <p>
 
 <strong>[**Figure 5**](#fig_averaging_example): An example of the
-averaging procedure.</strong>
+averaging procedure.</strong> To weight both the different dataset
+sources and the
 
 </p>
 
 -----
+
+We do however want to stress that different use cases will require a
+different overall score to order the methods. Such a context-dependent
+ranking of all methods is provided through the dynguidelines app
+([guidelines.dynverse.org](guidelines.dynverse.org)).
