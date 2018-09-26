@@ -16,25 +16,50 @@ To rank the methods, we need to aggregate on two levels: across **datasets** and
 
 When combining different datasets, it is important that the biases in the datasets does not influence the overall score. In our study, we define three such biases, but there are potentially many more:
 
-- **Dataset sources**: There are many more synthetic than real datasets. However, given their biological relevance, real datasets should be given at least equal importance than synthetic datasets.
 - **Hard versus easy datasets**: Some datasets are more difficult than others, because they contain a more complex topology, or contain more noise. A small increase in performance on such a dataset should be given equal weight as a large increase in performance on easier datasets.
+- **Dataset sources**: It is much easier to generate synthetic datasets than real datasets, and this bias is reflected in our set of datasets. However, given their higher biological relevance, real datasets should be given at least equal importance than synthetic datasets.
 - **Trajectory types**: There are many more linear and disconnected real datasets, and only a limited number of tree or graph datasets. This imbalance is there because historically most datasets have been linear datasets, and because it is easy to create disconnected datasets by combining different unrelated datasets. The number of datasets in our evaluation study does not necessarily correlate with the importance of the trajectory type.
 
 We therefore designed an aggregation scheme which prevents that these biases would influence the final ranking.
 
-The difficulty of a dataset can easily have an impact on how much weight the dataset gets in an overall ranking. We illustrate this with a simple example in `r ref("fig", "normalisation_example")`. One method consistently performs well on both the easy and the difficult datasets. But because the differences are small in the difficult datasets, the mean would not give this method a high score. In the meantime, a variable method which does not perform well on the difficult dataset gets the highest 
+The difficulty of a dataset can easily have an impact on how much weight the dataset gets in an overall ranking. We illustrate this with a simple example in `r ref("fig", "normalisation_reasoning")`. One method consistently performs well on both the easy and the difficult datasets. But because the differences are small in the difficult datasets, the mean would not give this method a high score. Meanwhile, a variable method which does not perform well on the difficult dataset gets the highest score, because it scored so high on the simple dataset.
+
+To avoid this bias, we normalise the scores of each dataset by first scaling and centering to $\mu = 0$ and $\sigma = 1$, and then moving the score values back with $[0, 1]$ by applying the unit normal density distribution function. This results in scores which are comparable across different datasets (`r ref("fig", "normalisation_reasoning")`), while still retaining some information on the relative difference between the scores, which would have been lost when using the ranks for normalisation. An example of this normalisation, which will also be used in the subsequent aggregation steps, can be seen in `r ref("fig", "normalisation_example")`.
+
+```{r}
+add_fig(
+  result_file("normalisation_reasoning.rds", experiment = "02-metrics/03-aggregation"),
+  "normalisation_reasoning",
+  glue::glue("An illustration of how the difficulty of a dataset can influence the overall ranking."),
+  glue::glue(""),
+  width = 7, 
+  height = 4
+)
+```
 
 ```{r}
 add_fig(
   result_file("normalisation_example.rds", experiment = "02-metrics/03-aggregation"),
   "normalisation_example",
-  glue::glue("An illustration of how the difficulty of a dataset can influence the overall ranking."),
+  glue::glue("An example of the normalisation procedure."),
   glue::glue(""),
-  width = 6, 
-  height = 4
+  width = 12, 
+  height = 5
 )
 ```
 
+Next, we aggregate step by step the scores from different datasets. We first aggregate the datasets with the same dataset source and trajectory type using an arithmetic mean of their scores `r ref("fig", "aggregation_example.rds", "a")`. Next, the scores are averaged over different dataset sources, using a arithmetic mean which was weighted based on how much the synthetic and silver scores correlated with the real gold scores `r ref("fig", "aggregation_example.rds", "b")`. Finally, the scores were aggregated over the different trajectory types again using a arithmetic mean `r ref("fig", "aggregation_example.rds", "c")`.
+
+```{r}
+add_fig(
+  result_file("aggregation_example.rds", experiment = "02-metrics/03-aggregation"),
+  "aggregation_example",
+  glue::glue("An example of the aggregation procedure."),
+  glue::glue(""),
+  width = 12, 
+  height = 20
+)
+```
 
 ## Overall metrics
 
@@ -52,11 +77,21 @@ Each of these scenarios would require a combinations of _specific_ metrics with 
 - Its **topology**, using the `r label_metric("him")`
 - The accuracy of **differentially expressed features**, using the `r label_metric("featureimp_wcor")`
 
-Next, we considered three different ways of averaging different scores: the `r label_metric("arith_mean")`, `r label_metric("geom_mean")` and `r label_metric("harm_mean")`. Each of these 'pythagorean means' have different use cases. The `r label_metric("harm_mean")` is most appropriate when the scores would all have a common denominator (as is the case for the $\textrm{Recovery}$ and $\textrm{Relevance}$ described earlier). The `r label_metric("arith_mean")` would be most appropriate when all the metrics have the same range. For our use case, the `r label_metric("geom_mean")` is the most appropriate, because it gives a meaningful average when the metrics are present in different ranges. Even though the maximal and minimal values of our metrics all lie within $\lbrack 0, 1 \rbrack$, their actual values within our benchmark were very different. Moreover, the geometric mean has as an added benefit that it is relatively low if one of the values is low. This means that if a method is not good at inferring the correct topology, it will get a low overall score, even if it performs better at all other scores.
+Next, we considered three different ways of averaging different scores: the `r label_metric("arith_mean")`, `r label_metric("geom_mean")` and `r label_metric("harm_mean")`. Each of these types of mean have different use cases. The `r label_metric("harm_mean")` is most appropriate when the scores would all have a common denominator (as is the case for the $\textrm{Recovery}$ and $\textrm{Relevance}$ described earlier). The `r label_metric("arith_mean")` would be most appropriate when all the metrics have the same range. For our use case, the `r label_metric("geom_mean")` is the most appropriate, because it gives a meaningful average when the metrics are present in different ranges. Even though the maximal and minimal values of our metrics all lie within $\lbrack 0, 1 \rbrack$, their actual values within our benchmark were very different. Moreover, the geometric mean has as an added benefit that it is relatively low if one of the values is low. For example, this means that if a method is not good at inferring the correct topology, it will get a low overall score, even if it performs better at all other scores.
 
-The final overall score for a method on a particular dataset was thus defined as: 
+The final overall score for a method was thus defined as: 
 
 $`r stringr::str_sub(dynbenchmark::label_metric("geom_mean", "latex"), 2, -2)` = \sqrt[4]{`r stringr::str_sub(dynbenchmark::label_metric("correlation", "latex"), 2, -2)` \times `r stringr::str_sub(dynbenchmark::label_metric("him", "latex"), 2, -2)` \times `r stringr::str_sub(dynbenchmark::label_metric("featureimp_wcor", "latex"), 2, -2)` \times `r stringr::str_sub(dynbenchmark::label_metric("F1_branches", "latex"), 2, -2)`}$
 
 We do however want to stress that different use cases will require a different overall score to order the methods. Such a context-dependent ranking of all methods is provided through the dynguidelines app ([https://github.com/dynverse/dynguidelines](https://github.com/dynverse/dynguidelines)).
 
+```{r}
+add_fig(
+  result_file("averaging_example.rds", experiment = "02-metrics/03-aggregation"),
+  "averaging_example",
+  glue::glue("An example of the averaging procedure."),
+  glue::glue(""),
+  width = 12, 
+  height = 5
+)
+```
