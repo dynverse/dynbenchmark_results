@@ -1,5 +1,7 @@
 ---
-output: dynbenchmark::github_markdown_nested
+output: 
+  - dynbenchmark::pdf_supplementary_note
+  - dynbenchmark::github_markdown_nested
 ---
 
 ```{r setup, include=FALSE}
@@ -71,7 +73,7 @@ table <- map(c("html", "latex", "markdown"), function(format) {
   
   if (format != "markdown") {
     knitr::kable(table, format = format, escape = FALSE, booktabs = TRUE) %>% 
-      kableExtra::kable_styling(full_width = FALSE) %>% 
+      kableExtra::kable_styling(full_width = FALSE, font_size = 7) %>% 
       kableExtra::column_spec(1, width="15em") %>% 
       kableExtra::column_spec(2:ncol(table), width = "3em") %>% 
       kableExtra::row_spec(0, angle = 30) %>% 
@@ -90,7 +92,7 @@ add_table(
 
 
 ```{r}
-mapdf(assessments, function(assessment) {
+mapdf(assessments[1:4,], function(assessment) {
   knitr::knit_child(text = readr::read_lines(result_file("assessment.Rmd", experiment = "02-metrics/02-metric_conformity")), quiet=TRUE, envir = environment())
-}) %>% as.character() %>% paste(collapse = "\n") %>% knitr::asis_output()
+}) %>% as.character() %>% paste(collapse = "\n\n\\pagebreak") %>% knitr::asis_output()
 ```
