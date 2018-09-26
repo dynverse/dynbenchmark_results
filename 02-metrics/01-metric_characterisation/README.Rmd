@@ -88,7 +88,7 @@ add_fig(
 
 ### `r label_metric("correlation")`: Correlation between geodesic distances
 
-When the position of a cell is the same in both the gold standard and the prediction, its _relative_ distances to all other cells in the trajectory should also be the same. This observation is the basis for the `r label_metric("correlation")` metric.
+When the position of a cell is the same in both the reference and the prediction, its _relative_ distances to all other cells in the trajectory should also be the same. This observation is the basis for the `r label_metric("correlation")` metric.
 
 ```{r}
 add_fig(
@@ -138,7 +138,7 @@ add_fig(
 
 An alternative approach to detect whether the positions of cells are similar between two trajectories, is to use the positions of one trajectory to predict the positions within the other trajectory. If the cells are at similar positions in the trajectory (relative to its nearby cells), its prediction error should be low.
 
-Specifically, we implemented two metrics which predict the milestone percentages from the gold standards by using the predicted milestone percentages as features  (`r ref("fig", "metrics_prediction")`). We did this with two regression methods, linear regression ($\textit{lm}$, using the R `lm` function) and Random Forest ($\textit{rf}$, implemented in the *ranger* package [@wright_rangerfastimplementation_2017]). In both cases, the accuracy of the prediction was measured using the Mean Squared error ($\mathit{MSE}$), in the case of Random forest we used the out-of-bag mean-squared error. Next, we calculated $\mathit{MSE}_{worst}$ equal to the $\mathit{MSE}$ when predicting all milestone percentages as the average. We used this to calculate the normalised mean squared error as $\mathit{NMSE} = 1 - \frac{\mathit{MSE}}{\mathit{MSE}_{worst}}$. We created a regression model for every milestone in the gold standard, and averaged the $\mathit{NMSE}$ values to finally obtain the `r label_metric("rf_nmse")` and `r label_metric("lm_nmse")` scores.
+Specifically, we implemented two metrics which predict the milestone percentages from the reference by using the predicted milestone percentages as features  (`r ref("fig", "metrics_prediction")`). We did this with two regression methods, linear regression ($\textit{lm}$, using the R `lm` function) and Random Forest ($\textit{rf}$, implemented in the *ranger* package [@wright_rangerfastimplementation_2017]). In both cases, the accuracy of the prediction was measured using the Mean Squared error ($\mathit{MSE}$), in the case of Random forest we used the out-of-bag mean-squared error. Next, we calculated $\mathit{MSE}_{worst}$ equal to the $\mathit{MSE}$ when predicting all milestone percentages as the average. We used this to calculate the normalised mean squared error as $\mathit{NMSE} = 1 - \frac{\mathit{MSE}}{\mathit{MSE}_{worst}}$. We created a regression model for every milestone in the gold standard, and averaged the $\mathit{NMSE}$ values to finally obtain the `r label_metric("rf_nmse")` and `r label_metric("lm_nmse")` scores.
 
 ```{r}
 add_fig(
@@ -184,7 +184,7 @@ add_fig(
 )
 ```
 
-For most datasets, only a limited number of features will be differentially expressed in the trajectory. For example, in the dataset used in `r ref("fig", "featureimp_cor_distributions")` only the top 10%-20% show a clear pattern of differential expression. The correlation will weight each of these features equally, and will therefore give more weight to the bottom, irrelevant features. To prioritise the top differentially expressed features, we also implemented the `r label_metric("featureimp_wcor")`, which will weight the correlation using the feature importance scores in the gold standard so that the top features have relatively more impact on the score (`r ref("fig", "featureimp_wcor_effect")`).
+For most datasets, only a limited number of features will be differentially expressed in the trajectory. For example, in the dataset used in `r ref("fig", "featureimp_cor_distributions")` only the top 10%-20% show a clear pattern of differential expression. The correlation will weight each of these features equally, and will therefore give more weight to the bottom, irrelevant features. To prioritise the top differentially expressed features, we also implemented the `r label_metric("featureimp_wcor")`, which will weight the correlation using the feature importance scores in the reference so that the top features have relatively more impact on the score (`r ref("fig", "featureimp_wcor_effect")`).
 
 ```{r}
 add_fig(
@@ -192,6 +192,7 @@ add_fig(
   "featureimp_wcor_effect",
   glue::glue(""),
   glue::glue(""),
-  width = 8, height = 5
+  width = 8, 
+  height = 5
 )
 ```

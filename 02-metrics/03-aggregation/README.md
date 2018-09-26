@@ -2,7 +2,8 @@
 # Score aggregation
 
 To rank the methods, we need to aggregate on two levels: across
-**datasets** and across **specific metrics**.
+**datasets** and across specific metrics to calculate an **overall
+metric**.
 
 ## Aggregating over datasets
 
@@ -13,9 +14,9 @@ define three such biases, although there are potentially many more:
   - **Difficulty of the datasets**: Some datasets are more difficult
     than others. This can have various reasons, such as the complexity
     of the topology, the amount of biological and technical noise, or
-    the dimensions of the data. WhatA small increase in performance on
-    such a dataset should be given equal weight as a large increase in
-    performance on easier datasets.
+    the dimensions of the data. It is important that a small increase in
+    performance on a more difficult dataset has an equual impact of the
+    final score as a large increase in performance on easier datasets.
   - **Dataset sources**: It is much easier to generate synthetic
     datasets than real datasets, and this bias is reflected in our set
     of datasets. However, given their higher biological relevance, real
@@ -25,9 +26,9 @@ define three such biases, although there are potentially many more:
     real datasets, and only a limited number of tree or graph datasets.
     This imbalance is there because historically most datasets have been
     linear datasets, and because it is easy to create disconnected
-    datasets by combining different unrelated datasets. The number of
-    datasets in our evaluation study does not necessarily correlate with
-    the importance of the trajectory type.
+    datasets by combining different unrelated datasets. However, this
+    imbalance in trajectory types does not necessarily reflect the
+    general importance of that trajectory type.
 
 We designed an aggregation scheme which tries to prevent these biases
 from influencing the ranking of the methods.
@@ -39,7 +40,7 @@ consistently performs well on both the easy and the difficult datasets.
 But because the differences are small in the difficult datasets, the
 mean would not give this method a high score. Meanwhile, a variable
 method which does not perform well on the difficult dataset gets the
-highest score, because it scored so high on the simple dataset.
+highest score, because it scored so high on the easier dataset.
 
 To avoid this bias, we normalise the scores of each dataset by first
 scaling and centering to
@@ -68,7 +69,11 @@ aggregation steps, can be seen in [**Figure
 
 <strong>[**Figure 1**](#fig_normalisation_reasoning): An illustration of
 how the difficulty of a dataset can influence the overall
-ranking.</strong>
+ranking.</strong> A decent method, which consistently ranks high on an
+easy and difficult dataset, does not get a high score when averaging. On
+the other hand, a method which ranks high on the easy dataset, but very
+low on the difficult dataset does get a high score on average. After
+normalising the scores (right), this problem dissapears.
 
 </p>
 

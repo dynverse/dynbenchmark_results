@@ -31,7 +31,7 @@ add_fig(
   result_file("normalisation_reasoning.rds", experiment = "02-metrics/03-aggregation"),
   "normalisation_reasoning",
   glue::glue("An illustration of how the difficulty of a dataset can influence the overall ranking."),
-  glue::glue("A decent method, which consistently ranks high on an easy and difficult dataset, does not get a high score when averaging."),
+  glue::glue("A decent method, which consistently ranks high on an easy and difficult dataset, does not get a high score when averaging. On the other hand, a method which ranks high on the easy dataset, but very low on the difficult dataset does get a high score on average. After normalising the scores (right), this problem dissapears."),
   width = 7, 
   height = 4
 )
