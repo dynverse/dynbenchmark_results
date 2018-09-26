@@ -123,6 +123,19 @@ Calls: <Anonymous> ... tryCatch -> tryCatchList -> tryCatchOne -> doTryCatch
 Execution halted
 ```
 
+## ERROR STATUS TIME_LIMIT
+
+### ERROR CLUSTER TIME_LIMIT -- 1
+![Cluster plot](error_class_plots/celltree_vem_time_limit_1.png)
+
+ * Number of instances: 25
+ * Dataset ids: scaling_0783, scaling_0801, scaling_0819, scaling_0837, scaling_0866, scaling_0877, scaling_0888, scaling_0899, scaling_0918, scaling_0926, scaling_0934, scaling_0942, scaling_0956, scaling_0962, scaling_0968, scaling_0974, scaling_0993, scaling_0994, scaling_1006, scaling_1007, scaling_1008, scaling_1021, scaling_1022, scaling_1035, scaling_1036
+
+Last 10 lines of scaling_0783:
+```
+File: /home/rcannood/Workspace/dynverse/dynbenchmark//derived/05-scaling/suite/celltree_vem/10/r2gridengine/20180924_185054_celltree_vem_10_YusxPbK2CN/log/log.783.e.txt
+```
+
 ## ERROR STATUS MEMORY_LIMIT
 
 ### ERROR CLUSTER MEMORY_LIMIT -- 1
@@ -163,19 +176,6 @@ Error in graph.adjacency.dense(adjmatrix, mode = mode, weighted = weighted,  :
   At type_indexededgelist.c:309 : cannot add edges, Out of memory
 Calls: <Anonymous> -> graph.adjacency -> graph.adjacency.dense
 Execution halted
-```
-
-## ERROR STATUS TIME_LIMIT
-
-### ERROR CLUSTER TIME_LIMIT -- 1
-![Cluster plot](error_class_plots/celltree_vem_time_limit_1.png)
-
- * Number of instances: 25
- * Dataset ids: scaling_0783, scaling_0801, scaling_0819, scaling_0837, scaling_0866, scaling_0877, scaling_0888, scaling_0899, scaling_0918, scaling_0926, scaling_0934, scaling_0942, scaling_0956, scaling_0962, scaling_0968, scaling_0974, scaling_0993, scaling_0994, scaling_1006, scaling_1007, scaling_1008, scaling_1021, scaling_1022, scaling_1035, scaling_1036
-
-Last 10 lines of scaling_0783:
-```
-File: /home/rcannood/Workspace/dynverse/dynbenchmark//derived/05-scaling/suite/celltree_vem/10/r2gridengine/20180924_185054_celltree_vem_10_YusxPbK2CN/log/log.783.e.txt
 ```
 
 

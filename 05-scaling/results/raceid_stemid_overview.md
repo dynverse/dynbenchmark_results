@@ -263,6 +263,19 @@ Calls: %>% ... comptsne -> Rtsne -> Rtsne.dist -> Rtsne -> Rtsne.default
 Execution halted
 ```
 
+## ERROR STATUS TIME_LIMIT
+
+### ERROR CLUSTER TIME_LIMIT -- 1
+![Cluster plot](error_class_plots/raceid_stemid_time_limit_1.png)
+
+ * Number of instances: 4
+ * Dataset ids: scaling_0632, scaling_0713, scaling_0875, scaling_0961
+
+Last 10 lines of scaling_0632:
+```
+File: /home/rcannood/Workspace/dynverse/dynbenchmark//derived/05-scaling/suite/raceid_stemid/10/r2gridengine/20180924_185029_raceid_stemid_10_s2AW0760ng/log/log.632.e.txt
+```
+
 ## ERROR STATUS MEMORY_LIMIT
 
 ### ERROR CLUSTER MEMORY_LIMIT -- 1
@@ -283,19 +296,6 @@ Warning messages:
 2: 'rgl_init' failed, running with rgl.useNULL = TRUE 
 Error: cannot allocate vector of size 479.1 Mb
 Execution halted
-```
-
-## ERROR STATUS TIME_LIMIT
-
-### ERROR CLUSTER TIME_LIMIT -- 1
-![Cluster plot](error_class_plots/raceid_stemid_time_limit_1.png)
-
- * Number of instances: 4
- * Dataset ids: scaling_0632, scaling_0713, scaling_0875, scaling_0961
-
-Last 10 lines of scaling_0632:
-```
-File: /home/rcannood/Workspace/dynverse/dynbenchmark//derived/05-scaling/suite/raceid_stemid/10/r2gridengine/20180924_185029_raceid_stemid_10_s2AW0760ng/log/log.632.e.txt
 ```
 
 

@@ -123,6 +123,19 @@ Calls: <Anonymous> ... eval -> mclustBIC -> mstep -> eval -> eval -> mstepVVV
 Execution halted
 ```
 
+## ERROR STATUS TIME_LIMIT
+
+### ERROR CLUSTER TIME_LIMIT -- 1
+![Cluster plot](error_class_plots/recat_time_limit_1.png)
+
+ * Number of instances: 107
+ * Dataset ids: scaling_0024, scaling_0110, scaling_0112, scaling_0126, scaling_0160, scaling_0180, scaling_0215, scaling_0235, scaling_0262, scaling_0275, scaling_0308, scaling_0329, scaling_0330, scaling_0340, scaling_0350, scaling_0356, scaling_0370, scaling_0390, scaling_0398, scaling_0424, scaling_0454, scaling_0455, scaling_0461, scaling_0481, scaling_0485, scaling_0505, scaling_0512, scaling_0525, scaling_0543, scaling_0547, scaling_0555, scaling_0563, scaling_0564, scaling_0570, scaling_0579, scaling_0581, scaling_0597, scaling_0600, scaling_0610, scaling_0614, scaling_0615, scaling_0625, scaling_0642, scaling_0646, scaling_0648, scaling_0675, scaling_0678, scaling_0680, scaling_0691, scaling_0695, scaling_0696, scaling_0707, scaling_0725, scaling_0729, scaling_0731, scaling_0777, scaling_0781, scaling_0782, scaling_0783, scaling_0794, scaling_0813, scaling_0814, scaling_0817, scaling_0831, scaling_0834, scaling_0852, scaling_0855, scaling_0863, scaling_0865, scaling_0866, scaling_0887, scaling_0896, scaling_0906, scaling_0908, scaling_0917, scaling_0923, scaling_0932, scaling_0933, scaling_0934, scaling_0941, scaling_0948, scaling_0954, scaling_0955, scaling_0956, scaling_0960, scaling_0966, scaling_0967, scaling_0968, scaling_0972, scaling_0978, scaling_0988, scaling_0989, scaling_0990, scaling_0991, scaling_0994, scaling_1002, scaling_1003, scaling_1016, scaling_1017, scaling_1018, scaling_1019, scaling_1021, scaling_1022, scaling_1030, scaling_1044, scaling_1045, scaling_1046
+
+Last 10 lines of scaling_0024:
+```
+File: /home/rcannood/Workspace/dynverse/dynbenchmark//derived/05-scaling/suite/recat/10/r2gridengine/20180924_185049_recat_10_trwdNPSWqI/log/log.24.e.txt
+```
+
 ## ERROR STATUS MEMORY_LIMIT
 
 ### ERROR CLUSTER MEMORY_LIMIT -- 1
@@ -163,19 +176,6 @@ The following object is masked from ‘package:purrr’:
     map
 Error: cannot allocate vector of size 11.2 Gb
 Execution halted
-```
-
-## ERROR STATUS TIME_LIMIT
-
-### ERROR CLUSTER TIME_LIMIT -- 1
-![Cluster plot](error_class_plots/recat_time_limit_1.png)
-
- * Number of instances: 107
- * Dataset ids: scaling_0024, scaling_0110, scaling_0112, scaling_0126, scaling_0160, scaling_0180, scaling_0215, scaling_0235, scaling_0262, scaling_0275, scaling_0308, scaling_0329, scaling_0330, scaling_0340, scaling_0350, scaling_0356, scaling_0370, scaling_0390, scaling_0398, scaling_0424, scaling_0454, scaling_0455, scaling_0461, scaling_0481, scaling_0485, scaling_0505, scaling_0512, scaling_0525, scaling_0543, scaling_0547, scaling_0555, scaling_0563, scaling_0564, scaling_0570, scaling_0579, scaling_0581, scaling_0597, scaling_0600, scaling_0610, scaling_0614, scaling_0615, scaling_0625, scaling_0642, scaling_0646, scaling_0648, scaling_0675, scaling_0678, scaling_0680, scaling_0691, scaling_0695, scaling_0696, scaling_0707, scaling_0725, scaling_0729, scaling_0731, scaling_0777, scaling_0781, scaling_0782, scaling_0783, scaling_0794, scaling_0813, scaling_0814, scaling_0817, scaling_0831, scaling_0834, scaling_0852, scaling_0855, scaling_0863, scaling_0865, scaling_0866, scaling_0887, scaling_0896, scaling_0906, scaling_0908, scaling_0917, scaling_0923, scaling_0932, scaling_0933, scaling_0934, scaling_0941, scaling_0948, scaling_0954, scaling_0955, scaling_0956, scaling_0960, scaling_0966, scaling_0967, scaling_0968, scaling_0972, scaling_0978, scaling_0988, scaling_0989, scaling_0990, scaling_0991, scaling_0994, scaling_1002, scaling_1003, scaling_1016, scaling_1017, scaling_1018, scaling_1019, scaling_1021, scaling_1022, scaling_1030, scaling_1044, scaling_1045, scaling_1046
-
-Last 10 lines of scaling_0024:
-```
-File: /home/rcannood/Workspace/dynverse/dynbenchmark//derived/05-scaling/suite/recat/10/r2gridengine/20180924_185049_recat_10_trwdNPSWqI/log/log.24.e.txt
 ```
 
 

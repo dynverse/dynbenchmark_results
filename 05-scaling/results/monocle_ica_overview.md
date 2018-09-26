@@ -323,6 +323,19 @@ Calls: <Anonymous> ... +.igraph -> add_edges -> as.igraph.vs -> as.igraph.vs
 Execution halted
 ```
 
+## ERROR STATUS TIME_LIMIT
+
+### ERROR CLUSTER TIME_LIMIT -- 1
+![Cluster plot](error_class_plots/monocle_ica_time_limit_1.png)
+
+ * Number of instances: 12
+ * Dataset ids: scaling_0073, scaling_0131, scaling_0137, scaling_0148, scaling_0156, scaling_0168, scaling_0177, scaling_0253, scaling_0386, scaling_0517, scaling_0674, scaling_1033
+
+Last 10 lines of scaling_0073:
+```
+File: /home/rcannood/Workspace/dynverse/dynbenchmark//derived/05-scaling/suite/monocle_ica/10/r2gridengine/20180924_185018_monocle_ica_10_M6zsnASPc8/log/log.73.e.txt
+```
+
 ## ERROR STATUS MEMORY_LIMIT
 
 ### ERROR CLUSTER MEMORY_LIMIT -- 1
@@ -383,19 +396,6 @@ Error in graph.adjacency.dense(adjmatrix, mode = mode, weighted = weighted,  :
   At type_indexededgelist.c:309 : cannot add edges, Out of memory
 Calls: <Anonymous> -> graph.adjacency -> graph.adjacency.dense
 Execution halted
-```
-
-## ERROR STATUS TIME_LIMIT
-
-### ERROR CLUSTER TIME_LIMIT -- 1
-![Cluster plot](error_class_plots/monocle_ica_time_limit_1.png)
-
- * Number of instances: 12
- * Dataset ids: scaling_0073, scaling_0131, scaling_0137, scaling_0148, scaling_0156, scaling_0168, scaling_0177, scaling_0253, scaling_0386, scaling_0517, scaling_0674, scaling_1033
-
-Last 10 lines of scaling_0073:
-```
-File: /home/rcannood/Workspace/dynverse/dynbenchmark//derived/05-scaling/suite/monocle_ica/10/r2gridengine/20180924_185018_monocle_ica_10_M6zsnASPc8/log/log.73.e.txt
 ```
 
 

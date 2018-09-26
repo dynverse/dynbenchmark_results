@@ -158,6 +158,19 @@ In rbind(TopologyEdgesAux, Edge2) :
 Execution halted
 ```
 
+## ERROR STATUS TIME_LIMIT
+
+### ERROR CLUSTER TIME_LIMIT -- 1
+![Cluster plot](error_class_plots/merlot_time_limit_1.png)
+
+ * Number of instances: 13
+ * Dataset ids: scaling_0505, scaling_0591, scaling_0600, scaling_0663, scaling_0679, scaling_0746, scaling_0763, scaling_0834, scaling_0852, scaling_0941, scaling_0949, scaling_1033, scaling_1047
+
+Last 10 lines of scaling_0505:
+```
+File: /home/rcannood/Workspace/dynverse/dynbenchmark//derived/05-scaling/suite/merlot/10/r2gridengine/20180924_185031_merlot_10_KmgCRK1e6M/log/log.505.e.txt
+```
+
 ## ERROR STATUS MEMORY_LIMIT
 
 ### ERROR CLUSTER MEMORY_LIMIT -- 1
@@ -198,19 +211,6 @@ Warning messages:
 2: 'rgl_init' failed, running with rgl.useNULL = TRUE 
 Error: cannot allocate vector of size 1.9 Gb
 Execution halted
-```
-
-## ERROR STATUS TIME_LIMIT
-
-### ERROR CLUSTER TIME_LIMIT -- 1
-![Cluster plot](error_class_plots/merlot_time_limit_1.png)
-
- * Number of instances: 13
- * Dataset ids: scaling_0505, scaling_0591, scaling_0600, scaling_0663, scaling_0679, scaling_0746, scaling_0763, scaling_0834, scaling_0852, scaling_0941, scaling_0949, scaling_1033, scaling_1047
-
-Last 10 lines of scaling_0505:
-```
-File: /home/rcannood/Workspace/dynverse/dynbenchmark//derived/05-scaling/suite/merlot/10/r2gridengine/20180924_185031_merlot_10_KmgCRK1e6M/log/log.505.e.txt
 ```
 
 

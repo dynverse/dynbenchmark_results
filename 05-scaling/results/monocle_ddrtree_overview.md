@@ -223,6 +223,19 @@ In addition: Warning messages:
 Execution halted
 ```
 
+## ERROR STATUS TIME_LIMIT
+
+### ERROR CLUSTER TIME_LIMIT -- 1
+![Cluster plot](error_class_plots/monocle_ddrtree_time_limit_1.png)
+
+ * Number of instances: 43
+ * Dataset ids: scaling_0465, scaling_0475, scaling_0485, scaling_0531, scaling_0537, scaling_0543, scaling_0564, scaling_0573, scaling_0582, scaling_0591, scaling_0614, scaling_0615, scaling_0630, scaling_0631, scaling_0646, scaling_0647, scaling_0663, scaling_0679, scaling_0694, scaling_0695, scaling_0711, scaling_0712, scaling_0728, scaling_0729, scaling_0745, scaling_0746, scaling_0779, scaling_0780, scaling_0797, scaling_0798, scaling_0815, scaling_0816, scaling_0834, scaling_0852, scaling_0917, scaling_0925, scaling_0933, scaling_0941, scaling_0991, scaling_1005, scaling_1019, scaling_1033, scaling_1046
+
+Last 10 lines of scaling_0465:
+```
+File: /home/rcannood/Workspace/dynverse/dynbenchmark//derived/05-scaling/suite/monocle_ddrtree/10/r2gridengine/20180924_185036_monocle_ddrtree_10_mCQlKLyyGU/log/log.465.e.txt
+```
+
 ## ERROR STATUS MEMORY_LIMIT
 
 ### ERROR CLUSTER MEMORY_LIMIT -- 1
@@ -263,19 +276,6 @@ Removing 1022 outliers
 [1] 30486
 Error: cannot allocate vector of size 11.8 Gb
 Execution halted
-```
-
-## ERROR STATUS TIME_LIMIT
-
-### ERROR CLUSTER TIME_LIMIT -- 1
-![Cluster plot](error_class_plots/monocle_ddrtree_time_limit_1.png)
-
- * Number of instances: 43
- * Dataset ids: scaling_0465, scaling_0475, scaling_0485, scaling_0531, scaling_0537, scaling_0543, scaling_0564, scaling_0573, scaling_0582, scaling_0591, scaling_0614, scaling_0615, scaling_0630, scaling_0631, scaling_0646, scaling_0647, scaling_0663, scaling_0679, scaling_0694, scaling_0695, scaling_0711, scaling_0712, scaling_0728, scaling_0729, scaling_0745, scaling_0746, scaling_0779, scaling_0780, scaling_0797, scaling_0798, scaling_0815, scaling_0816, scaling_0834, scaling_0852, scaling_0917, scaling_0925, scaling_0933, scaling_0941, scaling_0991, scaling_1005, scaling_1019, scaling_1033, scaling_1046
-
-Last 10 lines of scaling_0465:
-```
-File: /home/rcannood/Workspace/dynverse/dynbenchmark//derived/05-scaling/suite/monocle_ddrtree/10/r2gridengine/20180924_185036_monocle_ddrtree_10_mCQlKLyyGU/log/log.465.e.txt
 ```
 
 

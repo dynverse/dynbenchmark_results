@@ -83,6 +83,19 @@ Calls: <Anonymous> ... principal_curve -> smoother_function -> <Anonymous>
 Execution halted
 ```
 
+## ERROR STATUS TIME_LIMIT
+
+### ERROR CLUSTER TIME_LIMIT -- 1
+![Cluster plot](error_class_plots/embeddr_time_limit_1.png)
+
+ * Number of instances: 1
+ * Dataset ids: scaling_0897
+
+Last 10 lines of scaling_0897:
+```
+File: /home/rcannood/Workspace/dynverse/dynbenchmark//derived/05-scaling/suite/embeddr/10/r2gridengine/20180924_184948_embeddr_10_DUJy8ajACr/log/log.897.e.txt
+```
+
 ## ERROR STATUS MEMORY_LIMIT
 
 ### ERROR CLUSTER MEMORY_LIMIT -- 1
@@ -103,19 +116,6 @@ Loading required namespace: scaterlegacy
 Loading required namespace: embeddr
 Error: cannot allocate vector of size 1.9 Gb
 Execution halted
-```
-
-## ERROR STATUS TIME_LIMIT
-
-### ERROR CLUSTER TIME_LIMIT -- 1
-![Cluster plot](error_class_plots/embeddr_time_limit_1.png)
-
- * Number of instances: 1
- * Dataset ids: scaling_0897
-
-Last 10 lines of scaling_0897:
-```
-File: /home/rcannood/Workspace/dynverse/dynbenchmark//derived/05-scaling/suite/embeddr/10/r2gridengine/20180924_184948_embeddr_10_DUJy8ajACr/log/log.897.e.txt
 ```
 
 

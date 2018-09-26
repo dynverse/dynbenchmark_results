@@ -23,6 +23,19 @@ Last 10 lines of scaling_0001:
 ValueError: Expected n_neighbors <= n_samples,  but n_samples = 10, n_neighbors = 11
 ```
 
+## ERROR STATUS TIME_LIMIT
+
+### ERROR CLUSTER TIME_LIMIT -- 1
+![Cluster plot](error_class_plots/topslam_time_limit_1.png)
+
+ * Number of instances: 23
+ * Dataset ids: scaling_0837, scaling_0855, scaling_0866, scaling_0888, scaling_0899, scaling_0910, scaling_0950, scaling_0955, scaling_0956, scaling_0967, scaling_0968, scaling_0973, scaling_0974, scaling_0979, scaling_0980, scaling_0993, scaling_0994, scaling_1008, scaling_1022, scaling_1035, scaling_1036, scaling_1049, scaling_1050
+
+Last 10 lines of scaling_0837:
+```
+File: /home/rcannood/Workspace/dynverse/dynbenchmark//derived/05-scaling/suite/topslam/10/r2gridengine/20180924_185052_topslam_10_NznXcCPVNA/log/log.837.e.txt
+```
+
 ## ERROR STATUS MEMORY_LIMIT
 
 ### ERROR CLUSTER MEMORY_LIMIT -- 1
@@ -123,19 +136,6 @@ Last 10 lines of scaling_0877:
     directed=False)
   File "sklearn/utils/graph_shortest_path.pyx", line 87, in sklearn.utils.graph_shortest_path.graph_shortest_path
 MemoryError
-```
-
-## ERROR STATUS TIME_LIMIT
-
-### ERROR CLUSTER TIME_LIMIT -- 1
-![Cluster plot](error_class_plots/topslam_time_limit_1.png)
-
- * Number of instances: 23
- * Dataset ids: scaling_0837, scaling_0855, scaling_0866, scaling_0888, scaling_0899, scaling_0910, scaling_0950, scaling_0955, scaling_0956, scaling_0967, scaling_0968, scaling_0973, scaling_0974, scaling_0979, scaling_0980, scaling_0993, scaling_0994, scaling_1008, scaling_1022, scaling_1035, scaling_1036, scaling_1049, scaling_1050
-
-Last 10 lines of scaling_0837:
-```
-File: /home/rcannood/Workspace/dynverse/dynbenchmark//derived/05-scaling/suite/topslam/10/r2gridengine/20180924_185052_topslam_10_NznXcCPVNA/log/log.837.e.txt
 ```
 
 

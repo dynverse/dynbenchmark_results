@@ -43,6 +43,19 @@ all(pg_check >= 0 & pg_check < (1 + 1e-06)) isn't true.
 Sum of progressions per cell_id should be exactly one
 ```
 
+## ERROR STATUS TIME_LIMIT
+
+### ERROR CLUSTER TIME_LIMIT -- 1
+![Cluster plot](error_class_plots/grandprix_time_limit_1.png)
+
+ * Number of instances: 38
+ * Dataset ids: scaling_0632, scaling_0648, scaling_0696, scaling_0697, scaling_0714, scaling_0731, scaling_0748, scaling_0782, scaling_0783, scaling_0800, scaling_0801, scaling_0818, scaling_0819, scaling_0836, scaling_0837, scaling_0865, scaling_0866, scaling_0876, scaling_0877, scaling_0887, scaling_0888, scaling_0898, scaling_0918, scaling_0926, scaling_0934, scaling_0956, scaling_0962, scaling_0968, scaling_0992, scaling_0993, scaling_0994, scaling_1006, scaling_1007, scaling_1008, scaling_1020, scaling_1021, scaling_1022, scaling_1034
+
+Last 10 lines of scaling_0632:
+```
+File: /home/rcannood/Workspace/dynverse/dynbenchmark//derived/05-scaling/suite/grandprix/10/r2gridengine/20180924_185043_grandprix_10_Fs2YfrFcmU/log/log.632.e.txt
+```
+
 ## ERROR STATUS MEMORY_LIMIT
 
 ### ERROR CLUSTER MEMORY_LIMIT -- 1
@@ -83,19 +96,6 @@ Last 10 lines of scaling_0856:
   File "/usr/local/lib/python3.6/site-packages/numpy/lib/function_base.py", line 3108, in cov
     c = dot(X, X_T.conj())
 MemoryError
-```
-
-## ERROR STATUS TIME_LIMIT
-
-### ERROR CLUSTER TIME_LIMIT -- 1
-![Cluster plot](error_class_plots/grandprix_time_limit_1.png)
-
- * Number of instances: 38
- * Dataset ids: scaling_0632, scaling_0648, scaling_0696, scaling_0697, scaling_0714, scaling_0731, scaling_0748, scaling_0782, scaling_0783, scaling_0800, scaling_0801, scaling_0818, scaling_0819, scaling_0836, scaling_0837, scaling_0865, scaling_0866, scaling_0876, scaling_0877, scaling_0887, scaling_0888, scaling_0898, scaling_0918, scaling_0926, scaling_0934, scaling_0956, scaling_0962, scaling_0968, scaling_0992, scaling_0993, scaling_0994, scaling_1006, scaling_1007, scaling_1008, scaling_1020, scaling_1021, scaling_1022, scaling_1034
-
-Last 10 lines of scaling_0632:
-```
-File: /home/rcannood/Workspace/dynverse/dynbenchmark//derived/05-scaling/suite/grandprix/10/r2gridengine/20180924_185043_grandprix_10_Fs2YfrFcmU/log/log.632.e.txt
 ```
 
 

@@ -143,6 +143,19 @@ In dataset_extract_doublematrix(data, vars) :
 Execution halted
 ```
 
+## ERROR STATUS TIME_LIMIT
+
+### ERROR CLUSTER TIME_LIMIT -- 1
+![Cluster plot](error_class_plots/urd_time_limit_1.png)
+
+ * Number of instances: 8
+ * Dataset ids: scaling_0401, scaling_0427, scaling_0537, scaling_0863, scaling_0875, scaling_0925, scaling_1003, scaling_1004
+
+Last 10 lines of scaling_0401:
+```
+File: /home/rcannood/Workspace/dynverse/dynbenchmark//derived/05-scaling/suite/urd/10/r2gridengine/20180924_185056_urd_10_sCzEVY1JPu/log/log.401.e.txt
+```
+
 ## ERROR STATUS MEMORY_LIMIT
 
 ### ERROR CLUSTER MEMORY_LIMIT -- 1
@@ -163,19 +176,6 @@ Error in asMethod(object) :
   Cholmod error 'out of memory' at file ../Core/cholmod_memory.c, line 147
 Calls: as.matrix ... * -> * -> callGeneric -> eval -> eval -> as -> asMethod
 Execution halted
-```
-
-## ERROR STATUS TIME_LIMIT
-
-### ERROR CLUSTER TIME_LIMIT -- 1
-![Cluster plot](error_class_plots/urd_time_limit_1.png)
-
- * Number of instances: 8
- * Dataset ids: scaling_0401, scaling_0427, scaling_0537, scaling_0863, scaling_0875, scaling_0925, scaling_1003, scaling_1004
-
-Last 10 lines of scaling_0401:
-```
-File: /home/rcannood/Workspace/dynverse/dynbenchmark//derived/05-scaling/suite/urd/10/r2gridengine/20180924_185056_urd_10_sCzEVY1JPu/log/log.401.e.txt
 ```
 
 

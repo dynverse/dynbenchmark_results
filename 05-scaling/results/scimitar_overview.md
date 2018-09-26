@@ -137,6 +137,19 @@ rpy2.rinterface.RRuntimeError: Error in if (denominator == 0) lambda.var = 1 els
   missing value where TRUE/FALSE needed
 ```
 
+## ERROR STATUS TIME_LIMIT
+
+### ERROR CLUSTER TIME_LIMIT -- 1
+![Cluster plot](error_class_plots/scimitar_time_limit_1.png)
+
+ * Number of instances: 146
+ * Dataset ids: scaling_0244, scaling_0276, scaling_0277, scaling_0288, scaling_0298, scaling_0299, scaling_0309, scaling_0310, scaling_0333, scaling_0337, scaling_0341, scaling_0342, scaling_0352, scaling_0361, scaling_0362, scaling_0371, scaling_0372, scaling_0392, scaling_0405, scaling_0406, scaling_0407, scaling_0418, scaling_0419, scaling_0420, scaling_0431, scaling_0432, scaling_0446, scaling_0457, scaling_0458, scaling_0467, scaling_0468, scaling_0469, scaling_0477, scaling_0478, scaling_0487, scaling_0488, scaling_0498, scaling_0533, scaling_0534, scaling_0545, scaling_0551, scaling_0552, scaling_0558, scaling_0564, scaling_0567, scaling_0573, scaling_0576, scaling_0582, scaling_0585, scaling_0591, scaling_0594, scaling_0600, scaling_0605, scaling_0606, scaling_0607, scaling_0615, scaling_0616, scaling_0621, scaling_0622, scaling_0623, scaling_0631, scaling_0632, scaling_0637, scaling_0638, scaling_0639, scaling_0647, scaling_0648, scaling_0653, scaling_0654, scaling_0655, scaling_0663, scaling_0664, scaling_0669, scaling_0670, scaling_0671, scaling_0679, scaling_0680, scaling_0686, scaling_0687, scaling_0688, scaling_0695, scaling_0696, scaling_0703, scaling_0704, scaling_0705, scaling_0712, scaling_0713, scaling_0720, scaling_0721, scaling_0722, scaling_0729, scaling_0730, scaling_0737, scaling_0738, scaling_0739, scaling_0746, scaling_0747, scaling_0754, scaling_0755, scaling_0756, scaling_0763, scaling_0764, scaling_0772, scaling_0773, scaling_0774, scaling_0780, scaling_0790, scaling_0791, scaling_0792, scaling_0798, scaling_0808, scaling_0809, scaling_0816, scaling_0826, scaling_0827, scaling_0828, scaling_0834, scaling_0844, scaling_0845, scaling_0846, scaling_0852, scaling_0860, scaling_0861, scaling_0871, scaling_0872, scaling_0882, scaling_0893, scaling_0904, scaling_0914, scaling_0922, scaling_0930, scaling_0938, scaling_0946, scaling_0953, scaling_0954, scaling_0959, scaling_0960, scaling_0965, scaling_0971, scaling_0977, scaling_0978, scaling_0987, scaling_1001, scaling_1015, scaling_1029, scaling_1043
+
+Last 10 lines of scaling_0244:
+```
+File: /home/rcannood/Workspace/dynverse/dynbenchmark//derived/05-scaling/suite/scimitar/10/r2gridengine/20180924_185103_scimitar_10_5gSDMMCHzq/log/log.244.e.txt
+```
+
 ## ERROR STATUS MEMORY_LIMIT
 
 ### ERROR CLUSTER MEMORY_LIMIT -- 1
@@ -437,19 +450,6 @@ Specified shrinkage intensity lambda (correlation matrix): 0.05
   File "/usr/local/lib/python2.7/site-packages/scimitar/morphing_mixture.py", line 316, in morphing_mixture_from_pseudotime
     covariances = np.array(covariances)
 MemoryError
-```
-
-## ERROR STATUS TIME_LIMIT
-
-### ERROR CLUSTER TIME_LIMIT -- 1
-![Cluster plot](error_class_plots/scimitar_time_limit_1.png)
-
- * Number of instances: 146
- * Dataset ids: scaling_0244, scaling_0276, scaling_0277, scaling_0288, scaling_0298, scaling_0299, scaling_0309, scaling_0310, scaling_0333, scaling_0337, scaling_0341, scaling_0342, scaling_0352, scaling_0361, scaling_0362, scaling_0371, scaling_0372, scaling_0392, scaling_0405, scaling_0406, scaling_0407, scaling_0418, scaling_0419, scaling_0420, scaling_0431, scaling_0432, scaling_0446, scaling_0457, scaling_0458, scaling_0467, scaling_0468, scaling_0469, scaling_0477, scaling_0478, scaling_0487, scaling_0488, scaling_0498, scaling_0533, scaling_0534, scaling_0545, scaling_0551, scaling_0552, scaling_0558, scaling_0564, scaling_0567, scaling_0573, scaling_0576, scaling_0582, scaling_0585, scaling_0591, scaling_0594, scaling_0600, scaling_0605, scaling_0606, scaling_0607, scaling_0615, scaling_0616, scaling_0621, scaling_0622, scaling_0623, scaling_0631, scaling_0632, scaling_0637, scaling_0638, scaling_0639, scaling_0647, scaling_0648, scaling_0653, scaling_0654, scaling_0655, scaling_0663, scaling_0664, scaling_0669, scaling_0670, scaling_0671, scaling_0679, scaling_0680, scaling_0686, scaling_0687, scaling_0688, scaling_0695, scaling_0696, scaling_0703, scaling_0704, scaling_0705, scaling_0712, scaling_0713, scaling_0720, scaling_0721, scaling_0722, scaling_0729, scaling_0730, scaling_0737, scaling_0738, scaling_0739, scaling_0746, scaling_0747, scaling_0754, scaling_0755, scaling_0756, scaling_0763, scaling_0764, scaling_0772, scaling_0773, scaling_0774, scaling_0780, scaling_0790, scaling_0791, scaling_0792, scaling_0798, scaling_0808, scaling_0809, scaling_0816, scaling_0826, scaling_0827, scaling_0828, scaling_0834, scaling_0844, scaling_0845, scaling_0846, scaling_0852, scaling_0860, scaling_0861, scaling_0871, scaling_0872, scaling_0882, scaling_0893, scaling_0904, scaling_0914, scaling_0922, scaling_0930, scaling_0938, scaling_0946, scaling_0953, scaling_0954, scaling_0959, scaling_0960, scaling_0965, scaling_0971, scaling_0977, scaling_0978, scaling_0987, scaling_1001, scaling_1015, scaling_1029, scaling_1043
-
-Last 10 lines of scaling_0244:
-```
-File: /home/rcannood/Workspace/dynverse/dynbenchmark//derived/05-scaling/suite/scimitar/10/r2gridengine/20180924_185103_scimitar_10_5gSDMMCHzq/log/log.244.e.txt
 ```
 
 

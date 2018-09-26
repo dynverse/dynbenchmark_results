@@ -1,6 +1,19 @@
 # matcher
 ![Overview](matcher.png)
 
+## ERROR STATUS TIME_LIMIT
+
+### ERROR CLUSTER TIME_LIMIT -- 1
+![Cluster plot](error_class_plots/matcher_time_limit_1.png)
+
+ * Number of instances: 7
+ * Dataset ids: scaling_0714, scaling_0782, scaling_0800, scaling_0865, scaling_0876, scaling_0887, scaling_1006
+
+Last 10 lines of scaling_0714:
+```
+File: /home/rcannood/Workspace/dynverse/dynbenchmark//derived/05-scaling/suite/matcher/10/r2gridengine/20180924_185024_matcher_10_f0PzbOoAMw/log/log.714.e.txt
+```
+
 ## ERROR STATUS MEMORY_LIMIT
 
 ### ERROR CLUSTER MEMORY_LIMIT -- 1
@@ -41,19 +54,6 @@ Last 10 lines of scaling_0866:
   File "/usr/local/lib/python3.6/site-packages/GPy/inference/latent_function_inference/var_dtc.py", line 145, in inference
     dL_dm = -np.dot((_LBi_Lmi_psi1.T.dot(_LBi_Lmi_psi1))
 MemoryError
-```
-
-## ERROR STATUS TIME_LIMIT
-
-### ERROR CLUSTER TIME_LIMIT -- 1
-![Cluster plot](error_class_plots/matcher_time_limit_1.png)
-
- * Number of instances: 7
- * Dataset ids: scaling_0714, scaling_0782, scaling_0800, scaling_0865, scaling_0876, scaling_0887, scaling_1006
-
-Last 10 lines of scaling_0714:
-```
-File: /home/rcannood/Workspace/dynverse/dynbenchmark//derived/05-scaling/suite/matcher/10/r2gridengine/20180924_185024_matcher_10_f0PzbOoAMw/log/log.714.e.txt
 ```
 
 

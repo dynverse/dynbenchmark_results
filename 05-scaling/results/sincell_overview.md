@@ -1,6 +1,19 @@
 # sincell
 ![Overview](sincell.png)
 
+## ERROR STATUS TIME_LIMIT
+
+### ERROR CLUSTER TIME_LIMIT -- 1
+![Cluster plot](error_class_plots/sincell_time_limit_1.png)
+
+ * Number of instances: 132
+ * Dataset ids: scaling_0350, scaling_0360, scaling_0370, scaling_0402, scaling_0403, scaling_0415, scaling_0416, scaling_0428, scaling_0429, scaling_0464, scaling_0465, scaling_0474, scaling_0475, scaling_0484, scaling_0485, scaling_0494, scaling_0509, scaling_0513, scaling_0517, scaling_0521, scaling_0531, scaling_0537, scaling_0543, scaling_0549, scaling_0562, scaling_0563, scaling_0564, scaling_0571, scaling_0572, scaling_0573, scaling_0580, scaling_0581, scaling_0582, scaling_0589, scaling_0590, scaling_0591, scaling_0598, scaling_0612, scaling_0613, scaling_0614, scaling_0615, scaling_0628, scaling_0629, scaling_0630, scaling_0631, scaling_0644, scaling_0645, scaling_0646, scaling_0647, scaling_0660, scaling_0661, scaling_0662, scaling_0663, scaling_0676, scaling_0677, scaling_0678, scaling_0679, scaling_0692, scaling_0693, scaling_0694, scaling_0695, scaling_0709, scaling_0710, scaling_0711, scaling_0712, scaling_0726, scaling_0727, scaling_0728, scaling_0729, scaling_0743, scaling_0744, scaling_0745, scaling_0746, scaling_0761, scaling_0762, scaling_0763, scaling_0777, scaling_0778, scaling_0779, scaling_0780, scaling_0795, scaling_0796, scaling_0797, scaling_0798, scaling_0813, scaling_0814, scaling_0815, scaling_0816, scaling_0831, scaling_0832, scaling_0833, scaling_0834, scaling_0850, scaling_0851, scaling_0852, scaling_0863, scaling_0874, scaling_0885, scaling_0896, scaling_0907, scaling_0915, scaling_0916, scaling_0917, scaling_0923, scaling_0924, scaling_0925, scaling_0931, scaling_0932, scaling_0933, scaling_0939, scaling_0940, scaling_0941, scaling_0948, scaling_0949, scaling_0988, scaling_0989, scaling_0990, scaling_0991, scaling_1002, scaling_1003, scaling_1004, scaling_1005, scaling_1016, scaling_1017, scaling_1018, scaling_1019, scaling_1030, scaling_1031, scaling_1032, scaling_1033, scaling_1046, scaling_1047
+
+Last 10 lines of scaling_0350:
+```
+File: /home/rcannood/Workspace/dynverse/dynbenchmark//derived/05-scaling/suite/sincell/10/r2gridengine/20180924_184938_sincell_10_PlW5kuPAyr/log/log.350.e.txt
+```
+
 ## ERROR STATUS MEMORY_LIMIT
 
 ### ERROR CLUSTER MEMORY_LIMIT -- 1
@@ -61,19 +74,6 @@ The following object is masked from ‘package:base’:
     union
 Error: cannot allocate vector of size 2.4 Gb
 Execution halted
-```
-
-## ERROR STATUS TIME_LIMIT
-
-### ERROR CLUSTER TIME_LIMIT -- 1
-![Cluster plot](error_class_plots/sincell_time_limit_1.png)
-
- * Number of instances: 132
- * Dataset ids: scaling_0350, scaling_0360, scaling_0370, scaling_0402, scaling_0403, scaling_0415, scaling_0416, scaling_0428, scaling_0429, scaling_0464, scaling_0465, scaling_0474, scaling_0475, scaling_0484, scaling_0485, scaling_0494, scaling_0509, scaling_0513, scaling_0517, scaling_0521, scaling_0531, scaling_0537, scaling_0543, scaling_0549, scaling_0562, scaling_0563, scaling_0564, scaling_0571, scaling_0572, scaling_0573, scaling_0580, scaling_0581, scaling_0582, scaling_0589, scaling_0590, scaling_0591, scaling_0598, scaling_0612, scaling_0613, scaling_0614, scaling_0615, scaling_0628, scaling_0629, scaling_0630, scaling_0631, scaling_0644, scaling_0645, scaling_0646, scaling_0647, scaling_0660, scaling_0661, scaling_0662, scaling_0663, scaling_0676, scaling_0677, scaling_0678, scaling_0679, scaling_0692, scaling_0693, scaling_0694, scaling_0695, scaling_0709, scaling_0710, scaling_0711, scaling_0712, scaling_0726, scaling_0727, scaling_0728, scaling_0729, scaling_0743, scaling_0744, scaling_0745, scaling_0746, scaling_0761, scaling_0762, scaling_0763, scaling_0777, scaling_0778, scaling_0779, scaling_0780, scaling_0795, scaling_0796, scaling_0797, scaling_0798, scaling_0813, scaling_0814, scaling_0815, scaling_0816, scaling_0831, scaling_0832, scaling_0833, scaling_0834, scaling_0850, scaling_0851, scaling_0852, scaling_0863, scaling_0874, scaling_0885, scaling_0896, scaling_0907, scaling_0915, scaling_0916, scaling_0917, scaling_0923, scaling_0924, scaling_0925, scaling_0931, scaling_0932, scaling_0933, scaling_0939, scaling_0940, scaling_0941, scaling_0948, scaling_0949, scaling_0988, scaling_0989, scaling_0990, scaling_0991, scaling_1002, scaling_1003, scaling_1004, scaling_1005, scaling_1016, scaling_1017, scaling_1018, scaling_1019, scaling_1030, scaling_1031, scaling_1032, scaling_1033, scaling_1046, scaling_1047
-
-Last 10 lines of scaling_0350:
-```
-File: /home/rcannood/Workspace/dynverse/dynbenchmark//derived/05-scaling/suite/sincell/10/r2gridengine/20180924_184938_sincell_10_PlW5kuPAyr/log/log.350.e.txt
 ```
 
 
