@@ -1,5 +1,6 @@
 ---
-output: dynbenchmark::github_markdown_nested
+output: 
+  - dynbenchmark::github_markdown_nested
 ---
 
 ```{r setup, include=FALSE}
@@ -52,8 +53,9 @@ table <- map(c("html", "latex", "markdown"), function(format) {
       mutate(
         conforms = kableExtra::cell_spec(
           ifelse(conforms, "\U2714", "\U2716"),
-          background = ifelse(conforms, "#2ECC40", "#FF4136"),
-          format = format
+          background = ifelse(conforms, "#B2DF8A", "#FB9A99"),
+          format = format,
+          align = "c"
         ),
         rule_id = forcats::fct_inorder(rule_id)
       ) 
@@ -71,7 +73,7 @@ table <- map(c("html", "latex", "markdown"), function(format) {
   
   if (format != "markdown") {
     knitr::kable(table, format = format, escape = FALSE, booktabs = TRUE) %>% 
-      kableExtra::kable_styling(full_width = FALSE) %>% 
+      kableExtra::kable_styling(full_width = FALSE, font_size = 7) %>% 
       kableExtra::column_spec(1, width="15em") %>% 
       kableExtra::column_spec(2:ncol(table), width = "3em") %>% 
       kableExtra::row_spec(0, angle = 30) %>% 
@@ -88,9 +90,10 @@ add_table(
 )
 ```
 
+\clearpage
 
 ```{r}
 mapdf(assessments, function(assessment) {
   knitr::knit_child(text = readr::read_lines(result_file("assessment.Rmd", experiment = "02-metrics/02-metric_conformity")), quiet=TRUE, envir = environment())
-}) %>% as.character() %>% paste(collapse = "\n") %>% knitr::asis_output()
+}) %>% as.character() %>% paste(collapse = "\n\n") %>% knitr::asis_output()
 ```
