@@ -40,7 +40,7 @@ The `r label_metric("him")` metric (Hamming-Ipsen-Mikhailov distance) [@jurman_H
 - The normalised Hamming distance [@doughertyValidationGeneRegulatory2011], which calculates the distance between two graphs by matching individual edges in the adjacency matrix, but disregards overall structural similarity.
 - The normalised Ipsen-Mikhailov distance [@ipsenEvolutionaryReconstructionNetworks2002], which calculates the overall distance of two graphs based on matches between its degree and adjacency matrix, while disregarding local structural similarities. It requires a $\gamma$ parameter, which is usually estimated based on the number of nodes in the graph, but which we fixed at $0.1$ so as to make the score comparable across different graph sizes.
 
-We compared the three scores for several common topologies (`r ref("fig", "topology_scores_overview")`). While conceptually very different, the `r label_metric("edge_flip")` and `r label_metric("him")` still produce similar scores (`r ref("fig", "topology_scores_overview", "b")`). The `r label_metric("him")` tends to punish the detection of cycles, while the `r label_metric("edge_flip")` is more harsh for differences in the number of bifurcations (`r ref("fig", "topology_scores_overview", "b")`). The main difference however is that the `r label_metric("him")` takes into account edge lengths when comparing two trajectories, as illustrated in (`r ref("fig", "topology_scores_overview", "c")`). Short "extra" edges in the topology are less punished by the `r label_metric("him")` than by the `r label_metric("edge_flip")`.
+We compared the three scores on several common topologies (`r ref("fig", "topology_scores_overview")`). While conceptually very different, the `r label_metric("edge_flip")` and `r label_metric("him")` still produce similar scores (`r ref("fig", "topology_scores_overview", "b")`). The `r label_metric("him")` tends to punish the detection of cycles, while the `r label_metric("edge_flip")` is more harsh for differences in the number of bifurcations (`r ref("fig", "topology_scores_overview", "b")`). The main difference however is that the `r label_metric("him")` takes into account edge lengths when comparing two trajectories, as illustrated in (`r ref("fig", "topology_scores_overview", "c")`). Short "extra" edges in the topology are less punished by the `r label_metric("him")` than by the `r label_metric("edge_flip")`.
 
 ```{r}
 add_fig(
@@ -57,7 +57,7 @@ To summarise, the different topology based scores are useful for different scena
 
 - If the two trajectories should only be compared when the topology is exactly the same, the `r label_metric("isomorphic")` should be used.
 - If it is important that the topologies are similar, but not necessarily isomorphic, the `r label_metric("edge_flip")` is most appropriate.
-- If the topologies should be similar, but shorter edges should not be punished as hard as longer edges, the `r label_metric("HIM")` is most appropriate.
+- If the topologies should be similar, but shorter edges should not be punished as hard as longer edges, the `r label_metric("him")` is most appropriate.
 
 ### `r label_metric("F1_branches")` and `r label_metric("F1_milestones")`: Comparing how well the cells are clustered in the trajectory
 
