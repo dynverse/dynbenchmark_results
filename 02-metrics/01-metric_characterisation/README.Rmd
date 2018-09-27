@@ -47,7 +47,7 @@ add_fig(
   result_file("topology_scores_overview.rds", experiment_id = "02-metrics/01-metric_characterisation"),
   "topology_scores_overview",
   glue::glue("Showcase of three metrics to evaluate topologies: {label_metric('isomorphic')}, {label_metric('edge_flip')} and {label_metric('him')}."),
-  glue::glue("(a) The used topologies. (b) The scores when comparing each pair of trajectory types. (d) Four datasets in which aan extra edge is added and made progressively longer. This shows how the {label_metric('him')} can take into account edge lengths."),
+  glue::glue("(a) The used topologies. (b) The scores when comparing each pair of trajectory types. (c) Four datasets in which aan extra edge is added and made progressively longer. This shows how the {label_metric('him')} can take into account edge lengths."),
   width = 12,
   height = 12
 )
@@ -75,9 +75,6 @@ $\textrm{Recovery} = \frac{1}{|C|} \sum_{c \in C}{\max_{c' \in C'}{\textrm{Jacca
 $\textrm{Relevance} = \frac{1}{|C'|} \sum_{c' \in C'}{\max_{c \in C}{\textrm{Jaccard(c, c')}}}$
 
 $\textrm{F1} = \frac{2}{\frac{1}{\textrm{Recovery}} + \frac{1}{\textrm{Relevance}}}$
-
-
-
 
 
 ```{r}
