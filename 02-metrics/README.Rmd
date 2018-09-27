@@ -40,9 +40,13 @@ All metrics described here were implemented within the [_dyneval_](https://githu
 dynbenchmark::knit_nest("01-metric_characterisation/README.Rmd")
 ```
 
+\clearpage
+
 ```{r}
 dynbenchmark::knit_nest("02-metric_conformity/README.Rmd")
 ```
+
+\clearpage
 
 ```{r}
 dynbenchmark::knit_nest("03-aggregation/README.Rmd")

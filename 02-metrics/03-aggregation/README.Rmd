@@ -16,15 +16,15 @@ To rank the methods, we need to aggregate on two levels: across **datasets** and
 
 When combining different datasets, it is important that the biases in the datasets does not influence the overall score. In our study, we define three such biases, although there are potentially many more:
 
-- **Difficulty of the datasets**: Some datasets are more difficult than others. This can have various reasons, such as the complexity of the topology, the amount of biological and technical noise, or the dimensions of the data. It is important that a small increase in performance on a more difficult dataset has an equual impact of the final score as a large increase in performance on easier datasets.
+- **Difficulty of the datasets**: Some datasets are more difficult than others. This can have various reasons, such as the complexity of the topology, the amount of biological and technical noise, or the dimensions of the data. It is important that a small increase in performance on a more difficult dataset has an equal impact on the final score as a large increase in performance on easier datasets.
 - **Dataset sources**: It is much easier to generate synthetic datasets than real datasets, and this bias is reflected in our set of datasets. However, given their higher biological relevance, real datasets should be given at least equal importance than synthetic datasets.
-- **Trajectory types**: There are many more linear and disconnected real datasets, and only a limited number of tree or graph datasets. This imbalance is there because historically most datasets have been linear datasets, and because it is easy to create disconnected datasets by combining different unrelated datasets. However, this imbalance in trajectory types does not necessarily reflect the general importance of that trajectory type.
+- **Trajectory types**: There are many more linear and disconnected real datasets, and only a limited number of tree or graph datasets. This imbalance is there because historically most datasets have been linear datasets, and because it is easy to create disconnected datasets by combining different datasets. However, this imbalance in trajectory types does not necessarily reflect the general importance of that trajectory type.
 
 We designed an aggregation scheme which tries to prevent these biases from influencing the ranking of the methods.
 
 The difficulty of a dataset can easily have an impact on how much weight the dataset gets in an overall ranking. We illustrate this with a simple example in `r ref("fig", "normalisation_reasoning")`. One method consistently performs well on both the easy and the difficult datasets. But because the differences are small in the difficult datasets, the mean would not give this method a high score. Meanwhile, a variable method which does not perform well on the difficult dataset gets the highest score, because it scored so high on the easier dataset.
 
-To avoid this bias, we normalise the scores of each dataset by first scaling and centering to $\mu = 0$ and $\sigma = 1$, and then moving the score values back to $[0, 1]$ by applying the unit normal density distribution function. This results in scores which are comparable across different datasets (`r ref("fig", "normalisation_reasoning")`). In contrast to other possible normalisation techniques, such as ranking  still retaining some information on the relative difference between the scores, which would have been lost when using the ranks for normalisation. An example of this normalisation, which will also be used in the subsequent aggregation steps, can be seen in `r ref("fig", "normalisation_example")`.
+To avoid this bias, we normalise the scores of each dataset by first scaling and centering to $\mu = 0$ and $\sigma = 1$, and then moving the score values back to $[0, 1]$ by applying the unit normal density distribution function. This results in scores which are comparable across different datasets (`r ref("fig", "normalisation_reasoning")`). In contrast to other possible normalisation techniques, this will still retain some information on the relative difference between the scores, which would have been lost when using the ranks for normalisation. An example of this normalisation, which will also be used in the subsequent aggregation steps, can be seen in `r ref("fig", "normalisation_example")`.
 
 ```{r}
 add_fig(
@@ -42,13 +42,13 @@ add_fig(
   result_file("normalisation_example.rds", experiment = "02-metrics/03-aggregation"),
   "normalisation_example",
   glue::glue("An example of the normalisation procedure."),
-  glue::glue(""),
+  glue::glue("Shown are some results of a benchmarking procedure, where every row contains the scores of a particular method (red shading) on a particular dataset (blue shading), with a trajectory type (green shading) and dataset source (orange shading). In this example, we first split the datasets"),
   width = 12, 
   height = 5
 )
 ```
 
-Next, we aggregate step by step the scores from different datasets. We first aggregate the datasets with the same dataset source and trajectory type using an arithmetic mean of their scores `r ref("fig", "aggregation_example.rds", "a")`. Next, the scores are averaged over different dataset sources, using a arithmetic mean which was weighted based on how much the synthetic and silver scores correlated with the real gold scores `r ref("fig", "aggregation_example.rds", "b")`. Finally, the scores were aggregated over the different trajectory types again using a arithmetic mean `r ref("fig", "aggregation_example.rds", "c")`.
+After normalisation, we aggregate step by step the scores from different datasets. We first aggregate the datasets with the same dataset source and trajectory type using an arithmetic mean of their scores `r ref("fig", "aggregation_example", "a")`. Next, the scores are averaged over different dataset sources, using a arithmetic mean which was weighted based on how much the synthetic and silver scores correlated with the real gold scores `r ref("fig", "aggregation_example", "b")`. Finally, the scores were aggregated over the different trajectory types again using a arithmetic mean `r ref("fig", "aggregation_example", "c")`.
 
 ```{r}
 add_fig(
@@ -70,25 +70,25 @@ Undoubtedly, a single optimal overall metric does not exist for trajectories, as
 - A user may already know the topology, and may be primarily interested in finding good features related to a particular branching point
 - ...
 
-Each of these scenarios would require a combinations of _specific_ metrics with different weights. To provide an "overall" ranking of the metrics, which is impartial for the scenarios described above, we therefore chose a metric which weighs every aspect of the trajectory equally:
+Each of these scenarios would require a combinations of _specific_ and _application_ metrics with different weights. To provide an "overall" ranking of the metrics, which is impartial for the scenarios described above, we therefore chose a metric which weighs every aspect of the trajectory equally:
 
 - Its **ordering**, using the `r label_metric("correlation")`
 - Its **branch assignment**, using the `r label_metric("F1_branches")`
 - Its **topology**, using the `r label_metric("him")`
 - The accuracy of **differentially expressed features**, using the `r label_metric("featureimp_wcor")`
 
-Next, we considered three different ways of averaging different scores: the `r label_metric("arith_mean")`, `r label_metric("geom_mean")` and `r label_metric("harm_mean")`. Each of these types of mean have different use cases. The `r label_metric("harm_mean")` is most appropriate when the scores would all have a common denominator (as is the case for the $\textrm{Recovery}$ and $\textrm{Relevance}$ described earlier). The `r label_metric("arith_mean")` would be most appropriate when all the metrics have the same range. For our use case, the `r label_metric("geom_mean")` is the most appropriate, because it gives a meaningful average when the metrics are present in different ranges. Even though the maximal and minimal values of our metrics all lie within $\lbrack 0, 1 \rbrack$, their actual values within our benchmark were very different. Moreover, the geometric mean has as an added benefit that it is relatively low if one of the values is low. For example, this means that if a method is not good at inferring the correct topology, it will get a low overall score, even if it performs better at all other scores.
+Next, we considered three different ways of averaging different scores: the arithmetic mean, geometric mean and harmonic mean. Each of these types of mean have different use cases. The harmonic mean is most appropriate when the scores would all have a common denominator (as is the case for the $\textrm{Recovery}$ and $\textrm{Relevance}$ described earlier). The arithmetic mean would be most appropriate when all the metrics have the same range. For our use case, the geometric mean is the most appropriate, because it is low if one of the values is low. For example, this means that if a method is not good at inferring the correct topology, it will get a low overall score, even if it performs better at all other scores. This ensures that a high score will only be reached if a prediction has a good ordering, branch assignment, topology, and set of differentially expressed features.
 
 The final overall score (`r ref("fig", "averaging_example")`) for a method was thus defined as: 
 
-$`r stringr::str_sub(dynbenchmark::label_metric("geom_mean", "latex"), 2, -2)` = \sqrt[4]{`r stringr::str_sub(dynbenchmark::label_metric("correlation", "latex"), 2, -2)` \times `r stringr::str_sub(dynbenchmark::label_metric("him", "latex"), 2, -2)` \times `r stringr::str_sub(dynbenchmark::label_metric("featureimp_wcor", "latex"), 2, -2)` \times `r stringr::str_sub(dynbenchmark::label_metric("F1_branches", "latex"), 2, -2)`}$
+$\textit{Overall} = `r stringr::str_sub(dynbenchmark::label_metric("geom_mean", "latex"), 2, -2)` = \sqrt[4]{`r stringr::str_sub(dynbenchmark::label_metric("correlation", "latex"), 2, -2)` \times `r stringr::str_sub(dynbenchmark::label_metric("him", "latex"), 2, -2)` \times `r stringr::str_sub(dynbenchmark::label_metric("featureimp_wcor", "latex"), 2, -2)` \times `r stringr::str_sub(dynbenchmark::label_metric("F1_branches", "latex"), 2, -2)`}$
 
 ```{r}
 add_fig(
   result_file("averaging_example.rds", experiment = "02-metrics/03-aggregation"),
   "averaging_example",
   glue::glue("An example of the averaging procedure."),
-  glue::glue("To weight both the different dataset sources and the "),
+  glue::glue("For each method, we calculated the geometric mean between its normalised and aggregated scores"),
   width = 12, 
   height = 5
 )

@@ -30,8 +30,9 @@ assessment$conformity %>%
     metric_id = label_metrics(metric_id, format = "latex") %>% as.character() %>% forcats::fct_inorder(),
     conforms = kableExtra::cell_spec(
       ifelse(conforms, "\U2714", "\U2716"), 
-      background = ifelse(conforms, "#2ECC40", "#FF4136"),
-      format = "latex"
+      background = ifelse(conforms, "#B2DF8A", "#FB9A99"),
+      format = "latex",
+      align = "c"
     )
   ) %>% 
   spread(metric_id, conforms) %>% 
@@ -68,4 +69,4 @@ add_fig(
 ```
 
 
-\pagebreak
+\clearpage

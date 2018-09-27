@@ -54,8 +54,9 @@ table <- map(c("html", "latex", "markdown"), function(format) {
       mutate(
         conforms = kableExtra::cell_spec(
           ifelse(conforms, "\U2714", "\U2716"),
-          background = ifelse(conforms, "#2ECC40", "#FF4136"),
-          format = format
+          background = ifelse(conforms, "#B2DF8A", "#FB9A99"),
+          format = format,
+          align = "c"
         ),
         rule_id = forcats::fct_inorder(rule_id)
       ) 
@@ -90,9 +91,10 @@ add_table(
 )
 ```
 
+\clearpage
 
 ```{r}
-mapdf(assessments[1:4,], function(assessment) {
+mapdf(assessments, function(assessment) {
   knitr::knit_child(text = readr::read_lines(result_file("assessment.Rmd", experiment = "02-metrics/02-metric_conformity")), quiet=TRUE, envir = environment())
-}) %>% as.character() %>% paste(collapse = "\n\n\\pagebreak") %>% knitr::asis_output()
+}) %>% as.character() %>% paste(collapse = "\n\n") %>% knitr::asis_output()
 ```
