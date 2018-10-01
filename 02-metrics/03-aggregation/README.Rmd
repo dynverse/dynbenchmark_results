@@ -10,7 +10,7 @@ library(dynbenchmark)
 
 # Score aggregation
 
-To rank the methods, we need to aggregate on two levels: across **datasets** and across specific metrics to calculate an **overall metric**.
+To rank the methods, we need to aggregate on two levels: across **datasets** and across specific/application metrics to calculate an **overall metric**.
 
 ## Aggregating over datasets
 
@@ -48,7 +48,7 @@ add_fig(
 )
 ```
 
-After normalisation, we aggregate step by step the scores from different datasets. We first aggregate the datasets with the same dataset source and trajectory type using an arithmetic mean of their scores `r ref("fig", "aggregation_example", "a")`. Next, the scores are averaged over different dataset sources, using a arithmetic mean which was weighted based on how much the synthetic and silver scores correlated with the real gold scores `r ref("fig", "aggregation_example", "b")`. Finally, the scores were aggregated over the different trajectory types again using a arithmetic mean `r ref("fig", "aggregation_example", "c")`.
+After normalisation, we aggregate step by step the scores from different datasets. We first aggregate the datasets with the same dataset source and trajectory type using an arithmetic mean of their scores `r ref("fig", "aggregation_example", "a")`. Next, the scores are averaged over different dataset sources, using a arithmetic mean which was weighted based on how much the synthetic and silver scores correlated with the real gold scores `r ref("fig", "aggregation_example", "b")`. Finally, the scores are aggregated over the different trajectory types again using a arithmetic mean `r ref("fig", "aggregation_example", "c")`.
 
 ```{r}
 add_fig(
