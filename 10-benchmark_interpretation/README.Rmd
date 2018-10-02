@@ -14,12 +14,12 @@ experiment("10-benchmark_interpretation")
 
 ```{r}
 add_fig(
-  result_file("overall_complexity_difference.rds"),
+  result_file("benchmark_interpretation.pdf"),
   "overall_complexity_difference",
   "",
   "",
-  width = 6,
-  height = 10
+  width = 14,
+  height = 14
 )
 ```
 

@@ -1,12 +1,10 @@
 
-# Topologies
-
-    ## Picking joint bandwidth of 2.64
+# Benchmark interpretation
 
 <p>
 
 <a name = 'fig_overall_complexity_difference'></a>
-<img src = "overall_complexity_difference.png" width = "420" height = "700" />
+<img src = "benchmark_interpretation.png" width = "980" height = "980" />
 
 </p>
 
