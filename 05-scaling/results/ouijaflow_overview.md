@@ -6,8 +6,8 @@
 ### ERROR CLUSTER METHOD_ERROR -- 1
 ![Cluster plot](error_class_plots/ouijaflow_method_error_1.png)
 
- * Number of instances: 58
- * Dataset ids: scaling_0169, scaling_0244, scaling_0306, scaling_0367, scaling_0386, scaling_0405, scaling_0414, scaling_0417, scaling_0419, scaling_0482, scaling_0485, scaling_0489, scaling_0506, scaling_0510, scaling_0526, scaling_0527, scaling_0564, scaling_0565, scaling_0566, scaling_0573, scaling_0574, scaling_0579, scaling_0591, scaling_0602, scaling_0605, scaling_0616, scaling_0647, scaling_0664, scaling_0675, scaling_0681, scaling_0682, scaling_0697, scaling_0713, scaling_0714, scaling_0715, scaling_0717, scaling_0719, scaling_0722, scaling_0724, scaling_0732, scaling_0766, scaling_0767, scaling_0779, scaling_0782, scaling_0783, scaling_0784, scaling_0789, scaling_0799, scaling_0801, scaling_0804, scaling_0806, scaling_0808, scaling_0820, scaling_0835, scaling_0837, scaling_0840, scaling_0844, scaling_0855
+ * Number of instances: 116
+ * Dataset ids: scaling_0169, scaling_0244, scaling_0306, scaling_0367, scaling_0386, scaling_0405, scaling_0414, scaling_0417, scaling_0419, scaling_0482, scaling_0485, scaling_0489, scaling_0506, scaling_0510, scaling_0526, scaling_0527, scaling_0564, scaling_0565, scaling_0566, scaling_0573, scaling_0574, scaling_0579, scaling_0591, scaling_0602, scaling_0605, scaling_0616, scaling_0647, scaling_0664, scaling_0675, scaling_0681, scaling_0682, scaling_0697, scaling_0713, scaling_0714, scaling_0715, scaling_0717, scaling_0719, scaling_0722, scaling_0724, scaling_0732, scaling_0766, scaling_0767, scaling_0779, scaling_0782, scaling_0783, scaling_0784, scaling_0789, scaling_0799, scaling_0801, scaling_0804, scaling_0806, scaling_0808, scaling_0820, scaling_0835, scaling_0837, scaling_0840, scaling_0844, scaling_0855, scaling_0169, scaling_0244, scaling_0306, scaling_0367, scaling_0386, scaling_0405, scaling_0414, scaling_0417, scaling_0419, scaling_0482, scaling_0485, scaling_0489, scaling_0506, scaling_0510, scaling_0526, scaling_0527, scaling_0564, scaling_0565, scaling_0566, scaling_0573, scaling_0574, scaling_0579, scaling_0591, scaling_0602, scaling_0605, scaling_0616, scaling_0647, scaling_0664, scaling_0675, scaling_0681, scaling_0682, scaling_0697, scaling_0713, scaling_0714, scaling_0715, scaling_0717, scaling_0719, scaling_0722, scaling_0724, scaling_0732, scaling_0766, scaling_0767, scaling_0779, scaling_0782, scaling_0783, scaling_0784, scaling_0789, scaling_0799, scaling_0801, scaling_0804, scaling_0806, scaling_0808, scaling_0820, scaling_0835, scaling_0837, scaling_0840, scaling_0844, scaling_0855
 
 Last 10 lines of scaling_0169:
 ```
@@ -28,8 +28,8 @@ Sum of progressions per cell_id should be exactly one
 ### ERROR CLUSTER MEMORY_LIMIT -- 1
 ![Cluster plot](error_class_plots/ouijaflow_memory_limit_1.png)
 
- * Number of instances: 85
- * Dataset ids: scaling_0856, scaling_0857, scaling_0858, scaling_0859, scaling_0860, scaling_0862, scaling_0863, scaling_0864, scaling_0866, scaling_0867, scaling_0868, scaling_0869, scaling_0870, scaling_0871, scaling_0872, scaling_0873, scaling_0875, scaling_0876, scaling_0877, scaling_0878, scaling_0879, scaling_0882, scaling_0883, scaling_0884, scaling_0885, scaling_0887, scaling_0888, scaling_0889, scaling_0890, scaling_0892, scaling_0893, scaling_0894, scaling_0895, scaling_0896, scaling_0898, scaling_0899, scaling_0903, scaling_0904, scaling_0907, scaling_0908, scaling_0909, scaling_0910, scaling_0912, scaling_0913, scaling_0914, scaling_0915, scaling_0916, scaling_0917, scaling_0918, scaling_0919, scaling_0920, scaling_0921, scaling_0923, scaling_0924, scaling_0925, scaling_0927, scaling_0928, scaling_0929, scaling_0930, scaling_0931, scaling_0932, scaling_0933, scaling_0935, scaling_0936, scaling_0937, scaling_0938, scaling_0939, scaling_0940, scaling_0941, scaling_0943, scaling_0944, scaling_0945, scaling_0947, scaling_0948, scaling_0949, scaling_0950, scaling_0958, scaling_0962, scaling_0969, scaling_0977, scaling_0982, scaling_0984, scaling_1025, scaling_1031, scaling_1045
+ * Number of instances: 170
+ * Dataset ids: scaling_0856, scaling_0857, scaling_0858, scaling_0859, scaling_0860, scaling_0862, scaling_0863, scaling_0864, scaling_0866, scaling_0867, scaling_0868, scaling_0869, scaling_0870, scaling_0871, scaling_0872, scaling_0873, scaling_0875, scaling_0876, scaling_0877, scaling_0878, scaling_0879, scaling_0882, scaling_0883, scaling_0884, scaling_0885, scaling_0887, scaling_0888, scaling_0889, scaling_0890, scaling_0892, scaling_0893, scaling_0894, scaling_0895, scaling_0896, scaling_0898, scaling_0899, scaling_0903, scaling_0904, scaling_0907, scaling_0908, scaling_0909, scaling_0910, scaling_0912, scaling_0913, scaling_0914, scaling_0915, scaling_0916, scaling_0917, scaling_0918, scaling_0919, scaling_0920, scaling_0921, scaling_0923, scaling_0924, scaling_0925, scaling_0927, scaling_0928, scaling_0929, scaling_0930, scaling_0931, scaling_0932, scaling_0933, scaling_0935, scaling_0936, scaling_0937, scaling_0938, scaling_0939, scaling_0940, scaling_0941, scaling_0943, scaling_0944, scaling_0945, scaling_0947, scaling_0948, scaling_0949, scaling_0950, scaling_0958, scaling_0962, scaling_0969, scaling_0977, scaling_0982, scaling_0984, scaling_1025, scaling_1031, scaling_1045, scaling_0856, scaling_0857, scaling_0858, scaling_0859, scaling_0860, scaling_0862, scaling_0863, scaling_0864, scaling_0866, scaling_0867, scaling_0868, scaling_0869, scaling_0870, scaling_0871, scaling_0872, scaling_0873, scaling_0875, scaling_0876, scaling_0877, scaling_0878, scaling_0879, scaling_0882, scaling_0883, scaling_0884, scaling_0885, scaling_0887, scaling_0888, scaling_0889, scaling_0890, scaling_0892, scaling_0893, scaling_0894, scaling_0895, scaling_0896, scaling_0898, scaling_0899, scaling_0903, scaling_0904, scaling_0907, scaling_0908, scaling_0909, scaling_0910, scaling_0912, scaling_0913, scaling_0914, scaling_0915, scaling_0916, scaling_0917, scaling_0918, scaling_0919, scaling_0920, scaling_0921, scaling_0923, scaling_0924, scaling_0925, scaling_0927, scaling_0928, scaling_0929, scaling_0930, scaling_0931, scaling_0932, scaling_0933, scaling_0935, scaling_0936, scaling_0937, scaling_0938, scaling_0939, scaling_0940, scaling_0941, scaling_0943, scaling_0944, scaling_0945, scaling_0947, scaling_0948, scaling_0949, scaling_0950, scaling_0958, scaling_0962, scaling_0969, scaling_0977, scaling_0982, scaling_0984, scaling_1025, scaling_1031, scaling_1045
 
 Last 10 lines of scaling_0856:
 ```
@@ -48,8 +48,8 @@ Hint: If you want to see a list of allocated tensors when OOM happens, add repor
 ### ERROR CLUSTER MEMORY_LIMIT -- 2
 ![Cluster plot](error_class_plots/ouijaflow_memory_limit_2.png)
 
- * Number of instances: 11
- * Dataset ids: scaling_0861, scaling_0874, scaling_0880, scaling_0886, scaling_0902, scaling_0911, scaling_0922, scaling_0926, scaling_0971, scaling_0980, scaling_1013
+ * Number of instances: 22
+ * Dataset ids: scaling_0861, scaling_0874, scaling_0880, scaling_0886, scaling_0902, scaling_0911, scaling_0922, scaling_0926, scaling_0971, scaling_0980, scaling_1013, scaling_0861, scaling_0874, scaling_0880, scaling_0886, scaling_0902, scaling_0911, scaling_0922, scaling_0926, scaling_0971, scaling_0980, scaling_1013
 
 Last 10 lines of scaling_0861:
 ```
@@ -68,8 +68,8 @@ Hint: If you want to see a list of allocated tensors when OOM happens, add repor
 ### ERROR CLUSTER MEMORY_LIMIT -- 3
 ![Cluster plot](error_class_plots/ouijaflow_memory_limit_3.png)
 
- * Number of instances: 5
- * Dataset ids: scaling_0865, scaling_0897, scaling_0905, scaling_0993, scaling_1005
+ * Number of instances: 10
+ * Dataset ids: scaling_0865, scaling_0897, scaling_0905, scaling_0993, scaling_1005, scaling_0865, scaling_0897, scaling_0905, scaling_0993, scaling_1005
 
 Last 10 lines of scaling_0865:
 ```
@@ -88,8 +88,8 @@ Hint: If you want to see a list of allocated tensors when OOM happens, add repor
 ### ERROR CLUSTER MEMORY_LIMIT -- 4
 ![Cluster plot](error_class_plots/ouijaflow_memory_limit_4.png)
 
- * Number of instances: 5
- * Dataset ids: scaling_0881, scaling_0957, scaling_1006, scaling_1024, scaling_1032
+ * Number of instances: 10
+ * Dataset ids: scaling_0881, scaling_0957, scaling_1006, scaling_1024, scaling_1032, scaling_0881, scaling_0957, scaling_1006, scaling_1024, scaling_1032
 
 Last 10 lines of scaling_0881:
 ```
@@ -108,8 +108,8 @@ Hint: If you want to see a list of allocated tensors when OOM happens, add repor
 ### ERROR CLUSTER MEMORY_LIMIT -- 5
 ![Cluster plot](error_class_plots/ouijaflow_memory_limit_5.png)
 
- * Number of instances: 2
- * Dataset ids: scaling_0891, scaling_1023
+ * Number of instances: 4
+ * Dataset ids: scaling_0891, scaling_1023, scaling_0891, scaling_1023
 
 Last 10 lines of scaling_0891:
 ```
@@ -128,8 +128,8 @@ Hint: If you want to see a list of allocated tensors when OOM happens, add repor
 ### ERROR CLUSTER MEMORY_LIMIT -- 6
 ![Cluster plot](error_class_plots/ouijaflow_memory_limit_6.png)
 
- * Number of instances: 19
- * Dataset ids: scaling_0901, scaling_0906, scaling_0934, scaling_0942, scaling_0946, scaling_0954, scaling_0964, scaling_0975, scaling_0983, scaling_0985, scaling_0989, scaling_1000, scaling_1011, scaling_1014, scaling_1015, scaling_1018, scaling_1021, scaling_1040, scaling_1050
+ * Number of instances: 38
+ * Dataset ids: scaling_0901, scaling_0906, scaling_0934, scaling_0942, scaling_0946, scaling_0954, scaling_0964, scaling_0975, scaling_0983, scaling_0985, scaling_0989, scaling_1000, scaling_1011, scaling_1014, scaling_1015, scaling_1018, scaling_1021, scaling_1040, scaling_1050, scaling_0901, scaling_0906, scaling_0934, scaling_0942, scaling_0946, scaling_0954, scaling_0964, scaling_0975, scaling_0983, scaling_0985, scaling_0989, scaling_1000, scaling_1011, scaling_1014, scaling_1015, scaling_1018, scaling_1021, scaling_1040, scaling_1050
 
 Last 10 lines of scaling_0901:
 ```
@@ -148,8 +148,8 @@ Hint: If you want to see a list of allocated tensors when OOM happens, add repor
 ### ERROR CLUSTER MEMORY_LIMIT -- 7
 ![Cluster plot](error_class_plots/ouijaflow_memory_limit_7.png)
 
- * Number of instances: 6
- * Dataset ids: scaling_0951, scaling_0968, scaling_1003, scaling_1027, scaling_1036, scaling_1038
+ * Number of instances: 12
+ * Dataset ids: scaling_0951, scaling_0968, scaling_1003, scaling_1027, scaling_1036, scaling_1038, scaling_0951, scaling_0968, scaling_1003, scaling_1027, scaling_1036, scaling_1038
 
 Last 10 lines of scaling_0951:
 ```
@@ -168,8 +168,8 @@ Hint: If you want to see a list of allocated tensors when OOM happens, add repor
 ### ERROR CLUSTER MEMORY_LIMIT -- 8
 ![Cluster plot](error_class_plots/ouijaflow_memory_limit_8.png)
 
- * Number of instances: 11
- * Dataset ids: scaling_0952, scaling_0965, scaling_0966, scaling_0967, scaling_0973, scaling_0994, scaling_1020, scaling_1026, scaling_1029, scaling_1044, scaling_1048
+ * Number of instances: 22
+ * Dataset ids: scaling_0952, scaling_0965, scaling_0966, scaling_0967, scaling_0973, scaling_0994, scaling_1020, scaling_1026, scaling_1029, scaling_1044, scaling_1048, scaling_0952, scaling_0965, scaling_0966, scaling_0967, scaling_0973, scaling_0994, scaling_1020, scaling_1026, scaling_1029, scaling_1044, scaling_1048
 
 Last 10 lines of scaling_0952:
 ```
@@ -188,8 +188,8 @@ Hint: If you want to see a list of allocated tensors when OOM happens, add repor
 ### ERROR CLUSTER MEMORY_LIMIT -- 9
 ![Cluster plot](error_class_plots/ouijaflow_memory_limit_9.png)
 
- * Number of instances: 3
- * Dataset ids: scaling_0953, scaling_0998, scaling_1035
+ * Number of instances: 6
+ * Dataset ids: scaling_0953, scaling_0998, scaling_1035, scaling_0953, scaling_0998, scaling_1035
 
 Last 10 lines of scaling_0953:
 ```
@@ -208,8 +208,8 @@ Hint: If you want to see a list of allocated tensors when OOM happens, add repor
 ### ERROR CLUSTER MEMORY_LIMIT -- 10
 ![Cluster plot](error_class_plots/ouijaflow_memory_limit_10.png)
 
- * Number of instances: 5
- * Dataset ids: scaling_0955, scaling_0974, scaling_0987, scaling_1010, scaling_1041
+ * Number of instances: 10
+ * Dataset ids: scaling_0955, scaling_0974, scaling_0987, scaling_1010, scaling_1041, scaling_0955, scaling_0974, scaling_0987, scaling_1010, scaling_1041
 
 Last 10 lines of scaling_0955:
 ```
@@ -228,8 +228,8 @@ Hint: If you want to see a list of allocated tensors when OOM happens, add repor
 ### ERROR CLUSTER MEMORY_LIMIT -- 11
 ![Cluster plot](error_class_plots/ouijaflow_memory_limit_11.png)
 
- * Number of instances: 4
- * Dataset ids: scaling_0956, scaling_0992, scaling_0995, scaling_1008
+ * Number of instances: 8
+ * Dataset ids: scaling_0956, scaling_0992, scaling_0995, scaling_1008, scaling_0956, scaling_0992, scaling_0995, scaling_1008
 
 Last 10 lines of scaling_0956:
 ```
@@ -248,8 +248,8 @@ Hint: If you want to see a list of allocated tensors when OOM happens, add repor
 ### ERROR CLUSTER MEMORY_LIMIT -- 12
 ![Cluster plot](error_class_plots/ouijaflow_memory_limit_12.png)
 
- * Number of instances: 2
- * Dataset ids: scaling_0959, scaling_0978
+ * Number of instances: 4
+ * Dataset ids: scaling_0959, scaling_0978, scaling_0959, scaling_0978
 
 Last 10 lines of scaling_0959:
 ```
@@ -268,8 +268,8 @@ Hint: If you want to see a list of allocated tensors when OOM happens, add repor
 ### ERROR CLUSTER MEMORY_LIMIT -- 13
 ![Cluster plot](error_class_plots/ouijaflow_memory_limit_13.png)
 
- * Number of instances: 6
- * Dataset ids: scaling_0960, scaling_0981, scaling_0986, scaling_1012, scaling_1017, scaling_1042
+ * Number of instances: 12
+ * Dataset ids: scaling_0960, scaling_0981, scaling_0986, scaling_1012, scaling_1017, scaling_1042, scaling_0960, scaling_0981, scaling_0986, scaling_1012, scaling_1017, scaling_1042
 
 Last 10 lines of scaling_0960:
 ```
@@ -288,8 +288,8 @@ Hint: If you want to see a list of allocated tensors when OOM happens, add repor
 ### ERROR CLUSTER MEMORY_LIMIT -- 14
 ![Cluster plot](error_class_plots/ouijaflow_memory_limit_14.png)
 
- * Number of instances: 5
- * Dataset ids: scaling_0961, scaling_1007, scaling_1019, scaling_1022, scaling_1043
+ * Number of instances: 10
+ * Dataset ids: scaling_0961, scaling_1007, scaling_1019, scaling_1022, scaling_1043, scaling_0961, scaling_1007, scaling_1019, scaling_1022, scaling_1043
 
 Last 10 lines of scaling_0961:
 ```
@@ -308,8 +308,8 @@ Hint: If you want to see a list of allocated tensors when OOM happens, add repor
 ### ERROR CLUSTER MEMORY_LIMIT -- 15
 ![Cluster plot](error_class_plots/ouijaflow_memory_limit_15.png)
 
- * Number of instances: 5
- * Dataset ids: scaling_0963, scaling_0970, scaling_1004, scaling_1028, scaling_1033
+ * Number of instances: 10
+ * Dataset ids: scaling_0963, scaling_0970, scaling_1004, scaling_1028, scaling_1033, scaling_0963, scaling_0970, scaling_1004, scaling_1028, scaling_1033
 
 Last 10 lines of scaling_0963:
 ```
@@ -328,8 +328,8 @@ Hint: If you want to see a list of allocated tensors when OOM happens, add repor
 ### ERROR CLUSTER MEMORY_LIMIT -- 16
 ![Cluster plot](error_class_plots/ouijaflow_memory_limit_16.png)
 
- * Number of instances: 2
- * Dataset ids: scaling_0972, scaling_0997
+ * Number of instances: 4
+ * Dataset ids: scaling_0972, scaling_0997, scaling_0972, scaling_0997
 
 Last 10 lines of scaling_0972:
 ```
@@ -348,8 +348,8 @@ Hint: If you want to see a list of allocated tensors when OOM happens, add repor
 ### ERROR CLUSTER MEMORY_LIMIT -- 17
 ![Cluster plot](error_class_plots/ouijaflow_memory_limit_17.png)
 
- * Number of instances: 1
- * Dataset ids: scaling_0976
+ * Number of instances: 2
+ * Dataset ids: scaling_0976, scaling_0976
 
 Last 10 lines of scaling_0976:
 ```
@@ -368,8 +368,8 @@ Hint: If you want to see a list of allocated tensors when OOM happens, add repor
 ### ERROR CLUSTER MEMORY_LIMIT -- 18
 ![Cluster plot](error_class_plots/ouijaflow_memory_limit_18.png)
 
- * Number of instances: 4
- * Dataset ids: scaling_0979, scaling_0988, scaling_0991, scaling_1016
+ * Number of instances: 8
+ * Dataset ids: scaling_0979, scaling_0988, scaling_0991, scaling_1016, scaling_0979, scaling_0988, scaling_0991, scaling_1016
 
 Last 10 lines of scaling_0979:
 ```
@@ -388,8 +388,8 @@ Hint: If you want to see a list of allocated tensors when OOM happens, add repor
 ### ERROR CLUSTER MEMORY_LIMIT -- 19
 ![Cluster plot](error_class_plots/ouijaflow_memory_limit_19.png)
 
- * Number of instances: 2
- * Dataset ids: scaling_0990, scaling_1030
+ * Number of instances: 4
+ * Dataset ids: scaling_0990, scaling_1030, scaling_0990, scaling_1030
 
 Last 10 lines of scaling_0990:
 ```
@@ -408,8 +408,8 @@ Hint: If you want to see a list of allocated tensors when OOM happens, add repor
 ### ERROR CLUSTER MEMORY_LIMIT -- 20
 ![Cluster plot](error_class_plots/ouijaflow_memory_limit_20.png)
 
- * Number of instances: 2
- * Dataset ids: scaling_0996, scaling_1039
+ * Number of instances: 4
+ * Dataset ids: scaling_0996, scaling_1039, scaling_0996, scaling_1039
 
 Last 10 lines of scaling_0996:
 ```
@@ -428,8 +428,8 @@ Hint: If you want to see a list of allocated tensors when OOM happens, add repor
 ### ERROR CLUSTER MEMORY_LIMIT -- 21
 ![Cluster plot](error_class_plots/ouijaflow_memory_limit_21.png)
 
- * Number of instances: 1
- * Dataset ids: scaling_0999
+ * Number of instances: 2
+ * Dataset ids: scaling_0999, scaling_0999
 
 Last 10 lines of scaling_0999:
 ```
@@ -448,8 +448,8 @@ Hint: If you want to see a list of allocated tensors when OOM happens, add repor
 ### ERROR CLUSTER MEMORY_LIMIT -- 22
 ![Cluster plot](error_class_plots/ouijaflow_memory_limit_22.png)
 
- * Number of instances: 2
- * Dataset ids: scaling_1001, scaling_1046
+ * Number of instances: 4
+ * Dataset ids: scaling_1001, scaling_1046, scaling_1001, scaling_1046
 
 Last 10 lines of scaling_1001:
 ```
@@ -468,8 +468,8 @@ Hint: If you want to see a list of allocated tensors when OOM happens, add repor
 ### ERROR CLUSTER MEMORY_LIMIT -- 23
 ![Cluster plot](error_class_plots/ouijaflow_memory_limit_23.png)
 
- * Number of instances: 1
- * Dataset ids: scaling_1002
+ * Number of instances: 2
+ * Dataset ids: scaling_1002, scaling_1002
 
 Last 10 lines of scaling_1002:
 ```
@@ -488,8 +488,8 @@ Hint: If you want to see a list of allocated tensors when OOM happens, add repor
 ### ERROR CLUSTER MEMORY_LIMIT -- 24
 ![Cluster plot](error_class_plots/ouijaflow_memory_limit_24.png)
 
- * Number of instances: 1
- * Dataset ids: scaling_1009
+ * Number of instances: 2
+ * Dataset ids: scaling_1009, scaling_1009
 
 Last 10 lines of scaling_1009:
 ```
@@ -508,8 +508,8 @@ Hint: If you want to see a list of allocated tensors when OOM happens, add repor
 ### ERROR CLUSTER MEMORY_LIMIT -- 25
 ![Cluster plot](error_class_plots/ouijaflow_memory_limit_25.png)
 
- * Number of instances: 1
- * Dataset ids: scaling_1034
+ * Number of instances: 2
+ * Dataset ids: scaling_1034, scaling_1034
 
 Last 10 lines of scaling_1034:
 ```
@@ -528,8 +528,8 @@ Hint: If you want to see a list of allocated tensors when OOM happens, add repor
 ### ERROR CLUSTER MEMORY_LIMIT -- 26
 ![Cluster plot](error_class_plots/ouijaflow_memory_limit_26.png)
 
- * Number of instances: 1
- * Dataset ids: scaling_1047
+ * Number of instances: 2
+ * Dataset ids: scaling_1047, scaling_1047
 
 Last 10 lines of scaling_1047:
 ```
@@ -548,8 +548,8 @@ Hint: If you want to see a list of allocated tensors when OOM happens, add repor
 ### ERROR CLUSTER MEMORY_LIMIT -- 27
 ![Cluster plot](error_class_plots/ouijaflow_memory_limit_27.png)
 
- * Number of instances: 1
- * Dataset ids: scaling_1049
+ * Number of instances: 2
+ * Dataset ids: scaling_1049, scaling_1049
 
 Last 10 lines of scaling_1049:
 ```

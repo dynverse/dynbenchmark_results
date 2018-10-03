@@ -6,8 +6,8 @@
 ### ERROR CLUSTER TIME_LIMIT -- 1
 ![Cluster plot](error_class_plots/matcher_time_limit_1.png)
 
- * Number of instances: 7
- * Dataset ids: scaling_0714, scaling_0782, scaling_0800, scaling_0865, scaling_0876, scaling_0887, scaling_1006
+ * Number of instances: 14
+ * Dataset ids: scaling_0714, scaling_0782, scaling_0800, scaling_0865, scaling_0876, scaling_0887, scaling_1006, scaling_0714, scaling_0782, scaling_0800, scaling_0865, scaling_0876, scaling_0887, scaling_1006
 
 Last 10 lines of scaling_0714:
 ```
@@ -19,8 +19,8 @@ File: /home/rcannood/Workspace/dynverse/dynbenchmark//derived/05-scaling/suite/m
 ### ERROR CLUSTER MEMORY_LIMIT -- 1
 ![Cluster plot](error_class_plots/matcher_memory_limit_1.png)
 
- * Number of instances: 15
- * Dataset ids: scaling_0783, scaling_0801, scaling_0819, scaling_0837, scaling_0855, scaling_0918, scaling_0926, scaling_0934, scaling_0942, scaling_0950, scaling_0993, scaling_1007, scaling_1021, scaling_1035, scaling_1049
+ * Number of instances: 30
+ * Dataset ids: scaling_0783, scaling_0801, scaling_0819, scaling_0837, scaling_0855, scaling_0918, scaling_0926, scaling_0934, scaling_0942, scaling_0950, scaling_0993, scaling_1007, scaling_1021, scaling_1035, scaling_1049, scaling_0783, scaling_0801, scaling_0819, scaling_0837, scaling_0855, scaling_0918, scaling_0926, scaling_0934, scaling_0942, scaling_0950, scaling_0993, scaling_1007, scaling_1021, scaling_1035, scaling_1049
 
 Last 10 lines of scaling_0783:
 ```
@@ -39,8 +39,8 @@ MemoryError
 ### ERROR CLUSTER MEMORY_LIMIT -- 2
 ![Cluster plot](error_class_plots/matcher_memory_limit_2.png)
 
- * Number of instances: 15
- * Dataset ids: scaling_0866, scaling_0877, scaling_0888, scaling_0899, scaling_0910, scaling_0956, scaling_0962, scaling_0968, scaling_0974, scaling_0980, scaling_0994, scaling_1008, scaling_1022, scaling_1036, scaling_1050
+ * Number of instances: 30
+ * Dataset ids: scaling_0866, scaling_0877, scaling_0888, scaling_0899, scaling_0910, scaling_0956, scaling_0962, scaling_0968, scaling_0974, scaling_0980, scaling_0994, scaling_1008, scaling_1022, scaling_1036, scaling_1050, scaling_0866, scaling_0877, scaling_0888, scaling_0899, scaling_0910, scaling_0956, scaling_0962, scaling_0968, scaling_0974, scaling_0980, scaling_0994, scaling_1008, scaling_1022, scaling_1036, scaling_1050
 
 Last 10 lines of scaling_0866:
 ```

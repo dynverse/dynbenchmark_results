@@ -6,8 +6,8 @@
 ### ERROR CLUSTER EXECUTION_ERROR -- 1
 ![Cluster plot](error_class_plots/paga_execution_error_1.png)
 
- * Number of instances: 3
- * Dataset ids: scaling_0573, scaling_0748, scaling_0910
+ * Number of instances: 6
+ * Dataset ids: scaling_0573, scaling_0748, scaling_0910, scaling_0573, scaling_0748, scaling_0910
 
 Last 10 lines of scaling_0573:
 ```
@@ -22,8 +22,8 @@ Execution halted
 ### ERROR CLUSTER METHOD_ERROR -- 1
 ![Cluster plot](error_class_plots/paga_method_error_1.png)
 
- * Number of instances: 7
- * Dataset ids: scaling_0380, scaling_0549, scaling_0680, scaling_0866, scaling_0942, scaling_1003, scaling_1050
+ * Number of instances: 14
+ * Dataset ids: scaling_0380, scaling_0549, scaling_0680, scaling_0866, scaling_0942, scaling_1003, scaling_1050, scaling_0380, scaling_0549, scaling_0680, scaling_0866, scaling_0942, scaling_1003, scaling_1050
 
 Last 10 lines of scaling_0380:
 ```
@@ -42,8 +42,8 @@ any(duplicated(milestone_network %>% select(from, to))) isn't false.
 ### ERROR CLUSTER METHOD_ERROR -- 2
 ![Cluster plot](error_class_plots/paga_method_error_2.png)
 
- * Number of instances: 4
- * Dataset ids: scaling_0765, scaling_0854, scaling_0994, scaling_1022
+ * Number of instances: 8
+ * Dataset ids: scaling_0765, scaling_0854, scaling_0994, scaling_1022, scaling_0765, scaling_0854, scaling_0994, scaling_1022
 
 Last 10 lines of scaling_0765:
 ```

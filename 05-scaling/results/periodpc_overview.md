@@ -6,8 +6,8 @@
 ### ERROR CLUSTER TIME_LIMIT -- 1
 ![Cluster plot](error_class_plots/periodpc_time_limit_1.png)
 
- * Number of instances: 5
- * Dataset ids: scaling_0994, scaling_1008, scaling_1022, scaling_1036, scaling_1050
+ * Number of instances: 10
+ * Dataset ids: scaling_0994, scaling_1008, scaling_1022, scaling_1036, scaling_1050, scaling_0994, scaling_1008, scaling_1022, scaling_1036, scaling_1050
 
 Last 10 lines of scaling_0994:
 ```
