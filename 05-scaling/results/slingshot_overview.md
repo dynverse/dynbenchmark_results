@@ -1,13 +1,35 @@
 # slingshot
 ![Overview](slingshot.png)
 
+## ERROR STATUS MEMORY_LIMIT
+
+### ERROR CLUSTER MEMORY_LIMIT -- 1
+![Cluster plot](error_class_plots/slingshot_memory_limit_1.png)
+
+ * Number of instances: 5
+ * Dataset ids: scaling_0994, scaling_1008, scaling_1022, scaling_1036, scaling_1050
+
+Last 10 lines of scaling_0994:
+```
+The following objects are masked from ‘package:base’:
+    intersect, setdiff, setequal, union
+Attaching package: ‘purrr’
+The following object is masked from ‘package:jsonlite’:
+    flatten
+Warning messages:
+1: In rgl.init(initValue, onlyNULL) : RGL: unable to open X11 display
+2: 'rgl_init' failed, running with rgl.useNULL = TRUE 
+Error: cannot allocate vector of size 14.8 Gb
+Execution halted
+```
+
 ## ERROR STATUS METHOD_ERROR
 
 ### ERROR CLUSTER METHOD_ERROR -- 1
 ![Cluster plot](error_class_plots/slingshot_method_error_1.png)
 
- * Number of instances: 208
- * Dataset ids: scaling_0004, scaling_0007, scaling_0011, scaling_0012, scaling_0013, scaling_0015, scaling_0018, scaling_0024, scaling_0026, scaling_0027, scaling_0029, scaling_0030, scaling_0037, scaling_0038, scaling_0039, scaling_0040, scaling_0046, scaling_0048, scaling_0050, scaling_0055, scaling_0065, scaling_0069, scaling_0070, scaling_0072, scaling_0073, scaling_0074, scaling_0075, scaling_0081, scaling_0093, scaling_0096, scaling_0098, scaling_0099, scaling_0102, scaling_0103, scaling_0104, scaling_0105, scaling_0131, scaling_0132, scaling_0133, scaling_0136, scaling_0137, scaling_0138, scaling_0139, scaling_0140, scaling_0148, scaling_0150, scaling_0173, scaling_0174, scaling_0178, scaling_0179, scaling_0180, scaling_0207, scaling_0208, scaling_0213, scaling_0214, scaling_0215, scaling_0223, scaling_0225, scaling_0248, scaling_0249, scaling_0254, scaling_0255, scaling_0274, scaling_0275, scaling_0318, scaling_0319, scaling_0327, scaling_0328, scaling_0329, scaling_0330, scaling_0340, scaling_0379, scaling_0380, scaling_0388, scaling_0389, scaling_0390, scaling_0441, scaling_0442, scaling_0452, scaling_0453, scaling_0454, scaling_0455, scaling_0495, scaling_0503, scaling_0504, scaling_0505, scaling_0525, scaling_0555, scaling_0591, scaling_0598, scaling_0600, scaling_0664, scaling_0677, scaling_0679, scaling_0680, scaling_0748, scaling_0762, scaling_0764, scaling_0765, scaling_0837, scaling_0851, scaling_0854, scaling_0855, scaling_0950, scaling_0004, scaling_0007, scaling_0011, scaling_0012, scaling_0013, scaling_0015, scaling_0018, scaling_0024, scaling_0026, scaling_0027, scaling_0029, scaling_0030, scaling_0037, scaling_0038, scaling_0039, scaling_0040, scaling_0046, scaling_0048, scaling_0050, scaling_0055, scaling_0065, scaling_0069, scaling_0070, scaling_0072, scaling_0073, scaling_0074, scaling_0075, scaling_0081, scaling_0093, scaling_0096, scaling_0098, scaling_0099, scaling_0102, scaling_0103, scaling_0104, scaling_0105, scaling_0131, scaling_0132, scaling_0133, scaling_0136, scaling_0137, scaling_0138, scaling_0139, scaling_0140, scaling_0148, scaling_0150, scaling_0173, scaling_0174, scaling_0178, scaling_0179, scaling_0180, scaling_0207, scaling_0208, scaling_0213, scaling_0214, scaling_0215, scaling_0223, scaling_0225, scaling_0248, scaling_0249, scaling_0254, scaling_0255, scaling_0274, scaling_0275, scaling_0318, scaling_0319, scaling_0327, scaling_0328, scaling_0329, scaling_0330, scaling_0340, scaling_0379, scaling_0380, scaling_0388, scaling_0389, scaling_0390, scaling_0441, scaling_0442, scaling_0452, scaling_0453, scaling_0454, scaling_0455, scaling_0495, scaling_0503, scaling_0504, scaling_0505, scaling_0525, scaling_0555, scaling_0591, scaling_0598, scaling_0600, scaling_0664, scaling_0677, scaling_0679, scaling_0680, scaling_0748, scaling_0762, scaling_0764, scaling_0765, scaling_0837, scaling_0851, scaling_0854, scaling_0855, scaling_0950
+ * Number of instances: 105
+ * Dataset ids: scaling_0004, scaling_0007, scaling_0011, scaling_0012, scaling_0013, scaling_0015, scaling_0018, scaling_0024, scaling_0026, scaling_0027, scaling_0029, scaling_0030, scaling_0037, scaling_0038, scaling_0039, scaling_0040, scaling_0046, scaling_0048, scaling_0050, scaling_0055, scaling_0065, scaling_0069, scaling_0070, scaling_0072, scaling_0073, scaling_0074, scaling_0075, scaling_0081, scaling_0093, scaling_0096, scaling_0098, scaling_0099, scaling_0102, scaling_0103, scaling_0104, scaling_0105, scaling_0131, scaling_0132, scaling_0133, scaling_0136, scaling_0137, scaling_0138, scaling_0139, scaling_0140, scaling_0148, scaling_0150, scaling_0173, scaling_0174, scaling_0178, scaling_0179, scaling_0180, scaling_0207, scaling_0208, scaling_0213, scaling_0214, scaling_0215, scaling_0223, scaling_0225, scaling_0248, scaling_0249, scaling_0254, scaling_0255, scaling_0274, scaling_0275, scaling_0318, scaling_0319, scaling_0327, scaling_0328, scaling_0329, scaling_0330, scaling_0340, scaling_0379, scaling_0380, scaling_0388, scaling_0389, scaling_0390, scaling_0441, scaling_0442, scaling_0452, scaling_0453, scaling_0454, scaling_0455, scaling_0495, scaling_0503, scaling_0504, scaling_0505, scaling_0525, scaling_0555, scaling_0591, scaling_0598, scaling_0600, scaling_0664, scaling_0677, scaling_0679, scaling_0680, scaling_0748, scaling_0762, scaling_0764, scaling_0765, scaling_0837, scaling_0851, scaling_0854, scaling_0855, scaling_0910, scaling_0950
 
 Last 10 lines of scaling_0004:
 ```
@@ -26,8 +48,8 @@ Execution halted
 ### ERROR CLUSTER METHOD_ERROR -- 2
 ![Cluster plot](error_class_plots/slingshot_method_error_2.png)
 
- * Number of instances: 2
- * Dataset ids: scaling_0062, scaling_0062
+ * Number of instances: 1
+ * Dataset ids: scaling_0062
 
 Last 10 lines of scaling_0062:
 ```
@@ -46,8 +68,8 @@ Execution halted
 ### ERROR CLUSTER METHOD_ERROR -- 3
 ![Cluster plot](error_class_plots/slingshot_method_error_3.png)
 
- * Number of instances: 2
- * Dataset ids: scaling_0077, scaling_0077
+ * Number of instances: 1
+ * Dataset ids: scaling_0077
 
 Last 10 lines of scaling_0077:
 ```
@@ -66,8 +88,8 @@ Execution halted
 ### ERROR CLUSTER METHOD_ERROR -- 4
 ![Cluster plot](error_class_plots/slingshot_method_error_4.png)
 
- * Number of instances: 4
- * Dataset ids: scaling_0135, scaling_0599, scaling_0135, scaling_0599
+ * Number of instances: 2
+ * Dataset ids: scaling_0135, scaling_0599
 
 Last 10 lines of scaling_0135:
 ```
@@ -86,8 +108,8 @@ Execution halted
 ### ERROR CLUSTER METHOD_ERROR -- 5
 ![Cluster plot](error_class_plots/slingshot_method_error_5.png)
 
- * Number of instances: 2
- * Dataset ids: scaling_0187, scaling_0187
+ * Number of instances: 1
+ * Dataset ids: scaling_0187
 
 Last 10 lines of scaling_0187:
 ```
@@ -106,8 +128,8 @@ Execution halted
 ### ERROR CLUSTER METHOD_ERROR -- 6
 ![Cluster plot](error_class_plots/slingshot_method_error_6.png)
 
- * Number of instances: 22
- * Dataset ids: scaling_0201, scaling_0350, scaling_0370, scaling_0678, scaling_0763, scaling_0852, scaling_0853, scaling_0908, scaling_0909, scaling_1048, scaling_1049, scaling_0201, scaling_0350, scaling_0370, scaling_0678, scaling_0763, scaling_0852, scaling_0853, scaling_0908, scaling_0909, scaling_1048, scaling_1049
+ * Number of instances: 12
+ * Dataset ids: scaling_0201, scaling_0350, scaling_0370, scaling_0678, scaling_0763, scaling_0852, scaling_0853, scaling_0908, scaling_0909, scaling_1048, scaling_1049, scaling_1143
 
 Last 10 lines of scaling_0201:
 ```
@@ -126,8 +148,8 @@ Execution halted
 ### ERROR CLUSTER METHOD_ERROR -- 7
 ![Cluster plot](error_class_plots/slingshot_method_error_7.png)
 
- * Number of instances: 4
- * Dataset ids: scaling_0252, scaling_0309, scaling_0252, scaling_0309
+ * Number of instances: 2
+ * Dataset ids: scaling_0252, scaling_0309
 
 Last 10 lines of scaling_0252:
 ```
@@ -146,8 +168,8 @@ Execution halted
 ### ERROR CLUSTER METHOD_ERROR -- 8
 ![Cluster plot](error_class_plots/slingshot_method_error_8.png)
 
- * Number of instances: 18
- * Dataset ids: scaling_0521, scaling_0549, scaling_0663, scaling_0676, scaling_0747, scaling_0836, scaling_0942, scaling_0949, scaling_0979, scaling_0521, scaling_0549, scaling_0663, scaling_0676, scaling_0747, scaling_0836, scaling_0942, scaling_0949, scaling_0979
+ * Number of instances: 10
+ * Dataset ids: scaling_0521, scaling_0549, scaling_0663, scaling_0676, scaling_0747, scaling_0836, scaling_0942, scaling_0949, scaling_0979, scaling_1142
 
 Last 10 lines of scaling_0521:
 ```
@@ -166,8 +188,8 @@ Execution halted
 ### ERROR CLUSTER METHOD_ERROR -- 9
 ![Cluster plot](error_class_plots/slingshot_method_error_9.png)
 
- * Number of instances: 2
- * Dataset ids: scaling_0731, scaling_0731
+ * Number of instances: 1
+ * Dataset ids: scaling_0731
 
 Last 10 lines of scaling_0731:
 ```
@@ -183,39 +205,37 @@ Error in labels[[start_cell]] :
 Execution halted
 ```
 
-## ERROR STATUS TIME_LIMIT
+### ERROR CLUSTER METHOD_ERROR -- 10
+![Cluster plot](error_class_plots/slingshot_method_error_10.png)
 
-### ERROR CLUSTER TIME_LIMIT -- 1
-![Cluster plot](error_class_plots/slingshot_time_limit_1.png)
+ * Number of instances: 5
+ * Dataset ids: scaling_1069, scaling_1088, scaling_1107, scaling_1126, scaling_1145
 
- * Number of instances: 56
- * Dataset ids: scaling_0783, scaling_0800, scaling_0801, scaling_0819, scaling_0865, scaling_0866, scaling_0876, scaling_0877, scaling_0887, scaling_0888, scaling_0899, scaling_0910, scaling_0918, scaling_0926, scaling_0934, scaling_0956, scaling_0962, scaling_0968, scaling_0974, scaling_0980, scaling_0992, scaling_0993, scaling_1006, scaling_1007, scaling_1020, scaling_1021, scaling_1034, scaling_1035, scaling_0783, scaling_0800, scaling_0801, scaling_0819, scaling_0865, scaling_0866, scaling_0876, scaling_0877, scaling_0887, scaling_0888, scaling_0899, scaling_0910, scaling_0918, scaling_0926, scaling_0934, scaling_0956, scaling_0962, scaling_0968, scaling_0974, scaling_0980, scaling_0992, scaling_0993, scaling_1006, scaling_1007, scaling_1020, scaling_1021, scaling_1034, scaling_1035
-
-Last 10 lines of scaling_0783:
+Last 10 lines of scaling_1069:
 ```
-File: /home/rcannood/Workspace/dynverse/dynbenchmark//derived/05-scaling/suite/slingshot/10/r2gridengine/20180924_184944_slingshot_10_wtBaXZPnrs/log/log.783.e.txt
-```
-
-## ERROR STATUS MEMORY_LIMIT
-
-### ERROR CLUSTER MEMORY_LIMIT -- 1
-![Cluster plot](error_class_plots/slingshot_memory_limit_1.png)
-
- * Number of instances: 10
- * Dataset ids: scaling_0994, scaling_1008, scaling_1022, scaling_1036, scaling_1050, scaling_0994, scaling_1008, scaling_1022, scaling_1036, scaling_1050
-
-Last 10 lines of scaling_0994:
-```
-The following objects are masked from ‘package:base’:
-    intersect, setdiff, setequal, union
 Attaching package: ‘purrr’
 The following object is masked from ‘package:jsonlite’:
     flatten
 Warning messages:
 1: In rgl.init(initValue, onlyNULL) : RGL: unable to open X11 display
 2: 'rgl_init' failed, running with rgl.useNULL = TRUE 
-Error: cannot allocate vector of size 14.8 Gb
+Error in pam(rd, K) : 
+  have 100000 observations, but not more than 65536 are allowed
+Calls: lapply -> lapply -> FUN -> pam
 Execution halted
+```
+
+## ERROR STATUS TIME_LIMIT
+
+### ERROR CLUSTER TIME_LIMIT -- 1
+![Cluster plot](error_class_plots/slingshot_time_limit_1.png)
+
+ * Number of instances: 39
+ * Dataset ids: scaling_0783, scaling_0800, scaling_0801, scaling_0819, scaling_0865, scaling_0866, scaling_0876, scaling_0877, scaling_0887, scaling_0888, scaling_0899, scaling_0918, scaling_0926, scaling_0934, scaling_0956, scaling_0962, scaling_0968, scaling_0974, scaling_0980, scaling_0992, scaling_0993, scaling_1006, scaling_1007, scaling_1020, scaling_1021, scaling_1034, scaling_1035, scaling_1066, scaling_1067, scaling_1068, scaling_1085, scaling_1086, scaling_1087, scaling_1104, scaling_1105, scaling_1106, scaling_1124, scaling_1125, scaling_1144
+
+Last 10 lines of scaling_0783:
+```
+File: /home/rcannood/Workspace/dynverse/dynbenchmark//derived/05-scaling/suite/slingshot/Cat2/r2gridengine/20181008_214524_slingshot_Cat2_fiu6xZpjVf/log/log.103.e.txt
 ```
 
 

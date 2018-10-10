@@ -6,12 +6,12 @@
 ### ERROR CLUSTER TIME_LIMIT -- 1
 ![Cluster plot](error_class_plots/periodpc_time_limit_1.png)
 
- * Number of instances: 10
- * Dataset ids: scaling_0994, scaling_1008, scaling_1022, scaling_1036, scaling_1050, scaling_0994, scaling_1008, scaling_1022, scaling_1036, scaling_1050
+ * Number of instances: 5
+ * Dataset ids: scaling_1069, scaling_1088, scaling_1107, scaling_1126, scaling_1145
 
-Last 10 lines of scaling_0994:
+Last 10 lines of scaling_1069:
 ```
-File: /home/rcannood/Workspace/dynverse/dynbenchmark//derived/05-scaling/suite/periodpc/10/r2gridengine/20180924_184946_periodpc_10_WRC45MezjI/log/log.994.e.txt
+File: /home/rcannood/Workspace/dynverse/dynbenchmark//derived/05-scaling/suite/periodpc/Cat2/r2gridengine/20181008_214530_periodpc_Cat2_kzjNm2d9Dq/log/log.389.e.txt
 ```
 
 

@@ -1,13 +1,35 @@
 # celltree_maptpx
 ![Overview](celltree_maptpx.png)
 
+## ERROR STATUS MEMORY_LIMIT
+
+### ERROR CLUSTER MEMORY_LIMIT -- 1
+![Cluster plot](error_class_plots/celltree_maptpx_memory_limit_1.png)
+
+ * Number of instances: 22
+ * Dataset ids: scaling_0697, scaling_0714, scaling_0731, scaling_0748, scaling_0782, scaling_0800, scaling_0818, scaling_0836, scaling_0865, scaling_0876, scaling_0887, scaling_0898, scaling_0992, scaling_1006, scaling_1020, scaling_1034, scaling_1048, scaling_1066, scaling_1085, scaling_1104, scaling_1123, scaling_1142
+
+Last 10 lines of scaling_0697:
+```
+log posterior increase: 1193.45, 20.41, 10.77, done.
+log BF( 14 ) = 706523.78
+log posterior increase: 1108.02, 17.63, 8.51, done.
+log BF( 15 ) = 370064.33
+Selected k = 14 topics
+Using rooting method: longest.path
+Error in graph.adjacency.dense(adjmatrix, mode = mode, weighted = weighted,  : 
+  At type_indexededgelist.c:309 : cannot add edges, Out of memory
+Calls: <Anonymous> -> graph.adjacency -> graph.adjacency.dense
+Execution halted
+```
+
 ## ERROR STATUS METHOD_ERROR
 
 ### ERROR CLUSTER METHOD_ERROR -- 1
 ![Cluster plot](error_class_plots/celltree_maptpx_method_error_1.png)
 
- * Number of instances: 14
- * Dataset ids: scaling_0003, scaling_0188, scaling_0456, scaling_0510, scaling_0802, scaling_0820, scaling_0901, scaling_0003, scaling_0188, scaling_0456, scaling_0510, scaling_0802, scaling_0820, scaling_0901
+ * Number of instances: 7
+ * Dataset ids: scaling_0003, scaling_0188, scaling_0456, scaling_0510, scaling_0802, scaling_0820, scaling_0901
 
 Last 10 lines of scaling_0003:
 ```
@@ -26,8 +48,8 @@ Execution halted
 ### ERROR CLUSTER METHOD_ERROR -- 2
 ![Cluster plot](error_class_plots/celltree_maptpx_method_error_2.png)
 
- * Number of instances: 70
- * Dataset ids: scaling_0105, scaling_0140, scaling_0180, scaling_0215, scaling_0225, scaling_0254, scaling_0255, scaling_0329, scaling_0330, scaling_0389, scaling_0390, scaling_0453, scaling_0454, scaling_0455, scaling_0504, scaling_0505, scaling_0525, scaling_0555, scaling_0599, scaling_0600, scaling_0678, scaling_0679, scaling_0680, scaling_0763, scaling_0764, scaling_0765, scaling_0853, scaling_0854, scaling_0855, scaling_0909, scaling_0910, scaling_0950, scaling_0980, scaling_1049, scaling_1050, scaling_0105, scaling_0140, scaling_0180, scaling_0215, scaling_0225, scaling_0254, scaling_0255, scaling_0329, scaling_0330, scaling_0389, scaling_0390, scaling_0453, scaling_0454, scaling_0455, scaling_0504, scaling_0505, scaling_0525, scaling_0555, scaling_0599, scaling_0600, scaling_0678, scaling_0679, scaling_0680, scaling_0763, scaling_0764, scaling_0765, scaling_0853, scaling_0854, scaling_0855, scaling_0909, scaling_0910, scaling_0950, scaling_0980, scaling_1049, scaling_1050
+ * Number of instances: 37
+ * Dataset ids: scaling_0105, scaling_0140, scaling_0180, scaling_0215, scaling_0225, scaling_0254, scaling_0255, scaling_0329, scaling_0330, scaling_0389, scaling_0390, scaling_0453, scaling_0454, scaling_0455, scaling_0504, scaling_0505, scaling_0525, scaling_0555, scaling_0599, scaling_0600, scaling_0678, scaling_0679, scaling_0680, scaling_0763, scaling_0764, scaling_0765, scaling_0853, scaling_0854, scaling_0855, scaling_0909, scaling_0910, scaling_0950, scaling_0980, scaling_1049, scaling_1050, scaling_1144, scaling_1145
 
 Last 10 lines of scaling_0105:
 ```
@@ -46,8 +68,8 @@ Execution halted
 ### ERROR CLUSTER METHOD_ERROR -- 3
 ![Cluster plot](error_class_plots/celltree_maptpx_method_error_3.png)
 
- * Number of instances: 2
- * Dataset ids: scaling_0591, scaling_0591
+ * Number of instances: 1
+ * Dataset ids: scaling_0591
 
 Last 10 lines of scaling_0591:
 ```
@@ -66,8 +88,8 @@ Execution halted
 ### ERROR CLUSTER METHOD_ERROR -- 4
 ![Cluster plot](error_class_plots/celltree_maptpx_method_error_4.png)
 
- * Number of instances: 14
- * Dataset ids: scaling_0677, scaling_0762, scaling_0851, scaling_0852, scaling_0907, scaling_0949, scaling_1047, scaling_0677, scaling_0762, scaling_0851, scaling_0852, scaling_0907, scaling_0949, scaling_1047
+ * Number of instances: 10
+ * Dataset ids: scaling_0677, scaling_0762, scaling_0851, scaling_0852, scaling_0907, scaling_0908, scaling_0949, scaling_0979, scaling_1047, scaling_1141
 
 Last 10 lines of scaling_0677:
 ```
@@ -88,34 +110,12 @@ Execution halted
 ### ERROR CLUSTER TIME_LIMIT -- 1
 ![Cluster plot](error_class_plots/celltree_maptpx_time_limit_1.png)
 
- * Number of instances: 82
- * Dataset ids: scaling_0697, scaling_0714, scaling_0731, scaling_0748, scaling_0782, scaling_0783, scaling_0800, scaling_0801, scaling_0818, scaling_0819, scaling_0836, scaling_0837, scaling_0865, scaling_0866, scaling_0876, scaling_0877, scaling_0887, scaling_0888, scaling_0898, scaling_0899, scaling_0918, scaling_0926, scaling_0934, scaling_0942, scaling_0956, scaling_0962, scaling_0968, scaling_0974, scaling_0992, scaling_0993, scaling_0994, scaling_1006, scaling_1007, scaling_1008, scaling_1020, scaling_1021, scaling_1022, scaling_1034, scaling_1035, scaling_1036, scaling_1048, scaling_0697, scaling_0714, scaling_0731, scaling_0748, scaling_0782, scaling_0783, scaling_0800, scaling_0801, scaling_0818, scaling_0819, scaling_0836, scaling_0837, scaling_0865, scaling_0866, scaling_0876, scaling_0877, scaling_0887, scaling_0888, scaling_0898, scaling_0899, scaling_0918, scaling_0926, scaling_0934, scaling_0942, scaling_0956, scaling_0962, scaling_0968, scaling_0974, scaling_0992, scaling_0993, scaling_0994, scaling_1006, scaling_1007, scaling_1008, scaling_1020, scaling_1021, scaling_1022, scaling_1034, scaling_1035, scaling_1036, scaling_1048
+ * Number of instances: 37
+ * Dataset ids: scaling_0783, scaling_0801, scaling_0819, scaling_0837, scaling_0866, scaling_0877, scaling_0888, scaling_0899, scaling_0918, scaling_0926, scaling_0934, scaling_0942, scaling_0956, scaling_0962, scaling_0968, scaling_0974, scaling_0993, scaling_0994, scaling_1007, scaling_1008, scaling_1021, scaling_1022, scaling_1035, scaling_1036, scaling_1067, scaling_1068, scaling_1069, scaling_1086, scaling_1087, scaling_1088, scaling_1105, scaling_1106, scaling_1107, scaling_1124, scaling_1125, scaling_1126, scaling_1143
 
-Last 10 lines of scaling_0697:
+Last 10 lines of scaling_0783:
 ```
-File: /home/rcannood/Workspace/dynverse/dynbenchmark//derived/05-scaling/suite/celltree_maptpx/10/r2gridengine/20180924_185101_celltree_maptpx_10_c4MOBSVweK/log/log.697.e.txt
-```
-
-## ERROR STATUS MEMORY_LIMIT
-
-### ERROR CLUSTER MEMORY_LIMIT -- 1
-![Cluster plot](error_class_plots/celltree_maptpx_memory_limit_1.png)
-
- * Number of instances: 44
- * Dataset ids: scaling_0616, scaling_0632, scaling_0648, scaling_0664, scaling_0696, scaling_0713, scaling_0730, scaling_0747, scaling_0781, scaling_0799, scaling_0817, scaling_0835, scaling_0864, scaling_0875, scaling_0886, scaling_0897, scaling_0908, scaling_0955, scaling_0961, scaling_0967, scaling_0973, scaling_0979, scaling_0616, scaling_0632, scaling_0648, scaling_0664, scaling_0696, scaling_0713, scaling_0730, scaling_0747, scaling_0781, scaling_0799, scaling_0817, scaling_0835, scaling_0864, scaling_0875, scaling_0886, scaling_0897, scaling_0908, scaling_0955, scaling_0961, scaling_0967, scaling_0973, scaling_0979
-
-Last 10 lines of scaling_0616:
-```
-log posterior increase: 700.45, 9.84, 5.08, done.
-log BF( 14 ) = 448014.87
-log posterior increase: 683.72, 10.52, 4.98, done.
-log BF( 15 ) = 231714.03
-Selected k = 14 topics
-Using rooting method: longest.path
-Error in minimum.spanning.tree(g) : 
-  At heap.c:570 : d_indheap reserve failed, Out of memory
-Calls: <Anonymous> -> minimum.spanning.tree
-Execution halted
+File: /home/rcannood/Workspace/dynverse/dynbenchmark//derived/05-scaling/suite/celltree_maptpx/Cat2/r2gridengine/20181008_215051_celltree_maptpx_Cat2_krI8brZvzw/log/log.103.e.txt
 ```
 
 

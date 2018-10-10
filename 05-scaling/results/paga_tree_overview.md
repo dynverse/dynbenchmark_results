@@ -6,8 +6,8 @@
 ### ERROR CLUSTER METHOD_ERROR -- 1
 ![Cluster plot](error_class_plots/paga_tree_method_error_1.png)
 
- * Number of instances: 8
- * Dataset ids: scaling_0765, scaling_0854, scaling_0994, scaling_1022, scaling_0765, scaling_0854, scaling_0994, scaling_1022
+ * Number of instances: 6
+ * Dataset ids: scaling_0765, scaling_0854, scaling_0994, scaling_1022, scaling_1126, scaling_1145
 
 Last 10 lines of scaling_0765:
 ```
@@ -22,5 +22,7 @@ Last 10 lines of scaling_0765:
 ValueError: Input contains NaN, infinity or a value too large for dtype('float32').
 Loading required namespace: hdf5r
 ```
+
+## ERROR STATUS TIME_LIMIT
 
 
