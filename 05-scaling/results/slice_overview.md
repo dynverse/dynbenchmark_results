@@ -1,48 +1,6 @@
 # slice
 ![Overview](slice.png)
 
-## ERROR STATUS MEMORY_LIMIT
-
-### ERROR CLUSTER MEMORY_LIMIT -- 1
-![Cluster plot](error_class_plots/slice_memory_limit_1.png)
-
- * Number of instances: 45
- * Dataset ids: scaling_0783, scaling_0801, scaling_0819, scaling_0837, scaling_0855, scaling_0866, scaling_0877, scaling_0888, scaling_0899, scaling_0910, scaling_0918, scaling_0926, scaling_0934, scaling_0942, scaling_0950, scaling_0956, scaling_0962, scaling_0968, scaling_0974, scaling_0980, scaling_0993, scaling_0994, scaling_1007, scaling_1008, scaling_1021, scaling_1022, scaling_1035, scaling_1036, scaling_1049, scaling_1050, scaling_1067, scaling_1068, scaling_1069, scaling_1086, scaling_1087, scaling_1088, scaling_1105, scaling_1106, scaling_1107, scaling_1124, scaling_1125, scaling_1126, scaling_1143, scaling_1144, scaling_1145
-
-Last 10 lines of scaling_0783:
-```
-    as_data_frame, groups, union
-The following objects are masked from ‘package:stats’:
-    decompose, spectrum
-The following object is masked from ‘package:base’:
-    union
-Performing bootstrap calculation of scEntropy
-Iteration:1
-Performing dimension reduction
-Error: cannot allocate vector of size 4.7 Gb
-Execution halted
-```
-
-### ERROR CLUSTER MEMORY_LIMIT -- 2
-![Cluster plot](error_class_plots/slice_memory_limit_2.png)
-
- * Number of instances: 14
- * Dataset ids: scaling_0856, scaling_0867, scaling_0878, scaling_0889, scaling_0951, scaling_0957, scaling_0963, scaling_0969, scaling_0975, scaling_1052, scaling_1071, scaling_1090, scaling_1109, scaling_1128
-
-Last 10 lines of scaling_0856:
-```
-The following objects are masked from ‘package:purrr’:
-    compose, simplify
-The following objects are masked from ‘package:dplyr’:
-    as_data_frame, groups, union
-The following objects are masked from ‘package:stats’:
-    decompose, spectrum
-The following object is masked from ‘package:base’:
-    union
-Error: cannot allocate vector of size 11.8 Gb
-Execution halted
-```
-
 ## ERROR STATUS METHOD_ERROR
 
 ### ERROR CLUSTER METHOD_ERROR -- 1
@@ -68,8 +26,8 @@ Execution halted
 ### ERROR CLUSTER METHOD_ERROR -- 2
 ![Cluster plot](error_class_plots/slice_method_error_2.png)
 
- * Number of instances: 132
- * Dataset ids: scaling_0009, scaling_0023, scaling_0026, scaling_0029, scaling_0035, scaling_0037, scaling_0068, scaling_0070, scaling_0089, scaling_0096, scaling_0097, scaling_0102, scaling_0128, scaling_0136, scaling_0147, scaling_0164, scaling_0178, scaling_0205, scaling_0210, scaling_0211, scaling_0212, scaling_0216, scaling_0220, scaling_0227, scaling_0239, scaling_0246, scaling_0247, scaling_0249, scaling_0252, scaling_0271, scaling_0272, scaling_0273, scaling_0277, scaling_0313, scaling_0314, scaling_0315, scaling_0319, scaling_0322, scaling_0323, scaling_0342, scaling_0374, scaling_0375, scaling_0376, scaling_0377, scaling_0384, scaling_0387, scaling_0432, scaling_0434, scaling_0435, scaling_0436, scaling_0437, scaling_0438, scaling_0449, scaling_0451, scaling_0487, scaling_0490, scaling_0491, scaling_0492, scaling_0494, scaling_0499, scaling_0501, scaling_0502, scaling_0519, scaling_0545, scaling_0546, scaling_0548, scaling_0553, scaling_0554, scaling_0586, scaling_0587, scaling_0593, scaling_0653, scaling_0654, scaling_0655, scaling_0656, scaling_0667, scaling_0672, scaling_0676, scaling_0736, scaling_0738, scaling_0739, scaling_0740, scaling_0743, scaling_0744, scaling_0751, scaling_0752, scaling_0757, scaling_0760, scaling_0761, scaling_0822, scaling_0824, scaling_0827, scaling_0828, scaling_0833, scaling_0840, scaling_0843, scaling_0851, scaling_0890, scaling_0893, scaling_0894, scaling_0901, scaling_0902, scaling_0903, scaling_0904, scaling_0906, scaling_0936, scaling_0938, scaling_0941, scaling_0946, scaling_0949, scaling_0970, scaling_0971, scaling_0976, scaling_0978, scaling_1024, scaling_1026, scaling_1028, scaling_1029, scaling_1033, scaling_1038, scaling_1040, scaling_1043, scaling_1111, scaling_1112, scaling_1114, scaling_1116, scaling_1117, scaling_1129, scaling_1130, scaling_1131, scaling_1134, scaling_1138
+ * Number of instances: 165
+ * Dataset ids: scaling_0009, scaling_0023, scaling_0026, scaling_0029, scaling_0035, scaling_0037, scaling_0068, scaling_0070, scaling_0089, scaling_0096, scaling_0097, scaling_0102, scaling_0128, scaling_0136, scaling_0147, scaling_0164, scaling_0178, scaling_0205, scaling_0210, scaling_0211, scaling_0212, scaling_0216, scaling_0220, scaling_0227, scaling_0239, scaling_0246, scaling_0247, scaling_0249, scaling_0252, scaling_0271, scaling_0272, scaling_0273, scaling_0277, scaling_0313, scaling_0314, scaling_0315, scaling_0319, scaling_0322, scaling_0323, scaling_0342, scaling_0374, scaling_0375, scaling_0376, scaling_0377, scaling_0384, scaling_0387, scaling_0432, scaling_0434, scaling_0435, scaling_0436, scaling_0437, scaling_0438, scaling_0449, scaling_0451, scaling_0487, scaling_0490, scaling_0491, scaling_0492, scaling_0494, scaling_0499, scaling_0501, scaling_0502, scaling_0519, scaling_0545, scaling_0546, scaling_0548, scaling_0553, scaling_0554, scaling_0586, scaling_0587, scaling_0593, scaling_0653, scaling_0654, scaling_0655, scaling_0656, scaling_0667, scaling_0672, scaling_0676, scaling_0736, scaling_0738, scaling_0739, scaling_0740, scaling_0743, scaling_0744, scaling_0751, scaling_0752, scaling_0757, scaling_0760, scaling_0761, scaling_0822, scaling_0824, scaling_0827, scaling_0828, scaling_0833, scaling_0840, scaling_0843, scaling_0851, scaling_0890, scaling_0893, scaling_0894, scaling_0901, scaling_0902, scaling_0903, scaling_0904, scaling_0906, scaling_0936, scaling_0938, scaling_0941, scaling_0946, scaling_0949, scaling_0970, scaling_0971, scaling_0976, scaling_0978, scaling_1024, scaling_1026, scaling_1028, scaling_1029, scaling_1033, scaling_1038, scaling_1040, scaling_1043, scaling_1111, scaling_1112, scaling_1114, scaling_1116, scaling_1117, scaling_1129, scaling_1130, scaling_1131, scaling_1134, scaling_1138, scaling_1216, scaling_1217, scaling_1218, scaling_1219, scaling_1220, scaling_1223, scaling_1232, scaling_1233, scaling_1235, scaling_1240, scaling_1259, scaling_1343, scaling_1344, scaling_1345, scaling_1346, scaling_1347, scaling_1364, scaling_1367, scaling_1420, scaling_1421, scaling_1422, scaling_1432, scaling_1480, scaling_1481, scaling_1493, scaling_1521, scaling_1593, scaling_1594, scaling_1597, scaling_1613, scaling_1699, scaling_1700, scaling_1720
 
 Last 10 lines of scaling_0009:
 ```
@@ -128,8 +86,8 @@ Execution halted
 ### ERROR CLUSTER METHOD_ERROR -- 5
 ![Cluster plot](error_class_plots/slice_method_error_5.png)
 
- * Number of instances: 7
- * Dataset ids: scaling_0547, scaling_0659, scaling_0660, scaling_0832, scaling_0896, scaling_0907, scaling_1044
+ * Number of instances: 9
+ * Dataset ids: scaling_0547, scaling_0659, scaling_0660, scaling_0832, scaling_0896, scaling_0907, scaling_1044, scaling_1595, scaling_1727
 
 Last 10 lines of scaling_0547:
 ```
@@ -168,8 +126,8 @@ Execution halted
 ### ERROR CLUSTER METHOD_ERROR -- 7
 ![Cluster plot](error_class_plots/slice_method_error_7.png)
 
- * Number of instances: 1
- * Dataset ids: scaling_0973
+ * Number of instances: 2
+ * Dataset ids: scaling_0973, scaling_1373
 
 Last 10 lines of scaling_0973:
 ```
@@ -208,8 +166,8 @@ Execution halted
 ### ERROR CLUSTER METHOD_ERROR -- 9
 ![Cluster plot](error_class_plots/slice_method_error_9.png)
 
- * Number of instances: 8
- * Dataset ids: scaling_0981, scaling_0995, scaling_1009, scaling_1023, scaling_1051, scaling_1070, scaling_1089, scaling_1108
+ * Number of instances: 123
+ * Dataset ids: scaling_0981, scaling_0995, scaling_1009, scaling_1023, scaling_1051, scaling_1070, scaling_1089, scaling_1108, scaling_1146, scaling_1148, scaling_1150, scaling_1152, scaling_1154, scaling_1166, scaling_1167, scaling_1182, scaling_1183, scaling_1198, scaling_1199, scaling_1214, scaling_1215, scaling_1231, scaling_1246, scaling_1250, scaling_1254, scaling_1258, scaling_1262, scaling_1276, scaling_1277, scaling_1278, scaling_1279, scaling_1297, scaling_1298, scaling_1299, scaling_1300, scaling_1318, scaling_1319, scaling_1320, scaling_1321, scaling_1339, scaling_1340, scaling_1341, scaling_1342, scaling_1361, scaling_1362, scaling_1363, scaling_1381, scaling_1382, scaling_1393, scaling_1394, scaling_1405, scaling_1406, scaling_1417, scaling_1418, scaling_1429, scaling_1430, scaling_1441, scaling_1442, scaling_1443, scaling_1453, scaling_1454, scaling_1455, scaling_1465, scaling_1466, scaling_1467, scaling_1477, scaling_1478, scaling_1479, scaling_1490, scaling_1491, scaling_1501, scaling_1507, scaling_1513, scaling_1519, scaling_1525, scaling_1531, scaling_1532, scaling_1533, scaling_1534, scaling_1535, scaling_1550, scaling_1551, scaling_1552, scaling_1553, scaling_1554, scaling_1569, scaling_1570, scaling_1571, scaling_1572, scaling_1573, scaling_1588, scaling_1589, scaling_1590, scaling_1591, scaling_1592, scaling_1608, scaling_1609, scaling_1610, scaling_1611, scaling_1626, scaling_1627, scaling_1628, scaling_1629, scaling_1630, scaling_1648, scaling_1649, scaling_1650, scaling_1651, scaling_1652, scaling_1670, scaling_1671, scaling_1672, scaling_1673, scaling_1674, scaling_1692, scaling_1693, scaling_1694, scaling_1695, scaling_1696, scaling_1715, scaling_1716, scaling_1717, scaling_1718
 
 Last 10 lines of scaling_0981:
 ```
@@ -305,17 +263,79 @@ Last 10 lines of scaling_1141:
 Execution halted
 ```
 
+### ERROR CLUSTER METHOD_ERROR -- 14
+![Cluster plot](error_class_plots/slice_method_error_14.png)
+
+ * Number of instances: 1
+ * Dataset ids: scaling_1437
+
+Last 10 lines of scaling_1437:
+```
+Inferring lineage model using clustering-based method
+Error in `$<-.data.frame`(`*tmp*`, "include", value = 1) : 
+  replacement has 1 row, data has 0
+Calls: <Anonymous> ... <Anonymous> -> getLM.clustering -> $<- -> $<-.data.frame
+In addition: Warning messages:
+1: Quick-TRANSfer stage steps exceeded maximum (= 500000) 
+2: Quick-TRANSfer stage steps exceeded maximum (= 500000) 
+3: did not converge in 10 iterations 
+4: Quick-TRANSfer stage steps exceeded maximum (= 500000) 
+Execution halted
+```
+
 ## ERROR STATUS TIME_LIMIT
 
 ### ERROR CLUSTER TIME_LIMIT -- 1
 ![Cluster plot](error_class_plots/slice_time_limit_1.png)
 
- * Number of instances: 25
- * Dataset ids: scaling_0697, scaling_0714, scaling_0731, scaling_0748, scaling_0765, scaling_0782, scaling_0800, scaling_0818, scaling_0836, scaling_0854, scaling_0865, scaling_0876, scaling_0887, scaling_0898, scaling_0909, scaling_0992, scaling_1006, scaling_1020, scaling_1034, scaling_1048, scaling_1066, scaling_1085, scaling_1104, scaling_1123, scaling_1142
+ * Number of instances: 120
+ * Dataset ids: scaling_0697, scaling_0714, scaling_0731, scaling_0748, scaling_0765, scaling_0782, scaling_0800, scaling_0818, scaling_0836, scaling_0854, scaling_0865, scaling_0876, scaling_0887, scaling_0898, scaling_0909, scaling_0992, scaling_1006, scaling_1020, scaling_1034, scaling_1048, scaling_1066, scaling_1085, scaling_1104, scaling_1123, scaling_1142, scaling_1178, scaling_1181, scaling_1194, scaling_1197, scaling_1210, scaling_1213, scaling_1226, scaling_1229, scaling_1242, scaling_1245, scaling_1291, scaling_1295, scaling_1296, scaling_1312, scaling_1316, scaling_1317, scaling_1333, scaling_1337, scaling_1338, scaling_1354, scaling_1358, scaling_1359, scaling_1375, scaling_1379, scaling_1380, scaling_1392, scaling_1404, scaling_1416, scaling_1428, scaling_1440, scaling_1448, scaling_1451, scaling_1452, scaling_1460, scaling_1463, scaling_1464, scaling_1472, scaling_1475, scaling_1476, scaling_1484, scaling_1487, scaling_1488, scaling_1496, scaling_1499, scaling_1500, scaling_1543, scaling_1546, scaling_1547, scaling_1548, scaling_1549, scaling_1562, scaling_1565, scaling_1566, scaling_1567, scaling_1568, scaling_1581, scaling_1584, scaling_1585, scaling_1586, scaling_1587, scaling_1600, scaling_1603, scaling_1604, scaling_1605, scaling_1606, scaling_1619, scaling_1622, scaling_1623, scaling_1624, scaling_1625, scaling_1640, scaling_1644, scaling_1645, scaling_1646, scaling_1647, scaling_1662, scaling_1666, scaling_1667, scaling_1668, scaling_1669, scaling_1684, scaling_1688, scaling_1689, scaling_1690, scaling_1691, scaling_1706, scaling_1710, scaling_1711, scaling_1712, scaling_1713, scaling_1728, scaling_1732, scaling_1733, scaling_1734, scaling_1735
 
 Last 10 lines of scaling_0697:
 ```
 File: /home/rcannood/Workspace/dynverse/dynbenchmark//derived/05-scaling/suite/slice/Cat2/r2gridengine/20181008_214916_slice_Cat2_0wvNiLJyTq/log/log.17.e.txt
+```
+
+## ERROR STATUS MEMORY_LIMIT
+
+### ERROR CLUSTER MEMORY_LIMIT -- 1
+![Cluster plot](error_class_plots/slice_memory_limit_1.png)
+
+ * Number of instances: 145
+ * Dataset ids: scaling_0783, scaling_0801, scaling_0819, scaling_0837, scaling_0855, scaling_0866, scaling_0877, scaling_0888, scaling_0899, scaling_0910, scaling_0918, scaling_0926, scaling_0934, scaling_0942, scaling_0950, scaling_0956, scaling_0962, scaling_0968, scaling_0974, scaling_0980, scaling_0993, scaling_0994, scaling_1007, scaling_1008, scaling_1021, scaling_1022, scaling_1035, scaling_1036, scaling_1049, scaling_1050, scaling_1067, scaling_1068, scaling_1069, scaling_1086, scaling_1087, scaling_1088, scaling_1105, scaling_1106, scaling_1107, scaling_1124, scaling_1125, scaling_1126, scaling_1143, scaling_1144, scaling_1145, scaling_1147, scaling_1149, scaling_1151, scaling_1153, scaling_1155, scaling_1157, scaling_1159, scaling_1161, scaling_1163, scaling_1165, scaling_1179, scaling_1180, scaling_1195, scaling_1196, scaling_1211, scaling_1212, scaling_1227, scaling_1228, scaling_1243, scaling_1244, scaling_1249, scaling_1253, scaling_1257, scaling_1261, scaling_1265, scaling_1267, scaling_1269, scaling_1271, scaling_1273, scaling_1275, scaling_1292, scaling_1293, scaling_1294, scaling_1313, scaling_1314, scaling_1315, scaling_1334, scaling_1335, scaling_1336, scaling_1355, scaling_1356, scaling_1357, scaling_1376, scaling_1377, scaling_1378, scaling_1390, scaling_1391, scaling_1402, scaling_1403, scaling_1414, scaling_1415, scaling_1426, scaling_1427, scaling_1438, scaling_1439, scaling_1449, scaling_1450, scaling_1461, scaling_1462, scaling_1473, scaling_1474, scaling_1485, scaling_1486, scaling_1497, scaling_1498, scaling_1505, scaling_1506, scaling_1511, scaling_1512, scaling_1517, scaling_1518, scaling_1523, scaling_1524, scaling_1529, scaling_1530, scaling_1544, scaling_1545, scaling_1563, scaling_1564, scaling_1582, scaling_1583, scaling_1601, scaling_1602, scaling_1620, scaling_1621, scaling_1641, scaling_1642, scaling_1643, scaling_1663, scaling_1664, scaling_1665, scaling_1685, scaling_1686, scaling_1687, scaling_1707, scaling_1708, scaling_1709, scaling_1729, scaling_1730, scaling_1731
+
+Last 10 lines of scaling_0783:
+```
+    as_data_frame, groups, union
+The following objects are masked from ‘package:stats’:
+    decompose, spectrum
+The following object is masked from ‘package:base’:
+    union
+Performing bootstrap calculation of scEntropy
+Iteration:1
+Performing dimension reduction
+Error: cannot allocate vector of size 4.7 Gb
+Execution halted
+```
+
+### ERROR CLUSTER MEMORY_LIMIT -- 2
+![Cluster plot](error_class_plots/slice_memory_limit_2.png)
+
+ * Number of instances: 39
+ * Dataset ids: scaling_0856, scaling_0867, scaling_0878, scaling_0889, scaling_0951, scaling_0957, scaling_0963, scaling_0969, scaling_0975, scaling_1052, scaling_1071, scaling_1090, scaling_1109, scaling_1128, scaling_1156, scaling_1158, scaling_1160, scaling_1162, scaling_1164, scaling_1266, scaling_1268, scaling_1270, scaling_1272, scaling_1274, scaling_1383, scaling_1395, scaling_1407, scaling_1419, scaling_1431, scaling_1502, scaling_1508, scaling_1514, scaling_1520, scaling_1526, scaling_1631, scaling_1653, scaling_1675, scaling_1697, scaling_1719
+
+Last 10 lines of scaling_0856:
+```
+The following objects are masked from ‘package:purrr’:
+    compose, simplify
+The following objects are masked from ‘package:dplyr’:
+    as_data_frame, groups, union
+The following objects are masked from ‘package:stats’:
+    decompose, spectrum
+The following object is masked from ‘package:base’:
+    union
+Error: cannot allocate vector of size 11.8 Gb
+Execution halted
 ```
 
 

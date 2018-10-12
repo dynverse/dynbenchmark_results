@@ -23,4 +23,17 @@ Calls: t -> t.default
 Execution halted
 ```
 
+## ERROR STATUS TIME_LIMIT
+
+### ERROR CLUSTER TIME_LIMIT -- 1
+![Cluster plot](error_class_plots/mst_time_limit_1.png)
+
+ * Number of instances: 8
+ * Dataset ids: scaling_1549, scaling_1587, scaling_1605, scaling_1647, scaling_1669, scaling_1691, scaling_1713, scaling_1735
+
+Last 10 lines of scaling_1549:
+```
+File: /home/rcannood/Workspace/dynverse/dynbenchmark//derived/05-scaling/suite/mst/Cat3/r2gridengine/20181010_160922_mst_Cat3_NQArdj1zPw/log/log.404.e.txt
+```
+
 

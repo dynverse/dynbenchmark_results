@@ -1,28 +1,6 @@
 # celltrails
 ![Overview](celltrails.png)
 
-## ERROR STATUS MEMORY_LIMIT
-
-### ERROR CLUSTER MEMORY_LIMIT -- 1
-![Cluster plot](error_class_plots/celltrails_memory_limit_1.png)
-
- * Number of instances: 25
- * Dataset ids: scaling_0866, scaling_0877, scaling_0888, scaling_0899, scaling_0910, scaling_0956, scaling_0962, scaling_0968, scaling_0974, scaling_0980, scaling_0994, scaling_1008, scaling_1022, scaling_1036, scaling_1050, scaling_1068, scaling_1069, scaling_1087, scaling_1088, scaling_1106, scaling_1107, scaling_1125, scaling_1126, scaling_1144, scaling_1145
-
-Last 10 lines of scaling_0866:
-```
-    colMaxs, colMins, colRanges, rowMaxs, rowMins, rowRanges
-The following object is masked from ‘package:igraph’:
-    simplify
-The following object is masked from ‘package:purrr’:
-    simplify
-The following objects are masked from ‘package:base’:
-    aperm, apply
-Computing adjacency matrix ...
-Error: cannot allocate vector of size 11.8 Gb
-Execution halted
-```
-
 ## ERROR STATUS METHOD_ERROR
 
 ### ERROR CLUSTER METHOD_ERROR -- 1
@@ -136,6 +114,28 @@ Sum of progressions per cell_id should be exactly one
 Last 10 lines of scaling_0697:
 ```
 File: /home/rcannood/Workspace/dynverse/dynbenchmark//derived/05-scaling/suite/celltrails/Cat2/r2gridengine/20181008_215045_celltrails_Cat2_7gEkzpaoME/log/log.17.e.txt
+```
+
+## ERROR STATUS MEMORY_LIMIT
+
+### ERROR CLUSTER MEMORY_LIMIT -- 1
+![Cluster plot](error_class_plots/celltrails_memory_limit_1.png)
+
+ * Number of instances: 25
+ * Dataset ids: scaling_0866, scaling_0877, scaling_0888, scaling_0899, scaling_0910, scaling_0956, scaling_0962, scaling_0968, scaling_0974, scaling_0980, scaling_0994, scaling_1008, scaling_1022, scaling_1036, scaling_1050, scaling_1068, scaling_1069, scaling_1087, scaling_1088, scaling_1106, scaling_1107, scaling_1125, scaling_1126, scaling_1144, scaling_1145
+
+Last 10 lines of scaling_0866:
+```
+    colMaxs, colMins, colRanges, rowMaxs, rowMins, rowRanges
+The following object is masked from ‘package:igraph’:
+    simplify
+The following object is masked from ‘package:purrr’:
+    simplify
+The following objects are masked from ‘package:base’:
+    aperm, apply
+Computing adjacency matrix ...
+Error: cannot allocate vector of size 11.8 Gb
+Execution halted
 ```
 
 

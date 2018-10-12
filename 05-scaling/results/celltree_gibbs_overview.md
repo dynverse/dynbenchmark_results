@@ -1,48 +1,6 @@
 # celltree_gibbs
 ![Overview](celltree_gibbs.png)
 
-## ERROR STATUS MEMORY_LIMIT
-
-### ERROR CLUSTER MEMORY_LIMIT -- 1
-![Cluster plot](error_class_plots/celltree_gibbs_memory_limit_1.png)
-
- * Number of instances: 15
- * Dataset ids: scaling_0697, scaling_0714, scaling_0731, scaling_0748, scaling_0782, scaling_0818, scaling_0836, scaling_0865, scaling_0887, scaling_0898, scaling_1020, scaling_1034, scaling_1048, scaling_1123, scaling_1142
-
-Last 10 lines of scaling_0697:
-```
-Iteration 210 ...
-Iteration 220 ...
-Iteration 230 ...
-Gibbs sampling completed!
-Model fit for k = 4 topics
-Using rooting method: longest.path
-Error in minimum.spanning.tree(g) : 
-  At heap.c:565 : d_indheap reserve failed, Out of memory
-Calls: <Anonymous> -> minimum.spanning.tree
-Execution halted
-```
-
-### ERROR CLUSTER MEMORY_LIMIT -- 2
-![Cluster plot](error_class_plots/celltree_gibbs_memory_limit_2.png)
-
- * Number of instances: 1
- * Dataset ids: scaling_1132
-
-Last 10 lines of scaling_1132:
-```
- [1] 148 142  22 117  68 108  76  19  62  63   4 116  83  96  54  21 125  53  99
-[20] 111 102 114  12  37  16  13 109 110 139 137  34  26  39 140  40  23
-Using branch width: 0.469 (width.scale.factor: 1.5)
-Outliers: 4
-Total number of branches: 1 (forks: 0)
-Backbone fork merge (width: 0.469): 37 ->  37 
-Ranking all cells...
-Error in saveRDS(x, con) : error writing to connection
-Calls: write_rds -> saveRDS
-Execution halted
-```
-
 ## ERROR STATUS METHOD_ERROR
 
 ### ERROR CLUSTER METHOD_ERROR -- 1
@@ -96,6 +54,48 @@ Execution halted
 Last 10 lines of scaling_0783:
 ```
 File: /home/rcannood/Workspace/dynverse/dynbenchmark//derived/05-scaling/suite/celltree_gibbs/Cat2/r2gridengine/20181008_215100_celltree_gibbs_Cat2_oNOUqM1YbO/log/log.103.e.txt
+```
+
+## ERROR STATUS MEMORY_LIMIT
+
+### ERROR CLUSTER MEMORY_LIMIT -- 1
+![Cluster plot](error_class_plots/celltree_gibbs_memory_limit_1.png)
+
+ * Number of instances: 15
+ * Dataset ids: scaling_0697, scaling_0714, scaling_0731, scaling_0748, scaling_0782, scaling_0818, scaling_0836, scaling_0865, scaling_0887, scaling_0898, scaling_1020, scaling_1034, scaling_1048, scaling_1123, scaling_1142
+
+Last 10 lines of scaling_0697:
+```
+Iteration 210 ...
+Iteration 220 ...
+Iteration 230 ...
+Gibbs sampling completed!
+Model fit for k = 4 topics
+Using rooting method: longest.path
+Error in minimum.spanning.tree(g) : 
+  At heap.c:565 : d_indheap reserve failed, Out of memory
+Calls: <Anonymous> -> minimum.spanning.tree
+Execution halted
+```
+
+### ERROR CLUSTER MEMORY_LIMIT -- 2
+![Cluster plot](error_class_plots/celltree_gibbs_memory_limit_2.png)
+
+ * Number of instances: 1
+ * Dataset ids: scaling_1132
+
+Last 10 lines of scaling_1132:
+```
+ [1] 148 142  22 117  68 108  76  19  62  63   4 116  83  96  54  21 125  53  99
+[20] 111 102 114  12  37  16  13 109 110 139 137  34  26  39 140  40  23
+Using branch width: 0.469 (width.scale.factor: 1.5)
+Outliers: 4
+Total number of branches: 1 (forks: 0)
+Backbone fork merge (width: 0.469): 37 ->  37 
+Ranking all cells...
+Error in saveRDS(x, con) : error writing to connection
+Calls: write_rds -> saveRDS
+Execution halted
 ```
 
 

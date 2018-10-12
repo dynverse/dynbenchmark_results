@@ -1,28 +1,6 @@
 # celltree_maptpx
 ![Overview](celltree_maptpx.png)
 
-## ERROR STATUS MEMORY_LIMIT
-
-### ERROR CLUSTER MEMORY_LIMIT -- 1
-![Cluster plot](error_class_plots/celltree_maptpx_memory_limit_1.png)
-
- * Number of instances: 22
- * Dataset ids: scaling_0697, scaling_0714, scaling_0731, scaling_0748, scaling_0782, scaling_0800, scaling_0818, scaling_0836, scaling_0865, scaling_0876, scaling_0887, scaling_0898, scaling_0992, scaling_1006, scaling_1020, scaling_1034, scaling_1048, scaling_1066, scaling_1085, scaling_1104, scaling_1123, scaling_1142
-
-Last 10 lines of scaling_0697:
-```
-log posterior increase: 1193.45, 20.41, 10.77, done.
-log BF( 14 ) = 706523.78
-log posterior increase: 1108.02, 17.63, 8.51, done.
-log BF( 15 ) = 370064.33
-Selected k = 14 topics
-Using rooting method: longest.path
-Error in graph.adjacency.dense(adjmatrix, mode = mode, weighted = weighted,  : 
-  At type_indexededgelist.c:309 : cannot add edges, Out of memory
-Calls: <Anonymous> -> graph.adjacency -> graph.adjacency.dense
-Execution halted
-```
-
 ## ERROR STATUS METHOD_ERROR
 
 ### ERROR CLUSTER METHOD_ERROR -- 1
@@ -116,6 +94,28 @@ Execution halted
 Last 10 lines of scaling_0783:
 ```
 File: /home/rcannood/Workspace/dynverse/dynbenchmark//derived/05-scaling/suite/celltree_maptpx/Cat2/r2gridengine/20181008_215051_celltree_maptpx_Cat2_krI8brZvzw/log/log.103.e.txt
+```
+
+## ERROR STATUS MEMORY_LIMIT
+
+### ERROR CLUSTER MEMORY_LIMIT -- 1
+![Cluster plot](error_class_plots/celltree_maptpx_memory_limit_1.png)
+
+ * Number of instances: 22
+ * Dataset ids: scaling_0697, scaling_0714, scaling_0731, scaling_0748, scaling_0782, scaling_0800, scaling_0818, scaling_0836, scaling_0865, scaling_0876, scaling_0887, scaling_0898, scaling_0992, scaling_1006, scaling_1020, scaling_1034, scaling_1048, scaling_1066, scaling_1085, scaling_1104, scaling_1123, scaling_1142
+
+Last 10 lines of scaling_0697:
+```
+log posterior increase: 1193.45, 20.41, 10.77, done.
+log BF( 14 ) = 706523.78
+log posterior increase: 1108.02, 17.63, 8.51, done.
+log BF( 15 ) = 370064.33
+Selected k = 14 topics
+Using rooting method: longest.path
+Error in graph.adjacency.dense(adjmatrix, mode = mode, weighted = weighted,  : 
+  At type_indexededgelist.c:309 : cannot add edges, Out of memory
+Calls: <Anonymous> -> graph.adjacency -> graph.adjacency.dense
+Execution halted
 ```
 
 

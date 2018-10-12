@@ -1,135 +1,13 @@
 # monocle_ica
 ![Overview](monocle_ica.png)
 
-## ERROR STATUS MEMORY_LIMIT
-
-### ERROR CLUSTER MEMORY_LIMIT -- 1
-![Cluster plot](error_class_plots/monocle_ica_memory_limit_1.png)
-
- * Number of instances: 67
- * Dataset ids: scaling_0048, scaling_0098, scaling_0207, scaling_0231, scaling_0307, scaling_0493, scaling_0616, scaling_0632, scaling_0660, scaling_0696, scaling_0713, scaling_0730, scaling_0781, scaling_0783, scaling_0799, scaling_0801, scaling_0817, scaling_0819, scaling_0835, scaling_0837, scaling_0855, scaling_0864, scaling_0866, scaling_0877, scaling_0888, scaling_0897, scaling_0899, scaling_0918, scaling_0926, scaling_0934, scaling_0942, scaling_0950, scaling_0956, scaling_0962, scaling_0968, scaling_0974, scaling_0980, scaling_0981, scaling_0993, scaling_0994, scaling_0995, scaling_1007, scaling_1008, scaling_1009, scaling_1021, scaling_1022, scaling_1035, scaling_1036, scaling_1050, scaling_1051, scaling_1065, scaling_1067, scaling_1068, scaling_1069, scaling_1070, scaling_1086, scaling_1087, scaling_1088, scaling_1089, scaling_1103, scaling_1105, scaling_1106, scaling_1107, scaling_1122, scaling_1124, scaling_1125, scaling_1126
-
-Last 10 lines of scaling_0048:
-```
-Loading required package: ggplot2
-Loading required package: VGAM
-Loading required package: stats4
-Loading required package: splines
-Loading required package: DDRTree
-Loading required package: irlba
-Removing 1 outliers
-[1] 6
-Error: cannot allocate vector of size 155886.9 Gb
-Execution halted
-```
-
-### ERROR CLUSTER MEMORY_LIMIT -- 2
-![Cluster plot](error_class_plots/monocle_ica_memory_limit_2.png)
-
- * Number of instances: 1
- * Dataset ids: scaling_0765
-
-Last 10 lines of scaling_0765:
-```
-Loading required package: stats4
-Loading required package: splines
-Loading required package: DDRTree
-Loading required package: irlba
-Removing 1 outliers
-[1] 4
-Error in graph.adjacency.dense(adjmatrix, mode = mode, weighted = weighted,  : 
-  At type_indexededgelist.c:309 : cannot add edges, Out of memory
-Calls: num_q_nodes -> <Anonymous> -> graph.adjacency.dense
-Execution halted
-```
-
-### ERROR CLUSTER MEMORY_LIMIT -- 3
-![Cluster plot](error_class_plots/monocle_ica_memory_limit_3.png)
-
- * Number of instances: 1
- * Dataset ids: scaling_0854
-
-Last 10 lines of scaling_0854:
-```
-Loading required package: stats4
-Loading required package: splines
-Loading required package: DDRTree
-Loading required package: irlba
-Removing 2 outliers
-[1] 8
-Error in minimum.spanning.tree(gp) : 
-  At heap.c:570 : d_indheap reserve failed, Out of memory
-Calls: <Anonymous> -> minimum.spanning.tree
-Execution halted
-```
-
-### ERROR CLUSTER MEMORY_LIMIT -- 4
-![Cluster plot](error_class_plots/monocle_ica_memory_limit_4.png)
-
- * Number of instances: 2
- * Dataset ids: scaling_0875, scaling_1084
-
-Last 10 lines of scaling_0875:
-```
-Loading required package: stats4
-Loading required package: splines
-Loading required package: DDRTree
-Loading required package: irlba
-Removing 3 outliers
-[1] 40
-Error in add_edges(e1, as.igraph.vs(e1, toadd), attr = attr) : 
-  At vector.pmt:1069 : cannot init vector from array, Out of memory
-Calls: num_q_nodes -> <Anonymous> -> +.igraph -> add_edges
-Execution halted
-```
-
-### ERROR CLUSTER MEMORY_LIMIT -- 5
-![Cluster plot](error_class_plots/monocle_ica_memory_limit_5.png)
-
- * Number of instances: 1
- * Dataset ids: scaling_0886
-
-Last 10 lines of scaling_0886:
-```
-Loading required package: stats4
-Loading required package: splines
-Loading required package: DDRTree
-Loading required package: irlba
-Removing 2 outliers
-[1] 39
-Error in add_vertices(e1, la, attr = e2) : 
-  At vector.pmt:1069 : cannot init vector from array, Out of memory
-Calls: num_q_nodes -> <Anonymous> -> +.igraph -> add_vertices
-Execution halted
-```
-
-### ERROR CLUSTER MEMORY_LIMIT -- 6
-![Cluster plot](error_class_plots/monocle_ica_memory_limit_6.png)
-
- * Number of instances: 4
- * Dataset ids: scaling_0955, scaling_0961, scaling_0967, scaling_0973
-
-Last 10 lines of scaling_0955:
-```
-Loading required package: stats4
-Loading required package: splines
-Loading required package: DDRTree
-Loading required package: irlba
-Removing 3 outliers
-[1] 62
-Error in graph.adjacency.dense(adjmatrix, mode = mode, weighted = weighted,  : 
-  At vector.pmt:442 : cannot reserve space for vector, Out of memory
-Calls: num_q_nodes -> <Anonymous> -> graph.adjacency.dense
-Execution halted
-```
-
 ## ERROR STATUS METHOD_ERROR
 
 ### ERROR CLUSTER METHOD_ERROR -- 1
 ![Cluster plot](error_class_plots/monocle_ica_method_error_1.png)
 
- * Number of instances: 26
- * Dataset ids: scaling_0007, scaling_0010, scaling_0041, scaling_0061, scaling_0121, scaling_0135, scaling_0150, scaling_0176, scaling_0224, scaling_0272, scaling_0326, scaling_0450, scaling_0455, scaling_0501, scaling_0505, scaling_0553, scaling_0680, scaling_0759, scaling_0760, scaling_0848, scaling_0849, scaling_0910, scaling_0947, scaling_0948, scaling_1045, scaling_1145
+ * Number of instances: 27
+ * Dataset ids: scaling_0007, scaling_0010, scaling_0041, scaling_0061, scaling_0121, scaling_0135, scaling_0150, scaling_0176, scaling_0224, scaling_0272, scaling_0326, scaling_0450, scaling_0455, scaling_0501, scaling_0505, scaling_0553, scaling_0680, scaling_0759, scaling_0760, scaling_0848, scaling_0849, scaling_0910, scaling_0947, scaling_0948, scaling_1045, scaling_1145, scaling_1380
 
 Last 10 lines of scaling_0007:
 ```
@@ -148,8 +26,8 @@ Execution halted
 ### ERROR CLUSTER METHOD_ERROR -- 2
 ![Cluster plot](error_class_plots/monocle_ica_method_error_2.png)
 
- * Number of instances: 72
- * Dataset ids: scaling_0011, scaling_0045, scaling_0050, scaling_0051, scaling_0072, scaling_0101, scaling_0102, scaling_0103, scaling_0104, scaling_0105, scaling_0136, scaling_0139, scaling_0178, scaling_0213, scaling_0214, scaling_0225, scaling_0251, scaling_0255, scaling_0274, scaling_0321, scaling_0327, scaling_0330, scaling_0339, scaling_0371, scaling_0387, scaling_0388, scaling_0390, scaling_0444, scaling_0445, scaling_0452, scaling_0453, scaling_0498, scaling_0502, scaling_0503, scaling_0504, scaling_0522, scaling_0550, scaling_0554, scaling_0594, scaling_0598, scaling_0668, scaling_0676, scaling_0677, scaling_0751, scaling_0752, scaling_0762, scaling_0763, scaling_0764, scaling_0820, scaling_0840, scaling_0841, scaling_0851, scaling_0853, scaling_0889, scaling_0901, scaling_0907, scaling_0908, scaling_0909, scaling_0949, scaling_0979, scaling_1023, scaling_1038, scaling_1047, scaling_1048, scaling_1049, scaling_1108, scaling_1128, scaling_1129, scaling_1141, scaling_1142, scaling_1143, scaling_1144
+ * Number of instances: 105
+ * Dataset ids: scaling_0011, scaling_0045, scaling_0050, scaling_0051, scaling_0072, scaling_0101, scaling_0102, scaling_0103, scaling_0104, scaling_0105, scaling_0136, scaling_0139, scaling_0178, scaling_0213, scaling_0214, scaling_0225, scaling_0251, scaling_0255, scaling_0274, scaling_0321, scaling_0327, scaling_0330, scaling_0339, scaling_0371, scaling_0387, scaling_0388, scaling_0390, scaling_0444, scaling_0445, scaling_0452, scaling_0453, scaling_0498, scaling_0502, scaling_0503, scaling_0504, scaling_0522, scaling_0550, scaling_0554, scaling_0594, scaling_0598, scaling_0668, scaling_0676, scaling_0677, scaling_0751, scaling_0752, scaling_0762, scaling_0763, scaling_0764, scaling_0820, scaling_0840, scaling_0841, scaling_0851, scaling_0853, scaling_0889, scaling_0901, scaling_0907, scaling_0908, scaling_0909, scaling_0949, scaling_0979, scaling_1023, scaling_1038, scaling_1047, scaling_1048, scaling_1049, scaling_1108, scaling_1128, scaling_1129, scaling_1141, scaling_1142, scaling_1143, scaling_1144, scaling_1164, scaling_1165, scaling_1214, scaling_1242, scaling_1262, scaling_1265, scaling_1275, scaling_1339, scaling_1362, scaling_1363, scaling_1376, scaling_1378, scaling_1429, scaling_1430, scaling_1438, scaling_1440, scaling_1477, scaling_1498, scaling_1500, scaling_1530, scaling_1588, scaling_1609, scaling_1610, scaling_1621, scaling_1622, scaling_1624, scaling_1625, scaling_1692, scaling_1713, scaling_1715, scaling_1716, scaling_1731, scaling_1732
 
 Last 10 lines of scaling_0011:
 ```
@@ -188,8 +66,8 @@ Execution halted
 ### ERROR CLUSTER METHOD_ERROR -- 4
 ![Cluster plot](error_class_plots/monocle_ica_method_error_4.png)
 
- * Number of instances: 8
- * Dataset ids: scaling_0022, scaling_0075, scaling_0275, scaling_0322, scaling_0382, scaling_0600, scaling_0667, scaling_0850
+ * Number of instances: 12
+ * Dataset ids: scaling_0022, scaling_0075, scaling_0275, scaling_0322, scaling_0382, scaling_0600, scaling_0667, scaling_0850, scaling_1243, scaling_1499, scaling_1623, scaling_1733
 
 Last 10 lines of scaling_0022:
 ```
@@ -308,8 +186,8 @@ An irrecoverable exception occurred. R is aborting now ...
 ### ERROR CLUSTER METHOD_ERROR -- 10
 ![Cluster plot](error_class_plots/monocle_ica_method_error_10.png)
 
- * Number of instances: 2
- * Dataset ids: scaling_0111, scaling_0125
+ * Number of instances: 3
+ * Dataset ids: scaling_0111, scaling_0125, scaling_1245
 
 Last 10 lines of scaling_0111:
 ```
@@ -368,8 +246,8 @@ Execution halted
 ### ERROR CLUSTER METHOD_ERROR -- 13
 ![Cluster plot](error_class_plots/monocle_ica_method_error_13.png)
 
- * Number of instances: 38
- * Dataset ids: scaling_0475, scaling_0537, scaling_0573, scaling_0614, scaling_0630, scaling_0631, scaling_0646, scaling_0694, scaling_0695, scaling_0711, scaling_0728, scaling_0729, scaling_0779, scaling_0780, scaling_0797, scaling_0798, scaling_0815, scaling_0816, scaling_0863, scaling_0874, scaling_0885, scaling_0917, scaling_0925, scaling_0933, scaling_0990, scaling_0991, scaling_1004, scaling_1005, scaling_1018, scaling_1019, scaling_1032, scaling_1063, scaling_1064, scaling_1082, scaling_1083, scaling_1101, scaling_1102, scaling_1121
+ * Number of instances: 74
+ * Dataset ids: scaling_0475, scaling_0537, scaling_0573, scaling_0614, scaling_0630, scaling_0631, scaling_0646, scaling_0694, scaling_0695, scaling_0711, scaling_0728, scaling_0729, scaling_0779, scaling_0780, scaling_0797, scaling_0798, scaling_0815, scaling_0816, scaling_0863, scaling_0874, scaling_0885, scaling_0917, scaling_0925, scaling_0933, scaling_0990, scaling_0991, scaling_1004, scaling_1005, scaling_1018, scaling_1019, scaling_1032, scaling_1063, scaling_1064, scaling_1082, scaling_1083, scaling_1101, scaling_1102, scaling_1121, scaling_1176, scaling_1192, scaling_1208, scaling_1224, scaling_1248, scaling_1252, scaling_1256, scaling_1260, scaling_1288, scaling_1289, scaling_1309, scaling_1310, scaling_1330, scaling_1331, scaling_1352, scaling_1387, scaling_1388, scaling_1399, scaling_1400, scaling_1411, scaling_1412, scaling_1424, scaling_1541, scaling_1542, scaling_1560, scaling_1561, scaling_1579, scaling_1580, scaling_1599, scaling_1637, scaling_1638, scaling_1659, scaling_1660, scaling_1681, scaling_1682, scaling_1704
 
 Last 10 lines of scaling_0475:
 ```
@@ -388,8 +266,8 @@ Execution halted
 ### ERROR CLUSTER METHOD_ERROR -- 14
 ![Cluster plot](error_class_plots/monocle_ica_method_error_14.png)
 
- * Number of instances: 5
- * Dataset ids: scaling_0666, scaling_0750, scaling_0839, scaling_0943, scaling_0975
+ * Number of instances: 7
+ * Dataset ids: scaling_0666, scaling_0750, scaling_0839, scaling_0943, scaling_0975, scaling_1154, scaling_1361
 
 Last 10 lines of scaling_0666:
 ```
@@ -408,8 +286,8 @@ Execution halted
 ### ERROR CLUSTER METHOD_ERROR -- 15
 ![Cluster plot](error_class_plots/monocle_ica_method_error_15.png)
 
- * Number of instances: 19
- * Dataset ids: scaling_0697, scaling_0714, scaling_0731, scaling_0748, scaling_0782, scaling_0800, scaling_0818, scaling_0836, scaling_0865, scaling_0876, scaling_0887, scaling_0898, scaling_0992, scaling_1020, scaling_1034, scaling_1066, scaling_1085, scaling_1104, scaling_1123
+ * Number of instances: 42
+ * Dataset ids: scaling_0697, scaling_0714, scaling_0731, scaling_0748, scaling_0782, scaling_0800, scaling_0818, scaling_0836, scaling_0865, scaling_0876, scaling_0887, scaling_0898, scaling_0992, scaling_1020, scaling_1034, scaling_1066, scaling_1085, scaling_1104, scaling_1123, scaling_1178, scaling_1194, scaling_1210, scaling_1226, scaling_1291, scaling_1312, scaling_1333, scaling_1354, scaling_1375, scaling_1448, scaling_1460, scaling_1472, scaling_1484, scaling_1543, scaling_1562, scaling_1581, scaling_1600, scaling_1619, scaling_1640, scaling_1662, scaling_1684, scaling_1706, scaling_1728
 
 Last 10 lines of scaling_0697:
 ```
@@ -448,8 +326,8 @@ Execution halted
 ### ERROR CLUSTER METHOD_ERROR -- 17
 ![Cluster plot](error_class_plots/monocle_ica_method_error_17.png)
 
- * Number of instances: 2
- * Dataset ids: scaling_0896, scaling_1120
+ * Number of instances: 8
+ * Dataset ids: scaling_0896, scaling_1120, scaling_1351, scaling_1423, scaling_1436, scaling_1598, scaling_1618, scaling_1726
 
 Last 10 lines of scaling_0896:
 ```
@@ -488,8 +366,8 @@ Execution halted
 ### ERROR CLUSTER METHOD_ERROR -- 19
 ![Cluster plot](error_class_plots/monocle_ica_method_error_19.png)
 
- * Number of instances: 1
- * Dataset ids: scaling_1006
+ * Number of instances: 2
+ * Dataset ids: scaling_1006, scaling_1496
 
 Last 10 lines of scaling_1006:
 ```
@@ -505,6 +383,66 @@ Error: memory exhausted (limit reached?)
 Execution halted
 ```
 
+### ERROR CLUSTER METHOD_ERROR -- 20
+![Cluster plot](error_class_plots/monocle_ica_method_error_20.png)
+
+ * Number of instances: 2
+ * Dataset ids: scaling_1231, scaling_1490
+
+Last 10 lines of scaling_1231:
+```
+Loading required package: irlba
+Error in parametricDispersionFit(disp_table, verbose) : 
+  Parametric dispersion fit failed. Try a local fit and/or a pooled estimation. (See '?estimateDispersions')
+Calls: <Anonymous> ... estimateDispersionsForCellDataSet -> parametricDispersionFit
+In addition: Warning messages:
+1: In log(ifelse(y == 0, 1, y/mu)) : NaNs produced
+2: step size truncated due to divergence 
+3: In log(ifelse(y == 0, 1, y/mu)) : NaNs produced
+4: glm.fit: algorithm did not converge 
+Execution halted
+```
+
+### ERROR CLUSTER METHOD_ERROR -- 21
+![Cluster plot](error_class_plots/monocle_ica_method_error_21.png)
+
+ * Number of instances: 1
+ * Dataset ids: scaling_1608
+
+Last 10 lines of scaling_1608:
+```
+Loading required package: irlba
+Error in parametricDispersionFit(disp_table, verbose) : 
+  Parametric dispersion fit failed. Try a local fit and/or a pooled estimation. (See '?estimateDispersions')
+Calls: <Anonymous> ... estimateDispersionsForCellDataSet -> parametricDispersionFit
+In addition: Warning messages:
+1: In log(ifelse(y == 0, 1, y/mu)) : NaNs produced
+2: step size truncated due to divergence 
+3: In log(ifelse(y == 0, 1, y/mu)) : NaNs produced
+4: In log(ifelse(y == 0, 1, y/mu)) : NaNs produced
+Execution halted
+```
+
+### ERROR CLUSTER METHOD_ERROR -- 22
+![Cluster plot](error_class_plots/monocle_ica_method_error_22.png)
+
+ * Number of instances: 1
+ * Dataset ids: scaling_1735
+
+Last 10 lines of scaling_1735:
+```
+Loading required package: irlba
+Removing 1 outliers
+Error in parametricDispersionFit(disp_table[row.names(disp_table) %in%  : 
+  Parametric dispersion fit failed. Try a local fit and/or a pooled estimation. (See '?estimateDispersions')
+Calls: <Anonymous> ... estimateDispersionsForCellDataSet -> parametricDispersionFit
+In addition: Warning messages:
+1: glm.fit: algorithm did not converge 
+2: glm.fit: algorithm did not converge 
+3: glm.fit: algorithm did not converge 
+Execution halted
+```
+
 ## ERROR STATUS TIME_LIMIT
 
 ### ERROR CLUSTER TIME_LIMIT -- 1
@@ -516,6 +454,208 @@ Execution halted
 Last 10 lines of scaling_0073:
 ```
 File: /home/rcannood/Workspace/dynverse/dynbenchmark//derived/05-scaling/suite/monocle_ica/Cat1/r2gridengine/20181008_142037_monocle_ica_Cat1_iNyRAAn2Hj/log/log.73.e.txt
+```
+
+## ERROR STATUS MEMORY_LIMIT
+
+### ERROR CLUSTER MEMORY_LIMIT -- 1
+![Cluster plot](error_class_plots/monocle_ica_memory_limit_1.png)
+
+ * Number of instances: 320
+ * Dataset ids: scaling_0048, scaling_0098, scaling_0207, scaling_0231, scaling_0307, scaling_0493, scaling_0616, scaling_0632, scaling_0660, scaling_0696, scaling_0713, scaling_0730, scaling_0781, scaling_0783, scaling_0799, scaling_0801, scaling_0817, scaling_0819, scaling_0835, scaling_0837, scaling_0855, scaling_0864, scaling_0866, scaling_0877, scaling_0888, scaling_0897, scaling_0899, scaling_0918, scaling_0926, scaling_0934, scaling_0942, scaling_0950, scaling_0956, scaling_0962, scaling_0968, scaling_0974, scaling_0980, scaling_0981, scaling_0993, scaling_0994, scaling_0995, scaling_1007, scaling_1008, scaling_1009, scaling_1021, scaling_1022, scaling_1035, scaling_1036, scaling_1050, scaling_1051, scaling_1065, scaling_1067, scaling_1068, scaling_1069, scaling_1070, scaling_1086, scaling_1087, scaling_1088, scaling_1089, scaling_1103, scaling_1105, scaling_1106, scaling_1107, scaling_1122, scaling_1124, scaling_1125, scaling_1126, scaling_1146, scaling_1147, scaling_1148, scaling_1149, scaling_1150, scaling_1151, scaling_1152, scaling_1153, scaling_1155, scaling_1157, scaling_1159, scaling_1161, scaling_1163, scaling_1166, scaling_1167, scaling_1177, scaling_1179, scaling_1180, scaling_1181, scaling_1182, scaling_1193, scaling_1195, scaling_1196, scaling_1197, scaling_1198, scaling_1199, scaling_1211, scaling_1212, scaling_1213, scaling_1215, scaling_1227, scaling_1228, scaling_1229, scaling_1241, scaling_1244, scaling_1246, scaling_1249, scaling_1250, scaling_1253, scaling_1254, scaling_1257, scaling_1258, scaling_1261, scaling_1264, scaling_1267, scaling_1269, scaling_1271, scaling_1273, scaling_1276, scaling_1277, scaling_1278, scaling_1279, scaling_1292, scaling_1293, scaling_1294, scaling_1295, scaling_1296, scaling_1297, scaling_1299, scaling_1300, scaling_1311, scaling_1313, scaling_1314, scaling_1315, scaling_1316, scaling_1317, scaling_1318, scaling_1319, scaling_1320, scaling_1321, scaling_1332, scaling_1334, scaling_1335, scaling_1336, scaling_1337, scaling_1338, scaling_1340, scaling_1341, scaling_1342, scaling_1355, scaling_1356, scaling_1357, scaling_1358, scaling_1359, scaling_1374, scaling_1379, scaling_1381, scaling_1382, scaling_1390, scaling_1391, scaling_1392, scaling_1393, scaling_1394, scaling_1401, scaling_1402, scaling_1403, scaling_1404, scaling_1405, scaling_1406, scaling_1413, scaling_1414, scaling_1415, scaling_1416, scaling_1417, scaling_1418, scaling_1425, scaling_1426, scaling_1427, scaling_1428, scaling_1439, scaling_1441, scaling_1442, scaling_1443, scaling_1449, scaling_1450, scaling_1451, scaling_1452, scaling_1453, scaling_1455, scaling_1461, scaling_1463, scaling_1464, scaling_1465, scaling_1466, scaling_1467, scaling_1473, scaling_1474, scaling_1475, scaling_1476, scaling_1478, scaling_1479, scaling_1485, scaling_1486, scaling_1487, scaling_1488, scaling_1491, scaling_1497, scaling_1501, scaling_1504, scaling_1505, scaling_1506, scaling_1507, scaling_1510, scaling_1511, scaling_1512, scaling_1513, scaling_1516, scaling_1517, scaling_1518, scaling_1519, scaling_1522, scaling_1523, scaling_1524, scaling_1525, scaling_1528, scaling_1529, scaling_1531, scaling_1532, scaling_1533, scaling_1534, scaling_1535, scaling_1544, scaling_1545, scaling_1546, scaling_1547, scaling_1548, scaling_1549, scaling_1550, scaling_1552, scaling_1553, scaling_1554, scaling_1563, scaling_1564, scaling_1565, scaling_1566, scaling_1567, scaling_1568, scaling_1569, scaling_1570, scaling_1571, scaling_1572, scaling_1573, scaling_1582, scaling_1583, scaling_1584, scaling_1585, scaling_1586, scaling_1587, scaling_1589, scaling_1590, scaling_1591, scaling_1592, scaling_1601, scaling_1602, scaling_1603, scaling_1604, scaling_1605, scaling_1606, scaling_1611, scaling_1620, scaling_1626, scaling_1627, scaling_1628, scaling_1629, scaling_1630, scaling_1641, scaling_1642, scaling_1643, scaling_1644, scaling_1645, scaling_1646, scaling_1647, scaling_1648, scaling_1649, scaling_1650, scaling_1651, scaling_1652, scaling_1663, scaling_1664, scaling_1665, scaling_1666, scaling_1667, scaling_1668, scaling_1669, scaling_1670, scaling_1671, scaling_1672, scaling_1673, scaling_1674, scaling_1683, scaling_1685, scaling_1686, scaling_1687, scaling_1688, scaling_1689, scaling_1690, scaling_1691, scaling_1693, scaling_1694, scaling_1695, scaling_1696, scaling_1707, scaling_1708, scaling_1709, scaling_1710, scaling_1711, scaling_1712, scaling_1717, scaling_1718, scaling_1727, scaling_1729, scaling_1730, scaling_1734
+
+Last 10 lines of scaling_0048:
+```
+Loading required package: ggplot2
+Loading required package: VGAM
+Loading required package: stats4
+Loading required package: splines
+Loading required package: DDRTree
+Loading required package: irlba
+Removing 1 outliers
+[1] 6
+Error: cannot allocate vector of size 155886.9 Gb
+Execution halted
+```
+
+### ERROR CLUSTER MEMORY_LIMIT -- 2
+![Cluster plot](error_class_plots/monocle_ica_memory_limit_2.png)
+
+ * Number of instances: 1
+ * Dataset ids: scaling_0765
+
+Last 10 lines of scaling_0765:
+```
+Loading required package: stats4
+Loading required package: splines
+Loading required package: DDRTree
+Loading required package: irlba
+Removing 1 outliers
+[1] 4
+Error in graph.adjacency.dense(adjmatrix, mode = mode, weighted = weighted,  : 
+  At type_indexededgelist.c:309 : cannot add edges, Out of memory
+Calls: num_q_nodes -> <Anonymous> -> graph.adjacency.dense
+Execution halted
+```
+
+### ERROR CLUSTER MEMORY_LIMIT -- 3
+![Cluster plot](error_class_plots/monocle_ica_memory_limit_3.png)
+
+ * Number of instances: 1
+ * Dataset ids: scaling_0854
+
+Last 10 lines of scaling_0854:
+```
+Loading required package: stats4
+Loading required package: splines
+Loading required package: DDRTree
+Loading required package: irlba
+Removing 2 outliers
+[1] 8
+Error in minimum.spanning.tree(gp) : 
+  At heap.c:570 : d_indheap reserve failed, Out of memory
+Calls: <Anonymous> -> minimum.spanning.tree
+Execution halted
+```
+
+### ERROR CLUSTER MEMORY_LIMIT -- 4
+![Cluster plot](error_class_plots/monocle_ica_memory_limit_4.png)
+
+ * Number of instances: 5
+ * Dataset ids: scaling_0875, scaling_1084, scaling_1209, scaling_1639, scaling_1705
+
+Last 10 lines of scaling_0875:
+```
+Loading required package: stats4
+Loading required package: splines
+Loading required package: DDRTree
+Loading required package: irlba
+Removing 3 outliers
+[1] 40
+Error in add_edges(e1, as.igraph.vs(e1, toadd), attr = attr) : 
+  At vector.pmt:1069 : cannot init vector from array, Out of memory
+Calls: num_q_nodes -> <Anonymous> -> +.igraph -> add_edges
+Execution halted
+```
+
+### ERROR CLUSTER MEMORY_LIMIT -- 5
+![Cluster plot](error_class_plots/monocle_ica_memory_limit_5.png)
+
+ * Number of instances: 5
+ * Dataset ids: scaling_0886, scaling_1290, scaling_1353, scaling_1389, scaling_1661
+
+Last 10 lines of scaling_0886:
+```
+Loading required package: stats4
+Loading required package: splines
+Loading required package: DDRTree
+Loading required package: irlba
+Removing 2 outliers
+[1] 39
+Error in add_vertices(e1, la, attr = e2) : 
+  At vector.pmt:1069 : cannot init vector from array, Out of memory
+Calls: num_q_nodes -> <Anonymous> -> +.igraph -> add_vertices
+Execution halted
+```
+
+### ERROR CLUSTER MEMORY_LIMIT -- 6
+![Cluster plot](error_class_plots/monocle_ica_memory_limit_6.png)
+
+ * Number of instances: 5
+ * Dataset ids: scaling_0955, scaling_0961, scaling_0967, scaling_0973, scaling_1437
+
+Last 10 lines of scaling_0955:
+```
+Loading required package: stats4
+Loading required package: splines
+Loading required package: DDRTree
+Loading required package: irlba
+Removing 3 outliers
+[1] 62
+Error in graph.adjacency.dense(adjmatrix, mode = mode, weighted = weighted,  : 
+  At vector.pmt:442 : cannot reserve space for vector, Out of memory
+Calls: num_q_nodes -> <Anonymous> -> graph.adjacency.dense
+Execution halted
+```
+
+### ERROR CLUSTER MEMORY_LIMIT -- 7
+![Cluster plot](error_class_plots/monocle_ica_memory_limit_7.png)
+
+ * Number of instances: 2
+ * Dataset ids: scaling_1183, scaling_1551
+
+Last 10 lines of scaling_1183:
+```
+Loading required package: DDRTree
+Loading required package: irlba
+Removing 3903 outliers
+Warning messages:
+1: In log(ifelse(y == 0, 1, y/mu)) : NaNs produced
+2: step size truncated due to divergence 
+3: In log(ifelse(y == 0, 1, y/mu)) : NaNs produced
+[1] 96841
+Error: cannot allocate vector of size 74.5 Gb
+Execution halted
+```
+
+### ERROR CLUSTER MEMORY_LIMIT -- 8
+![Cluster plot](error_class_plots/monocle_ica_memory_limit_8.png)
+
+ * Number of instances: 1
+ * Dataset ids: scaling_1225
+
+Last 10 lines of scaling_1225:
+```
+Loading required package: stats4
+Loading required package: splines
+Loading required package: DDRTree
+Loading required package: irlba
+Removing 5 outliers
+[1] 89
+Error in add_edges(e1, as.igraph.vs(e1, toadd), attr = attr) : 
+  At type_indexededgelist.c:309 : cannot add edges, Out of memory
+Calls: num_q_nodes -> <Anonymous> -> +.igraph -> add_edges
+Execution halted
+```
+
+### ERROR CLUSTER MEMORY_LIMIT -- 9
+![Cluster plot](error_class_plots/monocle_ica_memory_limit_9.png)
+
+ * Number of instances: 2
+ * Dataset ids: scaling_1298, scaling_1454
+
+Last 10 lines of scaling_1298:
+```
+Loading required package: splines
+Loading required package: DDRTree
+Loading required package: irlba
+Removing 6185 outliers
+Warning messages:
+1: In log(ifelse(y == 0, 1, y/mu)) : NaNs produced
+2: step size truncated due to divergence 
+[1] 153551
+Error: cannot allocate vector of size 187.1 Gb
+Execution halted
+```
+
+### ERROR CLUSTER MEMORY_LIMIT -- 10
+![Cluster plot](error_class_plots/monocle_ica_memory_limit_10.png)
+
+ * Number of instances: 2
+ * Dataset ids: scaling_1377, scaling_1462
+
+Last 10 lines of scaling_1377:
+```
+Loading required package: stats4
+Loading required package: splines
+Loading required package: DDRTree
+Loading required package: irlba
+Removing 1 outliers
+Warning message:
+glm.fit: algorithm did not converge 
+[1] 32
+Error: cannot allocate vector of size 29.7 Gb
+Execution halted
 ```
 
 

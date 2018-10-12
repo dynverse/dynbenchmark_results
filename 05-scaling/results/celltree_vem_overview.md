@@ -1,28 +1,6 @@
 # celltree_vem
 ![Overview](celltree_vem.png)
 
-## ERROR STATUS MEMORY_LIMIT
-
-### ERROR CLUSTER MEMORY_LIMIT -- 1
-![Cluster plot](error_class_plots/celltree_vem_memory_limit_1.png)
-
- * Number of instances: 22
- * Dataset ids: scaling_0697, scaling_0714, scaling_0731, scaling_0748, scaling_0782, scaling_0800, scaling_0818, scaling_0836, scaling_0865, scaling_0876, scaling_0887, scaling_0898, scaling_0992, scaling_1006, scaling_1020, scaling_1034, scaling_1048, scaling_1066, scaling_1085, scaling_1104, scaling_1123, scaling_1142
-
-Last 10 lines of scaling_0697:
-```
-**** em iteration 70 ****
-document 15849
-new alpha = 2.06094
-final e step document 15849
-Model fit for k = 4 topics
-Using rooting method: longest.path
-Error in minimum.spanning.tree(g) : 
-  At heap.c:565 : d_indheap reserve failed, Out of memory
-Calls: <Anonymous> -> minimum.spanning.tree
-Execution halted
-```
-
 ## ERROR STATUS METHOD_ERROR
 
 ### ERROR CLUSTER METHOD_ERROR -- 1
@@ -116,6 +94,28 @@ Lengths differ: 630 is not 631
 Last 10 lines of scaling_0783:
 ```
 File: /home/rcannood/Workspace/dynverse/dynbenchmark//derived/05-scaling/suite/celltree_vem/Cat2/r2gridengine/20181008_215039_celltree_vem_Cat2_92GINtjF3q/log/log.103.e.txt
+```
+
+## ERROR STATUS MEMORY_LIMIT
+
+### ERROR CLUSTER MEMORY_LIMIT -- 1
+![Cluster plot](error_class_plots/celltree_vem_memory_limit_1.png)
+
+ * Number of instances: 22
+ * Dataset ids: scaling_0697, scaling_0714, scaling_0731, scaling_0748, scaling_0782, scaling_0800, scaling_0818, scaling_0836, scaling_0865, scaling_0876, scaling_0887, scaling_0898, scaling_0992, scaling_1006, scaling_1020, scaling_1034, scaling_1048, scaling_1066, scaling_1085, scaling_1104, scaling_1123, scaling_1142
+
+Last 10 lines of scaling_0697:
+```
+**** em iteration 70 ****
+document 15849
+new alpha = 2.06094
+final e step document 15849
+Model fit for k = 4 topics
+Using rooting method: longest.path
+Error in minimum.spanning.tree(g) : 
+  At heap.c:565 : d_indheap reserve failed, Out of memory
+Calls: <Anonymous> -> minimum.spanning.tree
+Execution halted
 ```
 
 
