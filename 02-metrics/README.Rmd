@@ -36,7 +36,6 @@ Here, we first describe and illustrate several possible specific, application an
 
 All metrics described here were implemented within the [_dyneval_](https://github.com/dynverse/dyneval) R package ([https://github.com/dynverse/dyneval](https://github.com/dynverse/dyneval)).
 
-
 ```{r}
 dynbenchmark::knit_nest("01-metric_characterisation/README.Rmd")
 ```
