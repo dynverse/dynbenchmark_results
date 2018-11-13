@@ -13,7 +13,7 @@ library(dynbenchmark)
 ```{r}
 experiment("02-metrics/02-metric_conformity")
 
-dataset_design <- read_rds(derived_file("dataset_design.rds"))
+dataset_design <- read_rds(result_file("dataset_design.rds"))
 ```
 
 Although most metrics described in the previous section make sense intuitively, this does not necessarily mean that these metrics are robust and will generate reasonable results when used for benchmarking. This is because different methods and datasets will all lead to a varied set of trajectory models:
@@ -36,7 +36,7 @@ We then perturbed the trajectories in these datasets in certain ways, and tested
 
 ```{r}
 assessments <- read_rds(derived_file("assessments.rds"))
-rules <- read_rds(derived_file("rules.rds"))
+rules <- read_rds(result_file("rules.rds"))
 ```
 
 ```{r}
