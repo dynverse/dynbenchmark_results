@@ -44,7 +44,7 @@ We compared the three scores on several common topologies (`r ref("fig", "topolo
 
 ```{r}
 add_fig(
-  result_file("topology_scores_overview.rds", experiment_id = "02-metrics/01-metric_characterisation"),
+  result_file("topology_scores_overview.pdf", experiment_id = "02-metrics/01-metric_characterisation"),
   "topology_scores_overview",
   glue::glue("Showcase of three metrics to evaluate topologies: {label_metric('isomorphic')}, {label_metric('edge_flip')} and {label_metric('him')}."),
   glue::glue("(a) The used topologies. (b) The scores when comparing each pair of trajectory types. (c) Four datasets in which aan extra edge is added and made progressively longer. This shows how the {label_metric('him')} can take into account edge lengths."),
@@ -79,7 +79,7 @@ $\textrm{F1} = \frac{2}{\frac{1}{\textrm{Recovery}} + \frac{1}{\textrm{Relevance
 
 ```{r}
 add_fig(
-  result_file("clustering_scores_overview.rds", experiment = "02-metrics/01-metric_characterisation"),
+  result_file("clustering_scores_overview.pdf", experiment = "02-metrics/01-metric_characterisation"),
   "clustering_scores_overview",
   glue::glue("Mapping cells to their closest milestone or branch for the calculation of the {label_metric('F1_milestones')} and {label_metric('F1_branches')} ."),
   glue::glue("To calculate the {label_metric('F1_milestones')}, cells are mapped towards the nearest milestone, i.e. the milestone with the highest milestone percentage. For the {label_metric('F1_branches')}, the cells are mapped to the closest edge."),
@@ -116,7 +116,7 @@ To select the number of cell waypoints, we need to find a trade-off between the 
 
 ```{r}
 add_fig(
-  result_file("waypoints_overview.rds", experiment = "02-metrics/01-metric_characterisation"),
+  result_file("waypoints_overview.pdf", experiment = "02-metrics/01-metric_characterisation"),
   "waypoints_overview",
   glue::glue("Determination of cell waypoints"),
   glue::glue("a) Illustration of the stratified cell sampling using an example dataset (top). Each milestone, edge between two milestones and region of delayed commitment is seen as a collection of cells (middle), and the number of waypoints (100 in this case) are divided over each of these collection of cells (bottom). b) Accuracy versus time to calculate {label_metric('correlation')}"),
@@ -128,7 +128,7 @@ Although the `r label_metric("correlation")`'s main characteristic is that it lo
 
 ```{r}
 add_fig(
-  result_file("geodesic_distances_dimreds.rds", experiment = "02-metrics/01-metric_characterisation"),
+  result_file("geodesic_distances_dimreds.pdf", experiment = "02-metrics/01-metric_characterisation"),
   "geodesic_distances_dimreds",
   glue::glue("The geodesic distances can be used to reconstruct the original trajectory structure"),
   glue::glue("We generated different toy trajectory datasets with varying topologies and calculated the geodesic distances between all cells within the trajectory. We then used these distances as input for classical multidimensional scaling. This shows that the geodesic distances do not only contain information regarding the cell's positions, but also information on the lengths and wiring of the topology."),
@@ -166,7 +166,7 @@ To calculate the `r label_metric("featureimp_cor")` we used Random forest regres
 
 ```{r}
 add_fig(
-  result_file("featureimp_overview.rds", experiment = "02-metrics/01-metric_characterisation"),
+  result_file("featureimp_overview.pdf", experiment = "02-metrics/01-metric_characterisation"),
   "featureimp_overview",
   glue::glue("An illustration of ranking features based on their importance in a trajectory."),
   glue::glue("(a) A MDS dimensionality reudction of a real dataset in which mouse embryonic fibroblasts (MEF) differentiate into Neurons and Myocytes. (b) The ranking of feature importances from high to low. The majority of features have a very low importance. (c) Some examples, which were also highlighted in b. Higher features in the ranking are clearly specific to certain parts of the trajectory, while features lower on the ranking have a more dispersed expression pattern."),
@@ -178,7 +178,7 @@ Random forest regression has two main hyperparameters. The number of trees to be
 
 ```{r}
 add_fig(
-  result_file("featureimp_cor_distributions.rds", experiment = "02-metrics/01-metric_characterisation"),
+  result_file("featureimp_cor_distributions.pdf", experiment = "02-metrics/01-metric_characterisation"),
   "featureimp_cor_distributions",
   glue::glue("Effect of the number of trees parameter on the accuracy and variability of the {label_metric('featureimp_cor')}."),
   glue::glue("We used the dataset from {ref('fig', 'featureimp_overview')} and calculated the {label_metric('featureimp_cor')} after shuffling a percentage of cells."),
@@ -190,7 +190,7 @@ For most datasets, only a limited number of features will be differentially expr
 
 ```{r}
 add_fig(
-  result_file("featureimp_wcor_effect.rds", experiment = "02-metrics/01-metric_characterisation"),
+  result_file("featureimp_wcor_effect.pdf", experiment = "02-metrics/01-metric_characterisation"),
   "featureimp_wcor_effect",
   glue::glue("Effect of weighting the features based on their feature importance in the reference."),
   glue::glue("We used the same dataset as in {ref('fig', 'featureimp_overview')}, and calculated the {label_metric('featureimp_cor')} after shuffling a percentage of cells."),
