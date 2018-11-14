@@ -35,7 +35,7 @@ We generated a panel of toy datasets (using our [_dyntoy_](https://github.com/dy
 We then perturbed the trajectories in these datasets in certain ways, and tested whether the scores follow an expected pattern. An overview of the conformity of every metric is first given in `r ref("table", "conformity_overview")`. The individual rules and metric behaviour are discussed more into detail after that.
 
 ```{r}
-assessments <- read_rds(derived_file("assessments.rds"))
+assessments <- read_rds(result_file("assessments.rds"))
 rules <- read_rds(result_file("rules.rds"))
 ```
 
@@ -93,6 +93,7 @@ add_table(
 \clearpage
 
 ```{r}
+assessments$ix <- seq_len(nrow(assessments))
 mapdf(assessments, function(assessment) {
   knitr::knit_child(text = readr::read_lines(result_file("assessment.Rmd", experiment = "02-metrics/02-metric_conformity")), quiet=TRUE, envir = environment())
 }) %>% as.character() %>% paste(collapse = "\n\n") %>% knitr::asis_output()

@@ -20,7 +20,7 @@ github:
 | 9  | [📁`guidelines`](09-guidelines)                             |                                               |
 | 10 | [📁`benchmark_interpretation`](10-benchmark_interpretation) | Benchmark interpretation                      |
 | 11 | [📁`example_predictions`](11-example_predictions)           |                                               |
-|    | [📁`old`](old)                                              |                                               |
+| 12 | [📁`manuscript`](12-manuscript)                             |                                               |
 
 The actual code for generating the results can be found in the [scripts
 folder](https://github.com/dynverse/dynbenchmark/tree/master/scripts).
