@@ -1,5 +1,4 @@
 ---
-title: "Supplementary Note 1: comparing two trajectories"
 output: 
   - dynbenchmark::pdf_supplementary_note
   - dynbenchmark::github_markdown_nested

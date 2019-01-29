@@ -1,5 +1,6 @@
 ---
 output: 
+  - dynbenchmark::pdf_supplementary_note
   - dynbenchmark::github_markdown_nested
 ---
 
