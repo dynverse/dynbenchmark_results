@@ -93,7 +93,7 @@ $$
 
 with $\Delta W_t \sim \mathcal{N}(0, h)$. 
 
-Similar to GeneNetWeaver [@schaffter_genenetweaversilicobenchmark_2011], we sample the different parameters from random distributions, defined as follows.
+Similar to GeneNetWeaver [@schaffter_genenetweaversilicobenchmark_2011], we sample the different parameters from random distributions, defined as follows. $e$ defines whether a transcription factor activates (1) or represses (-1), as defined within the regulatory network network.
 
 $$
 \begin{aligned}
