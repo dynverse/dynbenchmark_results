@@ -104,8 +104,9 @@ q & = \mathcal{U}(1, 5) \\
 a_0 & = \begin{cases}1 & \text{if } |e| = 0 \\ 1 & \text{if } \forall x \in e \text{, } x = -1 \\ 0 & \text{if } \forall x \in e \text{, } x = 1 \\ 0.5 & \text{otherwise}\end{cases} \\
 a_i & = \begin{cases}0 & \text{if } \exists x \in e_i \text{, } x = -1 \\ 1 & \text{otherwise}\end{cases} \\
 s & = \mathcal{U}(1, 20) \\
-k & = y_{max} / (2 * s) \\
-c & = \mathcal{U}(1, 4) 
+k & = y_{max} / (2 * s) \text{,} \\
+\ & \quad \text{where } y_{max} = r / d \times p / q \\
+c & = \mathcal{U}(1, 4)
 \end{aligned}
 $$
 
