@@ -86,14 +86,28 @@ $P_i$ is only proportional to $\nu$ because $\nu$ is normalized such that $\sum_
 To each differential equation, we added an additional stochastic term: 
 $$
 \begin{aligned}
-\frac{dx_i}{dt} = m \times f(y_1, y_2, ...) - \lambda \times x_i &+ \eta \times \sqrt{x_i} \times \Delta W_t \\
-\frac{dy_i}{dt} = r \times x_i - \Lambda \times y_i &+ \eta \times \sqrt{y_i} \times \Delta W_t
+\frac{dx_i}{dt} & = m \times f(y_1, y_2, ...) - \lambda \times x_i + \eta \times \sqrt{x_i} \times \Delta W_t \\
+\frac{dy_i}{dt} & = r \times x_i - \Lambda \times y_i + \eta \times \sqrt{y_i} \times \Delta W_t
 \end{aligned}
 $$
 
 with $\Delta W_t \sim \mathcal{N}(0, h)$. 
 
-Similar to [@schaffter_genenetweaversilicobenchmark_2011], we sample the different parameters from random distributions, given in `r ref("stable", "samplers")`.
+Similar to GeneNetWeaver [@schaffter_genenetweaversilicobenchmark_2011], we sample the different parameters from random distributions, defined as follows.
+
+$$
+\begin{aligned}
+r & = \mathcal{U}(10, 200) \\
+d & = \mathcal{U}(2, 8) \\
+p & = \mathcal{U}(2, 8) \\
+q & = \mathcal{U}(1, 5) \\
+a_0 & = \begin{cases}1 & \text{if } |e| = 0 \\ 1 & \text{if } \forall x \in e \text{, } x = -1 \\ 0 & \text{if } \forall x \in e \text{, } x = 1 \\ 0.5 & \text{otherwise}\end{cases} \\
+a_i & = \begin{cases}0 & \text{if } \exists x \in e_i \text{, } x = -1 \\ 1 & \text{otherwise}\end{cases} \\
+s & = \mathcal{U}(1, 20) \\
+k & = y_{max} / (2 * s) \\
+c & = \mathcal{U}(1, 4) 
+\end{aligned}
+$$
 
 ```{r}
 add_stable(
