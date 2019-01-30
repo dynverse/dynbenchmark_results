@@ -1,6 +1,8 @@
 ---
 output: 
   - dynbenchmark::github_markdown_nested
+editor_options: 
+  chunk_output_type: console
 ---
 
 ```{r setup, include=FALSE}
@@ -32,7 +34,7 @@ We generated a panel of toy datasets (using our [_dyntoy_](https://github.com/dy
 - topologies: linear, bifurcation, multifurcating, tree, cycle, connected graph and disconnected graph
 - Whether cells are placed on the milestones (as in real data) or on the edges/regions of delayed commitment between the milestones (as in synthetic data)
 
-We then perturbed the trajectories in these datasets in certain ways, and tested whether the scores follow an expected pattern. An overview of the conformity of every metric is first given in `r ref("table", "conformity_overview")`. The individual rules and metric behaviour are discussed more into detail after that.
+We then perturbed the trajectories in these datasets in certain ways, and tested whether the scores follow an expected pattern. An overview of the conformity of every metric is first given in `r ref("table", "conformity_overview", prefix = "S")`. The individual rules and metric behaviour are discussed more into detail after that.
 
 ```{r}
 assessments <- read_rds(result_file("assessments.rds"))
