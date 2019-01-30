@@ -93,6 +93,7 @@ add_fig(
 When the position of a cell is the same in both the reference and the prediction, its _relative_ distances to all other cells in the trajectory should also be the same. This observation is the basis for the `r label_metric("correlation")` metric.
 
 ```{r}
+init_fig_ref <- ref("fig", "metrics_geodesic", prefix = "S")
 add_fig(
   raw_file("metrics_geodesic.svg", "02-metrics/01-metric_characterisation"),
   "metrics_geodesic",
