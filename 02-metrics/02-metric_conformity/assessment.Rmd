@@ -2,6 +2,8 @@
 title: "assessment"
 params:
   assessment: NULL
+editor_options: 
+  chunk_output_type: console
 ---
 
 ```{r}
@@ -18,12 +20,21 @@ knitr::include_graphics(rule$image_location)
 
 \end{center}
 
-`r render_equations(rule$description)`
+Description: `r render_equations(gsub("\\. *$", "", rule$description))`.
 
-A metric conforms to this rule if: `r render_equations(paste0("$", rule$conforms_if, "$"))`
+A metric conforms to this rule if: `r render_equations(paste0("$", rule$conforms_if, "$"))`.
+
+Conclusion(s): `r gsub("\\. *$", "", rule$observation)`.
+
+```{r, include=FALSE}
+ref("table", paste0(rule$id, "_rule_table"), prefix = "S")
+ref("fig", paste0(rule$id, "_plot_datasets"), prefix = "S")
+ref("fig", paste0(rule$id, "_plot_scores"), prefix = "S")
+```
 
 ```{r}
-assessment$conformity %>% 
+tab_latex <-
+  assessment$conformity %>% 
   select(metric_id, conforms) %>% 
   arrange(metric_id) %>% 
   mutate(
@@ -39,9 +50,47 @@ assessment$conformity %>%
   knitr::kable(format = "latex", escape = FALSE) %>% 
   kableExtra::kable_styling(font_size = 7) %>% 
   kableExtra::row_spec(0, hline_after = FALSE)
+
+tab_html <-
+  assessment$conformity %>% 
+  select(metric_id, conforms) %>% 
+  arrange(metric_id) %>% 
+  mutate(
+    metric_id = label_metrics(metric_id, format = "html") %>% as.character() %>% forcats::fct_inorder(),
+    conforms = kableExtra::cell_spec(
+      ifelse(conforms, "\U2714", "\U2716"), 
+      background = ifelse(conforms, "#B2DF8A", "#FB9A99"),
+      format = "html",
+      align = "c"
+    )
+  ) %>% 
+  spread(metric_id, conforms) %>% 
+  knitr::kable(format = "html", escape = FALSE) %>% 
+  kableExtra::kable_styling(font_size = 7) %>% 
+  kableExtra::row_spec(0, hline_after = FALSE)
+
+tab_markdown <- 
+  assessment$conformity %>% 
+  select(metric_id, conforms) %>% 
+  arrange(metric_id) %>% 
+  mutate(
+    metric_id = label_metrics(metric_id, format = "plotmath") %>% as.character() %>% paste0("$", ., "$") %>% forcats::fct_inorder()
+  ) %>% 
+  spread(metric_id, conforms) %>% 
+  knitr::kable(format = "markdown", escape = FALSE)
+
+add_table(
+  list(
+    latex = tab_latex,
+    html = tab_html,
+    markdown = tab_markdown
+  ),
+  paste0(rule$id, "_rule_table"),
+  paste0("Which metrics conform to rule ", assessment$ix, ".")
+)
 ```
 
-`r rule$observation`
+
 
 ```{r}
 width <- ifelse(is.null(assessment$plot_datasets$width), 10, assessment$plot_datasets$width)
@@ -49,7 +98,7 @@ height <- ifelse(is.null(assessment$plot_datasets$height), 10, assessment$plot_d
 add_fig(
   assessment$plot_datasets,
   paste0(rule$id, "_plot_datasets"),
-  "Example dataset(s) for this rule",
+  paste0("Example dataset(s) for rule ", assessment$ix, "."),
   width = width,
   height = height
 )
@@ -62,7 +111,7 @@ height <- ifelse(is.null(assessment$plot_scores$height), 10, assessment$plot_sco
 add_fig(
   assessment$plot_scores,
   paste0(rule$id, "_plot_scores"),
-  "Scores for this rule.",
+  paste0("Scores for rule ", assessment$ix, "."),
   width = width,
   height = height
 )
