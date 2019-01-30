@@ -98,7 +98,7 @@ height <- ifelse(is.null(assessment$plot_datasets$height), 10, assessment$plot_d
 add_fig(
   assessment$plot_datasets,
   paste0(rule$id, "_plot_datasets"),
-  paste0("Example dataset(s) for rule ", assessment$ix, "."),
+  assessment$plot_datasets$caption,
   width = width,
   height = height
 )
@@ -111,7 +111,7 @@ height <- ifelse(is.null(assessment$plot_scores$height), 10, assessment$plot_sco
 add_fig(
   assessment$plot_scores,
   paste0(rule$id, "_plot_scores"),
-  paste0("Scores for rule ", assessment$ix, "."),
+  assessment$plot_scores$caption,
   width = width,
   height = height
 )
