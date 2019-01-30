@@ -119,7 +119,7 @@ add_fig(
   result_file("waypoints_overview.pdf", experiment = "02-metrics/01-metric_characterisation"),
   "waypoints_overview",
   glue::glue("Determination of cell waypoints"),
-  glue::glue("a) Illustration of the stratified cell sampling using an example dataset (top). Each milestone, edge between two milestones and region of delayed commitment is seen as a collection of cells (middle), and the number of waypoints (100 in this case) are divided over each of these collection of cells (bottom). b) Accuracy versus time to calculate {label_metric('correlation')}"),
+  glue::glue("a) Illustration of the stratified cell sampling using an example dataset (top). Each milestone, edge between two milestones and region of delayed commitment is seen as a collection of cells (middle), and the number of waypoints (100 in this case) are divided over each of these collection of cells (bottom). b) Accuracy versus time to calculate {label_metric('correlation')}. Shown are distributions over 100 random waypoint samples. The upper whisker of the boxplot extends from the hinge (75% percentile) to the largest value, no further than 1.5× the IQR of the hinge. The lower whisker extends from the hinge (25% percentile) to the smallest value, at most 1.5× the IQR of the hinge."),
   width = 12, height = 8
 )
 ```
