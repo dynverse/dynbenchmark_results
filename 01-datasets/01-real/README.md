@@ -10,7 +10,8 @@
 
 <p>
 
-<strong>Figure 1: Main characteristics of the real datasets</strong>
+<strong>[**Figure 1**](#fig_characteristics): Main characteristics of
+the real datasets</strong>
 
 </p>
 
@@ -25,7 +26,8 @@
 
 <p>
 
-<strong>Figure 2: Dimensions of the real datasets</strong>
+<strong>[**Figure 2**](#fig_sizes): Dimensions of the real
+datasets</strong>
 
 </p>
 

@@ -34,7 +34,7 @@ We generated a panel of toy datasets (using our
 We then perturbed the trajectories in these datasets in certain ways,
 and tested whether the scores follow an expected pattern. An overview of
 the conformity of every metric is first given in [**Table
-1**](#table_conformity_overview). The individual rules and metric
+S1**](#table_conformity_overview). The individual rules and metric
 behaviour are discussed more into detail after
 that.
 
@@ -65,7 +65,7 @@ that.
 | Move cells to closest milestone                 | ✔                  | ✔                 | ✔                 | ✖        | ✖   | ✖          | ✔                      | ✔                       | ✖                     | ✔                       | ✔                        |
 | Move cells to start milestone                   | ✔                  | ✔                 | ✔                 | ✖        | ✖   | ✖          | ✔                      | ✔                       | ✖                     | ✔                       | ✔                        |
 
-**[**Table 1**](#table_conformity_overview): Overview of whether a
+**[**Table S1**](#table_conformity_overview): Overview of whether a
 particular metric conforms to a particular rule**
 
 ### Rule 1: Same score on identity
@@ -75,15 +75,25 @@ particular metric conforms to a particular rule**
 
 \\end{center}
 
-The score should be approximately the same when comparing the trajectory
-to itself
+Description: The score should be approximately the same when comparing
+the trajectory to itself.
 
 A metric conforms to this rule if:
-![](https://latex.codecogs.com/gif.latex?0.99%20%5Cleqslant%20%5Cmathit%7Bscore%7D%20%5Cleqslant%201)
+![](https://latex.codecogs.com/gif.latex?0.99%20%5Cleqslant%20%5Cmathit%7Bscore%7D%20%5Cleqslant%201).
 
-Metrics which contain some stochasticity (random forest based metrics in
-particular), usually do not conform to this rule, even though their
-scores are still consistently high.
+Conclusion(s): Metrics which contain some stochasticity (random forest
+based metrics in particular), usually do not conform to this rule, even
+though their scores are still consistently
+high.
+
+<a name = 'table_equal_identity_rule_table'></a>
+
+| ![](https://latex.codecogs.com/gif.latex?cor%5Bdist%5D) | ![](https://latex.codecogs.com/gif.latex?NMSE%5Brf%5D) | ![](https://latex.codecogs.com/gif.latex?NMSE%5Blm%5D) | ![](https://latex.codecogs.com/gif.latex?edgeflip) | ![](https://latex.codecogs.com/gif.latex?HIM) | ![](https://latex.codecogs.com/gif.latex?isomorphic) | ![](https://latex.codecogs.com/gif.latex?cor%5Bfeatures%5D) | ![](https://latex.codecogs.com/gif.latex?wcor%5Bfeatures%5D) | ![](https://latex.codecogs.com/gif.latex?F1%5Bbranches%5D) | ![](https://latex.codecogs.com/gif.latex?F1%5Bmilestones%5D) | ![](https://latex.codecogs.com/gif.latex?mean%5Bgeometric%5D) |
+| :------------------------------------------------------ | :----------------------------------------------------- | :----------------------------------------------------- | :------------------------------------------------- | :-------------------------------------------- | :--------------------------------------------------- | :---------------------------------------------------------- | :----------------------------------------------------------- | :--------------------------------------------------------- | :----------------------------------------------------------- | :------------------------------------------------------------ |
+| TRUE                                                    | FALSE                                                  | TRUE                                                   | TRUE                                               | TRUE                                          | TRUE                                                 | TRUE                                                        | FALSE                                                        | TRUE                                                       | TRUE                                                         | TRUE                                                          |
+
+**[**Table S2**](#table_equal_identity_rule_table): Which metrics
+conform to rule 1.**
 
 <p>
 
@@ -94,7 +104,7 @@ scores are still consistently high.
 
 <p>
 
-<strong>[**Figure 1**](#fig_equal_identity_plot_datasets): Example
+<strong>[**Figure S1**](#fig_equal_identity_plot_datasets): Example
 trajectory that was used to assess this rule.</strong>
 
 </p>
@@ -110,8 +120,8 @@ trajectory that was used to assess this rule.</strong>
 
 <p>
 
-<strong>[**Figure 2**](#fig_equal_identity_plot_scores): Score values of
-the different metrics across 42 datasets.</strong>
+<strong>[**Figure S2**](#fig_equal_identity_plot_scores): Score values
+of the different metrics across 42 datasets.</strong>
 
 </p>
 
@@ -124,14 +134,25 @@ the different metrics across 42 datasets.</strong>
 
 \\end{center}
 
-Shuffling the positions of cells within each edge should lower the
-score. This is equivalent to changing the cellular position locally.
+Description: Shuffling the positions of cells within each edge should
+lower the score. This is equivalent to changing the cellular position
+locally.
 
 A metric conforms to this rule if:
-![](https://latex.codecogs.com/gif.latex?%5Cmathit%7Bscore%7D_%7B%5Ctextit%7Bidentity%7D%7D%20%3E%20%5Cmathit%7Bscore%7D_%7B%5Ctextit%7Bprediction%7D%7D)
+![](https://latex.codecogs.com/gif.latex?%5Cmathit%7Bscore%7D_%7B%5Ctextit%7Bidentity%7D%7D%20%3E%20%5Cmathit%7Bscore%7D_%7B%5Ctextit%7Bprediction%7D%7D).
 
-Metrics which do not look at the cellular positioning, or group the
-cells within branches or milestones, do not conform to this rule.
+Conclusion(s): Metrics which do not look at the cellular positioning, or
+group the cells within branches or milestones, do not conform to this
+rule.
+
+<a name = 'table_shuffle_cells_edgewise_rule_table'></a>
+
+| ![](https://latex.codecogs.com/gif.latex?cor%5Bdist%5D) | ![](https://latex.codecogs.com/gif.latex?NMSE%5Brf%5D) | ![](https://latex.codecogs.com/gif.latex?NMSE%5Blm%5D) | ![](https://latex.codecogs.com/gif.latex?edgeflip) | ![](https://latex.codecogs.com/gif.latex?HIM) | ![](https://latex.codecogs.com/gif.latex?isomorphic) | ![](https://latex.codecogs.com/gif.latex?cor%5Bfeatures%5D) | ![](https://latex.codecogs.com/gif.latex?wcor%5Bfeatures%5D) | ![](https://latex.codecogs.com/gif.latex?F1%5Bbranches%5D) | ![](https://latex.codecogs.com/gif.latex?F1%5Bmilestones%5D) | ![](https://latex.codecogs.com/gif.latex?mean%5Bgeometric%5D) |
+| :------------------------------------------------------ | :----------------------------------------------------- | :----------------------------------------------------- | :------------------------------------------------- | :-------------------------------------------- | :--------------------------------------------------- | :---------------------------------------------------------- | :----------------------------------------------------------- | :--------------------------------------------------------- | :----------------------------------------------------------- | :------------------------------------------------------------ |
+| TRUE                                                    | TRUE                                                   | TRUE                                                   | FALSE                                              | FALSE                                         | FALSE                                                | TRUE                                                        | TRUE                                                         | FALSE                                                      | TRUE                                                         | TRUE                                                          |
+
+**[**Table S3**](#table_shuffle_cells_edgewise_rule_table): Which
+metrics conform to rule 2.**
 
 <p>
 
@@ -142,7 +163,7 @@ cells within branches or milestones, do not conform to this rule.
 
 <p>
 
-<strong>[**Figure 3**](#fig_shuffle_cells_edgewise_plot_datasets):
+<strong>[**Figure S3**](#fig_shuffle_cells_edgewise_plot_datasets):
 Example dataset before and after perturbation.</strong>
 
 </p>
@@ -158,7 +179,7 @@ Example dataset before and after perturbation.</strong>
 
 <p>
 
-<strong>[**Figure 4**](#fig_shuffle_cells_edgewise_plot_scores):
+<strong>[**Figure S4**](#fig_shuffle_cells_edgewise_plot_scores):
 Differences in scores of 231 datasets before and after perturbation. Red
 bar gives the mean.</strong>
 
@@ -173,13 +194,25 @@ bar gives the mean.</strong>
 
 \\end{center}
 
-Shuffling the edges in the milestone network should lower the score.
-This is equivalent to changing the cellular positions only globally.
+Description: Shuffling the edges in the milestone network should lower
+the score. This is equivalent to changing the cellular positions only
+globally.
 
 A metric conforms to this rule if:
-![](https://latex.codecogs.com/gif.latex?%5Cmathit%7Bmonotonic%7D%20%5Cleft\(%20%5Ctextit%7Bshuffled%20edges%7D,%20%5Coverline%7B%5Cmathit%7Bscore%7D%7D_%7B%5Ctextit%7Bshuffled%20edges%7D%7D%20%5Cright\))
+![](https://latex.codecogs.com/gif.latex?%5Cmathit%7Bmonotonic%7D%20%5Cleft\(%20%5Ctextit%7Bshuffled%20edges%7D,%20%5Coverline%7B%5Cmathit%7Bscore%7D%7D_%7B%5Ctextit%7Bshuffled%20edges%7D%7D%20%5Cright\)).
 
-Metrics which only look at the topology do not conform to this rule.
+Conclusion(s): Metrics which only look at the topology do not conform to
+this
+rule.
+
+<a name = 'table_shuffle_edges_rule_table'></a>
+
+| ![](https://latex.codecogs.com/gif.latex?cor%5Bdist%5D) | ![](https://latex.codecogs.com/gif.latex?NMSE%5Brf%5D) | ![](https://latex.codecogs.com/gif.latex?NMSE%5Blm%5D) | ![](https://latex.codecogs.com/gif.latex?edgeflip) | ![](https://latex.codecogs.com/gif.latex?HIM) | ![](https://latex.codecogs.com/gif.latex?isomorphic) | ![](https://latex.codecogs.com/gif.latex?cor%5Bfeatures%5D) | ![](https://latex.codecogs.com/gif.latex?wcor%5Bfeatures%5D) | ![](https://latex.codecogs.com/gif.latex?F1%5Bbranches%5D) | ![](https://latex.codecogs.com/gif.latex?F1%5Bmilestones%5D) | ![](https://latex.codecogs.com/gif.latex?mean%5Bgeometric%5D) |
+| :------------------------------------------------------ | :----------------------------------------------------- | :----------------------------------------------------- | :------------------------------------------------- | :-------------------------------------------- | :--------------------------------------------------- | :---------------------------------------------------------- | :----------------------------------------------------------- | :--------------------------------------------------------- | :----------------------------------------------------------- | :------------------------------------------------------------ |
+| TRUE                                                    | TRUE                                                   | TRUE                                                   | FALSE                                              | FALSE                                         | FALSE                                                | TRUE                                                        | TRUE                                                         | TRUE                                                       | TRUE                                                         | TRUE                                                          |
+
+**[**Table S4**](#table_shuffle_edges_rule_table): Which metrics conform
+to rule 3.**
 
 <p>
 
@@ -190,7 +223,7 @@ Metrics which only look at the topology do not conform to this rule.
 
 <p>
 
-<strong>[**Figure 5**](#fig_shuffle_edges_plot_datasets): Lowly (left),
+<strong>[**Figure S5**](#fig_shuffle_edges_plot_datasets): Lowly (left),
 moderatly (middle) and highly (right) perturbed example
 dataset.</strong>
 
@@ -207,7 +240,7 @@ dataset.</strong>
 
 <p>
 
-<strong>[**Figure 6**](#fig_shuffle_edges_plot_scores): Score values at
+<strong>[**Figure S6**](#fig_shuffle_edges_plot_scores): Score values at
 different extents of the perturbation across 84 datasets. Red line
 denotes the mean values.</strong>
 
@@ -222,14 +255,25 @@ denotes the mean values.</strong>
 
 \\end{center}
 
-Shuffling the positions of cells should lower the score. This is
-equivalent to changing the cellular position both locally and globally.
+Description: Shuffling the positions of cells should lower the score.
+This is equivalent to changing the cellular position both locally and
+globally.
 
 A metric conforms to this rule if:
-![](https://latex.codecogs.com/gif.latex?%5Cmathit%7Bmonotonic%7D%20%5Cleft\(%20%5Ctextit%7Bshuffled%20cells%7D,%20%5Coverline%7B%5Cmathit%7Bscore%7D%7D_%7B%5Ctextit%7Bshuffled%20cells%7D%7D%20%5Cright\))
+![](https://latex.codecogs.com/gif.latex?%5Cmathit%7Bmonotonic%7D%20%5Cleft\(%20%5Ctextit%7Bshuffled%20cells%7D,%20%5Coverline%7B%5Cmathit%7Bscore%7D%7D_%7B%5Ctextit%7Bshuffled%20cells%7D%7D%20%5Cright\)).
 
-Most metrics that look at the position of each cell conform to this
+Conclusion(s): Most metrics that look at the position of each cell
+conform to this
 rule.
+
+<a name = 'table_shuffle_cells_rule_table'></a>
+
+| ![](https://latex.codecogs.com/gif.latex?cor%5Bdist%5D) | ![](https://latex.codecogs.com/gif.latex?NMSE%5Brf%5D) | ![](https://latex.codecogs.com/gif.latex?NMSE%5Blm%5D) | ![](https://latex.codecogs.com/gif.latex?edgeflip) | ![](https://latex.codecogs.com/gif.latex?HIM) | ![](https://latex.codecogs.com/gif.latex?isomorphic) | ![](https://latex.codecogs.com/gif.latex?cor%5Bfeatures%5D) | ![](https://latex.codecogs.com/gif.latex?wcor%5Bfeatures%5D) | ![](https://latex.codecogs.com/gif.latex?F1%5Bbranches%5D) | ![](https://latex.codecogs.com/gif.latex?F1%5Bmilestones%5D) | ![](https://latex.codecogs.com/gif.latex?mean%5Bgeometric%5D) |
+| :------------------------------------------------------ | :----------------------------------------------------- | :----------------------------------------------------- | :------------------------------------------------- | :-------------------------------------------- | :--------------------------------------------------- | :---------------------------------------------------------- | :----------------------------------------------------------- | :--------------------------------------------------------- | :----------------------------------------------------------- | :------------------------------------------------------------ |
+| TRUE                                                    | TRUE                                                   | TRUE                                                   | FALSE                                              | FALSE                                         | FALSE                                                | TRUE                                                        | TRUE                                                         | TRUE                                                       | TRUE                                                         | TRUE                                                          |
+
+**[**Table S5**](#table_shuffle_cells_rule_table): Which metrics conform
+to rule 4.**
 
 <p>
 
@@ -240,7 +284,7 @@ rule.
 
 <p>
 
-<strong>[**Figure 7**](#fig_shuffle_cells_plot_datasets): Lowly (left),
+<strong>[**Figure S7**](#fig_shuffle_cells_plot_datasets): Lowly (left),
 moderatly (middle) and highly (right) perturbed example
 dataset.</strong>
 
@@ -257,7 +301,7 @@ dataset.</strong>
 
 <p>
 
-<strong>[**Figure 8**](#fig_shuffle_cells_plot_scores): Score values at
+<strong>[**Figure S8**](#fig_shuffle_cells_plot_scores): Score values at
 different extents of the perturbation across 84 datasets. Red line
 denotes the mean values.</strong>
 
@@ -272,15 +316,26 @@ denotes the mean values.</strong>
 
 \\end{center}
 
-Changing the cellular position locally AND globally should lower the
-score more than any of the two individually.
+Description: Changing the cellular position locally AND globally should
+lower the score more than any of the two individually.
 
 A metric conforms to this rule if:
-![](https://latex.codecogs.com/gif.latex?%5Cmathit%7Bscore%7D_%7Bidentity%7D%20%3E%20%5Cmathit%7Bscore%7D_a%20%5Cland%20%5Cmathit%7Bscore%7D_%7Bidentity%7D%20%3E%20%5Cmathit%7Bscore%7D_b%20%5Cland%20%5Cmathit%7Bscore%7D_%7Ba%7D%20%3E%20%5Cmathit%7Bscore%7D_%7Ba+b%7D%20%5Cland%20%5Cmathit%7Bscore%7D_%7Bb%7D%20%3E%20%5Cmathit%7Bscore%7D_%7Ba+b%7D)
+![](https://latex.codecogs.com/gif.latex?%5Cmathit%7Bscore%7D_%7Bidentity%7D%20%3E%20%5Cmathit%7Bscore%7D_a%20%5Cland%20%5Cmathit%7Bscore%7D_%7Bidentity%7D%20%3E%20%5Cmathit%7Bscore%7D_b%20%5Cland%20%5Cmathit%7Bscore%7D_%7Ba%7D%20%3E%20%5Cmathit%7Bscore%7D_%7Ba+b%7D%20%5Cland%20%5Cmathit%7Bscore%7D_%7Bb%7D%20%3E%20%5Cmathit%7Bscore%7D_%7Ba+b%7D).
 
-Because the topology remains the same, the topology scores do not
-conform to this rule. Also the clustering based scores have some
-difficulties with this rule.
+Conclusion(s): Because the topology remains the same, the topology
+scores do not conform to this rule. Also the clustering based scores
+have some difficulties with this
+rule.
+
+<a name = 'table_combined_local_global_position_change_rule_table'></a>
+
+| ![](https://latex.codecogs.com/gif.latex?cor%5Bdist%5D) | ![](https://latex.codecogs.com/gif.latex?NMSE%5Brf%5D) | ![](https://latex.codecogs.com/gif.latex?NMSE%5Blm%5D) | ![](https://latex.codecogs.com/gif.latex?edgeflip) | ![](https://latex.codecogs.com/gif.latex?HIM) | ![](https://latex.codecogs.com/gif.latex?isomorphic) | ![](https://latex.codecogs.com/gif.latex?cor%5Bfeatures%5D) | ![](https://latex.codecogs.com/gif.latex?wcor%5Bfeatures%5D) | ![](https://latex.codecogs.com/gif.latex?F1%5Bbranches%5D) | ![](https://latex.codecogs.com/gif.latex?F1%5Bmilestones%5D) | ![](https://latex.codecogs.com/gif.latex?mean%5Bgeometric%5D) |
+| :------------------------------------------------------ | :----------------------------------------------------- | :----------------------------------------------------- | :------------------------------------------------- | :-------------------------------------------- | :--------------------------------------------------- | :---------------------------------------------------------- | :----------------------------------------------------------- | :--------------------------------------------------------- | :----------------------------------------------------------- | :------------------------------------------------------------ |
+| TRUE                                                    | TRUE                                                   | TRUE                                                   | FALSE                                              | FALSE                                         | FALSE                                                | TRUE                                                        | TRUE                                                         | FALSE                                                      | FALSE                                                        | TRUE                                                          |
+
+**[**Table
+S6**](#table_combined_local_global_position_change_rule_table): Which
+metrics conform to rule 5.**
 
 <p>
 
@@ -292,7 +347,7 @@ difficulties with this rule.
 <p>
 
 <strong>[**Figure
-9**](#fig_combined_local_global_position_change_plot_datasets): Example
+S9**](#fig_combined_local_global_position_change_plot_datasets): Example
 dataset before perturbation (identity), with any of the two
 perturbations (a and b) and both perturbations combined (a+b).</strong>
 
@@ -310,7 +365,7 @@ perturbations (a and b) and both perturbations combined (a+b).</strong>
 <p>
 
 <strong>[**Figure
-10**](#fig_combined_local_global_position_change_plot_scores): Score
+S10**](#fig_combined_local_global_position_change_plot_scores): Score
 values before perturbation (identity), with any of the two perturbations
 (a and b) and both perturbations combined (a+b). The upper whisker of
 the boxplot extends from the hinge (75% percentile) to the largest
@@ -329,12 +384,22 @@ extends from the hinge (25% percentile) to the smallest value, at most
 
 \\end{center}
 
-Removing cells from the trajectory should lower the score
+Description: Removing cells from the trajectory should lower the score.
 
 A metric conforms to this rule if:
-![](https://latex.codecogs.com/gif.latex?%5Cmathit%7Bmonotonic%7D%20%5Cleft\(%20%5Ctextit%7BFiltered%20cells%7D,%20%5Coverline%7B%5Cmathit%7Bscore%7D%7D_%7B%5Ctextit%7BFiltered%20cells%7D%7D%20%5Cright\))
+![](https://latex.codecogs.com/gif.latex?%5Cmathit%7Bmonotonic%7D%20%5Cleft\(%20%5Ctextit%7BFiltered%20cells%7D,%20%5Coverline%7B%5Cmathit%7Bscore%7D%7D_%7B%5Ctextit%7BFiltered%20cells%7D%7D%20%5Cright\)).
 
-Metrics which look at the topology do not conform to this rule.
+Conclusion(s): Metrics which look at the topology do not conform to this
+rule.
+
+<a name = 'table_filter_cells_rule_table'></a>
+
+| ![](https://latex.codecogs.com/gif.latex?cor%5Bdist%5D) | ![](https://latex.codecogs.com/gif.latex?NMSE%5Brf%5D) | ![](https://latex.codecogs.com/gif.latex?NMSE%5Blm%5D) | ![](https://latex.codecogs.com/gif.latex?edgeflip) | ![](https://latex.codecogs.com/gif.latex?HIM) | ![](https://latex.codecogs.com/gif.latex?isomorphic) | ![](https://latex.codecogs.com/gif.latex?cor%5Bfeatures%5D) | ![](https://latex.codecogs.com/gif.latex?wcor%5Bfeatures%5D) | ![](https://latex.codecogs.com/gif.latex?F1%5Bbranches%5D) | ![](https://latex.codecogs.com/gif.latex?F1%5Bmilestones%5D) | ![](https://latex.codecogs.com/gif.latex?mean%5Bgeometric%5D) |
+| :------------------------------------------------------ | :----------------------------------------------------- | :----------------------------------------------------- | :------------------------------------------------- | :-------------------------------------------- | :--------------------------------------------------- | :---------------------------------------------------------- | :----------------------------------------------------------- | :--------------------------------------------------------- | :----------------------------------------------------------- | :------------------------------------------------------------ |
+| TRUE                                                    | TRUE                                                   | TRUE                                                   | FALSE                                              | FALSE                                         | FALSE                                                | TRUE                                                        | TRUE                                                         | TRUE                                                       | TRUE                                                         | TRUE                                                          |
+
+**[**Table S7**](#table_filter_cells_rule_table): Which metrics conform
+to rule 6.**
 
 <p>
 
@@ -345,7 +410,7 @@ Metrics which look at the topology do not conform to this rule.
 
 <p>
 
-<strong>[**Figure 11**](#fig_filter_cells_plot_datasets): Lowly (left),
+<strong>[**Figure S11**](#fig_filter_cells_plot_datasets): Lowly (left),
 moderatly (middle) and highly (right) perturbed example
 dataset.</strong>
 
@@ -362,7 +427,7 @@ dataset.</strong>
 
 <p>
 
-<strong>[**Figure 12**](#fig_filter_cells_plot_scores): Score values at
+<strong>[**Figure S12**](#fig_filter_cells_plot_scores): Score values at
 different extents of the perturbation across 84 datasets. Red line
 denotes the mean values.</strong>
 
@@ -377,18 +442,27 @@ denotes the mean values.</strong>
 
 \\end{center}
 
-Removing divergence regions should lower the score
+Description: Removing divergence regions should lower the score.
 
 A metric conforms to this rule if:
-![](https://latex.codecogs.com/gif.latex?%5Cmathit%7Bscore%7D_%7B%5Ctextit%7Bidentity%7D%7D%20%3E%20%5Cmathit%7Bscore%7D_%7B%5Ctextit%7Bprediction%7D%7D)
+![](https://latex.codecogs.com/gif.latex?%5Cmathit%7Bscore%7D_%7B%5Ctextit%7Bidentity%7D%7D%20%3E%20%5Cmathit%7Bscore%7D_%7B%5Ctextit%7Bprediction%7D%7D).
 
-Both
+Conclusion(s): Both
 ![](https://latex.codecogs.com/gif.latex?%5Cmathit%7BF1%7D_%7B%5Ctextit%7Bbranches%7D%7D)
 and ![](https://latex.codecogs.com/gif.latex?%5Ctextrm%7Bedgeflip%7D)
 fail here because neither the topology nor the branch assignment
 changes. Moreover, the decreases in score are relatively minor for all
 metrics, given that the impact of the positions of the cells is only
 minimal.
+
+<a name = 'table_remove_divergence_regions_rule_table'></a>
+
+| ![](https://latex.codecogs.com/gif.latex?cor%5Bdist%5D) | ![](https://latex.codecogs.com/gif.latex?NMSE%5Brf%5D) | ![](https://latex.codecogs.com/gif.latex?NMSE%5Blm%5D) | ![](https://latex.codecogs.com/gif.latex?edgeflip) | ![](https://latex.codecogs.com/gif.latex?HIM) | ![](https://latex.codecogs.com/gif.latex?isomorphic) | ![](https://latex.codecogs.com/gif.latex?cor%5Bfeatures%5D) | ![](https://latex.codecogs.com/gif.latex?wcor%5Bfeatures%5D) | ![](https://latex.codecogs.com/gif.latex?F1%5Bbranches%5D) | ![](https://latex.codecogs.com/gif.latex?F1%5Bmilestones%5D) | ![](https://latex.codecogs.com/gif.latex?mean%5Bgeometric%5D) |
+| :------------------------------------------------------ | :----------------------------------------------------- | :----------------------------------------------------- | :------------------------------------------------- | :-------------------------------------------- | :--------------------------------------------------- | :---------------------------------------------------------- | :----------------------------------------------------------- | :--------------------------------------------------------- | :----------------------------------------------------------- | :------------------------------------------------------------ |
+| TRUE                                                    | TRUE                                                   | TRUE                                                   | FALSE                                              | FALSE                                         | FALSE                                                | TRUE                                                        | TRUE                                                         | FALSE                                                      | TRUE                                                         | TRUE                                                          |
+
+**[**Table S8**](#table_remove_divergence_regions_rule_table): Which
+metrics conform to rule 7.**
 
 <p>
 
@@ -399,7 +473,7 @@ minimal.
 
 <p>
 
-<strong>[**Figure 13**](#fig_remove_divergence_regions_plot_datasets):
+<strong>[**Figure S13**](#fig_remove_divergence_regions_plot_datasets):
 Example dataset before and after perturbation.</strong>
 
 </p>
@@ -415,7 +489,7 @@ Example dataset before and after perturbation.</strong>
 
 <p>
 
-<strong>[**Figure 14**](#fig_remove_divergence_regions_plot_scores):
+<strong>[**Figure S14**](#fig_remove_divergence_regions_plot_scores):
 Differences in scores of 33 datasets before and after perturbation. Red
 bar gives the mean.</strong>
 
@@ -430,19 +504,29 @@ bar gives the mean.</strong>
 
 \\end{center}
 
-Moving the cells closer to their start milestone should lower the score.
-Cells were moved closer to the start milestone using
-![](https://latex.codecogs.com/gif.latex?%5Ctextit%7Bpercentage%7D_%7B%5Ctextit%7Bnew%7D%7D%20=%20%5Ctextit%7Bpercentage%7D%5E%7B%5Ctextit%7Bwarp%20magnitude%7D%7D)
+Description: Moving the cells closer to their start milestone should
+lower the score. Cells were moved closer to the start milestone using
+![](https://latex.codecogs.com/gif.latex?%5Ctextit%7Bpercentage%7D_%7B%5Ctextit%7Bnew%7D%7D%20=%20%5Ctextit%7Bpercentage%7D%5E%7B%5Ctextit%7Bwarp%20magnitude%7D%7D).
 
 A metric conforms to this rule if:
-![](https://latex.codecogs.com/gif.latex?%5Cmathit%7Bmonotonic%7D%20%5Cleft\(%20%5Ctextit%7BWarp%20magnitude%7D,%20%5Coverline%7B%5Cmathit%7Bscore%7D%7D_%7B%5Ctextit%7BWarp%20magnitude%7D%7D%20%5Cright\))
+![](https://latex.codecogs.com/gif.latex?%5Cmathit%7Bmonotonic%7D%20%5Cleft\(%20%5Ctextit%7BWarp%20magnitude%7D,%20%5Coverline%7B%5Cmathit%7Bscore%7D%7D_%7B%5Ctextit%7BWarp%20magnitude%7D%7D%20%5Cright\)).
 
-Both
+Conclusion(s): Both
 ![](https://latex.codecogs.com/gif.latex?%5Cmathit%7BF1%7D_%7B%5Ctextit%7Bbranches%7D%7D)
 and topology scores fail here because neither the topology nor the
 branch assignment changes. The score decreases only slightly for all the
 other metrics, given that only the relative distances change between
-cells, but not their actual ordering.
+cells, but not their actual
+ordering.
+
+<a name = 'table_time_warping_start_rule_table'></a>
+
+| ![](https://latex.codecogs.com/gif.latex?cor%5Bdist%5D) | ![](https://latex.codecogs.com/gif.latex?NMSE%5Brf%5D) | ![](https://latex.codecogs.com/gif.latex?NMSE%5Blm%5D) | ![](https://latex.codecogs.com/gif.latex?edgeflip) | ![](https://latex.codecogs.com/gif.latex?HIM) | ![](https://latex.codecogs.com/gif.latex?isomorphic) | ![](https://latex.codecogs.com/gif.latex?cor%5Bfeatures%5D) | ![](https://latex.codecogs.com/gif.latex?wcor%5Bfeatures%5D) | ![](https://latex.codecogs.com/gif.latex?F1%5Bbranches%5D) | ![](https://latex.codecogs.com/gif.latex?F1%5Bmilestones%5D) | ![](https://latex.codecogs.com/gif.latex?mean%5Bgeometric%5D) |
+| :------------------------------------------------------ | :----------------------------------------------------- | :----------------------------------------------------- | :------------------------------------------------- | :-------------------------------------------- | :--------------------------------------------------- | :---------------------------------------------------------- | :----------------------------------------------------------- | :--------------------------------------------------------- | :----------------------------------------------------------- | :------------------------------------------------------------ |
+| TRUE                                                    | TRUE                                                   | TRUE                                                   | FALSE                                              | FALSE                                         | FALSE                                                | TRUE                                                        | TRUE                                                         | FALSE                                                      | TRUE                                                         | TRUE                                                          |
+
+**[**Table S9**](#table_time_warping_start_rule_table): Which metrics
+conform to rule 8.**
 
 <p>
 
@@ -453,7 +537,7 @@ cells, but not their actual ordering.
 
 <p>
 
-<strong>[**Figure 15**](#fig_time_warping_start_plot_datasets): Lowly
+<strong>[**Figure S15**](#fig_time_warping_start_plot_datasets): Lowly
 (left), moderatly (middle) and highly (right) perturbed example
 dataset.</strong>
 
@@ -470,7 +554,7 @@ dataset.</strong>
 
 <p>
 
-<strong>[**Figure 16**](#fig_time_warping_start_plot_scores): Score
+<strong>[**Figure S16**](#fig_time_warping_start_plot_scores): Score
 values at different extents of the perturbation across 84 datasets. Red
 line denotes the mean values.</strong>
 
@@ -485,18 +569,28 @@ line denotes the mean values.</strong>
 
 \\end{center}
 
-Moving the cells closer to their nearest milestone should lower the
-score
+Description: Moving the cells closer to their nearest milestone should
+lower the score.
 
 A metric conforms to this rule if:
-![](https://latex.codecogs.com/gif.latex?%5Cmathit%7Bmonotonic%7D%20%5Cleft\(%20%5Ctextit%7BWarp%20magnitude%7D,%20%5Coverline%7B%5Cmathit%7Bscore%7D%7D_%7B%5Ctextit%7BWarp%20magnitude%7D%7D%20%5Cright\))
+![](https://latex.codecogs.com/gif.latex?%5Cmathit%7Bmonotonic%7D%20%5Cleft\(%20%5Ctextit%7BWarp%20magnitude%7D,%20%5Coverline%7B%5Cmathit%7Bscore%7D%7D_%7B%5Ctextit%7BWarp%20magnitude%7D%7D%20%5Cright\)).
 
-Both
+Conclusion(s): Both
 ![](https://latex.codecogs.com/gif.latex?%5Cmathit%7BF1%7D_%7B%5Ctextit%7Bbranches%7D%7D)
 and topology scores fail here because neither the topology nor the
 branch assignment changes. The score decreases only slightly for all the
 other metrics, given that only the relative distances change between
-cells, but not their actual ordering.
+cells, but not their actual
+ordering.
+
+<a name = 'table_time_warping_parabole_rule_table'></a>
+
+| ![](https://latex.codecogs.com/gif.latex?cor%5Bdist%5D) | ![](https://latex.codecogs.com/gif.latex?NMSE%5Brf%5D) | ![](https://latex.codecogs.com/gif.latex?NMSE%5Blm%5D) | ![](https://latex.codecogs.com/gif.latex?edgeflip) | ![](https://latex.codecogs.com/gif.latex?HIM) | ![](https://latex.codecogs.com/gif.latex?isomorphic) | ![](https://latex.codecogs.com/gif.latex?cor%5Bfeatures%5D) | ![](https://latex.codecogs.com/gif.latex?wcor%5Bfeatures%5D) | ![](https://latex.codecogs.com/gif.latex?F1%5Bbranches%5D) | ![](https://latex.codecogs.com/gif.latex?F1%5Bmilestones%5D) | ![](https://latex.codecogs.com/gif.latex?mean%5Bgeometric%5D) |
+| :------------------------------------------------------ | :----------------------------------------------------- | :----------------------------------------------------- | :------------------------------------------------- | :-------------------------------------------- | :--------------------------------------------------- | :---------------------------------------------------------- | :----------------------------------------------------------- | :--------------------------------------------------------- | :----------------------------------------------------------- | :------------------------------------------------------------ |
+| TRUE                                                    | TRUE                                                   | TRUE                                                   | FALSE                                              | FALSE                                         | FALSE                                                | TRUE                                                        | TRUE                                                         | FALSE                                                      | TRUE                                                         | TRUE                                                          |
+
+**[**Table S10**](#table_time_warping_parabole_rule_table): Which
+metrics conform to rule 9.**
 
 <p>
 
@@ -507,8 +601,8 @@ cells, but not their actual ordering.
 
 <p>
 
-<strong>[**Figure 17**](#fig_time_warping_parabole_plot_datasets): Lowly
-(left), moderatly (middle) and highly (right) perturbed example
+<strong>[**Figure S17**](#fig_time_warping_parabole_plot_datasets):
+Lowly (left), moderatly (middle) and highly (right) perturbed example
 dataset.</strong>
 
 </p>
@@ -524,7 +618,7 @@ dataset.</strong>
 
 <p>
 
-<strong>[**Figure 18**](#fig_time_warping_parabole_plot_scores): Score
+<strong>[**Figure S18**](#fig_time_warping_parabole_plot_scores): Score
 values at different extents of the perturbation across 84 datasets. Red
 line denotes the mean values.</strong>
 
@@ -539,14 +633,24 @@ line denotes the mean values.</strong>
 
 \\end{center}
 
-Shuffling the lengths of the edges of the milestone network should lower
-the score.
+Description: Shuffling the lengths of the edges of the milestone network
+should lower the score.
 
 A metric conforms to this rule if:
-![](https://latex.codecogs.com/gif.latex?%5Cmathit%7Bscore%7D_%7B%5Ctextit%7Bidentity%7D%7D%20%3E%20%5Cmathit%7Bscore%7D_%7B%5Ctextit%7Bprediction%7D%7D)
+![](https://latex.codecogs.com/gif.latex?%5Cmathit%7Bscore%7D_%7B%5Ctextit%7Bidentity%7D%7D%20%3E%20%5Cmathit%7Bscore%7D_%7B%5Ctextit%7Bprediction%7D%7D).
 
-Only the correlation between geodesic distances is consistently
-decreases when the lengths of the edges change.
+Conclusion(s): Only the correlation between geodesic distances is
+consistently decreases when the lengths of the edges
+change.
+
+<a name = 'table_shuffle_lengths_rule_table'></a>
+
+| ![](https://latex.codecogs.com/gif.latex?cor%5Bdist%5D) | ![](https://latex.codecogs.com/gif.latex?NMSE%5Brf%5D) | ![](https://latex.codecogs.com/gif.latex?NMSE%5Blm%5D) | ![](https://latex.codecogs.com/gif.latex?edgeflip) | ![](https://latex.codecogs.com/gif.latex?HIM) | ![](https://latex.codecogs.com/gif.latex?isomorphic) | ![](https://latex.codecogs.com/gif.latex?cor%5Bfeatures%5D) | ![](https://latex.codecogs.com/gif.latex?wcor%5Bfeatures%5D) | ![](https://latex.codecogs.com/gif.latex?F1%5Bbranches%5D) | ![](https://latex.codecogs.com/gif.latex?F1%5Bmilestones%5D) | ![](https://latex.codecogs.com/gif.latex?mean%5Bgeometric%5D) |
+| :------------------------------------------------------ | :----------------------------------------------------- | :----------------------------------------------------- | :------------------------------------------------- | :-------------------------------------------- | :--------------------------------------------------- | :---------------------------------------------------------- | :----------------------------------------------------------- | :--------------------------------------------------------- | :----------------------------------------------------------- | :------------------------------------------------------------ |
+| TRUE                                                    | FALSE                                                  | TRUE                                                   | FALSE                                              | TRUE                                          | FALSE                                                | FALSE                                                       | FALSE                                                        | FALSE                                                      | TRUE                                                         | TRUE                                                          |
+
+**[**Table S11**](#table_shuffle_lengths_rule_table): Which metrics
+conform to rule 10.**
 
 <p>
 
@@ -557,7 +661,7 @@ decreases when the lengths of the edges change.
 
 <p>
 
-<strong>[**Figure 19**](#fig_shuffle_lengths_plot_datasets): Example
+<strong>[**Figure S19**](#fig_shuffle_lengths_plot_datasets): Example
 dataset before and after perturbation.</strong>
 
 </p>
@@ -573,7 +677,7 @@ dataset before and after perturbation.</strong>
 
 <p>
 
-<strong>[**Figure 20**](#fig_shuffle_lengths_plot_scores): Differences
+<strong>[**Figure S20**](#fig_shuffle_lengths_plot_scores): Differences
 in scores of 231 datasets before and after perturbation. Red bar gives
 the mean.</strong>
 
@@ -588,13 +692,24 @@ the mean.</strong>
 
 \\end{center}
 
-Moving some cells into short subedges should lower the score
+Description: Moving some cells into short subedges should lower the
+score.
 
 A metric conforms to this rule if:
-![](https://latex.codecogs.com/gif.latex?%5Cmathit%7Bmonotonic%7D%20%5Cleft\(%20%5Ctextit%7BNumber%20of%20added%20edges%7D,%20%5Coverline%7B%5Cmathit%7Bscore%7D%7D_%7B%5Ctextit%7BNumber%20of%20added%20edges%7D%7D%20%5Cright\))
+![](https://latex.codecogs.com/gif.latex?%5Cmathit%7Bmonotonic%7D%20%5Cleft\(%20%5Ctextit%7BNumber%20of%20added%20edges%7D,%20%5Coverline%7B%5Cmathit%7Bscore%7D%7D_%7B%5Ctextit%7BNumber%20of%20added%20edges%7D%7D%20%5Cright\)).
 
-This rule is primarily captured by the scores looking at the topology
-and clustering quality.
+Conclusion(s): This rule is primarily captured by the scores looking at
+the topology and clustering
+quality.
+
+<a name = 'table_move_cells_subedges_rule_table'></a>
+
+| ![](https://latex.codecogs.com/gif.latex?cor%5Bdist%5D) | ![](https://latex.codecogs.com/gif.latex?NMSE%5Brf%5D) | ![](https://latex.codecogs.com/gif.latex?NMSE%5Blm%5D) | ![](https://latex.codecogs.com/gif.latex?edgeflip) | ![](https://latex.codecogs.com/gif.latex?HIM) | ![](https://latex.codecogs.com/gif.latex?isomorphic) | ![](https://latex.codecogs.com/gif.latex?cor%5Bfeatures%5D) | ![](https://latex.codecogs.com/gif.latex?wcor%5Bfeatures%5D) | ![](https://latex.codecogs.com/gif.latex?F1%5Bbranches%5D) | ![](https://latex.codecogs.com/gif.latex?F1%5Bmilestones%5D) | ![](https://latex.codecogs.com/gif.latex?mean%5Bgeometric%5D) |
+| :------------------------------------------------------ | :----------------------------------------------------- | :----------------------------------------------------- | :------------------------------------------------- | :-------------------------------------------- | :--------------------------------------------------- | :---------------------------------------------------------- | :----------------------------------------------------------- | :--------------------------------------------------------- | :----------------------------------------------------------- | :------------------------------------------------------------ |
+| FALSE                                                   | TRUE                                                   | FALSE                                                  | TRUE                                               | TRUE                                          | TRUE                                                 | TRUE                                                        | FALSE                                                        | TRUE                                                       | TRUE                                                         | TRUE                                                          |
+
+**[**Table S12**](#table_move_cells_subedges_rule_table): Which metrics
+conform to rule 11.**
 
 <p>
 
@@ -605,7 +720,7 @@ and clustering quality.
 
 <p>
 
-<strong>[**Figure 21**](#fig_move_cells_subedges_plot_datasets): Lowly
+<strong>[**Figure S21**](#fig_move_cells_subedges_plot_datasets): Lowly
 (left), moderatly (middle) and highly (right) perturbed example
 dataset.</strong>
 
@@ -622,7 +737,7 @@ dataset.</strong>
 
 <p>
 
-<strong>[**Figure 22**](#fig_move_cells_subedges_plot_scores): Score
+<strong>[**Figure S22**](#fig_move_cells_subedges_plot_scores): Score
 values at different extents of the perturbation across 84 datasets. Red
 line denotes the mean values.</strong>
 
@@ -637,14 +752,25 @@ line denotes the mean values.</strong>
 
 \\end{center}
 
-Adding new edges only connected to one existing milestone should lower
-the score
+Description: Adding new edges only connected to one existing milestone
+should lower the score.
 
 A metric conforms to this rule if:
-![](https://latex.codecogs.com/gif.latex?%5Cmathit%7Bmonotonic%7D%20%5Cleft\(%20%5Ctextit%7BNumber%20of%20edges%7D,%20%5Coverline%7B%5Cmathit%7Bscore%7D%7D_%7B%5Ctextit%7BNumber%20of%20edges%7D%7D%20%5Cright\))
+![](https://latex.codecogs.com/gif.latex?%5Cmathit%7Bmonotonic%7D%20%5Cleft\(%20%5Ctextit%7BNumber%20of%20edges%7D,%20%5Coverline%7B%5Cmathit%7Bscore%7D%7D_%7B%5Ctextit%7BNumber%20of%20edges%7D%7D%20%5Cright\)).
 
-As the positions of the cells are not affected, only metrics which
-investigate the clustering quality and topology conform to this rule.
+Conclusion(s): As the positions of the cells are not affected, only
+metrics which investigate the clustering quality and topology conform to
+this
+rule.
+
+<a name = 'table_add_leaf_edges_rule_table'></a>
+
+| ![](https://latex.codecogs.com/gif.latex?cor%5Bdist%5D) | ![](https://latex.codecogs.com/gif.latex?NMSE%5Brf%5D) | ![](https://latex.codecogs.com/gif.latex?NMSE%5Blm%5D) | ![](https://latex.codecogs.com/gif.latex?edgeflip) | ![](https://latex.codecogs.com/gif.latex?HIM) | ![](https://latex.codecogs.com/gif.latex?isomorphic) | ![](https://latex.codecogs.com/gif.latex?cor%5Bfeatures%5D) | ![](https://latex.codecogs.com/gif.latex?wcor%5Bfeatures%5D) | ![](https://latex.codecogs.com/gif.latex?F1%5Bbranches%5D) | ![](https://latex.codecogs.com/gif.latex?F1%5Bmilestones%5D) | ![](https://latex.codecogs.com/gif.latex?mean%5Bgeometric%5D) |
+| :------------------------------------------------------ | :----------------------------------------------------- | :----------------------------------------------------- | :------------------------------------------------- | :-------------------------------------------- | :--------------------------------------------------- | :---------------------------------------------------------- | :----------------------------------------------------------- | :--------------------------------------------------------- | :----------------------------------------------------------- | :------------------------------------------------------------ |
+| TRUE                                                    | TRUE                                                   | FALSE                                                  | TRUE                                               | TRUE                                          | TRUE                                                 | FALSE                                                       | FALSE                                                        | TRUE                                                       | TRUE                                                         | TRUE                                                          |
+
+**[**Table S13**](#table_add_leaf_edges_rule_table): Which metrics
+conform to rule 12.**
 
 <p>
 
@@ -655,7 +781,7 @@ investigate the clustering quality and topology conform to this rule.
 
 <p>
 
-<strong>[**Figure 23**](#fig_add_leaf_edges_plot_datasets): Lowly
+<strong>[**Figure S23**](#fig_add_leaf_edges_plot_datasets): Lowly
 (left), moderatly (middle) and highly (right) perturbed example
 dataset.</strong>
 
@@ -672,7 +798,7 @@ dataset.</strong>
 
 <p>
 
-<strong>[**Figure 24**](#fig_add_leaf_edges_plot_scores): Score values
+<strong>[**Figure S24**](#fig_add_leaf_edges_plot_scores): Score values
 at different extents of the perturbation across 84 datasets. Red line
 denotes the mean values.</strong>
 
@@ -687,17 +813,28 @@ denotes the mean values.</strong>
 
 \\end{center}
 
-Adding new edges between existing milestones should lower the score
+Description: Adding new edges between existing milestones should lower
+the score.
 
 A metric conforms to this rule if:
-![](https://latex.codecogs.com/gif.latex?%5Cmathit%7Bmonotonic%7D%20%5Cleft\(%20%5Ctextit%7BNumber%20of%20edges%7D,%20%5Coverline%7B%5Cmathit%7Bscore%7D%7D_%7B%5Ctextit%7BNumber%20of%20edges%7D%7D%20%5Cright\))
+![](https://latex.codecogs.com/gif.latex?%5Cmathit%7Bmonotonic%7D%20%5Cleft\(%20%5Ctextit%7BNumber%20of%20edges%7D,%20%5Coverline%7B%5Cmathit%7Bscore%7D%7D_%7B%5Ctextit%7BNumber%20of%20edges%7D%7D%20%5Cright\)).
 
-Even though the positions of the cells do not change, the
+Conclusion(s): Even though the positions of the cells do not change, the
 ![](https://latex.codecogs.com/gif.latex?%5Cmathit%7Bcor%7D_%7B%5Ctextrm%7Bdist%7D%7D)
 still conforms to this rule because new edges can create shortcuts which
 will affect the geodesic distances between cells. Apart from this,
 metrics which investigate the clustering quality and topology also
-conform to this rule.
+conform to this
+rule.
+
+<a name = 'table_add_connecting_edges_rule_table'></a>
+
+| ![](https://latex.codecogs.com/gif.latex?cor%5Bdist%5D) | ![](https://latex.codecogs.com/gif.latex?NMSE%5Brf%5D) | ![](https://latex.codecogs.com/gif.latex?NMSE%5Blm%5D) | ![](https://latex.codecogs.com/gif.latex?edgeflip) | ![](https://latex.codecogs.com/gif.latex?HIM) | ![](https://latex.codecogs.com/gif.latex?isomorphic) | ![](https://latex.codecogs.com/gif.latex?cor%5Bfeatures%5D) | ![](https://latex.codecogs.com/gif.latex?wcor%5Bfeatures%5D) | ![](https://latex.codecogs.com/gif.latex?F1%5Bbranches%5D) | ![](https://latex.codecogs.com/gif.latex?F1%5Bmilestones%5D) | ![](https://latex.codecogs.com/gif.latex?mean%5Bgeometric%5D) |
+| :------------------------------------------------------ | :----------------------------------------------------- | :----------------------------------------------------- | :------------------------------------------------- | :-------------------------------------------- | :--------------------------------------------------- | :---------------------------------------------------------- | :----------------------------------------------------------- | :--------------------------------------------------------- | :----------------------------------------------------------- | :------------------------------------------------------------ |
+| TRUE                                                    | TRUE                                                   | FALSE                                                  | TRUE                                               | TRUE                                          | TRUE                                                 | TRUE                                                        | TRUE                                                         | TRUE                                                       | TRUE                                                         | TRUE                                                          |
+
+**[**Table S14**](#table_add_connecting_edges_rule_table): Which metrics
+conform to rule 13.**
 
 <p>
 
@@ -708,7 +845,7 @@ conform to this rule.
 
 <p>
 
-<strong>[**Figure 25**](#fig_add_connecting_edges_plot_datasets): Lowly
+<strong>[**Figure S25**](#fig_add_connecting_edges_plot_datasets): Lowly
 (left), moderatly (middle) and highly (right) perturbed example
 dataset.</strong>
 
@@ -725,7 +862,7 @@ dataset.</strong>
 
 <p>
 
-<strong>[**Figure 26**](#fig_add_connecting_edges_plot_scores): Score
+<strong>[**Figure S26**](#fig_add_connecting_edges_plot_scores): Score
 values at different extents of the perturbation across 84 datasets. Red
 line denotes the mean values.</strong>
 
@@ -740,17 +877,27 @@ line denotes the mean values.</strong>
 
 \\end{center}
 
-Changing both the topology and the cell positions should lower the score
-more than any of the two individually
+Description: Changing both the topology and the cell positions should
+lower the score more than any of the two individually.
 
 A metric conforms to this rule if:
-![](https://latex.codecogs.com/gif.latex?%5Cmathit%7Bscore%7D_%7Bidentity%7D%20%3E%20%5Cmathit%7Bscore%7D_a%20%5Cland%20%5Cmathit%7Bscore%7D_%7Bidentity%7D%20%3E%20%5Cmathit%7Bscore%7D_b%20%5Cland%20%5Cmathit%7Bscore%7D_%7Ba%7D%20%3E%20%5Cmathit%7Bscore%7D_%7Ba+b%7D%20%5Cland%20%5Cmathit%7Bscore%7D_%7Bb%7D%20%3E%20%5Cmathit%7Bscore%7D_%7Ba+b%7D)
+![](https://latex.codecogs.com/gif.latex?%5Cmathit%7Bscore%7D_%7Bidentity%7D%20%3E%20%5Cmathit%7Bscore%7D_a%20%5Cland%20%5Cmathit%7Bscore%7D_%7Bidentity%7D%20%3E%20%5Cmathit%7Bscore%7D_b%20%5Cland%20%5Cmathit%7Bscore%7D_%7Ba%7D%20%3E%20%5Cmathit%7Bscore%7D_%7Ba+b%7D%20%5Cland%20%5Cmathit%7Bscore%7D_%7Bb%7D%20%3E%20%5Cmathit%7Bscore%7D_%7Ba+b%7D).
 
-Most metrics have problems with this rule as they focus on either the
-cellular positions or the topology individually. Only the cor\[dist\]
-and
+Conclusion(s): Most metrics have problems with this rule as they focus
+on either the cellular positions or the topology individually. Only the
+cor\[dist\] and
 ![](https://latex.codecogs.com/gif.latex?%5Cmathit%7Bmean%7D_%7B%5Ctextit%7Bgeometric%7D%7D)
-consistently conform to this rule.
+consistently conform to this
+rule.
+
+<a name = 'table_combined_position_topology_rule_table'></a>
+
+| ![](https://latex.codecogs.com/gif.latex?cor%5Bdist%5D) | ![](https://latex.codecogs.com/gif.latex?NMSE%5Brf%5D) | ![](https://latex.codecogs.com/gif.latex?NMSE%5Blm%5D) | ![](https://latex.codecogs.com/gif.latex?edgeflip) | ![](https://latex.codecogs.com/gif.latex?HIM) | ![](https://latex.codecogs.com/gif.latex?isomorphic) | ![](https://latex.codecogs.com/gif.latex?cor%5Bfeatures%5D) | ![](https://latex.codecogs.com/gif.latex?wcor%5Bfeatures%5D) | ![](https://latex.codecogs.com/gif.latex?F1%5Bbranches%5D) | ![](https://latex.codecogs.com/gif.latex?F1%5Bmilestones%5D) | ![](https://latex.codecogs.com/gif.latex?mean%5Bgeometric%5D) |
+| :------------------------------------------------------ | :----------------------------------------------------- | :----------------------------------------------------- | :------------------------------------------------- | :-------------------------------------------- | :--------------------------------------------------- | :---------------------------------------------------------- | :----------------------------------------------------------- | :--------------------------------------------------------- | :----------------------------------------------------------- | :------------------------------------------------------------ |
+| FALSE                                                   | FALSE                                                  | FALSE                                                  | FALSE                                              | FALSE                                         | FALSE                                                | FALSE                                                       | FALSE                                                        | FALSE                                                      | FALSE                                                        | TRUE                                                          |
+
+**[**Table S15**](#table_combined_position_topology_rule_table): Which
+metrics conform to rule 14.**
 
 <p>
 
@@ -761,7 +908,7 @@ consistently conform to this rule.
 
 <p>
 
-<strong>[**Figure 27**](#fig_combined_position_topology_plot_datasets):
+<strong>[**Figure S27**](#fig_combined_position_topology_plot_datasets):
 Example dataset before perturbation (identity), with any of the two
 perturbations (a and b) and both perturbations combined (a+b).</strong>
 
@@ -778,7 +925,7 @@ perturbations (a and b) and both perturbations combined (a+b).</strong>
 
 <p>
 
-<strong>[**Figure 28**](#fig_combined_position_topology_plot_scores):
+<strong>[**Figure S28**](#fig_combined_position_topology_plot_scores):
 Score values before perturbation (identity), with any of the two
 perturbations (a and b) and both perturbations combined (a+b). The upper
 whisker of the boxplot extends from the hinge (75% percentile) to the
@@ -798,14 +945,24 @@ datasets.</strong>
 
 \\end{center}
 
-Merging the two branches after a bifurcation point should lower the
-score
+Description: Merging the two branches after a bifurcation point should
+lower the score.
 
 A metric conforms to this rule if:
-![](https://latex.codecogs.com/gif.latex?%5Cmathit%7Bscore%7D_%7B%5Ctextit%7Bidentity%7D%7D%20%3E%20%5Cmathit%7Bscore%7D_%7B%5Ctextit%7Bprediction%7D%7D)
+![](https://latex.codecogs.com/gif.latex?%5Cmathit%7Bscore%7D_%7B%5Ctextit%7Bidentity%7D%7D%20%3E%20%5Cmathit%7Bscore%7D_%7B%5Ctextit%7Bprediction%7D%7D).
 
-This changes both the cellular ordering and the topology so most metrics
-are affected.
+Conclusion(s): This changes both the cellular ordering and the topology
+so most metrics are
+affected.
+
+<a name = 'table_merge_bifurcation_rule_table'></a>
+
+| ![](https://latex.codecogs.com/gif.latex?cor%5Bdist%5D) | ![](https://latex.codecogs.com/gif.latex?NMSE%5Brf%5D) | ![](https://latex.codecogs.com/gif.latex?NMSE%5Blm%5D) | ![](https://latex.codecogs.com/gif.latex?edgeflip) | ![](https://latex.codecogs.com/gif.latex?HIM) | ![](https://latex.codecogs.com/gif.latex?isomorphic) | ![](https://latex.codecogs.com/gif.latex?cor%5Bfeatures%5D) | ![](https://latex.codecogs.com/gif.latex?wcor%5Bfeatures%5D) | ![](https://latex.codecogs.com/gif.latex?F1%5Bbranches%5D) | ![](https://latex.codecogs.com/gif.latex?F1%5Bmilestones%5D) | ![](https://latex.codecogs.com/gif.latex?mean%5Bgeometric%5D) |
+| :------------------------------------------------------ | :----------------------------------------------------- | :----------------------------------------------------- | :------------------------------------------------- | :-------------------------------------------- | :--------------------------------------------------- | :---------------------------------------------------------- | :----------------------------------------------------------- | :--------------------------------------------------------- | :----------------------------------------------------------- | :------------------------------------------------------------ |
+| TRUE                                                    | FALSE                                                  | TRUE                                                   | TRUE                                               | TRUE                                          | TRUE                                                 | TRUE                                                        | TRUE                                                         | TRUE                                                       | TRUE                                                         | TRUE                                                          |
+
+**[**Table S16**](#table_merge_bifurcation_rule_table): Which metrics
+conform to rule 15.**
 
 <p>
 
@@ -816,7 +973,7 @@ are affected.
 
 <p>
 
-<strong>[**Figure 29**](#fig_merge_bifurcation_plot_datasets): Example
+<strong>[**Figure S29**](#fig_merge_bifurcation_plot_datasets): Example
 dataset before and after perturbation.</strong>
 
 </p>
@@ -832,9 +989,9 @@ dataset before and after perturbation.</strong>
 
 <p>
 
-<strong>[**Figure 30**](#fig_merge_bifurcation_plot_scores): Differences
-in scores of 132 datasets before and after perturbation. Red bar gives
-the mean.</strong>
+<strong>[**Figure S30**](#fig_merge_bifurcation_plot_scores):
+Differences in scores of 132 datasets before and after perturbation. Red
+bar gives the mean.</strong>
 
 </p>
 
@@ -847,14 +1004,27 @@ the mean.</strong>
 
 \\end{center}
 
-Merging the two branches of a bifurcation and changing the cells
-positions should lower the score more than any of the two individually
+Description: Merging the two branches of a bifurcation and changing the
+cells positions should lower the score more than any of the two
+individually.
 
 A metric conforms to this rule if:
-![](https://latex.codecogs.com/gif.latex?%5Cmathit%7Bscore%7D_%7Bidentity%7D%20%3E%20%5Cmathit%7Bscore%7D_a%20%5Cland%20%5Cmathit%7Bscore%7D_%7Bidentity%7D%20%3E%20%5Cmathit%7Bscore%7D_b%20%5Cland%20%5Cmathit%7Bscore%7D_%7Ba%7D%20%3E%20%5Cmathit%7Bscore%7D_%7Ba+b%7D%20%5Cland%20%5Cmathit%7Bscore%7D_%7Bb%7D%20%3E%20%5Cmathit%7Bscore%7D_%7Ba+b%7D)
+![](https://latex.codecogs.com/gif.latex?%5Cmathit%7Bscore%7D_%7Bidentity%7D%20%3E%20%5Cmathit%7Bscore%7D_a%20%5Cland%20%5Cmathit%7Bscore%7D_%7Bidentity%7D%20%3E%20%5Cmathit%7Bscore%7D_b%20%5Cland%20%5Cmathit%7Bscore%7D_%7Ba%7D%20%3E%20%5Cmathit%7Bscore%7D_%7Ba+b%7D%20%5Cland%20%5Cmathit%7Bscore%7D_%7Bb%7D%20%3E%20%5Cmathit%7Bscore%7D_%7Ba+b%7D).
 
-Only metrics which look at the topology do not conform to this
+Conclusion(s): Only metrics which look at the topology do not conform to
+this
 rule.
+
+<a name = 'table_combined_merge_bifurcation_shuffle_cells_rule_table'></a>
+
+| ![](https://latex.codecogs.com/gif.latex?cor%5Bdist%5D) | ![](https://latex.codecogs.com/gif.latex?NMSE%5Brf%5D) | ![](https://latex.codecogs.com/gif.latex?NMSE%5Blm%5D) | ![](https://latex.codecogs.com/gif.latex?edgeflip) | ![](https://latex.codecogs.com/gif.latex?HIM) | ![](https://latex.codecogs.com/gif.latex?isomorphic) | ![](https://latex.codecogs.com/gif.latex?cor%5Bfeatures%5D) | ![](https://latex.codecogs.com/gif.latex?wcor%5Bfeatures%5D) | ![](https://latex.codecogs.com/gif.latex?F1%5Bbranches%5D) | ![](https://latex.codecogs.com/gif.latex?F1%5Bmilestones%5D) | ![](https://latex.codecogs.com/gif.latex?mean%5Bgeometric%5D) |
+| :------------------------------------------------------ | :----------------------------------------------------- | :----------------------------------------------------- | :------------------------------------------------- | :-------------------------------------------- | :--------------------------------------------------- | :---------------------------------------------------------- | :----------------------------------------------------------- | :--------------------------------------------------------- | :----------------------------------------------------------- | :------------------------------------------------------------ |
+| TRUE                                                    | TRUE                                                   | TRUE                                                   | FALSE                                              | FALSE                                         | FALSE                                                | TRUE                                                        | TRUE                                                         | TRUE                                                       | TRUE                                                         | TRUE                                                          |
+
+**[**Table
+S17**](#table_combined_merge_bifurcation_shuffle_cells_rule_table):
+Which metrics conform to rule
+16.**
 
 <p>
 
@@ -866,7 +1036,7 @@ rule.
 <p>
 
 <strong>[**Figure
-31**](#fig_combined_merge_bifurcation_shuffle_cells_plot_datasets):
+S31**](#fig_combined_merge_bifurcation_shuffle_cells_plot_datasets):
 Example dataset before perturbation (identity), with any of the two
 perturbations (a and b) and both perturbations combined
 (a+b).</strong>
@@ -885,7 +1055,7 @@ perturbations (a and b) and both perturbations combined
 <p>
 
 <strong>[**Figure
-32**](#fig_combined_merge_bifurcation_shuffle_cells_plot_scores): Score
+S32**](#fig_combined_merge_bifurcation_shuffle_cells_plot_scores): Score
 values before perturbation (identity), with any of the two perturbations
 (a and b) and both perturbations combined (a+b). The upper whisker of
 the boxplot extends from the hinge (75% percentile) to the largest
@@ -904,14 +1074,24 @@ extends from the hinge (25% percentile) to the smallest value, at most
 
 \\end{center}
 
-Concatenating one branch of a bifurcation to the other bifurcation
-branch should lower the score
+Description: Concatenating one branch of a bifurcation to the other
+bifurcation branch should lower the score.
 
 A metric conforms to this rule if:
-![](https://latex.codecogs.com/gif.latex?%5Cmathit%7Bscore%7D_%7B%5Ctextit%7Bidentity%7D%7D%20%3E%20%5Cmathit%7Bscore%7D_%7B%5Ctextit%7Bprediction%7D%7D)
+![](https://latex.codecogs.com/gif.latex?%5Cmathit%7Bscore%7D_%7B%5Ctextit%7Bidentity%7D%7D%20%3E%20%5Cmathit%7Bscore%7D_%7B%5Ctextit%7Bprediction%7D%7D).
 
-This changes both the cellular ordering and the topology so most metrics
-conform to this rule.
+Conclusion(s): This changes both the cellular ordering and the topology
+so most metrics conform to this
+rule.
+
+<a name = 'table_concatenate_bifurcation_rule_table'></a>
+
+| ![](https://latex.codecogs.com/gif.latex?cor%5Bdist%5D) | ![](https://latex.codecogs.com/gif.latex?NMSE%5Brf%5D) | ![](https://latex.codecogs.com/gif.latex?NMSE%5Blm%5D) | ![](https://latex.codecogs.com/gif.latex?edgeflip) | ![](https://latex.codecogs.com/gif.latex?HIM) | ![](https://latex.codecogs.com/gif.latex?isomorphic) | ![](https://latex.codecogs.com/gif.latex?cor%5Bfeatures%5D) | ![](https://latex.codecogs.com/gif.latex?wcor%5Bfeatures%5D) | ![](https://latex.codecogs.com/gif.latex?F1%5Bbranches%5D) | ![](https://latex.codecogs.com/gif.latex?F1%5Bmilestones%5D) | ![](https://latex.codecogs.com/gif.latex?mean%5Bgeometric%5D) |
+| :------------------------------------------------------ | :----------------------------------------------------- | :----------------------------------------------------- | :------------------------------------------------- | :-------------------------------------------- | :--------------------------------------------------- | :---------------------------------------------------------- | :----------------------------------------------------------- | :--------------------------------------------------------- | :----------------------------------------------------------- | :------------------------------------------------------------ |
+| TRUE                                                    | FALSE                                                  | TRUE                                                   | TRUE                                               | TRUE                                          | TRUE                                                 | TRUE                                                        | TRUE                                                         | TRUE                                                       | TRUE                                                         | TRUE                                                          |
+
+**[**Table S18**](#table_concatenate_bifurcation_rule_table): Which
+metrics conform to rule 17.**
 
 <p>
 
@@ -922,7 +1102,7 @@ conform to this rule.
 
 <p>
 
-<strong>[**Figure 33**](#fig_concatenate_bifurcation_plot_datasets):
+<strong>[**Figure S33**](#fig_concatenate_bifurcation_plot_datasets):
 Example dataset before and after perturbation.</strong>
 
 </p>
@@ -938,7 +1118,7 @@ Example dataset before and after perturbation.</strong>
 
 <p>
 
-<strong>[**Figure 34**](#fig_concatenate_bifurcation_plot_scores):
+<strong>[**Figure S34**](#fig_concatenate_bifurcation_plot_scores):
 Differences in scores of 66 datasets before and after perturbation. Red
 bar gives the mean.</strong>
 
@@ -953,15 +1133,25 @@ bar gives the mean.</strong>
 
 \\end{center}
 
-Breaking a cyclic trajectory should lower the score
+Description: Breaking a cyclic trajectory should lower the score.
 
 A metric conforms to this rule if:
-![](https://latex.codecogs.com/gif.latex?%5Cmathit%7Bscore%7D_%7B%5Ctextit%7Bidentity%7D%7D%20%3E%20%5Cmathit%7Bscore%7D_%7B%5Ctextit%7Bprediction%7D%7D)
+![](https://latex.codecogs.com/gif.latex?%5Cmathit%7Bscore%7D_%7B%5Ctextit%7Bidentity%7D%7D%20%3E%20%5Cmathit%7Bscore%7D_%7B%5Ctextit%7Bprediction%7D%7D).
 
-Because the actual positions of the cells nor the branch assignment
-change, both the MSE metrics and the
+Conclusion(s): Because the actual positions of the cells nor the branch
+assignment change, both the MSE metrics and the
 ![](https://latex.codecogs.com/gif.latex?%5Cmathit%7BF1%7D_%7B%5Ctextit%7Bbranches%7D%7D)
-do not conform to this rule.
+do not conform to this
+rule.
+
+<a name = 'table_break_cycle_rule_table'></a>
+
+| ![](https://latex.codecogs.com/gif.latex?cor%5Bdist%5D) | ![](https://latex.codecogs.com/gif.latex?NMSE%5Brf%5D) | ![](https://latex.codecogs.com/gif.latex?NMSE%5Blm%5D) | ![](https://latex.codecogs.com/gif.latex?edgeflip) | ![](https://latex.codecogs.com/gif.latex?HIM) | ![](https://latex.codecogs.com/gif.latex?isomorphic) | ![](https://latex.codecogs.com/gif.latex?cor%5Bfeatures%5D) | ![](https://latex.codecogs.com/gif.latex?wcor%5Bfeatures%5D) | ![](https://latex.codecogs.com/gif.latex?F1%5Bbranches%5D) | ![](https://latex.codecogs.com/gif.latex?F1%5Bmilestones%5D) | ![](https://latex.codecogs.com/gif.latex?mean%5Bgeometric%5D) |
+| :------------------------------------------------------ | :----------------------------------------------------- | :----------------------------------------------------- | :------------------------------------------------- | :-------------------------------------------- | :--------------------------------------------------- | :---------------------------------------------------------- | :----------------------------------------------------------- | :--------------------------------------------------------- | :----------------------------------------------------------- | :------------------------------------------------------------ |
+| TRUE                                                    | FALSE                                                  | TRUE                                                   | TRUE                                               | TRUE                                          | TRUE                                                 | TRUE                                                        | TRUE                                                         | FALSE                                                      | TRUE                                                         | TRUE                                                          |
+
+**[**Table S19**](#table_break_cycle_rule_table): Which metrics conform
+to rule 18.**
 
 <p>
 
@@ -972,8 +1162,8 @@ do not conform to this rule.
 
 <p>
 
-<strong>[**Figure 35**](#fig_break_cycle_plot_datasets): Example dataset
-before and after perturbation.</strong>
+<strong>[**Figure S35**](#fig_break_cycle_plot_datasets): Example
+dataset before and after perturbation.</strong>
 
 </p>
 
@@ -988,7 +1178,7 @@ before and after perturbation.</strong>
 
 <p>
 
-<strong>[**Figure 36**](#fig_break_cycle_plot_scores): Differences in
+<strong>[**Figure S36**](#fig_break_cycle_plot_scores): Differences in
 scores of 132 datasets before and after perturbation. Red bar gives the
 mean.</strong>
 
@@ -1003,16 +1193,27 @@ mean.</strong>
 
 \\end{center}
 
-Joining the two ends of a linear trajectory should lower the score
+Description: Joining the two ends of a linear trajectory should lower
+the score.
 
 A metric conforms to this rule if:
-![](https://latex.codecogs.com/gif.latex?%5Cmathit%7Bscore%7D_%7B%5Ctextit%7Bidentity%7D%7D%20%3E%20%5Cmathit%7Bscore%7D_%7B%5Ctextit%7Bprediction%7D%7D)
+![](https://latex.codecogs.com/gif.latex?%5Cmathit%7Bscore%7D_%7B%5Ctextit%7Bidentity%7D%7D%20%3E%20%5Cmathit%7Bscore%7D_%7B%5Ctextit%7Bprediction%7D%7D).
 
-Because the positions of the cells can be perfectly predicted, the MSE
-metrics do not conform to this rule. Furthermore, because the branch
-assignment change stays the same, the
+Conclusion(s): Because the positions of the cells can be perfectly
+predicted, the MSE metrics do not conform to this rule. Furthermore,
+because the branch assignment change stays the same, the
 ![](https://latex.codecogs.com/gif.latex?%5Cmathit%7BF1%7D_%7B%5Ctextit%7Bbranches%7D%7D)
-also does not conform to this rule.
+also does not conform to this
+rule.
+
+<a name = 'table_join_linear_rule_table'></a>
+
+| ![](https://latex.codecogs.com/gif.latex?cor%5Bdist%5D) | ![](https://latex.codecogs.com/gif.latex?NMSE%5Brf%5D) | ![](https://latex.codecogs.com/gif.latex?NMSE%5Blm%5D) | ![](https://latex.codecogs.com/gif.latex?edgeflip) | ![](https://latex.codecogs.com/gif.latex?HIM) | ![](https://latex.codecogs.com/gif.latex?isomorphic) | ![](https://latex.codecogs.com/gif.latex?cor%5Bfeatures%5D) | ![](https://latex.codecogs.com/gif.latex?wcor%5Bfeatures%5D) | ![](https://latex.codecogs.com/gif.latex?F1%5Bbranches%5D) | ![](https://latex.codecogs.com/gif.latex?F1%5Bmilestones%5D) | ![](https://latex.codecogs.com/gif.latex?mean%5Bgeometric%5D) |
+| :------------------------------------------------------ | :----------------------------------------------------- | :----------------------------------------------------- | :------------------------------------------------- | :-------------------------------------------- | :--------------------------------------------------- | :---------------------------------------------------------- | :----------------------------------------------------------- | :--------------------------------------------------------- | :----------------------------------------------------------- | :------------------------------------------------------------ |
+| TRUE                                                    | TRUE                                                   | TRUE                                                   | TRUE                                               | TRUE                                          | TRUE                                                 | TRUE                                                        | TRUE                                                         | FALSE                                                      | TRUE                                                         | TRUE                                                          |
+
+**[**Table S20**](#table_join_linear_rule_table): Which metrics conform
+to rule 19.**
 
 <p>
 
@@ -1023,8 +1224,8 @@ also does not conform to this rule.
 
 <p>
 
-<strong>[**Figure 37**](#fig_join_linear_plot_datasets): Example dataset
-before and after perturbation.</strong>
+<strong>[**Figure S37**](#fig_join_linear_plot_datasets): Example
+dataset before and after perturbation.</strong>
 
 </p>
 
@@ -1039,7 +1240,7 @@ before and after perturbation.</strong>
 
 <p>
 
-<strong>[**Figure 38**](#fig_join_linear_plot_scores): Differences in
+<strong>[**Figure S38**](#fig_join_linear_plot_scores): Differences in
 scores of 132 datasets before and after perturbation. Red bar gives the
 mean.</strong>
 
@@ -1054,14 +1255,25 @@ mean.</strong>
 
 \\end{center}
 
-Splitting a linear trajectory into a bifurcation should lower the score
+Description: Splitting a linear trajectory into a bifurcation should
+lower the score.
 
 A metric conforms to this rule if:
-![](https://latex.codecogs.com/gif.latex?%5Cmathit%7Bscore%7D_%7B%5Ctextit%7Bidentity%7D%7D%20%3E%20%5Cmathit%7Bscore%7D_%7B%5Ctextit%7Bprediction%7D%7D)
+![](https://latex.codecogs.com/gif.latex?%5Cmathit%7Bscore%7D_%7B%5Ctextit%7Bidentity%7D%7D%20%3E%20%5Cmathit%7Bscore%7D_%7B%5Ctextit%7Bprediction%7D%7D).
 
-Only the MSE metrics do not conform to this rule as the positions of the
-cells can be perfectly predicted in the gold standard given the
+Conclusion(s): Only the MSE metrics do not conform to this rule as the
+positions of the cells can be perfectly predicted in the gold standard
+given the
 prediction.
+
+<a name = 'table_split_linear_rule_table'></a>
+
+| ![](https://latex.codecogs.com/gif.latex?cor%5Bdist%5D) | ![](https://latex.codecogs.com/gif.latex?NMSE%5Brf%5D) | ![](https://latex.codecogs.com/gif.latex?NMSE%5Blm%5D) | ![](https://latex.codecogs.com/gif.latex?edgeflip) | ![](https://latex.codecogs.com/gif.latex?HIM) | ![](https://latex.codecogs.com/gif.latex?isomorphic) | ![](https://latex.codecogs.com/gif.latex?cor%5Bfeatures%5D) | ![](https://latex.codecogs.com/gif.latex?wcor%5Bfeatures%5D) | ![](https://latex.codecogs.com/gif.latex?F1%5Bbranches%5D) | ![](https://latex.codecogs.com/gif.latex?F1%5Bmilestones%5D) | ![](https://latex.codecogs.com/gif.latex?mean%5Bgeometric%5D) |
+| :------------------------------------------------------ | :----------------------------------------------------- | :----------------------------------------------------- | :------------------------------------------------- | :-------------------------------------------- | :--------------------------------------------------- | :---------------------------------------------------------- | :----------------------------------------------------------- | :--------------------------------------------------------- | :----------------------------------------------------------- | :------------------------------------------------------------ |
+| TRUE                                                    | TRUE                                                   | TRUE                                                   | TRUE                                               | TRUE                                          | TRUE                                                 | TRUE                                                        | TRUE                                                         | TRUE                                                       | TRUE                                                         | TRUE                                                          |
+
+**[**Table S21**](#table_split_linear_rule_table): Which metrics conform
+to rule 20.**
 
 <p>
 
@@ -1072,7 +1284,7 @@ prediction.
 
 <p>
 
-<strong>[**Figure 39**](#fig_split_linear_plot_datasets): Example
+<strong>[**Figure S39**](#fig_split_linear_plot_datasets): Example
 dataset before and after perturbation.</strong>
 
 </p>
@@ -1088,7 +1300,7 @@ dataset before and after perturbation.</strong>
 
 <p>
 
-<strong>[**Figure 40**](#fig_split_linear_plot_scores): Differences in
+<strong>[**Figure S40**](#fig_split_linear_plot_scores): Differences in
 scores of 66 datasets before and after perturbation. Red bar gives the
 mean.</strong>
 
@@ -1103,16 +1315,27 @@ mean.</strong>
 
 \\end{center}
 
-Changing the topology of the trajectory should lower the score
+Description: Changing the topology of the trajectory should lower the
+score.
 
 A metric conforms to this rule if:
-![](https://latex.codecogs.com/gif.latex?%5Cmathit%7Bscore%7D_%7B%5Ctextit%7Bsame%20topology%7D%7D%20%3E%20%5Cmathit%7Bscore%7D_%7B%5Ctextit%7Bdifferent%20topology%7D%7D)
+![](https://latex.codecogs.com/gif.latex?%5Cmathit%7Bscore%7D_%7B%5Ctextit%7Bsame%20topology%7D%7D%20%3E%20%5Cmathit%7Bscore%7D_%7B%5Ctextit%7Bdifferent%20topology%7D%7D).
 
-Because the positions of the cells can be perfectly predicted, the MSE
-metrics do not conform to this rule. Furthermore, because the branch
-assignment change stays the same, the
+Conclusion(s): Because the positions of the cells can be perfectly
+predicted, the MSE metrics do not conform to this rule. Furthermore,
+because the branch assignment change stays the same, the
 ![](https://latex.codecogs.com/gif.latex?%5Cmathit%7BF1%7D_%7B%5Ctextit%7Bbranches%7D%7D)
-also does not conform to this rule.
+also does not conform to this
+rule.
+
+<a name = 'table_change_topology_rule_table'></a>
+
+| ![](https://latex.codecogs.com/gif.latex?cor%5Bdist%5D) | ![](https://latex.codecogs.com/gif.latex?NMSE%5Brf%5D) | ![](https://latex.codecogs.com/gif.latex?NMSE%5Blm%5D) | ![](https://latex.codecogs.com/gif.latex?edgeflip) | ![](https://latex.codecogs.com/gif.latex?HIM) | ![](https://latex.codecogs.com/gif.latex?isomorphic) | ![](https://latex.codecogs.com/gif.latex?cor%5Bfeatures%5D) | ![](https://latex.codecogs.com/gif.latex?wcor%5Bfeatures%5D) | ![](https://latex.codecogs.com/gif.latex?F1%5Bbranches%5D) | ![](https://latex.codecogs.com/gif.latex?F1%5Bmilestones%5D) | ![](https://latex.codecogs.com/gif.latex?mean%5Bgeometric%5D) |
+| :------------------------------------------------------ | :----------------------------------------------------- | :----------------------------------------------------- | :------------------------------------------------- | :-------------------------------------------- | :--------------------------------------------------- | :---------------------------------------------------------- | :----------------------------------------------------------- | :--------------------------------------------------------- | :----------------------------------------------------------- | :------------------------------------------------------------ |
+| TRUE                                                    | FALSE                                                  | FALSE                                                  | TRUE                                               | TRUE                                          | TRUE                                                 | TRUE                                                        | TRUE                                                         | FALSE                                                      | TRUE                                                         | TRUE                                                          |
+
+**[**Table S22**](#table_change_topology_rule_table): Which metrics
+conform to rule 21.**
 
 <p>
 
@@ -1123,7 +1346,7 @@ also does not conform to this rule.
 
 <p>
 
-<strong>[**Figure 41**](#fig_change_topology_plot_datasets): The
+<strong>[**Figure S41**](#fig_change_topology_plot_datasets): The
 different trajectory topologies that were used to compare the
 metrics.</strong>
 
@@ -1140,7 +1363,7 @@ metrics.</strong>
 
 <p>
 
-<strong>[**Figure 42**](#fig_change_topology_plot_scores): Score values
+<strong>[**Figure S42**](#fig_change_topology_plot_scores): Score values
 on different topologies (left).</strong>
 
 </p>
@@ -1154,14 +1377,24 @@ on different topologies (left).</strong>
 
 \\end{center}
 
-A score should behave similarly both when cells are located on the
-milestones (as is the case in real datasets) or on the edges between
-milestones (as is the case in synthetic datasets).
+Description: A score should behave similarly both when cells are located
+on the milestones (as is the case in real datasets) or on the edges
+between milestones (as is the case in synthetic datasets).
 
 A metric conforms to this rule if:
-![](https://latex.codecogs.com/gif.latex?%5Cmathit%7Bcorr%7D%20%5Cleft\(%20%5Cmathit%7Bscore%7D_%7B%5Ctextit%7Bedges%7D%7D%20,%20%5Cmathit%7Bscore%7D_%7B%5Ctextit%7Bmilestones%7D%7D%20%5Cright\)%20%3E%200.8)
+![](https://latex.codecogs.com/gif.latex?%5Cmathit%7Bcorr%7D%20%5Cleft\(%20%5Cmathit%7Bscore%7D_%7B%5Ctextit%7Bedges%7D%7D%20,%20%5Cmathit%7Bscore%7D_%7B%5Ctextit%7Bmilestones%7D%7D%20%5Cright\)%20%3E%200.8).
 
-All scores conform to this rule.
+Conclusion(s): All scores conform to this
+rule.
+
+<a name = 'table_cell_gathering_rule_table'></a>
+
+| ![](https://latex.codecogs.com/gif.latex?cor%5Bdist%5D) | ![](https://latex.codecogs.com/gif.latex?NMSE%5Brf%5D) | ![](https://latex.codecogs.com/gif.latex?NMSE%5Blm%5D) | ![](https://latex.codecogs.com/gif.latex?edgeflip) | ![](https://latex.codecogs.com/gif.latex?HIM) | ![](https://latex.codecogs.com/gif.latex?isomorphic) | ![](https://latex.codecogs.com/gif.latex?cor%5Bfeatures%5D) | ![](https://latex.codecogs.com/gif.latex?wcor%5Bfeatures%5D) | ![](https://latex.codecogs.com/gif.latex?F1%5Bbranches%5D) | ![](https://latex.codecogs.com/gif.latex?F1%5Bmilestones%5D) | ![](https://latex.codecogs.com/gif.latex?mean%5Bgeometric%5D) |
+| :------------------------------------------------------ | :----------------------------------------------------- | :----------------------------------------------------- | :------------------------------------------------- | :-------------------------------------------- | :--------------------------------------------------- | :---------------------------------------------------------- | :----------------------------------------------------------- | :--------------------------------------------------------- | :----------------------------------------------------------- | :------------------------------------------------------------ |
+| TRUE                                                    | TRUE                                                   | TRUE                                                   | TRUE                                               | TRUE                                          | TRUE                                                 | TRUE                                                        | TRUE                                                         | TRUE                                                       | TRUE                                                         | TRUE                                                          |
+
+**[**Table S23**](#table_cell_gathering_rule_table): Which metrics
+conform to rule 22.**
 
 <p>
 
@@ -1172,7 +1405,7 @@ All scores conform to this rule.
 
 <p>
 
-<strong>[**Figure 43**](#fig_cell_gathering_plot_datasets): Example
+<strong>[**Figure S43**](#fig_cell_gathering_plot_datasets): Example
 dataset in which cells are placed on the edges (left) or on the
 milestones (right), and with their original positions (top) or shuffled
 (bottom).</strong>
@@ -1190,7 +1423,7 @@ milestones (right), and with their original positions (top) or shuffled
 
 <p>
 
-<strong>[**Figure 44**](#fig_cell_gathering_plot_scores): Score values
+<strong>[**Figure S44**](#fig_cell_gathering_plot_scores): Score values
 of the same datasets (n = 84) in which cells were put either on the
 edges or on the milestones. Shown in the top left is the Spearman rank
 correlation.</strong>

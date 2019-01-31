@@ -50,9 +50,9 @@ heuristics to speed up the search:
 The HIM metric (Hamming-Ipsen-Mikhailov
 distance)<sup>[3](#ref-jurman_HIM_Glocal_Metric_2015)</sup> which was
 adopted from the R nettools package
-<https://github.com/filosi/nettools>. It uses an adjacency matrix which
-was weighted according to the lengths of each edges within the milestone
-network. Conceptually, HIM is a linear combination of:
+(<https://github.com/filosi/nettools>). It uses an adjacency matrix
+which was weighted according to the lengths of each edges within the
+milestone network. Conceptually, HIM is a linear combination of:
 
   - The normalised Hamming
     distance<sup>[4](#ref-doughertyValidationGeneRegulatory2011)</sup>,
@@ -69,16 +69,16 @@ network. Conceptually, HIM is a linear combination of:
     which we fixed at ![](https://latex.codecogs.com/gif.latex?0.1) so
     as to make the score comparable across different graph sizes.
 
-We compared the three scores for several common topologies ([**Figure
-1**](#fig_topology_scores_overview)). While conceptually very different,
-the edgeflip and HIM still produce similar scores ([**Figure
-1b**](#fig_topology_scores_overview)). The HIM tends to punish the
+We compared the three scores on several common topologies ([**Figure
+S1**](#fig_topology_scores_overview)). While conceptually very
+different, the edgeflip and HIM still produce similar scores ([**Figure
+S1b**](#fig_topology_scores_overview)). The HIM tends to punish the
 detection of cycles, while the edgeflip is more harsh for differences in
 the number of bifurcations ([**Figure
-1c**](#fig_topology_scores_overview)). The main difference however is
+S1b**](#fig_topology_scores_overview)). The main difference however is
 that the HIM takes into account edge lengths when comparing two
 trajectories, as illustrated in ([**Figure
-1d**](#fig_topology_scores_overview)). Short “extra” edges in the
+S1c**](#fig_topology_scores_overview)). Short “extra” edges in the
 topology are less punished by the HIM than by the edgeflip.
 
 <p>
@@ -90,13 +90,12 @@ topology are less punished by the HIM than by the edgeflip.
 
 <p>
 
-<strong>[**Figure 1**](#fig_topology_scores_overview): Showcase of three
-metrics to evaluate topologies: Isomorphic, edgeflip and HIM.</strong>
-(a) The used topologies. (b) The scores when comparing each pair of
-trajectory types. (c) The edgeflip and HIM produce similar scores, apart
-from some exceptions highlighted here. (d) Four datasets in which aan
-extra edge is added and made progressively longer. This shows how the
-HIM can take into account edge lengths.
+<strong>[**Figure S1**](#fig_topology_scores_overview): Showcase of
+three metrics to evaluate topologies: Isomorphic, edgeflip and
+HIM.</strong> (a) The used topologies. (b) The scores when comparing
+each pair of trajectory types. (c) Four datasets in which aan extra edge
+is added and made progressively longer. This shows how the HIM can take
+into account edge lengths.
 
 </p>
 
@@ -118,8 +117,8 @@ appropriate.
 Perhaps one of the simplest ways to calculate the similarity between the
 cellular positions of two topologies is by mapping each cell to its
 closest milestone *or* branch ([**Figure
-2**](#fig_clustering_scores_overview)). These clusters of cells can then
-be compared using one of the many external cluster evaluation
+S2**](#fig_clustering_scores_overview)). These clusters of cells can
+then be compared using one of the many external cluster evaluation
 measures<sup>[6](#ref-saelens_comprehensiveevaluationmodule_2018)</sup>.
 When selecting a cluster evaluation metric, we had two main conditions:
 
@@ -170,13 +169,13 @@ clusters:
 
 <p>
 
-<strong>[**Figure 2**](#fig_clustering_scores_overview): Mapping cells
+<strong>[**Figure S2**](#fig_clustering_scores_overview): Mapping cells
 to their closest milestone or branch for the calculation of the
 F1<sub>milestones</sub> and F1<sub>branches</sub> .</strong> To
-calculate the {label\_metric(‘F1\_milestones’)}, cells are mapped
-towards the nearest milestone, i.e. the milestone with the highest
-milestone percentage. For the {label\_metric(‘F1\_branches’)}, the cells
-are mapped to the closest edge.
+calculate the F1<sub>milestones</sub>, cells are mapped towards the
+nearest milestone, i.e. the milestone with the highest milestone
+percentage. For the F1<sub>branches</sub>, the cells are mapped to the
+closest edge.
 
 </p>
 
@@ -257,7 +256,7 @@ datasets. For this reason, a set of waypoint cells are defined *a
 priori*, and only the distances between the waypoint cells and all other
 cells is calculated, in order to calculate the correlation of geodesic
 distances of two trajectories ([**Figure
-4a**](#fig_waypoints_overview)). These cell waypoints are determined by
+S4a**](#fig_waypoints_overview)). These cell waypoints are determined by
 viewing each milestone, edge and region of delayed commitment as a
 collection of cells. We do stratified sampling from each collection of
 cells by weighing them by the total number of cells within that
@@ -270,7 +269,7 @@ between the accuracy versus the time to calculate cor<sub>dist</sub>. To
 select an optimal number of cell waypoints, we used the synthetic
 dataset with the most complex topology, and determined the
 cor<sub>dist</sub> at different levels of both cell shuffling and number
-of cell waypoints ([**Figure 4b**](#fig_waypoints_overview)). We found
+of cell waypoints ([**Figure S4b**](#fig_waypoints_overview)). We found
 that using cell waypoints does not induce a systematic bias in the
 cor<sub>dist</sub>, and that its variability was relatively minimal when
 compared to the variability between different levels of cell shuffling
@@ -285,13 +284,17 @@ when using 100 or more cell waypoints.
 
 <p>
 
-<strong>[**Figure 4**](#fig_waypoints_overview): Determination of cell
+<strong>[**Figure S4**](#fig_waypoints_overview): Determination of cell
 waypoints</strong> a) Illustration of the stratified cell sampling using
 an example dataset (top). Each milestone, edge between two milestones
 and region of delayed commitment is seen as a collection of cells
 (middle), and the number of waypoints (100 in this case) are divided
 over each of these collection of cells (bottom). b) Accuracy versus time
-to calculate cor<sub>dist</sub>
+to calculate cor<sub>dist</sub>. Shown are distributions over 100 random
+waypoint samples. The upper whisker of the boxplot extends from the
+hinge (75% percentile) to the largest value, no further than 1.5× the
+IQR of the hinge. The lower whisker extends from the hinge (25%
+percentile) to the smallest value, at most 1.5× the IQR of the hinge.
 
 </p>
 
@@ -301,7 +304,7 @@ Although the cor<sub>dist</sub>’s main characteristic is that it looks
 at the positions of the cells, other features of the trajectory are also
 (partly) captured. To illustrate this, we used the geodesic distances
 themselves as input for dimensionality reduction ([**Figure
-5**](#fig_geodesic_distances_dimreds)) with varying topologies. This
+S5**](#fig_geodesic_distances_dimreds)) with varying topologies. This
 reduced space captures the original trajectory structure quite well,
 including the overall topology and branch lengths. Only some structures,
 not easily visualisabe
@@ -315,7 +318,7 @@ not easily visualisabe
 
 <p>
 
-<strong>[**Figure 5**](#fig_geodesic_distances_dimreds): The geodesic
+<strong>[**Figure S5**](#fig_geodesic_distances_dimreds): The geodesic
 distances can be used to reconstruct the original trajectory
 structure</strong> We generated different toy trajectory datasets with
 varying topologies and calculated the geodesic distances between all
@@ -339,7 +342,7 @@ cells), the prediction error should be low.
 
 Specifically, we implemented two metrics which predict the milestone
 percentages from the reference by using the predicted milestone
-percentages as features ([**Figure 6**](#fig_metrics_prediction)). We
+percentages as features ([**Figure S6**](#fig_metrics_prediction)). We
 did this with two regression methods, linear regression
 (![](https://latex.codecogs.com/gif.latex?%5Ctextit%7Blm%7D), using the
 R `lm` function) and Random Forest
@@ -371,7 +374,7 @@ finally obtain the NMSE<sub>rf</sub> and NMSE<sub>lm</sub> scores.
 
 <p>
 
-<strong>[**Figure 6**](#fig_metrics_prediction): The calculation of
+<strong>[**Figure S6**](#fig_metrics_prediction): The calculation of
 NMSE<sub>lm</sub> distances on a small example trajectory.</strong> The
 milestone percentages of the reference are predicted based on the
 milestone percentages of the prediction, using regression models such as
@@ -412,7 +415,7 @@ package<sup>[7](#ref-wright_rangerfastimplementation_2017)</sup>,
 milestone, based on the expression of genes within each cell. We then
 extracted feature importances using the Mean Decrease in Impurity
 (`importance = 'impurity'` parameter of the `ranger` function), as
-illustrated in ([**Figure 7**](#fig_featureimp_overview)). The overall
+illustrated in ([**Figure S7**](#fig_featureimp_overview)). The overall
 importance of a feature (gene) was then equal to the mean importance
 over all milestones. Finally, we compared the two rankings by
 calculating the Pearson correlation, with values between -1 and 0
@@ -427,7 +430,7 @@ clipped to 0.
 
 <p>
 
-<strong>[**Figure 7**](#fig_featureimp_overview): An illustration of
+<strong>[**Figure S7**](#fig_featureimp_overview): An illustration of
 ranking features based on their importance in a trajectory.</strong> (a)
 A MDS dimensionality reudction of a real dataset in which mouse
 embryonic fibroblasts (MEF) differentiate into Neurons and Myocytes. (b)
@@ -444,7 +447,7 @@ have a more dispersed expression pattern.
 Random forest regression has two main hyperparameters. The number of
 trees to be fitted (`num_trees` parameter) was fixed to `10000` to
 provide accurate and stable estimates of the feature importance
-([**Figure 8**](#fig_featureimp_cor_distributions)). The number of
+([**Figure S8**](#fig_featureimp_cor_distributions)). The number of
 features on which can be split (`mtry` parameter) was set to 1% of all
 available features (instead of the default square-root of the number of
 features), as to make sure that predictive but highly correlated
@@ -460,11 +463,11 @@ ranking.
 
 <p>
 
-<strong>[**Figure 8**](#fig_featureimp_cor_distributions): Effect of the
-number of trees parameter on the accuracy and variability of the
+<strong>[**Figure S8**](#fig_featureimp_cor_distributions): Effect of
+the number of trees parameter on the accuracy and variability of the
 cor<sub>features</sub>.</strong> We used the dataset from [**Figure
-7**](#fig_featureimp_overview) and calculated the cor<sub>features</sub>
-after shuffling a percentage of cells.
+S7**](#fig_featureimp_overview) and calculated the
+cor<sub>features</sub> after shuffling a percentage of cells.
 
 </p>
 
@@ -472,7 +475,7 @@ after shuffling a percentage of cells.
 
 For most datasets, only a limited number of features will be
 differentially expressed in the trajectory. For example, in the dataset
-used in [**Figure 8**](#fig_featureimp_cor_distributions) only the top
+used in [**Figure S8**](#fig_featureimp_cor_distributions) only the top
 10%-20% show a clear pattern of differential expression. The correlation
 will weight each of these features equally, and will therefore give more
 weight to the bottom, irrelevant features. To prioritise the top
@@ -480,7 +483,7 @@ differentially expressed features, we also implemented the
 wcor<sub>features</sub>, which will weight the correlation using the
 feature importance scores in the reference so that the top features have
 relatively more impact on the score ([**Figure
-9**](#fig_featureimp_wcor_effect)).
+S9**](#fig_featureimp_wcor_effect)).
 
 <p>
 
@@ -491,10 +494,10 @@ relatively more impact on the score ([**Figure
 
 <p>
 
-<strong>[**Figure 9**](#fig_featureimp_wcor_effect): Effect of weighting
-the features based on their feature importance in the
+<strong>[**Figure S9**](#fig_featureimp_wcor_effect): Effect of
+weighting the features based on their feature importance in the
 reference.</strong> We used the same dataset as in [**Figure
-7**](#fig_featureimp_overview), and calculated the
+S7**](#fig_featureimp_overview), and calculated the
 cor<sub>features</sub> after shuffling a percentage of cells.
 
 </p>
@@ -519,7 +522,7 @@ doi:[10.1137/1.9781611972870.13](https://doi.org/10.1137/1.9781611972870.13)
 
 2\. Bahiense, L., Manić, G., Piva, B. & de Souza, C. C. The maximum
 common edge subgraph problem: A polyhedral investigation. *Discrete
-Applied Mathematics* **160,** 2523–2541 (2012).
+Applied Mathematics* **160**, 2523–2541 (2012).
 
 </div>
 
@@ -536,7 +539,7 @@ doi:[10.1109/DSAA.2015.7344816](https://doi.org/10.1109/DSAA.2015.7344816)
 <div id="ref-doughertyValidationGeneRegulatory2011">
 
 4\. Dougherty, E. R. Validation of gene regulatory networks: Scientific
-and inferential. *Briefings in Bioinformatics* **12,** 245–252 (2011).
+and inferential. *Briefings in Bioinformatics* **12**, 245–252 (2011).
 
 </div>
 
@@ -544,7 +547,7 @@ and inferential. *Briefings in Bioinformatics* **12,** 245–252 (2011).
 
 5\. Ipsen, M. & Mikhailov, A. S. Evolutionary reconstruction of
 networks. *Physical Review. E, Statistical, Nonlinear, and Soft Matter
-Physics* **66,** 046109 (2002).
+Physics* **66**, 046109 (2002).
 
 </div>
 
@@ -552,7 +555,7 @@ Physics* **66,** 046109 (2002).
 
 6\. Saelens, W., Cannoodt, R. & Saeys, Y. A comprehensive evaluation of
 module detection methods for gene expression data. *Nature
-Communications* **9,** 1090 (2018).
+Communications* **9**, 1090 (2018).
 
 </div>
 
@@ -560,7 +563,7 @@ Communications* **9,** 1090 (2018).
 
 7\. Wright, M. N. & Ziegler, A. Ranger: A Fast Implementation of Random
 Forests for High Dimensional Data in C++ and R | Wright | Journal of
-Statistical Software. *Journal of Statistical Software* **77,** (2017).
+Statistical Software. *Journal of Statistical Software* **77**, (2017).
 
 </div>
 

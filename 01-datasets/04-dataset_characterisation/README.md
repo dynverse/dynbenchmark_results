@@ -12,8 +12,8 @@
 
 <p>
 
-<strong>Figure 1: The 1 distinct Cycle topology, with a total of 24
-datasets.</strong>
+<strong>[**Figure 1**](#fig_cycle_topologies): The 1 distinct Cycle
+topology, with a total of 24 datasets.</strong>
 
 </p>
 
@@ -28,8 +28,8 @@ datasets.</strong>
 
 <p>
 
-<strong>Figure 2: The 1 distinct Linear topology, with a total of 75
-datasets.</strong>
+<strong>[**Figure 2**](#fig_linear_topologies): The 1 distinct Linear
+topology, with a total of 75 datasets.</strong>
 
 </p>
 
@@ -44,8 +44,8 @@ datasets.</strong>
 
 <p>
 
-<strong>Figure 3: The 2 distinct Convergence topologies, with a total of
-17 datasets.</strong>
+<strong>[**Figure 3**](#fig_convergence_topologies): The 2 distinct
+Convergence topologies, with a total of 17 datasets.</strong>
 
 </p>
 
@@ -60,8 +60,8 @@ datasets.</strong>
 
 <p>
 
-<strong>Figure 4: The 3 distinct Bifurcation topologies, with a total of
-40 datasets.</strong>
+<strong>[**Figure 4**](#fig_bifurcation_topologies): The 3 distinct
+Bifurcation topologies, with a total of 40 datasets.</strong>
 
 </p>
 
@@ -76,8 +76,8 @@ datasets.</strong>
 
 <p>
 
-<strong>Figure 5: The 6 distinct Multifurcation topologies, with a total
-of 15 datasets.</strong>
+<strong>[**Figure 5**](#fig_multifurcation_topologies): The 6 distinct
+Multifurcation topologies, with a total of 15 datasets.</strong>
 
 </p>
 
@@ -92,8 +92,8 @@ of 15 datasets.</strong>
 
 <p>
 
-<strong>Figure 6: The 39 distinct Tree topologies, with a total of 86
-datasets.</strong>
+<strong>[**Figure 6**](#fig_tree_topologies): The 39 distinct Tree
+topologies, with a total of 86 datasets.</strong>
 
 </p>
 
@@ -108,8 +108,8 @@ datasets.</strong>
 
 <p>
 
-<strong>Figure 7: The 13 distinct Acyclic graph topologies, with a total
-of 17 datasets.</strong>
+<strong>[**Figure 7**](#fig_acyclic_graph_topologies): The 13 distinct
+Acyclic graph topologies, with a total of 17 datasets.</strong>
 
 </p>
 
@@ -124,8 +124,8 @@ of 17 datasets.</strong>
 
 <p>
 
-<strong>Figure 8: The 19 distinct Graph topologies, with a total of 35
-datasets.</strong>
+<strong>[**Figure 8**](#fig_graph_topologies): The 19 distinct Connected
+graph topologies, with a total of 35 datasets.</strong>
 
 </p>
 
@@ -140,8 +140,9 @@ datasets.</strong>
 
 <p>
 
-<strong>Figure 9: The 21 distinct Disconnected graph topologies, with a
-total of 24 datasets.</strong>
+<strong>[**Figure 9**](#fig_disconnected_graph_topologies): The 21
+distinct Disconnected graph topologies, with a total of 24
+datasets.</strong>
 
 </p>
 
