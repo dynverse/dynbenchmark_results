@@ -76,7 +76,7 @@ created our final qc score for each method ([**Figure
 <p>
 
 <a name = 'fig_tool_ordering'></a>
-<img src = "/home/rcannood/Workspace/dynverse/dynbenchmark/results/03-methods/02-tool_qc/tool_ordering.png" width = "560" height = "280" />
+<img src = "02-tool_qc/tool_ordering.png" width = "560" height = "280" />
 
 </p>
 
@@ -103,7 +103,7 @@ Only a limited number of methods reached a score lower than 0.5
 <p>
 
 <a name = 'fig_qc_overview'></a>
-<img src = "/home/rcannood/Workspace/dynverse/dynbenchmark/results/03-methods/02-tool_qc/qc_overview.png" width = "1120" height = "1120" />
+<img src = "02-tool_qc/qc_overview.png" width = "1120" height = "1120" />
 
 </p>
 
@@ -266,7 +266,7 @@ Boulesteix, A.-L. Over-optimism in bioinformatics: An illustration.
 <p>
 
 <a name = 'fig_tool_ordering'></a>
-<img src = "/home/rcannood/Workspace/dynverse/dynbenchmark/results/03-methods/03-method_characterisation/n_tools_over_time.png" width = "840" height = "420" />
+<img src = "03-method_characterisation/n_tools_over_time.png" width = "840" height = "420" />
 
 </p>
 
@@ -282,7 +282,7 @@ inference tools over time</strong>
 <p>
 
 <a name = 'fig_platforms'></a>
-<img src = "/home/rcannood/Workspace/dynverse/dynbenchmark/results/03-methods/03-method_characterisation/platforms.png" width = "280" height = "280" />
+<img src = "03-method_characterisation/platforms.png" width = "280" height = "280" />
 
 </p>
 
@@ -298,7 +298,7 @@ these TI tools are written</strong>
 <p>
 
 <a name = 'fig_tool_trajectory_types_over_time'></a>
-<img src = "/home/rcannood/Workspace/dynverse/dynbenchmark/results/03-methods/03-method_characterisation/tool_trajectory_types_over_time.png" width = "840" height = "420" />
+<img src = "03-method_characterisation/tool_trajectory_types_over_time.png" width = "840" height = "420" />
 
 </p>
 
@@ -314,7 +314,7 @@ tools able to predict a particular trajectory type over time</strong>
 <p>
 
 <a name = 'fig_topology_inference_timeline'></a>
-<img src = "/home/rcannood/Workspace/dynverse/dynbenchmark/results/03-methods/03-method_characterisation/topology_inference_timeline.png" width = "840" height = "280" />
+<img src = "03-method_characterisation/topology_inference_timeline.png" width = "840" height = "280" />
 
 </p>
 
