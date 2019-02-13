@@ -1,7 +1,7 @@
 ---
 output: 
-  - dynbenchmark::pdf_supplementary_note
   - dynbenchmark::github_markdown_nested
+  - dynbenchmark::pdf_supplementary_note
 ---
 
 ```{r setup, include=FALSE}

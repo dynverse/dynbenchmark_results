@@ -110,17 +110,9 @@ ordinary differential
 equations<sup>[3](#ref-schaffter_genenetweaversilicobenchmark_2011)</sup>
 (ODEs):
 
-\[
-\begin{aligned}
-\label{eq:mrna_ode}
-\frac{dx_i}{dt} &= \underbrace{m \times f(y_1, y_2, ...)}_\text{production} - \underbrace{\lambda \times x_i}_\text{degradation}
-\end{aligned}
-\] \[
-\begin{aligned}
-\label{eq:prot_ode}
-\frac{dy_i}{dt} &= \underbrace{r \times x_i}_\text{production} - \underbrace{\Lambda \times y_i}_\text{degradation}
-\end{aligned}
-\]
+![](https://latex.codecogs.com/gif.latex?%5Cbegin%7Baligned%7D%0A%5Clabel%7Beq:mrna_ode%7D%0A%5Cfrac%7Bdx_i%7D%7Bdt%7D%20&=%20%5Cunderbrace%7Bm%20%5Ctimes%20f\(y_1,%20y_2,%20...\)%7D_%5Ctext%7Bproduction%7D%20-%20%5Cunderbrace%7B%5Clambda%20%5Ctimes%20x_i%7D_%5Ctext%7Bdegradation%7D%0A%5Cend%7Baligned%7D)
+
+![](https://latex.codecogs.com/gif.latex?%5Cbegin%7Baligned%7D%0A%5Clabel%7Beq:prot_ode%7D%0A%5Cfrac%7Bdy_i%7D%7Bdt%7D%20&=%20%5Cunderbrace%7Br%20%5Ctimes%20x_i%7D_%5Ctext%7Bproduction%7D%20-%20%5Cunderbrace%7B%5CLambda%20%5Ctimes%20y_i%7D_%5Ctext%7Bdegradation%7D%0A%5Cend%7Baligned%7D)
 
 where ![](https://latex.codecogs.com/gif.latex?m),
 ![](https://latex.codecogs.com/gif.latex?%5Clambda),
@@ -144,30 +136,24 @@ state. The production rate of the gene is calculated by combining the
 probabilities of the promoter being in each state with the relative
 activation:
 
-\[
-\begin{aligned}
-\label{eq:input_function_probabilities}
-f(y_1, y_2, ..., y_n) = \sum_{j \in \{0, 1, ..., n^2\}} \alpha_j \times P_j
-\end{aligned}
-\]
+![](https://latex.codecogs.com/gif.latex?%5Cbegin%7Baligned%7D%0A%5Clabel%7Beq:input_function_probabilities%7D%0Af\(y_1,%20y_2,%20...,%20y_n\)%20=%20%5Csum_%7Bj%20%5Cin%20%5C%7B0,%201,%20...,%20n%5E2%5C%7D%7D%20%5Calpha_j%20%5Ctimes%20P_j%0A%5Cend%7Baligned%7D)
 
 The probability of being in a state is based on the thermodynamics of
 transcription factor binding. When only one transcription factor is
-bound in a state: \[
-\begin{aligned}
-P_j \propto \nu = \left(\frac{y}{k}\right)^{n}
-\end{aligned}
-\]
+bound in a
+state:
+
+![](https://latex.codecogs.com/gif.latex?%5Cbegin%7Baligned%7D%0AP_j%20%5Cpropto%20%5Cnu%20=%20%5Cleft\(%5Cfrac%7By%7D%7Bk%7D%5Cright\)%5E%7Bn%7D%0A%5Cend%7Baligned%7D)
+P\_j = ()^{n}
 
 where the hill coefficient ![](https://latex.codecogs.com/gif.latex?n)
 represents the cooperativity of binding and
 ![](https://latex.codecogs.com/gif.latex?k) the transcription factor
 concentration at half-maximal binding. When multiple regulators are
-bound: \[
-\begin{aligned}
-P_j \propto \nu =  \rho \times \prod_j \left(\frac{y_j}{k_j}\right)^{n_j}
-\end{aligned}
-\]
+bound:
+
+![](https://latex.codecogs.com/gif.latex?%5Cbegin%7Baligned%7D%0AP_j%20%5Cpropto%20%5Cnu%20=%20%20%5Crho%20%5Ctimes%20%5Cprod_j%20%5Cleft\(%5Cfrac%7By_j%7D%7Bk_j%7D%5Cright\)%5E%7Bn_j%7D%0A%5Cend%7Baligned%7D)
+P\_j = \_j ()^{n\_j}
 
 where ![](https://latex.codecogs.com/gif.latex?%5Crho) represents the
 cooperativity of binding between the different transcription factors.
@@ -177,13 +163,11 @@ cooperativity of binding between the different transcription factors.
 ![](https://latex.codecogs.com/gif.latex?%5Cnu) is normalized such that
 ![](https://latex.codecogs.com/gif.latex?%5Csum_%7Bi%7D%20P_i%20=%201).
 
-To each differential equation, we added an additional stochastic term:
-\[
-\begin{aligned}
-\frac{dx_i}{dt} & = m \times f(y_1, y_2, ...) - \lambda \times x_i + \eta \times \sqrt{x_i} \times \Delta W_t \\
-\frac{dy_i}{dt} & = r \times x_i - \Lambda \times y_i + \eta \times \sqrt{y_i} \times \Delta W_t
-\end{aligned}
-\]
+To each differential equation, we added an additional stochastic
+term:
+
+![](https://latex.codecogs.com/gif.latex?%5Cbegin%7Baligned%7D%0A%5Cfrac%7Bdx_i%7D%7Bdt%7D%20&%20=%20m%20%5Ctimes%20f\(y_1,%20y_2,%20...\)%20-%20%5Clambda%20%5Ctimes%20x_i%20+%20%5Ceta%20%5Ctimes%20%5Csqrt%7Bx_i%7D%20%5Ctimes%20%5CDelta%20W_t%20%5C%5C%0A%5Cfrac%7Bdy_i%7D%7Bdt%7D%20&%20=%20r%20%5Ctimes%20x_i%20-%20%5CLambda%20%5Ctimes%20y_i%20+%20%5Ceta%20%5Ctimes%20%5Csqrt%7By_i%7D%20%5Ctimes%20%5CDelta%20W_t%0A%5Cend%7Baligned%7D)
+ & = m f(y\_1, y\_2, …) - x\_i +  W\_t \\
 
 with
 ![](https://latex.codecogs.com/gif.latex?%5CDelta%20W_t%20%5Csim%20%5Cmathcal%7BN%7D\(0,%20h\)).
@@ -193,22 +177,11 @@ GeneNetWeaver<sup>[3](#ref-schaffter_genenetweaversilicobenchmark_2011)</sup>,
 we sample the different parameters from random distributions, defined as
 follows. ![](https://latex.codecogs.com/gif.latex?e) defines whether a
 transcription factor activates (1) or represses (-1), as defined within
-the regulatory network network.
+the regulatory network
+network.
 
-\[
-\begin{aligned}
-r & = \mathcal{U}(10, 200) \\
-d & = \mathcal{U}(2, 8) \\
-p & = \mathcal{U}(2, 8) \\
-q & = \mathcal{U}(1, 5) \\
-a_0 & = \begin{cases}1 & \text{if } |e| = 0 \\ 1 & \text{if } \forall x \in e \text{, } x = -1 \\ 0 & \text{if } \forall x \in e \text{, } x = 1 \\ 0.5 & \text{otherwise}\end{cases} \\
-a_i & = \begin{cases}0 & \text{if } \exists x \in e_i \text{, } x = -1 \\ 1 & \text{otherwise}\end{cases} \\
-s & = \mathcal{U}(1, 20) \\
-k & = y_{max} / (2 * s) \text{,} \\
-\ & \quad \text{where } y_{max} = r / d \times p / q \\
-c & = \mathcal{U}(1, 4)
-\end{aligned}
-\]
+![](https://latex.codecogs.com/gif.latex?%5Cbegin%7Baligned%7D%0Ar%20&%20=%20%5Cmathcal%7BU%7D\(10,%20200\)%20%5C%5C%0Ad%20&%20=%20%5Cmathcal%7BU%7D\(2,%208\)%20%5C%5C%0Ap%20&%20=%20%5Cmathcal%7BU%7D\(2,%208\)%20%5C%5C%0Aq%20&%20=%20%5Cmathcal%7BU%7D\(1,%205\)%20%5C%5C%0Aa_0%20&%20=%20%5Cbegin%7Bcases%7D1%20&%20%5Ctext%7Bif%20%7D%20%7Ce%7C%20=%200%20%5C%5C%201%20&%20%5Ctext%7Bif%20%7D%20%5Cforall%20x%20%5Cin%20e%20%5Ctext%7B,%20%7D%20x%20=%20-1%20%5C%5C%200%20&%20%5Ctext%7Bif%20%7D%20%5Cforall%20x%20%5Cin%20e%20%5Ctext%7B,%20%7D%20x%20=%201%20%5C%5C%200.5%20&%20%5Ctext%7Botherwise%7D%5Cend%7Bcases%7D%20%5C%5C%0Aa_i%20&%20=%20%5Cbegin%7Bcases%7D0%20&%20%5Ctext%7Bif%20%7D%20%5Cexists%20x%20%5Cin%20e_i%20%5Ctext%7B,%20%7D%20x%20=%20-1%20%5C%5C%201%20&%20%5Ctext%7Botherwise%7D%5Cend%7Bcases%7D%20%5C%5C%0As%20&%20=%20%5Cmathcal%7BU%7D\(1,%2020\)%20%5C%5C%0Ak%20&%20=%20y_%7Bmax%7D%20/%20\(2%20*%20s\)%20%5Ctext%7B,%7D%20%5C%5C%0A%5C%20&%20%5Cquad%20%5Ctext%7Bwhere%20%7D%20y_%7Bmax%7D%20=%20r%20/%20d%20%5Ctimes%20p%20/%20q%20%5C%5C%0Ac%20&%20=%20%5Cmathcal%7BU%7D\(1,%204\)%0A%5Cend%7Baligned%7D)
+r & = (10, 200) \\
 
 We converted each ODE to an SDE by adding a chemical Langevin equation,
 as described
