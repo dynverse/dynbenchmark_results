@@ -180,7 +180,6 @@ bound in a
 state:
 
 ![](https://latex.codecogs.com/gif.latex?%5Cbegin%7Baligned%7D%0AP_j%20%5Cpropto%20%5Cnu%20=%20%5Cleft\(%5Cfrac%7By%7D%7Bk%7D%5Cright\)%5E%7Bn%7D%0A%5Cend%7Baligned%7D)
-P\_j = ()^{n}
 
 where the hill coefficient ![](https://latex.codecogs.com/gif.latex?n)
 represents the cooperativity of binding and
@@ -189,7 +188,6 @@ concentration at half-maximal binding. When multiple regulators are
 bound:
 
 ![](https://latex.codecogs.com/gif.latex?%5Cbegin%7Baligned%7D%0AP_j%20%5Cpropto%20%5Cnu%20=%20%20%5Crho%20%5Ctimes%20%5Cprod_j%20%5Cleft\(%5Cfrac%7By_j%7D%7Bk_j%7D%5Cright\)%5E%7Bn_j%7D%0A%5Cend%7Baligned%7D)
-P\_j = \_j ()^{n\_j}
 
 where ![](https://latex.codecogs.com/gif.latex?%5Crho) represents the
 cooperativity of binding between the different transcription factors.
@@ -203,7 +201,6 @@ To each differential equation, we added an additional stochastic
 term:
 
 ![](https://latex.codecogs.com/gif.latex?%5Cbegin%7Baligned%7D%0A%5Cfrac%7Bdx_i%7D%7Bdt%7D%20&%20=%20m%20%5Ctimes%20f\(y_1,%20y_2,%20...\)%20-%20%5Clambda%20%5Ctimes%20x_i%20+%20%5Ceta%20%5Ctimes%20%5Csqrt%7Bx_i%7D%20%5Ctimes%20%5CDelta%20W_t%20%5C%5C%0A%5Cfrac%7Bdy_i%7D%7Bdt%7D%20&%20=%20r%20%5Ctimes%20x_i%20-%20%5CLambda%20%5Ctimes%20y_i%20+%20%5Ceta%20%5Ctimes%20%5Csqrt%7By_i%7D%20%5Ctimes%20%5CDelta%20W_t%0A%5Cend%7Baligned%7D)
-& = m f(y\_1, y\_2, …) - x\_i + W\_t \\
 
 with
 ![](https://latex.codecogs.com/gif.latex?%5CDelta%20W_t%20%5Csim%20%5Cmathcal%7BN%7D\(0,%20h\)).
@@ -217,7 +214,6 @@ the regulatory network
 network.
 
 ![](https://latex.codecogs.com/gif.latex?%5Cbegin%7Baligned%7D%0Ar%20&%20=%20%5Cmathcal%7BU%7D\(10,%20200\)%20%5C%5C%0Ad%20&%20=%20%5Cmathcal%7BU%7D\(2,%208\)%20%5C%5C%0Ap%20&%20=%20%5Cmathcal%7BU%7D\(2,%208\)%20%5C%5C%0Aq%20&%20=%20%5Cmathcal%7BU%7D\(1,%205\)%20%5C%5C%0Aa_0%20&%20=%20%5Cbegin%7Bcases%7D1%20&%20%5Ctext%7Bif%20%7D%20%7Ce%7C%20=%200%20%5C%5C%201%20&%20%5Ctext%7Bif%20%7D%20%5Cforall%20x%20%5Cin%20e%20%5Ctext%7B,%20%7D%20x%20=%20-1%20%5C%5C%200%20&%20%5Ctext%7Bif%20%7D%20%5Cforall%20x%20%5Cin%20e%20%5Ctext%7B,%20%7D%20x%20=%201%20%5C%5C%200.5%20&%20%5Ctext%7Botherwise%7D%5Cend%7Bcases%7D%20%5C%5C%0Aa_i%20&%20=%20%5Cbegin%7Bcases%7D0%20&%20%5Ctext%7Bif%20%7D%20%5Cexists%20x%20%5Cin%20e_i%20%5Ctext%7B,%20%7D%20x%20=%20-1%20%5C%5C%201%20&%20%5Ctext%7Botherwise%7D%5Cend%7Bcases%7D%20%5C%5C%0As%20&%20=%20%5Cmathcal%7BU%7D\(1,%2020\)%20%5C%5C%0Ak%20&%20=%20y_%7Bmax%7D%20/%20\(2%20*%20s\)%20%5Ctext%7B,%7D%20%5C%5C%0A%5C%20&%20%5Cquad%20%5Ctext%7Bwhere%20%7D%20y_%7Bmax%7D%20=%20r%20/%20d%20%5Ctimes%20p%20/%20q%20%5C%5C%0Ac%20&%20=%20%5Cmathcal%7BU%7D\(1,%204\)%0A%5Cend%7Baligned%7D)
-r & = (10, 200) \\
 
 We converted each ODE to an SDE by adding a chemical Langevin equation,
 as described
