@@ -66,14 +66,12 @@ that.
 | Move cells to start milestone                   | ✔                  | ✔                 | ✔                 | ✖        | ✖   | ✖          | ✔                      | ✔                       | ✖                     | ✔                       | ✔                        |
 
 **[**Table S1**](#table_conformity_overview): Overview of whether a
-particular metric conforms to a particular rule**
+particular metric conforms to a particular
+rule**
 
 ### Rule 1: Same score on identity
 
-\\begin{center}
-<img src="/home/wouters/thesis/projects/dynverse/dynbenchmark//results/02-metrics/02-metric_conformity/images/equal_identity.png" width="2in" height="10in" />
-
-\\end{center}
+<img src="results/02-metrics/02-metric_conformity/images/equal_identity.png" width="2in" height="10in" />
 
 Description: The score should be approximately the same when comparing
 the trajectory to itself.
@@ -121,7 +119,8 @@ trajectory that was used to assess this rule.</strong>
 <p>
 
 <strong>[**Figure S2**](#fig_equal_identity_plot_scores): Score values
-of the different metrics across 42 datasets.</strong>
+of the different metrics across 42
+datasets.</strong>
 
 </p>
 
@@ -129,10 +128,7 @@ of the different metrics across 42 datasets.</strong>
 
 ### Rule 2: Local cell shuffling
 
-\\begin{center}
-<img src="/home/wouters/thesis/projects/dynverse/dynbenchmark//results/02-metrics/02-metric_conformity/images/shuffle_cells_edgewise.png" width="2in" height="10in" />
-
-\\end{center}
+<img src="results/02-metrics/02-metric_conformity/images/shuffle_cells_edgewise.png" width="2in" height="10in" />
 
 Description: Shuffling the positions of cells within each edge should
 lower the score. This is equivalent to changing the cellular position
@@ -181,7 +177,8 @@ Example dataset before and after perturbation.</strong>
 
 <strong>[**Figure S4**](#fig_shuffle_cells_edgewise_plot_scores):
 Differences in scores of 231 datasets before and after perturbation. Red
-bar gives the mean.</strong>
+bar gives the
+mean.</strong>
 
 </p>
 
@@ -189,10 +186,7 @@ bar gives the mean.</strong>
 
 ### Rule 3: Edge shuffling
 
-\\begin{center}
-<img src="/home/wouters/thesis/projects/dynverse/dynbenchmark//results/02-metrics/02-metric_conformity/images/shuffle_edges.png" width="2in" height="10in" />
-
-\\end{center}
+<img src="results/02-metrics/02-metric_conformity/images/shuffle_edges.png" width="2in" height="10in" />
 
 Description: Shuffling the edges in the milestone network should lower
 the score. This is equivalent to changing the cellular positions only
@@ -242,7 +236,8 @@ dataset.</strong>
 
 <strong>[**Figure S6**](#fig_shuffle_edges_plot_scores): Score values at
 different extents of the perturbation across 84 datasets. Red line
-denotes the mean values.</strong>
+denotes the mean
+values.</strong>
 
 </p>
 
@@ -250,10 +245,7 @@ denotes the mean values.</strong>
 
 ### Rule 4: Local and global cell shuffling
 
-\\begin{center}
-<img src="/home/wouters/thesis/projects/dynverse/dynbenchmark//results/02-metrics/02-metric_conformity/images/shuffle_cells.png" width="2in" height="10in" />
-
-\\end{center}
+<img src="results/02-metrics/02-metric_conformity/images/shuffle_cells.png" width="2in" height="10in" />
 
 Description: Shuffling the positions of cells should lower the score.
 This is equivalent to changing the cellular position both locally and
@@ -303,7 +295,8 @@ dataset.</strong>
 
 <strong>[**Figure S8**](#fig_shuffle_cells_plot_scores): Score values at
 different extents of the perturbation across 84 datasets. Red line
-denotes the mean values.</strong>
+denotes the mean
+values.</strong>
 
 </p>
 
@@ -311,10 +304,7 @@ denotes the mean values.</strong>
 
 ### Rule 5: Changing positions locally and/or globally
 
-\\begin{center}
-<img src="/home/wouters/thesis/projects/dynverse/dynbenchmark//results/02-metrics/02-metric_conformity/images/combined_local_global_position_change.png" width="2in" height="10in" />
-
-\\end{center}
+<img src="results/02-metrics/02-metric_conformity/images/combined_local_global_position_change.png" width="2in" height="10in" />
 
 Description: Changing the cellular position locally AND globally should
 lower the score more than any of the two individually.
@@ -371,7 +361,8 @@ values before perturbation (identity), with any of the two perturbations
 the boxplot extends from the hinge (75% percentile) to the largest
 value, no further than 1.5× the IQR from the hinge. The lower whisker
 extends from the hinge (25% percentile) to the smallest value, at most
-1.5× the IQR of the hinge. We used 84 different datasets.</strong>
+1.5× the IQR of the hinge. We used 84 different
+datasets.</strong>
 
 </p>
 
@@ -379,10 +370,7 @@ extends from the hinge (25% percentile) to the smallest value, at most
 
 ### Rule 6: Cell filtering
 
-\\begin{center}
-<img src="/home/wouters/thesis/projects/dynverse/dynbenchmark//results/02-metrics/02-metric_conformity/images/filter_cells.png" width="2in" height="10in" />
-
-\\end{center}
+<img src="results/02-metrics/02-metric_conformity/images/filter_cells.png" width="2in" height="10in" />
 
 Description: Removing cells from the trajectory should lower the score.
 
@@ -429,7 +417,8 @@ dataset.</strong>
 
 <strong>[**Figure S12**](#fig_filter_cells_plot_scores): Score values at
 different extents of the perturbation across 84 datasets. Red line
-denotes the mean values.</strong>
+denotes the mean
+values.</strong>
 
 </p>
 
@@ -437,10 +426,7 @@ denotes the mean values.</strong>
 
 ### Rule 7: Removing divergence regions
 
-\\begin{center}
-<img src="/home/wouters/thesis/projects/dynverse/dynbenchmark//results/02-metrics/02-metric_conformity/images/remove_divergence_regions.png" width="2in" height="10in" />
-
-\\end{center}
+<img src="results/02-metrics/02-metric_conformity/images/remove_divergence_regions.png" width="2in" height="10in" />
 
 Description: Removing divergence regions should lower the score.
 
@@ -491,7 +477,8 @@ Example dataset before and after perturbation.</strong>
 
 <strong>[**Figure S14**](#fig_remove_divergence_regions_plot_scores):
 Differences in scores of 33 datasets before and after perturbation. Red
-bar gives the mean.</strong>
+bar gives the
+mean.</strong>
 
 </p>
 
@@ -499,10 +486,7 @@ bar gives the mean.</strong>
 
 ### Rule 8: Move cells to start milestone
 
-\\begin{center}
-<img src="/home/wouters/thesis/projects/dynverse/dynbenchmark//results/02-metrics/02-metric_conformity/images/time_warping_start.png" width="2in" height="10in" />
-
-\\end{center}
+<img src="results/02-metrics/02-metric_conformity/images/time_warping_start.png" width="2in" height="10in" />
 
 Description: Moving the cells closer to their start milestone should
 lower the score. Cells were moved closer to the start milestone using
@@ -556,7 +540,8 @@ dataset.</strong>
 
 <strong>[**Figure S16**](#fig_time_warping_start_plot_scores): Score
 values at different extents of the perturbation across 84 datasets. Red
-line denotes the mean values.</strong>
+line denotes the mean
+values.</strong>
 
 </p>
 
@@ -564,10 +549,7 @@ line denotes the mean values.</strong>
 
 ### Rule 9: Move cells to closest milestone
 
-\\begin{center}
-<img src="/home/wouters/thesis/projects/dynverse/dynbenchmark//results/02-metrics/02-metric_conformity/images/time_warping_parabole.png" width="2in" height="10in" />
-
-\\end{center}
+<img src="results/02-metrics/02-metric_conformity/images/time_warping_parabole.png" width="2in" height="10in" />
 
 Description: Moving the cells closer to their nearest milestone should
 lower the score.
@@ -620,7 +602,8 @@ dataset.</strong>
 
 <strong>[**Figure S18**](#fig_time_warping_parabole_plot_scores): Score
 values at different extents of the perturbation across 84 datasets. Red
-line denotes the mean values.</strong>
+line denotes the mean
+values.</strong>
 
 </p>
 
@@ -628,10 +611,7 @@ line denotes the mean values.</strong>
 
 ### Rule 10: Length shuffling
 
-\\begin{center}
-<img src="/home/wouters/thesis/projects/dynverse/dynbenchmark//results/02-metrics/02-metric_conformity/images/shuffle_lengths.png" width="2in" height="10in" />
-
-\\end{center}
+<img src="results/02-metrics/02-metric_conformity/images/shuffle_lengths.png" width="2in" height="10in" />
 
 Description: Shuffling the lengths of the edges of the milestone network
 should lower the score.
@@ -679,7 +659,8 @@ dataset before and after perturbation.</strong>
 
 <strong>[**Figure S20**](#fig_shuffle_lengths_plot_scores): Differences
 in scores of 231 datasets before and after perturbation. Red bar gives
-the mean.</strong>
+the
+mean.</strong>
 
 </p>
 
@@ -687,10 +668,7 @@ the mean.</strong>
 
 ### Rule 11: Cells into small subedges
 
-\\begin{center}
-<img src="/home/wouters/thesis/projects/dynverse/dynbenchmark//results/02-metrics/02-metric_conformity/images/move_cells_subedges.png" width="2in" height="10in" />
-
-\\end{center}
+<img src="results/02-metrics/02-metric_conformity/images/move_cells_subedges.png" width="2in" height="10in" />
 
 Description: Moving some cells into short subedges should lower the
 score.
@@ -739,7 +717,8 @@ dataset.</strong>
 
 <strong>[**Figure S22**](#fig_move_cells_subedges_plot_scores): Score
 values at different extents of the perturbation across 84 datasets. Red
-line denotes the mean values.</strong>
+line denotes the mean
+values.</strong>
 
 </p>
 
@@ -747,10 +726,7 @@ line denotes the mean values.</strong>
 
 ### Rule 12: New leaf edges
 
-\\begin{center}
-<img src="/home/wouters/thesis/projects/dynverse/dynbenchmark//results/02-metrics/02-metric_conformity/images/add_leaf_edges.png" width="2in" height="10in" />
-
-\\end{center}
+<img src="results/02-metrics/02-metric_conformity/images/add_leaf_edges.png" width="2in" height="10in" />
 
 Description: Adding new edges only connected to one existing milestone
 should lower the score.
@@ -800,7 +776,8 @@ dataset.</strong>
 
 <strong>[**Figure S24**](#fig_add_leaf_edges_plot_scores): Score values
 at different extents of the perturbation across 84 datasets. Red line
-denotes the mean values.</strong>
+denotes the mean
+values.</strong>
 
 </p>
 
@@ -808,10 +785,7 @@ denotes the mean values.</strong>
 
 ### Rule 13: New connecting edges
 
-\\begin{center}
-<img src="/home/wouters/thesis/projects/dynverse/dynbenchmark//results/02-metrics/02-metric_conformity/images/add_connecting_edges.png" width="2in" height="10in" />
-
-\\end{center}
+<img src="results/02-metrics/02-metric_conformity/images/add_connecting_edges.png" width="2in" height="10in" />
 
 Description: Adding new edges between existing milestones should lower
 the score.
@@ -864,7 +838,8 @@ dataset.</strong>
 
 <strong>[**Figure S26**](#fig_add_connecting_edges_plot_scores): Score
 values at different extents of the perturbation across 84 datasets. Red
-line denotes the mean values.</strong>
+line denotes the mean
+values.</strong>
 
 </p>
 
@@ -872,10 +847,7 @@ line denotes the mean values.</strong>
 
 ### Rule 14: Changing topology and cell position
 
-\\begin{center}
-<img src="/home/wouters/thesis/projects/dynverse/dynbenchmark//results/02-metrics/02-metric_conformity/images/combined_position_topology.png" width="2in" height="10in" />
-
-\\end{center}
+<img src="results/02-metrics/02-metric_conformity/images/combined_position_topology.png" width="2in" height="10in" />
 
 Description: Changing both the topology and the cell positions should
 lower the score more than any of the two individually.
@@ -940,10 +912,7 @@ datasets.</strong>
 
 ### Rule 15: Bifurcation merging
 
-\\begin{center}
-<img src="/home/wouters/thesis/projects/dynverse/dynbenchmark//results/02-metrics/02-metric_conformity/images/merge_bifurcation.png" width="2in" height="10in" />
-
-\\end{center}
+<img src="results/02-metrics/02-metric_conformity/images/merge_bifurcation.png" width="2in" height="10in" />
 
 Description: Merging the two branches after a bifurcation point should
 lower the score.
@@ -991,7 +960,8 @@ dataset before and after perturbation.</strong>
 
 <strong>[**Figure S30**](#fig_merge_bifurcation_plot_scores):
 Differences in scores of 132 datasets before and after perturbation. Red
-bar gives the mean.</strong>
+bar gives the
+mean.</strong>
 
 </p>
 
@@ -999,10 +969,7 @@ bar gives the mean.</strong>
 
 ### Rule 16: Bifurcation merging and changing cell positions
 
-\\begin{center}
-<img src="/home/wouters/thesis/projects/dynverse/dynbenchmark//results/02-metrics/02-metric_conformity/images/combined_merge_bifurcation_shuffle_cells.png" width="2in" height="10in" />
-
-\\end{center}
+<img src="results/02-metrics/02-metric_conformity/images/combined_merge_bifurcation_shuffle_cells.png" width="2in" height="10in" />
 
 Description: Merging the two branches of a bifurcation and changing the
 cells positions should lower the score more than any of the two
@@ -1061,7 +1028,8 @@ values before perturbation (identity), with any of the two perturbations
 the boxplot extends from the hinge (75% percentile) to the largest
 value, no further than 1.5× the IQR from the hinge. The lower whisker
 extends from the hinge (25% percentile) to the smallest value, at most
-1.5× the IQR of the hinge. We used 8 different datasets.</strong>
+1.5× the IQR of the hinge. We used 8 different
+datasets.</strong>
 
 </p>
 
@@ -1069,10 +1037,7 @@ extends from the hinge (25% percentile) to the smallest value, at most
 
 ### Rule 17: Bifurcation concatentation
 
-\\begin{center}
-<img src="/home/wouters/thesis/projects/dynverse/dynbenchmark//results/02-metrics/02-metric_conformity/images/concatenate_bifurcation.png" width="2in" height="10in" />
-
-\\end{center}
+<img src="results/02-metrics/02-metric_conformity/images/concatenate_bifurcation.png" width="2in" height="10in" />
 
 Description: Concatenating one branch of a bifurcation to the other
 bifurcation branch should lower the score.
@@ -1120,7 +1085,8 @@ Example dataset before and after perturbation.</strong>
 
 <strong>[**Figure S34**](#fig_concatenate_bifurcation_plot_scores):
 Differences in scores of 66 datasets before and after perturbation. Red
-bar gives the mean.</strong>
+bar gives the
+mean.</strong>
 
 </p>
 
@@ -1128,10 +1094,7 @@ bar gives the mean.</strong>
 
 ### Rule 18: Cycle breaking
 
-\\begin{center}
-<img src="/home/wouters/thesis/projects/dynverse/dynbenchmark//results/02-metrics/02-metric_conformity/images/break_cycle.png" width="2in" height="10in" />
-
-\\end{center}
+<img src="results/02-metrics/02-metric_conformity/images/break_cycle.png" width="2in" height="10in" />
 
 Description: Breaking a cyclic trajectory should lower the score.
 
@@ -1188,10 +1151,7 @@ mean.</strong>
 
 ### Rule 19: Linear joining
 
-\\begin{center}
-<img src="/home/wouters/thesis/projects/dynverse/dynbenchmark//results/02-metrics/02-metric_conformity/images/join_linear.png" width="2in" height="10in" />
-
-\\end{center}
+<img src="results/02-metrics/02-metric_conformity/images/join_linear.png" width="2in" height="10in" />
 
 Description: Joining the two ends of a linear trajectory should lower
 the score.
@@ -1250,10 +1210,7 @@ mean.</strong>
 
 ### Rule 20: Linear splitting
 
-\\begin{center}
-<img src="/home/wouters/thesis/projects/dynverse/dynbenchmark//results/02-metrics/02-metric_conformity/images/split_linear.png" width="2in" height="10in" />
-
-\\end{center}
+<img src="results/02-metrics/02-metric_conformity/images/split_linear.png" width="2in" height="10in" />
 
 Description: Splitting a linear trajectory into a bifurcation should
 lower the score.
@@ -1310,10 +1267,7 @@ mean.</strong>
 
 ### Rule 21: Change of topology
 
-\\begin{center}
-<img src="/home/wouters/thesis/projects/dynverse/dynbenchmark//results/02-metrics/02-metric_conformity/images/change_topology.png" width="2in" height="10in" />
-
-\\end{center}
+<img src="results/02-metrics/02-metric_conformity/images/change_topology.png" width="2in" height="10in" />
 
 Description: Changing the topology of the trajectory should lower the
 score.
@@ -1364,7 +1318,8 @@ metrics.</strong>
 <p>
 
 <strong>[**Figure S42**](#fig_change_topology_plot_scores): Score values
-on different topologies (left).</strong>
+on different topologies
+(left).</strong>
 
 </p>
 
@@ -1372,10 +1327,7 @@ on different topologies (left).</strong>
 
 ### Rule 22: Cells on milestones vs edges
 
-\\begin{center}
-<img src="/home/wouters/thesis/projects/dynverse/dynbenchmark//results/02-metrics/02-metric_conformity/images/cell_gathering.png" width="2in" height="10in" />
-
-\\end{center}
+<img src="results/02-metrics/02-metric_conformity/images/cell_gathering.png" width="2in" height="10in" />
 
 Description: A score should behave similarly both when cells are located
 on the milestones (as is the case in real datasets) or on the edges

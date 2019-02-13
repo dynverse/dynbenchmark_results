@@ -13,12 +13,9 @@ rule <- dynutils::extract_row_to_list(rules, rule_ix)
 
 ### Rule `r assessment$ix`: `r rule$name`
 
-\begin{center}
 ```{r, out.width="2in", out.height="10in", dpi = 300}
 knitr::include_graphics(rule$image_location)
 ```
-
-\end{center}
 
 Description: `r render_equations(gsub("\\. *$", "", rule$description))`.
 

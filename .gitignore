@@ -3,5 +3,5 @@
 .RData
 .Ruserdata
 .tmp.Rmd
-.figures
+*/.figures/*.pdf
 12-manuscript

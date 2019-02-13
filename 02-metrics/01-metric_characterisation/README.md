@@ -191,13 +191,13 @@ the cor<sub>dist</sub> metric.
 <p>
 
 <a name = 'fig_metrics_geodesic'></a>
-<img src = "../../../raw/02-metrics/01-metric_characterisation/metrics_geodesic.svg" width = "840" height = "420" />
+<img src = ".figures/metrics_geodesic.svg" width = "840" height = "420" />
 
 </p>
 
 <p>
 
-<strong>[**Figure 3**](#fig_metrics_geodesic): The calculation of
+<strong>[**Figure S3**](#fig_metrics_geodesic): The calculation of
 geodesic distances on a small example trajectory.</strong> a) A toy
 example containing four milestones (W to Z) and five cells (a to e). b)
 The corresponding milestone network, milestone percentages and regions
@@ -213,7 +213,7 @@ geodesic distances.
 The geodesic distance is the distance a cell has to go through the
 trajectory space to get from one position to another. The way this
 distance is calculated depends on how two cells are positioned,
-showcased by an example in [**Figure 3**](#fig_metrics_geodesic):
+showcased by an example in [**Figure S3**](#fig_metrics_geodesic):
 
   - **Both cells are on the same edge in the milestone network.** In
     this case, the geodesic distance is defined as the product of the
@@ -368,7 +368,7 @@ finally obtain the NMSE<sub>rf</sub> and NMSE<sub>lm</sub> scores.
 <p>
 
 <a name = 'fig_metrics_prediction'></a>
-<img src = "../../../raw/02-metrics/01-metric_characterisation/metrics_prediction.svg" width = "840" height = "420" />
+<img src = ".figures/metrics_prediction.svg" width = "840" height = "420" />
 
 </p>
 
