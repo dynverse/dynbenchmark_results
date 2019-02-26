@@ -16,7 +16,7 @@ Model<sup>[3](#ref-pya_shapeconstrainedadditive_2015)</sup> ([**Figure
 memory) with the actual time (resp. memory) on all benchmarking
 datasets, and found that these were highly correlated overall (\> 0.9,
 [**Figure 2**](#fig_predcors)), and moderately to highly correlated (0.5
-- 0.9) for almost every method, depending on to what extent the
+– 0.9) for almost every method, depending on to what extent the
 execution of a method succeeded during the scalability experiments
 ([**Figure 3c**](#fig_results_detailed) and [**Figure
 4a**](#fig_results)).
@@ -99,7 +99,7 @@ and predictions for execution times and memory usage.</strong>
 <p>
 
 <a name = 'fig_results_detailed'></a>
-<img src = ".figures/results_detailed.png" width = "910" height = "1260" />
+<img src = ".figures/results_detailed.png" width = "900" height = "1246.15384615385" />
 
 </p>
 
@@ -129,7 +129,7 @@ have a usability score.
 <p>
 
 <a name = 'fig_results'></a>
-<img src = ".figures/results_suppfig.png" width = "2100" height = "1260" />
+<img src = ".figures/results_suppfig.png" width = "900" height = "540" />
 
 </p>
 

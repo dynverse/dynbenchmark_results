@@ -7,21 +7,11 @@ editor_options:
 ```{r setup, include=FALSE}
 library(tidyverse)
 library(dynbenchmark)
-dynbenchmark:::install_fontawesome()
-extrafont::loadfonts()
-
-output <- read_rds(result_file("output.rds", "04-method_testing"))
-
-tab <-
-  output %>%
-  select(method_id, dataset_id, method_status) %>%
-  mutate(dataset_id = gsub("specific_example/.*", "specific_example", dataset_id)) %>%
-  left_join(dynbenchmark::method_statuses, by = "method_status")
 ```
 
 # Scalability
 
-While early TI methods were developed at a time where profiling more than a thousand cells was exceptional, methods now have to cope with hundreds of thousands of cells, and perhaps soon with more than ten million [@svensson_exponentialscalingsinglecell_2018]. Moreover, the recent application of TI methods on multi-omics single-cell data also showcases the increasing demands on the number of features [@cao_jointprofilingchromatin_2018]. To assess the scalability, we ran each method on up- and downscaled versions of five distinct real datasets. We modelled the running time and memory usage using a Shape Constrained Additive Model [@pya_shapeconstrainedadditive_2015] (`r ref("fig", "scaling", "a")`). As a control, we compared the predicted time (and memory) with the actual time (resp. memory) on all benchmarking datasets, and found that these were highly correlated overall (> 0.9, `r ref("fig", "predcors")`), and moderately to highly correlated (0.5 - 0.9) for almost every method, depending on to what extent the execution of a method succeeded during the scalability experiments (`r ref("fig", "results_detailed", "c")` and `r ref("fig", "results", "a")`).
+While early TI methods were developed at a time where profiling more than a thousand cells was exceptional, methods now have to cope with hundreds of thousands of cells, and perhaps soon with more than ten million [@svensson_exponentialscalingsinglecell_2018]. Moreover, the recent application of TI methods on multi-omics single-cell data also showcases the increasing demands on the number of features [@cao_jointprofilingchromatin_2018]. To assess the scalability, we ran each method on up- and downscaled versions of five distinct real datasets. We modelled the running time and memory usage using a Shape Constrained Additive Model [@pya_shapeconstrainedadditive_2015] (`r ref("fig", "scaling", "a")`). As a control, we compared the predicted time (and memory) with the actual time (resp. memory) on all benchmarking datasets, and found that these were highly correlated overall (> 0.9, `r ref("fig", "predcors")`), and moderately to highly correlated (0.5 – 0.9) for almost every method, depending on to what extent the execution of a method succeeded during the scalability experiments (`r ref("fig", "results_detailed", "c")` and `r ref("fig", "results", "a")`).
 
 We found that the scalability of most methods was overall very poor, with most graph and tree methods not finishing within an hour on a dataset with ten thousand cells and ten thousand features (`r ref("fig", "results_detailed", "c")`), around the size of a typical droplet-based single-cell dataset [@svensson_exponentialscalingsinglecell_2018]. Running times increased further with increasing number of cells, with only a handful of graph/tree methods completing within a day on a million of cells (PAGA, PAGA Tree, Monocle DDRTree, Stemnet and GrandPrix). Some methods, such as Monocle DDRTree and GrandPrix, also suffered from unsatisfactory running times when given a high number of features.
 
