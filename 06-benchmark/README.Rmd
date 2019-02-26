@@ -1,0 +1,18 @@
+---
+output: dynbenchmark::github_markdown_nested
+---
+
+# Accuracy
+
+```{r include=FALSE}
+library(dynbenchmark)
+library(tidyverse)
+```
+
+Analysis of the accuracy of each method: how similar is the trajectory to what we expect it to find in the data?
+
+```{r}
+dynbenchmark::render_scripts_documentation()
+```
+
+The results of this experiment are available [here](`r dynbenchmark::link_to_results()`).

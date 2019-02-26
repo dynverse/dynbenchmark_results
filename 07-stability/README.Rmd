@@ -1,0 +1,13 @@
+---
+output: 
+  - dynbenchmark::github_markdown_nested
+---
+
+```{r setup, include=FALSE}
+library(tidyverse)
+library(dynbenchmark)
+```
+
+# Stability
+
+Here we analyzed how stable the results of TI methods are when rerunning them on slightly perturbed datasets.
