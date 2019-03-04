@@ -1,0 +1,49 @@
+---
+output: dynbenchmark::github_markdown_nested
+editor_options:
+  chunk_output_type: console
+---
+  
+```{r setup, include=FALSE}
+library(tidyverse)
+library(dynbenchmark)
+```
+
+# Summarising the results into *funky heatmaps*
+
+To make the main results from the different experiments (accuracy, scalability, stability and usability) interpretable, we used an aggregation procedure as discussed in [/02-metrics/03-aggregation](/02-metrics/03-aggregation).
+
+We summarised this aggregation in two "funky heatmaps": an average scores for each experiment with also more qualitative information on each method (`r ref("fig", "results_summary")`), but also looked at different intersections of the experiments, such as dataset types, dataset sizes, or specific usability features (`r ref("fig", "results_detailed")`). For the true enthusiasts, we also provide a funky heatmap containing nearly all relevant information on the benchmark results (`r ref("fig", "results")`), although either an 8K monitor or a poster printer is recommended for proper viewing.
+
+```{r}
+add_fig(
+  fig_path = result_file("results_summary.pdf", experiment_id = "08-summary"),
+  ref_id = "results_summary", 
+  caption_main = glue::glue("A characterisation of the methods evaluated in this study, and their overall evaluation results."), 
+  caption_text = "(a) We characterised the methods according to the wrapper type, their required priors, whether the inferred topology is constrained by the algorithm (fixed) or a parameter (param), and the types of inferable topologies. The methods are grouped vertically based on the most complex trajectory type they can infer. (b) The overall results of the evaluation on four criteria: accuracy using a reference trajectory on real and synthetic data, scalability with increasing number of cells and features, stability across dataset subsamples, and quality of the implementation. Methods which errored on more than 50% of the datasets were removed from this figure, and are shown in {ref('sfig', 'results')} instead.",
+  width = 13,
+  height = 18
+)
+```
+
+```{r}
+add_fig(
+  fig_path = result_file("results_detailed.pdf", experiment_id = "08-summary"),
+  ref_id = "results_detailed", 
+  caption_main = glue::glue("Detailed results of the four main evaluation criteria: accuracy, scalability, stability and usability."), 
+  caption_text = glue::glue("(a) The names of the methods, ordered as in {ref('fig', 'results_summary')}. (b) Accuracy of trajectory inference methods across metrics, dataset sources and dataset trajectory types. The performance of a method is generally more stable across dataset sources, but very variable depending on the metric and trajectory type. (c) Predicted execution times for varying numbers of cells and features (\\# cells × \\# features). Predictions were made by training a regression model after running each method on bootstrapped datasets with varying numbers of cells and features. (d) Stability results by calculating the average pairwise similarity between models inferred across multiple runs of the same method.  (e) Usability scores of the tool and corresponding manuscript, grouped per category. Off-the-shelf methods were directly implemented in R and thus do not have a usability score."),
+  width = 13,
+  height = 18
+)
+```
+
+```{r}
+add_fig(
+  fig_path = result_file("results_suppfig.pdf", experiment_id = "08-summary"),
+  ref_id = "results", 
+  caption_main = glue::glue("Results from the evaluation, for all methods and across all evaluation criteria."), 
+  caption_text = glue::glue("(a) We characterised the methods according to the wrapper type, their required priors, whether the inferred topology is constrained by the algorithm (fixed) or a parameter (param), and the types of inferable topologies. The methods are grouped vertically based on the most complex trajectory type they can infer. (b) The overall results of the evaluation on four criteria: benchmarking using a reference trajectory on real and synthetic data, scalability with increasing number of cells and features, stability across dataset subsamples, and quality of the implementation. (c) Accuracy of trajectory inference methods across metrics, dataset sources and dataset trajectory types. The performance of a method is generally more stable across dataset sources, but very variable depending on the metric and trajectory type. (d) Predicted execution times and memory usage for varying numbers of cells and features (\\# cells × \\# features). Predictions were made by training a regression model after running each method on bootstrapped datasets with varying numbers of cells and features. (e) Stability results by calculating the average pairwise similarity between models inferred across multiple runs of the same method.  (f) Usability scores of the tool and corresponding manuscript, grouped per category."),
+  width = 30,
+  height = 18
+)
+```
