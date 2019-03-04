@@ -12,14 +12,13 @@ experiment("10-benchmark_interpretation")
 
 # Benchmark interpretation
 
-```{r}
+```{r echo=FALSE, results="asis"}
 add_fig(
-  result_file("benchmark_interpretation.pdf"),
-  "overall_complexity_difference",
-  "",
-  "",
-  width = 14,
-  height = 14
+  fig_path = result_file("benchmark_interpretation.pdf", experiment_id = "10-benchmark_interpretation"),
+  ref_id = "benchmark_interpretation", 
+  caption_main = "Accuracy of trajectory inference methods.", 
+  caption_text = "(a) Overall score for all methods and datasets, colored by the source of the datasets. (c) Similarity between the overall scores of all dataset sources, compared to real datasets with a gold standard. (b) Bias in the overall score towards trajectory types.  (d) Distributions of the difference in size between predicted and reference topologies. A positive difference means that the topology predicted by the method is more complex than the one in the reference.",
+  width = 12,
+  height = 15
 )
 ```
-
