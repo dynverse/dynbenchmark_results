@@ -1,5 +1,5 @@
 
-# Scalability
+# Scalability with increasing number of cells and features
 
 While early TI methods were developed at a time where profiling more
 than a thousand cells was exceptional, methods now have to cope with
