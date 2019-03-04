@@ -2,17 +2,41 @@
 output: dynbenchmark::github_markdown_nested
 ---
 
-# Accuracy
+# Accuracy of TI methods on real and synthetic data
 
 ```{r include=FALSE}
 library(dynbenchmark)
 library(tidyverse)
 ```
 
-Analysis of the accuracy of each method: how similar is the trajectory to what we expect it to find in the data?
+
+<!-- Accuracy methods -->
+We defined several metrics to compare a prediction to a reference trajectory. Based on an analysis of their robustness and conformity to a set of rules, we chose four metrics each assessing a different aspect of a trajectory (`r ref("fig", "results_detailed", "b")`): the topology (Hamming-Ipsen-Mikhailov, `r label_metric("him")`), the quality of the assignment of cells to branches (`r label_metric("F1_branches")`), the cell positions (`r label_metric("correlation")`) and the accuracy of the differentially expressed features along the trajectory (`r label_metric("featureimp_wcor")`). The data compendium consisted of both synthetic datasets, which offer the most exact reference trajectory, and real datasets, which provide the highest biological relevance. These real datasets come from a variety of single-cell technologies, organisms, and dynamic processes, and contain several types of trajectory topologies.  Real datasets were classified as "gold standard" if the reference trajectory was not extracted from the expression data itself, such as via cellular sorting or cell mixing [@tian_scrnaseqmixologybetter_2018]. All other real datasets were classified as "silver standard". For synthetic datasets we used several data simulators, including a simulator of gene regulatory networks using a thermodynamic model of gene regulation[@schaffter_genenetweaversilicobenchmark_2011]. For each simulation, we used a real dataset as a reference, to match its dimensions, number of differentially expressed genes, drop-out rates and other statistical properties[@zappia_splattersimulationsinglecell_2017].
 
 ```{r}
-dynbenchmark::render_scripts_documentation()
+add_fig(
+  fig_path = result_file("results_detailed.pdf", experiment_id = "08-summary"),
+  ref_id = "results_detailed", 
+  caption_main = glue::glue("Detailed results of the four main evaluation criteria: accuracy, scalability, stability and usability."), 
+  caption_text = glue::glue("(a) The names of the methods, ordered as in {ref('fig', 'results_summary')}. (b) Accuracy of trajectory inference methods across metrics, dataset sources and dataset trajectory types. The performance of a method is generally more stable across dataset sources, but very variable depending on the metric and trajectory type. (c) Predicted execution times for varying numbers of cells and features (\\# cells × \\# features). Predictions were made by training a regression model after running each method on bootstrapped datasets with varying numbers of cells and features. (d) Stability results by calculating the average pairwise similarity between models inferred across multiple runs of the same method.  (e) Usability scores of the tool and corresponding manuscript, grouped per category. Off-the-shelf methods were directly implemented in R and thus do not have a usability score."),
+  width = 13,
+  height = 18
+)
 ```
 
-The results of this experiment are available [here](`r dynbenchmark::link_to_results()`).
+<!-- Accuracy overview -->
+We found that method performance was very variable across datasets, indicating that there is no "one-size-fits-all" method that works well on every dataset (`r ref("fig", "benchmark_interpretation", "a")`). Even methods which can detect most of the trajectory types, such as PAGA, RaceID/StemID and SLICER were not the best methods across all trajectory types (`r ref("fig", "results_detailed", "b")`). The overall score between the different dataset sources was moderately to highly correlated (0.5 - 0.9) with the scores on real datasets containing a gold standard (`r ref("fig", "benchmark_interpretation", "b")`), confirming both the accuracy of the gold standard trajectories and the relevance of the synthetic data. On the other hand, the different metrics frequently disagreed with each other, with Monocle and PAGA Tree scoring better on the topology scores, while other methods, such as Slingshot, were better at ordering the cells and placing them into the correct branches (`r ref("fig", "results_detailed", "b")`).
+
+<!-- Topologies-->
+The performance of a method was strongly dependent on the type of trajectory present in the data (`r ref("fig", "results_detailed", "b")`). Slingshot typically performed better on datasets containing more simple topologies, while PAGA, pCreode and RaceID/StemID had higher scores on datasets with trees or more complex trajectories (`r ref("fig", "benchmark_interpretation", "c")`). This was reflected in the types of topologies detected by every method, as those predicted by Slingshot tended to contain less branches, while those detected by PAGA, pCreode and Monocle DDRTree gravitated towards more complex topologies (`r ref("fig", "benchmark_interpretation", "d")`). This analysis therefore indicates that detecting the right topology is still a difficult task for most of these methods, because methods tend to be either too optimistic or too pessimistic regarding the complexity of the topology in the data.
+
+```{r echo=FALSE, results="asis"}
+add_fig(
+  fig_path = result_file("benchmark_interpretation.pdf", experiment_id = "10-benchmark_interpretation"),
+  ref_id = "benchmark_interpretation", 
+  caption_main = "Accuracy of trajectory inference methods.", 
+  caption_text = "(a) Overall score for all methods and datasets, colored by the source of the datasets. (c) Similarity between the overall scores of all dataset sources, compared to real datasets with a gold standard. (b) Bias in the overall score towards trajectory types.  (d) Distributions of the difference in size between predicted and reference topologies. A positive difference means that the topology predicted by the method is more complex than the one in the reference.",
+  width = 12,
+  height = 15
+)
+```
