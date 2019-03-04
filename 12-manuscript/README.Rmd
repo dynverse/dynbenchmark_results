@@ -1,0 +1,28 @@
+---
+output: 
+  - dynbenchmark::github_markdown_nested
+---
+
+```{r setup, include=FALSE}
+library(tidyverse)
+library(dynbenchmark)
+
+experiment("12-manuscript")
+```
+
+# Manuscript
+
+The manuscript is not yet published, but once it is you will find a link here!
+
+For now, here are some cats with wisdom:
+
+```{r, warning=FALSE, message=FALSE}
+devtools::install_cran("cowsay", repos='http://cran.us.r-project.org')
+library(cowsay)
+cat(say("All benchmarks are wrong, but some are useful!", type = "string"))
+```
+
+
+```{r, warning=FALSE, message=FALSE}
+cat(say("There are two types of scientists: those who discover, and those that organise what is already there.", type = "string", by = "longcat"))
+```
