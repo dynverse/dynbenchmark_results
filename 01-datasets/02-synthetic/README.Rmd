@@ -45,24 +45,24 @@ To simulate the gene regulatory network, we used a system of differential equati
 $$
 \begin{aligned}
 \label{eq:mrna_ode}
-\frac{dx_i}{dt} &= \underbrace{m \times f(y_1, y_2, ...)}_\text{production} - \underbrace{\lambda \times x_i}_\text{degradation}
+\frac{dx_i}{dt} &= \underbrace{r \times f(y_1, y_2, ...)}_\text{production} - \underbrace{d \times x_i}_\text{degradation}
 \end{aligned}
 $$
 $$
 \begin{aligned}
 \label{eq:prot_ode}
-\frac{dy_i}{dt} &= \underbrace{r \times x_i}_\text{production} - \underbrace{\Lambda \times y_i}_\text{degradation}
+\frac{dy_i}{dt} &= \underbrace{p \times x_i}_\text{production} - \underbrace{q \times y_i}_\text{degradation}
 \end{aligned}
 $$
 
-where $m$, $\lambda$, $r$ and $\Lambda$ represent production and degradation rates, the ratio of which determines the maximal gene and protein expression. The two types of equations are coupled because the production of protein $y_i$ depends on the amount of gene expression $x_i$, which in turn depends on the amount of other proteins through the activation function $f(y_1, y_2, ...)$.
+where $r$, $d$, $p$ and $q$ represent production and degradation rates, the ratio of which determines the maximal gene and protein expression. The two types of equations are coupled because the production of protein $y_i$ depends on the amount of gene expression $x_i$, which in turn depends on the amount of other proteins through the activation function $f(y_1, y_2, ...)$.
 
-The activation function is inspired by a thermodynamic model of gene regulation, in which the promoter of a gene can be bound or unbound by a set of transcription factors, each representing a certain state of the promoter. Each state is linked with a relative activation $\alpha_j$, a number between 0 and 1 representing the activity of the promoter at this particular state. The production rate of the gene is calculated by combining the probabilities of the promoter being in each state with the relative activation:
+The activation function is inspired by a thermodynamic model of gene regulation, in which the promoter of a gene can be bound or unbound by a set of transcription factors, each representing a certain state of the promoter. Each state is linked with a relative activation $a_j$, a number between 0 and 1 representing the activity of the promoter at this particular state. The production rate of the gene is calculated by combining the probabilities of the promoter being in each state with the relative activation:
 
 $$
 \begin{aligned}
 \label{eq:input_function_probabilities}
-f(y_1, y_2, ..., y_n) = \sum_{j \in \{0, 1, ..., n^2\}} \alpha_j \times P_j
+f(y_1, y_2, ..., y_n) = \sum_{j \in \{0, 1, ..., n^2\}} a_j \times P_j
 \end{aligned}
 $$
 
@@ -87,8 +87,8 @@ $P_i$ is only proportional to $\nu$ because $\nu$ is normalized such that $\sum_
 To each differential equation, we added an additional stochastic term: 
 $$
 \begin{aligned}
-\frac{dx_i}{dt} & = m \times f(y_1, y_2, ...) - \lambda \times x_i + \eta \times \sqrt{x_i} \times \Delta W_t \\
-\frac{dy_i}{dt} & = r \times x_i - \Lambda \times y_i + \eta \times \sqrt{y_i} \times \Delta W_t
+\frac{dx_i}{dt} & = r \times f(y_1, y_2, ...) - d \times x_i + \eta \times \sqrt{x_i} \times \Delta W_t \\
+\frac{dy_i}{dt} & = p \times x_i - q \times y_i + \eta \times \sqrt{y_i} \times \Delta W_t
 \end{aligned}
 $$
 
