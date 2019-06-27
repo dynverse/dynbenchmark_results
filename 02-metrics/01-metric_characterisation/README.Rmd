@@ -125,7 +125,7 @@ add_fig(
 )
 ```
 
-Although the `r label_metric("correlation")`'s main characteristic is that it looks at the positions of the cells, other features of the trajectory are also (partly) captured. To illustrate this, we used the geodesic distances themselves as input for dimensionality reduction (`r ref("fig", "geodesic_distances_dimreds", prefix = "S")`) with varying topologies. This reduced space captures the original trajectory structure quite well, including the overall topology and branch lengths. Only some structures, not easily visualisabe
+Although the `r label_metric("correlation")`'s main characteristic is that it looks at the positions of the cells, other features of the trajectory are also (partly) captured. To illustrate this, we used the geodesic distances themselves as input for dimensionality reduction (`r ref("fig", "geodesic_distances_dimreds", prefix = "S")`) with varying topologies. This reduced space captures the original trajectory structure quite well, including the overall topology and branch lengths.
 
 ```{r}
 add_fig(
@@ -148,7 +148,7 @@ add_fig(
   raw_file("metrics_prediction.svg", "02-metrics/01-metric_characterisation"),
   "metrics_prediction",
   glue::glue("The calculation of {label_metric('lm_nmse')} distances on a small example trajectory."),
-  "The milestone percentages of the reference are predicted based on the milestone percentages of the prediction, using regression models such as linear regression or random forests. The predicted trajectory is then scored by comparing the mean-squared error (MSE° of this regression model with the baseline MSE where the prediction is the average milestone percentage",
+  "The milestone percentages of the reference are predicted based on the milestone percentages of the prediction, using regression models such as linear regression or random forests. The predicted trajectory is then scored by comparing the mean-squared error (MSE) of this regression model with the baseline MSE where the prediction is the average milestone percentage.",
   width = 12,
   height = 6
 )
