@@ -28,8 +28,8 @@ Execution halted
 ### ERROR CLUSTER TIME_LIMIT -- 1
 ![Cluster plot](error_class_plots/mst_time_limit_1.png)
 
- * Number of instances: 35
- * Dataset ids: scaling_1549, scaling_1587, scaling_1605, scaling_1647, scaling_1669, scaling_1691, scaling_1713, scaling_1735, scaling_1739, scaling_1747, scaling_1751, scaling_1780, scaling_1810, scaling_1825, scaling_1912, scaling_1934, scaling_1978, scaling_2008, scaling_2024, scaling_2032, scaling_2040, scaling_2121, scaling_2127, scaling_2133, scaling_2139, scaling_2145, scaling_2209, scaling_2225, scaling_2246, scaling_2287, scaling_2288, scaling_2308, scaling_2309, scaling_2329, scaling_2330
+ * Number of instances: 29
+ * Dataset ids: scaling_1549, scaling_1587, scaling_1605, scaling_1647, scaling_1669, scaling_1691, scaling_1713, scaling_1735, scaling_1739, scaling_1747, scaling_1751, scaling_1780, scaling_1810, scaling_1825, scaling_1912, scaling_1934, scaling_1978, scaling_2008, scaling_2024, scaling_2032, scaling_2040, scaling_2121, scaling_2127, scaling_2133, scaling_2139, scaling_2145, scaling_2209, scaling_2225, scaling_2246
 
 Last 10 lines of scaling_1549:
 ```

@@ -26,8 +26,8 @@ Sum of progressions per cell_id should be exactly one
 ### ERROR CLUSTER METHOD_ERROR -- 2
 ![Cluster plot](error_class_plots/ouijaflow_method_error_2.png)
 
- * Number of instances: 25
- * Dataset ids: scaling_2087, scaling_2116, scaling_2122, scaling_2128, scaling_2134, scaling_2140, scaling_2148, scaling_2180, scaling_2212, scaling_2227, scaling_2230, scaling_2248, scaling_2249, scaling_2250, scaling_2251, scaling_2269, scaling_2272, scaling_2293, scaling_2294, scaling_2295, scaling_2311, scaling_2313, scaling_2314, scaling_2315, scaling_2316
+ * Number of instances: 15
+ * Dataset ids: scaling_2087, scaling_2116, scaling_2122, scaling_2128, scaling_2134, scaling_2140, scaling_2148, scaling_2180, scaling_2212, scaling_2227, scaling_2230, scaling_2248, scaling_2249, scaling_2250, scaling_2251
 
 Last 10 lines of scaling_2087:
 ```
@@ -364,8 +364,8 @@ Hint: If you want to see a list of allocated tensors when OOM happens, add repor
 ### ERROR CLUSTER MEMORY_LIMIT -- 17
 ![Cluster plot](error_class_plots/ouijaflow_memory_limit_17.png)
 
- * Number of instances: 21
- * Dataset ids: scaling_1640, scaling_1683, scaling_1768, scaling_1939, scaling_2028, scaling_2029, scaling_2049, scaling_2070, scaling_2079, scaling_2092, scaling_2102, scaling_2110, scaling_2112, scaling_2196, scaling_2232, scaling_2252, scaling_2296, scaling_2298, scaling_2301, scaling_2304, scaling_2317
+ * Number of instances: 16
+ * Dataset ids: scaling_1640, scaling_1683, scaling_1768, scaling_1939, scaling_2028, scaling_2029, scaling_2049, scaling_2070, scaling_2079, scaling_2092, scaling_2102, scaling_2110, scaling_2112, scaling_2196, scaling_2232, scaling_2252
 
 Last 10 lines of scaling_1640:
 ```
@@ -424,8 +424,8 @@ Hint: If you want to see a list of allocated tensors when OOM happens, add repor
 ### ERROR CLUSTER MEMORY_LIMIT -- 20
 ![Cluster plot](error_class_plots/ouijaflow_memory_limit_20.png)
 
- * Number of instances: 62
- * Dataset ids: scaling_1648, scaling_1776, scaling_1818, scaling_1864, scaling_1868, scaling_1951, scaling_1959, scaling_1961, scaling_1985, scaling_2005, scaling_2039, scaling_2053, scaling_2054, scaling_2061, scaling_2063, scaling_2064, scaling_2065, scaling_2067, scaling_2093, scaling_2100, scaling_2197, scaling_2235, scaling_2236, scaling_2238, scaling_2239, scaling_2240, scaling_2241, scaling_2242, scaling_2243, scaling_2244, scaling_2256, scaling_2257, scaling_2258, scaling_2259, scaling_2260, scaling_2261, scaling_2262, scaling_2263, scaling_2264, scaling_2265, scaling_2277, scaling_2278, scaling_2279, scaling_2280, scaling_2281, scaling_2282, scaling_2283, scaling_2284, scaling_2285, scaling_2302, scaling_2303, scaling_2305, scaling_2306, scaling_2320, scaling_2321, scaling_2322, scaling_2323, scaling_2324, scaling_2325, scaling_2326, scaling_2327, scaling_2328
+ * Number of instances: 30
+ * Dataset ids: scaling_1648, scaling_1776, scaling_1818, scaling_1864, scaling_1868, scaling_1951, scaling_1959, scaling_1961, scaling_1985, scaling_2005, scaling_2039, scaling_2053, scaling_2054, scaling_2061, scaling_2063, scaling_2064, scaling_2065, scaling_2067, scaling_2093, scaling_2100, scaling_2197, scaling_2235, scaling_2236, scaling_2238, scaling_2239, scaling_2240, scaling_2241, scaling_2242, scaling_2243, scaling_2244
 
 Last 10 lines of scaling_1648:
 ```
@@ -564,8 +564,8 @@ Hint: If you want to see a list of allocated tensors when OOM happens, add repor
 ### ERROR CLUSTER MEMORY_LIMIT -- 27
 ![Cluster plot](error_class_plots/ouijaflow_memory_limit_27.png)
 
- * Number of instances: 13
- * Dataset ids: scaling_1717, scaling_1746, scaling_1964, scaling_1968, scaling_2021, scaling_2030, scaling_2066, scaling_2095, scaling_2118, scaling_2181, scaling_2215, scaling_2286, scaling_2307
+ * Number of instances: 11
+ * Dataset ids: scaling_1717, scaling_1746, scaling_1964, scaling_1968, scaling_2021, scaling_2030, scaling_2066, scaling_2095, scaling_2118, scaling_2181, scaling_2215
 
 Last 10 lines of scaling_1717:
 ```
@@ -604,8 +604,8 @@ Hint: If you want to see a list of allocated tensors when OOM happens, add repor
 ### ERROR CLUSTER MEMORY_LIMIT -- 29
 ![Cluster plot](error_class_plots/ouijaflow_memory_limit_29.png)
 
- * Number of instances: 34
- * Dataset ids: scaling_1729, scaling_1754, scaling_1793, scaling_1860, scaling_1948, scaling_1995, scaling_2006, scaling_2007, scaling_2008, scaling_2011, scaling_2014, scaling_2015, scaling_2032, scaling_2037, scaling_2038, scaling_2042, scaling_2048, scaling_2052, scaling_2057, scaling_2068, scaling_2072, scaling_2081, scaling_2084, scaling_2091, scaling_2094, scaling_2097, scaling_2098, scaling_2233, scaling_2234, scaling_2254, scaling_2255, scaling_2275, scaling_2276, scaling_2299
+ * Number of instances: 30
+ * Dataset ids: scaling_1729, scaling_1754, scaling_1793, scaling_1860, scaling_1948, scaling_1995, scaling_2006, scaling_2007, scaling_2008, scaling_2011, scaling_2014, scaling_2015, scaling_2032, scaling_2037, scaling_2038, scaling_2042, scaling_2048, scaling_2052, scaling_2057, scaling_2068, scaling_2072, scaling_2081, scaling_2084, scaling_2091, scaling_2094, scaling_2097, scaling_2098, scaling_2233, scaling_2234, scaling_2254
 
 Last 10 lines of scaling_1729:
 ```
@@ -624,8 +624,8 @@ Hint: If you want to see a list of allocated tensors when OOM happens, add repor
 ### ERROR CLUSTER MEMORY_LIMIT -- 30
 ![Cluster plot](error_class_plots/ouijaflow_memory_limit_30.png)
 
- * Number of instances: 25
- * Dataset ids: scaling_1739, scaling_1745, scaling_1780, scaling_1813, scaling_1920, scaling_1944, scaling_1981, scaling_2004, scaling_2024, scaling_2031, scaling_2051, scaling_2060, scaling_2069, scaling_2076, scaling_2078, scaling_2080, scaling_2096, scaling_2164, scaling_2231, scaling_2253, scaling_2273, scaling_2274, scaling_2297, scaling_2300, scaling_2318
+ * Number of instances: 20
+ * Dataset ids: scaling_1739, scaling_1745, scaling_1780, scaling_1813, scaling_1920, scaling_1944, scaling_1981, scaling_2004, scaling_2024, scaling_2031, scaling_2051, scaling_2060, scaling_2069, scaling_2076, scaling_2078, scaling_2080, scaling_2096, scaling_2164, scaling_2231, scaling_2253
 
 Last 10 lines of scaling_1739:
 ```
@@ -722,8 +722,8 @@ Hint: If you want to see a list of allocated tensors when OOM happens, add repor
 ### ERROR CLUSTER MEMORY_LIMIT -- 35
 ![Cluster plot](error_class_plots/ouijaflow_memory_limit_35.png)
 
- * Number of instances: 14
- * Dataset ids: scaling_1969, scaling_2107, scaling_2237, scaling_2245, scaling_2246, scaling_2266, scaling_2267, scaling_2287, scaling_2288, scaling_2308, scaling_2309, scaling_2319, scaling_2329, scaling_2330
+ * Number of instances: 5
+ * Dataset ids: scaling_1969, scaling_2107, scaling_2237, scaling_2245, scaling_2246
 
 Last 10 lines of scaling_1969:
 ```
@@ -802,8 +802,8 @@ Hint: If you want to see a list of allocated tensors when OOM happens, add repor
 ### ERROR CLUSTER MEMORY_LIMIT -- 39
 ![Cluster plot](error_class_plots/ouijaflow_memory_limit_39.png)
 
- * Number of instances: 4
- * Dataset ids: scaling_2146, scaling_2229, scaling_2271, scaling_2292
+ * Number of instances: 2
+ * Dataset ids: scaling_2146, scaling_2229
 
 Last 10 lines of scaling_2146:
 ```
@@ -860,8 +860,8 @@ Last 10 lines of scaling_2162:
 ### ERROR CLUSTER MEMORY_LIMIT -- 42
 ![Cluster plot](error_class_plots/ouijaflow_memory_limit_42.png)
 
- * Number of instances: 7
- * Dataset ids: scaling_2226, scaling_2228, scaling_2247, scaling_2270, scaling_2289, scaling_2290, scaling_2291
+ * Number of instances: 3
+ * Dataset ids: scaling_2226, scaling_2228, scaling_2247
 
 Last 10 lines of scaling_2226:
 ```
@@ -874,46 +874,6 @@ Last 10 lines of scaling_2226:
   File "pandas/_libs/parsers.pyx", line 891, in pandas._libs.parsers.TextReader._read_low_memory
   File "pandas/_libs/parsers.pyx", line 968, in pandas._libs.parsers.TextReader._read_rows
   File "pandas/_libs/parsers.pyx", line 1107, in pandas._libs.parsers.TextReader._convert_column_data
-MemoryError
-```
-
-### ERROR CLUSTER MEMORY_LIMIT -- 43
-![Cluster plot](error_class_plots/ouijaflow_memory_limit_43.png)
-
- * Number of instances: 2
- * Dataset ids: scaling_2268, scaling_2310
-
-Last 10 lines of scaling_2268:
-```
-  File "/usr/local/lib/python3.6/site-packages/pandas/io/parsers.py", line 446, in _read
-    data = parser.read(nrows)
-  File "/usr/local/lib/python3.6/site-packages/pandas/io/parsers.py", line 1036, in read
-    ret = self._engine.read(nrows)
-  File "/usr/local/lib/python3.6/site-packages/pandas/io/parsers.py", line 1848, in read
-    data = self._reader.read(nrows)
-  File "pandas/_libs/parsers.pyx", line 876, in pandas._libs.parsers.TextReader.read
-  File "pandas/_libs/parsers.pyx", line 891, in pandas._libs.parsers.TextReader._read_low_memory
-  File "pandas/_libs/parsers.pyx", line 975, in pandas._libs.parsers.TextReader._read_rows
-MemoryError
-```
-
-### ERROR CLUSTER MEMORY_LIMIT -- 44
-![Cluster plot](error_class_plots/ouijaflow_memory_limit_44.png)
-
- * Number of instances: 1
- * Dataset ids: scaling_2312
-
-Last 10 lines of scaling_2312:
-```
-  File "/usr/local/lib/python3.6/site-packages/pandas/io/parsers.py", line 1036, in read
-    ret = self._engine.read(nrows)
-  File "/usr/local/lib/python3.6/site-packages/pandas/io/parsers.py", line 1848, in read
-    data = self._reader.read(nrows)
-  File "pandas/_libs/parsers.pyx", line 876, in pandas._libs.parsers.TextReader.read
-  File "pandas/_libs/parsers.pyx", line 891, in pandas._libs.parsers.TextReader._read_low_memory
-  File "pandas/_libs/parsers.pyx", line 968, in pandas._libs.parsers.TextReader._read_rows
-  File "pandas/_libs/parsers.pyx", line 1060, in pandas._libs.parsers.TextReader._convert_column_data
-  File "pandas/_libs/parsers.pyx", line 1308, in pandas._libs.parsers.TextReader._get_na_list
 MemoryError
 ```
 
